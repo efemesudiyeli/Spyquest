@@ -1,0 +1,3139 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "**Ask Questions:** Take turns asking questions about the location. Players answer honestly, while the spy tries to blend in.\n**Give Answers:** Provide answers related to the location. Be cautious not to reveal too much to the spy." : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**Sorular Sorun:** Sırasıyla mekan hakkında sorular sorun. Oyuncular dürüst cevaplar verirken, casus aranıza sızmaya çalışır.                                                                           **Cevap Verin:** Mekanla ilgili cevaplar verin. Casusa fazla bilgi vermemeye dikkat edin."
+          }
+        }
+      }
+    },
+    "**For Players:** Be strategic with your questions and answers.\n**For the Spy:** Listen carefully to the answers and use your guesses wisely." : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**Oyuncular İçin:** Sorularınızı ve cevaplarınızı stratejik bir şekilde kullanın.                                                         **Casus İçin:** Cevapları dikkatle dinleyin ve tahminlerinizi akıllıca kullanın."
+          }
+        }
+      }
+    },
+    "**Players:** Identify the spy before time runs out.\n**Spy:** Figure out the location without getting caught." : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**Oyuncular:** Casusun mekanı bulmasına izin vermeden onu tespit etmelidirler.\n**Casus:** Oyunculara yakalanmadan bulundukları mekanı tahmin etmelidir."
+          }
+        }
+      }
+    },
+    "%@" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@"
+          }
+        }
+      }
+    },
+    "1. Setup" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. Kurulum"
+          }
+        }
+      }
+    },
+    "2. Objective" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. Amaç"
+          }
+        }
+      }
+    },
+    "3. Gameplay" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. Oynanış"
+          }
+        }
+      }
+    },
+    "4. Guess the Spy" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4. Casusu Tahmin Etmek"
+          }
+        }
+      }
+    },
+    "5. Spy's Turn" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5. Casus'un Turu"
+          }
+        }
+      }
+    },
+    "6. End of Game" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "6. Oyunun Sonu"
+          }
+        }
+      }
+    },
+    "7. Tips" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "7. İpuçları"
+          }
+        }
+      }
+    },
+    "Accountant" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Muhasebeci"
+          }
+        }
+      }
+    },
+    "Acrobat" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Akrobat"
+          }
+        }
+      }
+    },
+    "Actor" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktör"
+          }
+        }
+      }
+    },
+    "Add" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekle"
+          }
+        }
+      }
+    },
+    "Air Marshal" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Savaş Pilotu"
+          }
+        }
+      }
+    },
+    "Airplane" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uçak"
+          }
+        }
+      }
+    },
+    "Alien" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uzaylı"
+          }
+        }
+      }
+    },
+    "Anesthesiologist" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anestezist"
+          }
+        }
+      }
+    },
+    "Animal Trainer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hayvan Eğiticisi"
+          }
+        }
+      }
+    },
+    "Architect" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mimar"
+          }
+        }
+      }
+    },
+    "Archivist" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arşivci"
+          }
+        }
+      }
+    },
+    "Are you sure you want to restart the game?" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oyunu yeniden başlatmak istediğine emin misin?"
+          }
+        }
+      }
+    },
+    "Armored Car Driver" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zırhlı Araç Şoförü"
+          }
+        }
+      }
+    },
+    "Art Collector" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Koleksiyoncu"
+          }
+        }
+      }
+    },
+    "Art Critic" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sanat Eleştirmeni"
+          }
+        }
+      }
+    },
+    "Art Museum" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sanat Müzesi"
+          }
+        }
+      }
+    },
+    "At any time, players can discuss and vote to accuse someone of being the spy.\nIf the accused is the spy, the players win. If not, spy wins." : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Herhangi bir anda oyuncular, birinin casus olduğunu öne sürmek için tartışabilir ve oy kullanabilir.\nSuçlanan kişi casus ise, oyuncular kazanır.                                                             Değilse, casus kazanır."
+          }
+        }
+      }
+    },
+    "Audience Member" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seyirci"
+          }
+        }
+      }
+    },
+    "Author" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yazar"
+          }
+        }
+      }
+    },
+    "Auto Mechanic" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Araba Tamircisi"
+          }
+        }
+      }
+    },
+    "Backstage Crew" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sahne Arkası Ekibi"
+          }
+        }
+      }
+    },
+    "Bank" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Banka"
+          }
+        }
+      }
+    },
+    "Bar Back" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bar Görevlisi"
+          }
+        }
+      }
+    },
+    "Bar Tender" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Barmen"
+          }
+        }
+      }
+    },
+    "Bartender" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Barmen"
+          }
+        }
+      }
+    },
+    "Baseball Stadium" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beyzbol Stadyumu"
+          }
+        }
+      }
+    },
+    "Beach" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sahil"
+          }
+        }
+      }
+    },
+    "Beach Goer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sahil Bağımlısı"
+          }
+        }
+      }
+    },
+    "Beach Photographer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sahil Fotoğrafçısı"
+          }
+        }
+      }
+    },
+    "Beach Waitress" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Garson"
+          }
+        }
+      }
+    },
+    "Beggar" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dilenci"
+          }
+        }
+      }
+    },
+    "Bellman" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bellboy"
+          }
+        }
+      }
+    },
+    "Biker" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bisikletçi"
+          }
+        }
+      }
+    },
+    "Book Fanatic" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kitap Fanatiği"
+          }
+        }
+      }
+    },
+    "Border Patrol" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sınır Devriyesi"
+          }
+        }
+      }
+    },
+    "Bouncer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Koruma"
+          }
+        }
+      }
+    },
+    "Brewery" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bira Fabrikası"
+          }
+        }
+      }
+    },
+    "Brewmaster" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bira Ustası"
+          }
+        }
+      }
+    },
+    "Broadway Theater" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiyatro"
+          }
+        }
+      }
+    },
+    "Businessman" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İş İnsanı"
+          }
+        }
+      }
+    },
+    "Butler" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uşak"
+          }
+        }
+      }
+    },
+    "Cabin Boy" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kabin Görevlisi"
+          }
+        }
+      }
+    },
+    "Cancel" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İptal"
+          }
+        }
+      }
+    },
+    "Cannoneer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Topçu"
+          }
+        }
+      }
+    },
+    "Captain" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaptan Pilot"
+          }
+        }
+      }
+    },
+    "Car Enthusiast" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Araba Sever"
+          }
+        }
+      }
+    },
+    "Car Owner" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Araba Sahibi"
+          }
+        }
+      }
+    },
+    "Car Wash Operator" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Araç Yıkama Operatörü"
+          }
+        }
+      }
+    },
+    "Car Washer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Araç Yıkayıcısı"
+          }
+        }
+      }
+    },
+    "Cashier" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kasiyer"
+          }
+        }
+      }
+    },
+    "Casino" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kumarhane"
+          }
+        }
+      }
+    },
+    "Catcher" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yakalayıcı"
+          }
+        }
+      }
+    },
+    "Cathedral" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Katedral"
+          }
+        }
+      }
+    },
+    "CCTV Operatör" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kamera Operatörü"
+          }
+        }
+      }
+    },
+    "Cemetery" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mezarlık"
+          }
+        }
+      }
+    },
+    "Child" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çocuk"
+          }
+        }
+      }
+    },
+    "Chorister" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Koro Üyesi"
+          }
+        }
+      }
+    },
+    "Circus Tent" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sirk Çadırı"
+          }
+        }
+      }
+    },
+    "Cleaner" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temizlikçi"
+          }
+        }
+      }
+    },
+    "Clown" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Palyaço"
+          }
+        }
+      }
+    },
+    "Clue Board Game" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İpucu Masa Oyunu"
+          }
+        }
+      }
+    },
+    "Co-Pilot" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yardımcı Pilot"
+          }
+        }
+      }
+    },
+    "Coat Check Manager" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vestiyer Kontrol Müdürü"
+          }
+        }
+      }
+    },
+    "Colonel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Albay"
+          }
+        }
+      }
+    },
+    "Colonel Mustard" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Albay Mustard"
+          }
+        }
+      }
+    },
+    "Commander" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Komutan"
+          }
+        }
+      }
+    },
+    "Commenter" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yorumcu"
+          }
+        }
+      }
+    },
+    "Construction Site" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İnşaat Alanı"
+          }
+        }
+      }
+    },
+    "Construction Worker" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İnşaat İşçisi"
+          }
+        }
+      }
+    },
+    "Consultant" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Danışman"
+          }
+        }
+      }
+    },
+    "Contractor" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Müteahhit"
+          }
+        }
+      }
+    },
+    "Cook" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aşçı"
+          }
+        }
+      }
+    },
+    "Corporate Party" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şirket Partisi"
+          }
+        }
+      }
+    },
+    "Correction Officer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hapishane Memuru"
+          }
+        }
+      }
+    },
+    "Crane Driver" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vinç Operatörü"
+          }
+        }
+      }
+    },
+    "Create Game" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oyun Oluştur"
+          }
+        }
+      }
+    },
+    "Cribbage Player" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kart Oyuncusu"
+          }
+        }
+      }
+    },
+    "Criminal" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suçlu"
+          }
+        }
+      }
+    },
+    "Criminalist" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kriminalist"
+          }
+        }
+      }
+    },
+    "Customer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Müşteri"
+          }
+        }
+      }
+    },
+    "Dead Person" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ölü"
+          }
+        }
+      }
+    },
+    "Dealer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Krupiye"
+          }
+        }
+      }
+    },
+    "Deckhand" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Güverte Görevlisi"
+          }
+        }
+      }
+    },
+    "Delivery Boy" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paket Elemanı"
+          }
+        }
+      }
+    },
+    "Deserter" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asker Kaçağı"
+          }
+        }
+      }
+    },
+    "Detective" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dedektif"
+          }
+        }
+      }
+    },
+    "Director" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yapımcı"
+          }
+        }
+      }
+    },
+    "Dismiss" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamam"
+          }
+        }
+      }
+    },
+    "Doctor" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Doktor"
+          }
+        }
+      }
+    },
+    "Doorman" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kapı Görevlisi"
+          }
+        }
+      }
+    },
+    "Driver" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sürücü"
+          }
+        }
+      }
+    },
+    "Economy Class Passenger" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekonomi Sınıfı Yolcu"
+          }
+        }
+      }
+    },
+    "Electrician" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elektrikçi"
+          }
+        }
+      }
+    },
+    "Electronics Technician" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elektronik Ustası"
+          }
+        }
+      }
+    },
+    "Engineer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mühendis"
+          }
+        }
+      }
+    },
+    "Entertainer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şovmen"
+          }
+        }
+      }
+    },
+    "Exporter" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İhracatçı"
+          }
+        }
+      }
+    },
+    "Fire Eater" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ateş Yiyici"
+          }
+        }
+      }
+    },
+    "First Baseman" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Birinci Kaleci"
+          }
+        }
+      }
+    },
+    "First Class Passanger" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Birinci Sınıf Yolcu"
+          }
+        }
+      }
+    },
+    "Flight Attendant" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uçuş Görevlisi"
+          }
+        }
+      }
+    },
+    "Flower Seller" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çiçek Satıcısı"
+          }
+        }
+      }
+    },
+    "Food Critic" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gurme"
+          }
+        }
+      }
+    },
+    "Food Server" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Garson"
+          }
+        }
+      }
+    },
+    "Food Vendor" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yiyecek Satıcısı"
+          }
+        }
+      }
+    },
+    "Free-Roaming Toddler" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ortalıkta Dolaşan Çocuk"
+          }
+        }
+      }
+    },
+    "Gambler" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kumarbaz"
+          }
+        }
+      }
+    },
+    "Gardener" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bahçıvan"
+          }
+        }
+      }
+    },
+    "Gas Station" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Benzin İstasyonu"
+          }
+        }
+      }
+    },
+    "Gatekeeper" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mezarlık Görevlisi"
+          }
+        }
+      }
+    },
+    "Golden Gate Bridge" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Golden Gate Köprüsü"
+          }
+        }
+      }
+    },
+    "Goth Girl/Boy" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gotik Çocuk"
+          }
+        }
+      }
+    },
+    "Gourmet Guide" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gurme Rehberi"
+          }
+        }
+      }
+    },
+    "Grave Digger" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mezar Kazıcısı"
+          }
+        }
+      }
+    },
+    "Grave Robber" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mezar Soyguncusu"
+          }
+        }
+      }
+    },
+    "Guard" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Güvenlik"
+          }
+        }
+      }
+    },
+    "Head Chef" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aşçıbaşı"
+          }
+        }
+      }
+    },
+    "Head Security Guard" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Baş Güvenlik Görevlisi"
+          }
+        }
+      }
+    },
+    "Hospital" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hastane"
+          }
+        }
+      }
+    },
+    "Hostess" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Garson"
+          }
+        }
+      }
+    },
+    "Hotel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otel"
+          }
+        }
+      }
+    },
+    "Housekeeper" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temizlikçi"
+          }
+        }
+      }
+    },
+    "How to Play" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nasıl Oynanır"
+          }
+        }
+      }
+    },
+    "Hustler" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dolandırıcı"
+          }
+        }
+      }
+    },
+    "Ice Cream Trucker Driver" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dondurmacı"
+          }
+        }
+      }
+    },
+    "Intern" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stajyer"
+          }
+        }
+      }
+    },
+    "Jail" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hapishane"
+          }
+        }
+      }
+    },
+    "Jailkeeper" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gardiyan"
+          }
+        }
+      }
+    },
+    "Janitor" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temizlikçi"
+          }
+        }
+      }
+    },
+    "Jesus" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İsa"
+          }
+        }
+      }
+    },
+    "Jogger" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Koşucu"
+          }
+        }
+      }
+    },
+    "John the Baptist" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vaftizci John"
+          }
+        }
+      }
+    },
+    "Journalist" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gazeteci"
+          }
+        }
+      }
+    },
+    "Juggler" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hokkabaz"
+          }
+        }
+      }
+    },
+    "Jumper" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atlayıcı"
+          }
+        }
+      }
+    },
+    "Kite Surfer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uçurtma Sörfçüsü"
+          }
+        }
+      }
+    },
+    "Know-It-All" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Her şeyi Bilen Kişi"
+          }
+        }
+      }
+    },
+    "Lawyer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avukat"
+          }
+        }
+      }
+    },
+    "Librarian" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kütüphaneci"
+          }
+        }
+      }
+    },
+    "Library" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kütüphane"
+          }
+        }
+      }
+    },
+    "Lifeguard" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cankurtaran"
+          }
+        }
+      }
+    },
+    "Local Park" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Park"
+          }
+        }
+      }
+    },
+    "Location: %@" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lokasyon: %@"
+          }
+        }
+      }
+    },
+    "Locations" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lokasyonlar"
+          }
+        }
+      }
+    },
+    "Loudmouth" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bağıran Kişi"
+          }
+        }
+      }
+    },
+    "Magician" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sihirbaz"
+          }
+        }
+      }
+    },
+    "Mail Man" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Postacı"
+          }
+        }
+      }
+    },
+    "Mail Sorter" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Posta Düzenleyicisi"
+          }
+        }
+      }
+    },
+    "Maintenance Worker" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bakım İşçisi"
+          }
+        }
+      }
+    },
+    "Manager" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Müdür"
+          }
+        }
+      }
+    },
+    "Maniac" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Manyak"
+          }
+        }
+      }
+    },
+    "Mark the Apostle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Havari Mark"
+          }
+        }
+      }
+    },
+    "Mascot" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maskot"
+          }
+        }
+      }
+    },
+    "Matthew the Apostle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Havari Matthew"
+          }
+        }
+      }
+    },
+    "Mechanic Shop" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamirci Dükkanı"
+          }
+        }
+      }
+    },
+    "Medic" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Doktor"
+          }
+        }
+      }
+    },
+    "Military Base" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Askeri Üs"
+          }
+        }
+      }
+    },
+    "Miss Scarlet" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bayan Scarlet"
+          }
+        }
+      }
+    },
+    "Mourner" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yas Tutan Kişi"
+          }
+        }
+      }
+    },
+    "Mr. Green" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bay Yeşil"
+          }
+        }
+      }
+    },
+    "Mrs. Peacock" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bayan Peacock"
+          }
+        }
+      }
+    },
+    "Mrs. White" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bayan White"
+          }
+        }
+      }
+    },
+    "Musician" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Müzisyen"
+          }
+        }
+      }
+    },
+    "Navigator" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Navigasyoncu"
+          }
+        }
+      }
+    },
+    "Nerd" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İnek"
+          }
+        }
+      }
+    },
+    "Notary" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Noter"
+          }
+        }
+      }
+    },
+    "Nurse" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hemşire"
+          }
+        }
+      }
+    },
+    "Officer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Polis"
+          }
+        }
+      }
+    },
+    "Old Lady" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yaşlı Teyze"
+          }
+        }
+      }
+    },
+    "Old Man" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yaşlı Adam"
+          }
+        }
+      }
+    },
+    "Old Person" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yaşlı İnsan"
+          }
+        }
+      }
+    },
+    "Outfielder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dış Saha Oyuncusu"
+          }
+        }
+      }
+    },
+    "Owner" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sahip"
+          }
+        }
+      }
+    },
+    "Painter" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ressam"
+          }
+        }
+      }
+    },
+    "Parent" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çocuk Velisi"
+          }
+        }
+      }
+    },
+    "Parishioner" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cemaat Üyesi"
+          }
+        }
+      }
+    },
+    "Passenger" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yolcu"
+          }
+        }
+      }
+    },
+    "Passenger Train" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yolcu Treni"
+          }
+        }
+      }
+    },
+    "Patient" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hasta"
+          }
+        }
+      }
+    },
+    "Patrol Officer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Polis Memuru"
+          }
+        }
+      }
+    },
+    "Performer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sanatçı"
+          }
+        }
+      }
+    },
+    "Photographer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fotoğrafçı"
+          }
+        }
+      }
+    },
+    "Pickpocket" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gaspçı"
+          }
+        }
+      }
+    },
+    "Pilot" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pilot"
+          }
+        }
+      }
+    },
+    "Pirate Ship" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Korsan Gemisi"
+          }
+        }
+      }
+    },
+    "Pitcher" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atıcı"
+          }
+        }
+      }
+    },
+    "Player" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oyuncu"
+          }
+        }
+      }
+    },
+    "Player %lld Name" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oyuncu %lld Adı"
+          }
+        }
+      }
+    },
+    "Player not found" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oyuncu bulunamadı."
+          }
+        }
+      }
+    },
+    "Players" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oyuncular"
+          }
+        }
+      }
+    },
+    "Poet" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şair"
+          }
+        }
+      }
+    },
+    "Police" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Polis"
+          }
+        }
+      }
+    },
+    "Police Station" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Polis Karakolu"
+          }
+        }
+      }
+    },
+    "Post-Office" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Posta Ofisi"
+          }
+        }
+      }
+    },
+    "Pregnant Lady" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hamile Kadın"
+          }
+        }
+      }
+    },
+    "Priest" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rahip"
+          }
+        }
+      }
+    },
+    "Prisoner" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rehine"
+          }
+        }
+      }
+    },
+    "Prof. Plum" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profesör Plum"
+          }
+        }
+      }
+    },
+    "Prompter" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suflör"
+          }
+        }
+      }
+    },
+    "Psychologist" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Psikolog"
+          }
+        }
+      }
+    },
+    "Radioman" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Radyo Ustası"
+          }
+        }
+      }
+    },
+    "Relative" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Akraba"
+          }
+        }
+      }
+    },
+    "Remove" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaldır"
+          }
+        }
+      }
+    },
+    "Restart" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yeniden Başlat"
+          }
+        }
+      }
+    },
+    "Restaurant" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restorant"
+          }
+        }
+      }
+    },
+    "Restaurant Chef" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restoran Şefi"
+          }
+        }
+      }
+    },
+    "Retirement Home" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Huzurevi"
+          }
+        }
+      }
+    },
+    "Robber" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soyguncu"
+          }
+        }
+      }
+    },
+    "Runner" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Koşucu"
+          }
+        }
+      }
+    },
+    "Safety Officer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Güvenlik Memuru"
+          }
+        }
+      }
+    },
+    "Sailor" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mürettebat"
+          }
+        }
+      }
+    },
+    "Scientist" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bilim İnsanı"
+          }
+        }
+      }
+    },
+    "Second Baseman" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İkinci Kaleci"
+          }
+        }
+      }
+    },
+    "Secretary" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sekreter"
+          }
+        }
+      }
+    },
+    "Security" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Güvenlik"
+          }
+        }
+      }
+    },
+    "Security Guard" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Güvenlik"
+          }
+        }
+      }
+    },
+    "Service Attendant" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İstasyon Görevlisi"
+          }
+        }
+      }
+    },
+    "Shopkeeper" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Market Görevlisi"
+          }
+        }
+      }
+    },
+    "Shortstop" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kısa Mesafe Koşucusu"
+          }
+        }
+      }
+    },
+    "Simon the Apostle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Havari Simon"
+          }
+        }
+      }
+    },
+    "Sinner" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Günahkar"
+          }
+        }
+      }
+    },
+    "Ski Instructor" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kayak Eğitmeni"
+          }
+        }
+      }
+    },
+    "Ski Lift Operator" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Telesiyej Operatörü"
+          }
+        }
+      }
+    },
+    "Ski Resort" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kayak Merkezi"
+          }
+        }
+      }
+    },
+    "Ski Run Groomer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kayak Pisti Görevlisi"
+          }
+        }
+      }
+    },
+    "Ski Shop Manager" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kayak Mağazası Müdürü"
+          }
+        }
+      }
+    },
+    "Skier" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kayakçı"
+          }
+        }
+      }
+    },
+    "Sniper" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keskin Nişancı"
+          }
+        }
+      }
+    },
+    "Soldier" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asker"
+          }
+        }
+      }
+    },
+    "Sommelier" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şarap Serviscisi"
+          }
+        }
+      }
+    },
+    "Sonar Technician" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sonar Ustası"
+          }
+        }
+      }
+    },
+    "Space Station" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uzay İstasyonu"
+          }
+        }
+      }
+    },
+    "Space Tourist" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uzay Turisti"
+          }
+        }
+      }
+    },
+    "Spectator" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İzleyici"
+          }
+        }
+      }
+    },
+    "Sponsor" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sponsor"
+          }
+        }
+      }
+    },
+    "Spyfall is a game where players ask questions to find the spy, who doesn’t know the location. The spy’s goal is to blend in and figure out the location without being detected." : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spyfall, oyuncuların casusu bulmak için sorular sorduğu bir oyundur. Casus, mekanın ne olduğunu bilmez. Casusun amacı, fark edilmeden oyuncuların arasına sızmak ve mekânı tahmin etmektir."
+          }
+        }
+      }
+    },
+    "Stoker" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kömürcü"
+          }
+        }
+      }
+    },
+    "Student" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öğrenci"
+          }
+        }
+      }
+    },
+    "Submarine" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Denizaltı"
+          }
+        }
+      }
+    },
+    "Subway" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metro İstasyonu"
+          }
+        }
+      }
+    },
+    "Subway Operator" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metro Operatörü"
+          }
+        }
+      }
+    },
+    "Surgeon" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cerrah"
+          }
+        }
+      }
+    },
+    "Tank Engineer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tank Mühendisi"
+          }
+        }
+      }
+    },
+    "Tap to see role." : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rolünü görmek için tıkla."
+          }
+        }
+      }
+    },
+    "Teacher" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öğretmen"
+          }
+        }
+      }
+    },
+    "Team Owner" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Takım Sahibi"
+          }
+        }
+      }
+    },
+    "Teller" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gişe Görevlisi"
+          }
+        }
+      }
+    },
+    "The app automatically assigns roles and locations to each player." : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uygulama, her oyuncuya rolleri ve mekanları otomatik olarak atar."
+          }
+        }
+      }
+    },
+    "The game ends when the spy is correctly identified or the spy guesses the location correctly." : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oyun, casus doğru şekilde tespit edildiğinde veya casus lokasyonu tahmin ettiğinde sona erer."
+          }
+        }
+      }
+    },
+    "The Last Supper" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Son Akşam Yemeği"
+          }
+        }
+      }
+    },
+    "The spy can guess the location at any time. \nIf correct, the spy wins.\nIf wrong, the players win." : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Casus, herhangi bir zamanda mekanı tahmin edebilir.                                                       Tahmini doğruysa, casus kazanır.                                                  Yanlışsa, oyuncular kazanır."
+          }
+        }
+      }
+    },
+    "Therapist" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terapist"
+          }
+        }
+      }
+    },
+    "Thief" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hırsız"
+          }
+        }
+      }
+    },
+    "Third Baseman" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Üçüncü Kaleci"
+          }
+        }
+      }
+    },
+    "Ticket Seller" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bilet Satıcısı"
+          }
+        }
+      }
+    },
+    "Time's up!" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Süre bitti!"
+          }
+        }
+      }
+    },
+    "Tire Specialist" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lastik Uzmanı"
+          }
+        }
+      }
+    },
+    "Tour Guide" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tur Rehberi"
+          }
+        }
+      }
+    },
+    "Tourist" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Turist"
+          }
+        }
+      }
+    },
+    "Train Attendant" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tren Görevlisi"
+          }
+        }
+      }
+    },
+    "Train Driver" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Makinist"
+          }
+        }
+      }
+    },
+    "Trespasser" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaçak"
+          }
+        }
+      }
+    },
+    "Umpire" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hakem"
+          }
+        }
+      }
+    },
+    "Unwanted Guest" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İstenmeyen Misafir"
+          }
+        }
+      }
+    },
+    "Vendor" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Satıcı"
+          }
+        }
+      }
+    },
+    "Vineyard" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Üzüm Bağı"
+          }
+        }
+      }
+    },
+    "Vineyard Manager" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Müdür"
+          }
+        }
+      }
+    },
+    "Visitor" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ziyaretçi"
+          }
+        }
+      }
+    },
+    "Volunteer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gönüllü"
+          }
+        }
+      }
+    },
+    "Waiter" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Garson"
+          }
+        }
+      }
+    },
+    "Welcome to \n Offline Spyfall" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Offline Spyfall'a \n Hoşgeldiniz"
+          }
+        }
+      }
+    },
+    "Wine Taster" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şarap Tadımcısı"
+          }
+        }
+      }
+    },
+    "Winemaker" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şarap Ustası"
+          }
+        }
+      }
+    },
+    "Wrongly Accused Man" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haksız Yere Suçlanan Adam"
+          }
+        }
+      }
+    },
+    "You are the spy!" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Casus sensin!"
+          }
+        }
+      }
+    },
+    "You'll need at least 3 players. but the game is best played with 4-6 players." : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oyunu oynamak için en az 3 oyuncuya ihtiyacın var. Fakat oyun en iyi 4-6 kişi ile oynanır!"
+          }
+        }
+      }
+    },
+    "Your role is: %@" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rolün: %@"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

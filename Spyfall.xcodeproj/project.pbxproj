@@ -1,0 +1,426 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D599C0C42C4A6793002D0976 /* HowToPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D599C0C32C4A6793002D0976 /* HowToPlayView.swift */; };
+		D5B604402C48E223004A17A8 /* SpyfallApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B6043F2C48E223004A17A8 /* SpyfallApp.swift */; };
+		D5B604422C48E223004A17A8 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B604412C48E223004A17A8 /* GameView.swift */; };
+		D5B604442C48E224004A17A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5B604432C48E224004A17A8 /* Assets.xcassets */; };
+		D5B604472C48E224004A17A8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5B604462C48E224004A17A8 /* Preview Assets.xcassets */; };
+		D5B604512C48E29C004A17A8 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B604502C48E29C004A17A8 /* Location.swift */; };
+		D5B604532C48E606004A17A8 /* CreateGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B604522C48E606004A17A8 /* CreateGameView.swift */; };
+		D5B604552C48FC88004A17A8 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B604542C48FC88004A17A8 /* ViewModel.swift */; };
+		D5B604572C48FCE6004A17A8 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B604562C48FCE6004A17A8 /* Player.swift */; };
+		D5B604592C49168E004A17A8 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B604582C49168E004A17A8 /* MainMenuView.swift */; };
+		D5B6045C2C492130004A17A8 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D5B6045B2C492130004A17A8 /* Localizable.xcstrings */; };
+		D5C3024E2C4A4F0C001453CA /* LocationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C3024D2C4A4F0C001453CA /* LocationsView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		D599C0C32C4A6793002D0976 /* HowToPlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayView.swift; sourceTree = "<group>"; };
+		D5B6043C2C48E223004A17A8 /* Spyfall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spyfall.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5B6043F2C48E223004A17A8 /* SpyfallApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpyfallApp.swift; sourceTree = "<group>"; };
+		D5B604412C48E223004A17A8 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		D5B604432C48E224004A17A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D5B604462C48E224004A17A8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D5B604502C48E29C004A17A8 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		D5B604522C48E606004A17A8 /* CreateGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGameView.swift; sourceTree = "<group>"; };
+		D5B604542C48FC88004A17A8 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		D5B604562C48FCE6004A17A8 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		D5B604582C49168E004A17A8 /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
+		D5B6045B2C492130004A17A8 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		D5C3024D2C4A4F0C001453CA /* LocationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D5B604392C48E223004A17A8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D5B604332C48E223004A17A8 = {
+			isa = PBXGroup;
+			children = (
+				D5B6043E2C48E223004A17A8 /* Spyfall */,
+				D5B6043D2C48E223004A17A8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D5B6043D2C48E223004A17A8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D5B6043C2C48E223004A17A8 /* Spyfall.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D5B6043E2C48E223004A17A8 /* Spyfall */ = {
+			isa = PBXGroup;
+			children = (
+				D5B6043F2C48E223004A17A8 /* SpyfallApp.swift */,
+				D5B6044D2C48E256004A17A8 /* Model */,
+				D5B6044F2C48E262004A17A8 /* View Model */,
+				D5B6044E2C48E25E004A17A8 /* View */,
+				D5B6045A2C4920E9004A17A8 /* Resources */,
+				D5B604432C48E224004A17A8 /* Assets.xcassets */,
+				D5B604452C48E224004A17A8 /* Preview Content */,
+			);
+			path = Spyfall;
+			sourceTree = "<group>";
+		};
+		D5B604452C48E224004A17A8 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				D5B604462C48E224004A17A8 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D5B6044D2C48E256004A17A8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D5B604502C48E29C004A17A8 /* Location.swift */,
+				D5B604562C48FCE6004A17A8 /* Player.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D5B6044E2C48E25E004A17A8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D5B604412C48E223004A17A8 /* GameView.swift */,
+				D5B604522C48E606004A17A8 /* CreateGameView.swift */,
+				D5B604582C49168E004A17A8 /* MainMenuView.swift */,
+				D5C3024D2C4A4F0C001453CA /* LocationsView.swift */,
+				D599C0C32C4A6793002D0976 /* HowToPlayView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D5B6044F2C48E262004A17A8 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				D5B604542C48FC88004A17A8 /* ViewModel.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		D5B6045A2C4920E9004A17A8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D5B6045B2C492130004A17A8 /* Localizable.xcstrings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D5B6043B2C48E223004A17A8 /* Spyfall */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D5B6044A2C48E224004A17A8 /* Build configuration list for PBXNativeTarget "Spyfall" */;
+			buildPhases = (
+				D5B604382C48E223004A17A8 /* Sources */,
+				D5B604392C48E223004A17A8 /* Frameworks */,
+				D5B6043A2C48E223004A17A8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Spyfall;
+			productName = Spyfall;
+			productReference = D5B6043C2C48E223004A17A8 /* Spyfall.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D5B604342C48E223004A17A8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					D5B6043B2C48E223004A17A8 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+				};
+			};
+			buildConfigurationList = D5B604372C48E223004A17A8 /* Build configuration list for PBXProject "Spyfall" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				tr,
+			);
+			mainGroup = D5B604332C48E223004A17A8;
+			productRefGroup = D5B6043D2C48E223004A17A8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D5B6043B2C48E223004A17A8 /* Spyfall */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D5B6043A2C48E223004A17A8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D5B604472C48E224004A17A8 /* Preview Assets.xcassets in Resources */,
+				D5B604442C48E224004A17A8 /* Assets.xcassets in Resources */,
+				D5B6045C2C492130004A17A8 /* Localizable.xcstrings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D5B604382C48E223004A17A8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D5B604552C48FC88004A17A8 /* ViewModel.swift in Sources */,
+				D5B604592C49168E004A17A8 /* MainMenuView.swift in Sources */,
+				D5B604532C48E606004A17A8 /* CreateGameView.swift in Sources */,
+				D599C0C42C4A6793002D0976 /* HowToPlayView.swift in Sources */,
+				D5B604512C48E29C004A17A8 /* Location.swift in Sources */,
+				D5B604422C48E223004A17A8 /* GameView.swift in Sources */,
+				D5C3024E2C4A4F0C001453CA /* LocationsView.swift in Sources */,
+				D5B604572C48FCE6004A17A8 /* Player.swift in Sources */,
+				D5B604402C48E223004A17A8 /* SpyfallApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		D5B604482C48E224004A17A8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D5B604492C48E224004A17A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D5B6044B2C48E224004A17A8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Spyfall/Preview Content\"";
+				DEVELOPMENT_TEAM = D3VSY2P4B2;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = efemesudiyeli.Spyfall;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		D5B6044C2C48E224004A17A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Spyfall/Preview Content\"";
+				DEVELOPMENT_TEAM = D3VSY2P4B2;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = efemesudiyeli.Spyfall;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D5B604372C48E223004A17A8 /* Build configuration list for PBXProject "Spyfall" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D5B604482C48E224004A17A8 /* Debug */,
+				D5B604492C48E224004A17A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D5B6044A2C48E224004A17A8 /* Build configuration list for PBXNativeTarget "Spyfall" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D5B6044B2C48E224004A17A8 /* Debug */,
+				D5B6044C2C48E224004A17A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D5B604342C48E223004A17A8 /* Project object */;
+}
