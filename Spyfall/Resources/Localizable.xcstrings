@@ -2682,12 +2682,12 @@
         }
       }
     },
-    "Spyfall is a game where players ask questions to find the spy, who doesn’t know the location. The spy’s goal is to blend in and figure out the location without being detected." : {
+    "Spyquest is a game where players ask questions to find the spy, who doesn’t know the location. The spy’s goal is to blend in and figure out the location without being detected." : {
       "localizations" : {
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Spyfall, oyuncuların casusu bulmak için sorular sorduğu bir oyundur. Casus, mekanın ne olduğunu bilmez. Casusun amacı, fark edilmeden oyuncuların arasına sızmak ve mekânı tahmin etmektir."
+            "value" : "Spyquest, oyuncuların casusu bulmak için sorular sorduğu bir oyundur. Casus, mekanın ne olduğunu bilmez. Casusun amacı, fark edilmeden oyuncuların arasına sızmak ve mekânı tahmin etmektir."
           }
         }
       }
@@ -3061,12 +3061,12 @@
         }
       }
     },
-    "Welcome to \n Offline Spyfall" : {
+    "Welcome to \n Spyquest" : {
       "localizations" : {
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Offline Spyfall'a \n Hoşgeldiniz"
+            "value" : "Spyquest'e Hoşgeldiniz"
           }
         }
       }

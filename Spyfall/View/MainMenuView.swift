@@ -12,13 +12,13 @@ struct MainMenuView: View {
     
     var body: some View {
         VStack {
-            Text("Welcome to \n Offline Spyfall")
+            Text("Welcome to \n Spyquest")
                 .font(.title)
                 .bold()
                 .padding()
                 .multilineTextAlignment(.center)
             
-            Text("Spyfall is a game where players ask questions to find the spy, who doesn’t know the location. The spy’s goal is to blend in and figure out the location without being detected.")
+            Text("Spyquest is a game where players ask questions to find the spy, who doesn’t know the location. The spy’s goal is to blend in and figure out the location without being detected.")
                 .font(.subheadline)
                 .padding()
                 .multilineTextAlignment(.center)
@@ -71,9 +71,15 @@ struct MainMenuView: View {
         .navigationBarBackButtonHidden()
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
-                Button(action: {}, label: {
-                    Image(systemName: "gear")
-                }).disabled(true)
+                if !viewModel.isAdsRemoved {
+                    Button(action: {
+                        // Remove ads if payment successfull
+                    }, label: {
+                        Image(systemName: "crown.fill")
+                    })
+                } else {
+                    Image(systemName: "checkmark.seal.fill").foregroundStyle(.green)
+                }
             }
         }
         

@@ -33,8 +33,6 @@ struct GameView: View {
                     if viewModel.showingPlayer != nil {
                         isPresented = true
                     }
-                    
-                    
                 }, label: {
                     Text("\(player.name)")
                         .frame(minWidth: 160)
@@ -56,11 +54,12 @@ struct GameView: View {
             .padding(.bottom)
             .foregroundStyle(.primary)
         }
-        .alert("Time's up!", isPresented: $viewModel.isTimerFinished, actions: {
+        
+        .alert("Time's up!", isPresented: $viewModel.isTimerFinished) {
             Button(action: {}, label: {
                 Text("Dismiss")
             })
-        })
+        }
         
         .alert("Are you sure you want to restart the game?", isPresented: $isRestartAlertPresented) {
             

@@ -15,6 +15,7 @@ class GameViewModel: ObservableObject {
     @Published var showingPlayer: Player? = nil
     @Published var timeRemaining: TimeInterval = 8.00 * 60
     @Published var isTimerFinished: Bool = false
+    @Published var isAdsRemoved: Bool = false
     var roundTimer: Timer? = nil
     
     init() {}
@@ -101,4 +102,8 @@ class GameViewModel: ObservableObject {
     func triggerVibration() {
             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
         }
+    
+    
 }
+
+
