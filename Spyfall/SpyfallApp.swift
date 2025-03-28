@@ -6,10 +6,17 @@
 //
 
 import SwiftUI
+import RevenueCat
 
 @main
 struct SpyfallApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
     @StateObject private var viewModel = GameViewModel()
+    
+    init() {
+        Purchases.configure(withAPIKey: "appl_moqHeYbCPILiImIfZoskKVKuqxa")
+    }
     
     var body: some Scene {
         WindowGroup {

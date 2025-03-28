@@ -9,19 +9,22 @@ import SwiftUI
 
 struct MainMenuView: View {
     @ObservedObject var viewModel: GameViewModel
+    @State var isPurchasePresenting: Bool = false
     
     var body: some View {
         VStack {
-            Text("Welcome to \n Spyquest")
+          
+          
+                Image("spyquestIcon-removebg")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 200)
+                    .colorMultiply(.primary)
+            Text("Spyquest")
                 .font(.title)
-                .bold()
-                .padding()
-                .multilineTextAlignment(.center)
-            
-            Text("Spyquest is a game where players ask questions to find the spy, who doesn’t know the location. The spy’s goal is to blend in and figure out the location without being detected.")
-                .font(.subheadline)
-                .padding()
-                .multilineTextAlignment(.center)
+                .fontWeight(.black)
+                .padding(.top, -40)
+         
             
             VStack {
                 Group {
@@ -29,20 +32,22 @@ struct MainMenuView: View {
                         CreateGameView(viewModel: viewModel)
                     }, label: {
                         HStack {
-                            Image(systemName: "plus.circle.fill")
+                            Image(systemName: "plus")
                             Spacer()
                             Text("Create Game")
                             Spacer()
                         }
-                        
                     })
-                    .frame(width: 160)
                     
+                    .frame(width: 180, height: 24)
+                    .bold()
+                    
+
                     NavigationLink(destination: {
-                        LocationsView()
+                        LocationsView(viewModel: viewModel)
                     }, label: {
                         HStack {
-                            Image(systemName: "location.circle.fill")
+                            Image(systemName: "location")
                             Spacer()
                             Text("Locations")
                             Spacer()
@@ -54,38 +59,85 @@ struct MainMenuView: View {
                         HowToPlayView()
                     }, label: {
                         HStack {
-                            Image(systemName: "questionmark.circle.fill")
+                            Image(systemName: "questionmark")
                             Spacer()
                             Text("How to Play")
                             Spacer()
                         }
                     })
                     .frame(width: 160)
+                    
+                    
+                   
+                    
+                    NavigationLink {
+                        ProPurchaseView(viewModel: viewModel)
+                    } label: {
+                        HStack {
+                            Image(systemName: "crown.fill")
+                                .foregroundStyle(Color.premiumReverse)
+                                
+                                
+                            Spacer()
+                            
+                            VStack {
+                                if viewModel.isAdsRemoved {
+                                    Text("Premium Unlocked")
+                                        .foregroundStyle(Color.premiumReverse)
+                                } else {
+                                    Text("Premium Forever")
+                                        .foregroundStyle(Color.premiumReverse)
+                                }
+                                    
+                            }
+                            
+  
+                            Spacer()
+                        }
+                        
+                        
+                    }
+                    
+                    .frame(width: 160)
+                  
+                    
+                    
+                    
+                    
+                    NavigationLink {
+                        SettingsView(viewModel: viewModel)
+                    } label: {
+                        HStack {
+                            Image(systemName: "gear")
+                            Spacer()
+                            Text("Settings")
+                            Spacer()
+                        }
+                    }
+                    .frame(width: 160)
                 }
-                .foregroundStyle(.white)
+                .foregroundStyle(Color.reverse)
                 .padding()
-                .background(.blue)
+                .background(.primary.opacity(0.9))
                 .clipShape(RoundedRectangle(cornerRadius: 12))
             }
         }
         .navigationBarBackButtonHidden()
         .toolbar {
-            ToolbarItem(placement: .confirmationAction) {
-                if !viewModel.isAdsRemoved {
-                    Button(action: {
-                        // Remove ads if payment successfull
-                    }, label: {
-                        Image(systemName: "crown.fill")
-                    })
-                } else {
-                    Image(systemName: "checkmark.seal.fill").foregroundStyle(.green)
-                }
+            ToolbarItem(placement: .topBarTrailing) {
+              
             }
+            
+        }
+        .onAppear {
+            viewModel.fetchProduct()
+            viewModel.finishGame()
         }
         
-        
     }
+    
 }
+
 
 #Preview {
     NavigationStack {

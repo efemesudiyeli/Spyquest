@@ -1,0 +1,24 @@
+PODS:
+  - Google-Mobile-Ads-SDK (11.7.0):
+    - GoogleUserMessagingPlatform (>= 1.1)
+  - GoogleUserMessagingPlatform (2.5.0)
+  - RevenueCat (5.2.2)
+
+DEPENDENCIES:
+  - Google-Mobile-Ads-SDK
+  - RevenueCat
+
+SPEC REPOS:
+  trunk:
+    - Google-Mobile-Ads-SDK
+    - GoogleUserMessagingPlatform
+    - RevenueCat
+
+SPEC CHECKSUMS:
+  Google-Mobile-Ads-SDK: 204b517c9765169144cf39763c7f5d23c57a9db0
+  GoogleUserMessagingPlatform: 6b4f48a370e77ce121d034c908cc6ee4fdafaf13
+  RevenueCat: ba985d80069c1c4b9c9e0763f1852f2a0bdcc2d6
+
+PODFILE CHECKSUM: 265059a1e725006bdd5c4705d4a93adb687fbb87
+
+COCOAPODS: 1.15.2

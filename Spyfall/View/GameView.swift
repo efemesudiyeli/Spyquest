@@ -12,15 +12,14 @@ struct GameView: View {
     @State var isPresented: Bool = false
     @State var isRestartAlertPresented: Bool = false
     
-    
     var body: some View {
         VStack  {
-             
             Label("\(viewModel.formattedTimeInterval(viewModel.timeRemaining))", systemImage: "hourglass")
                 .font(.title)
                 .bold()
                 .foregroundStyle(.primary)
                 .clipShape(RoundedRectangle(cornerRadius: 12))
+                .contentTransition(.numericText())
             
             Spacer()
             
@@ -56,7 +55,9 @@ struct GameView: View {
         }
         
         .alert("Time's up!", isPresented: $viewModel.isTimerFinished) {
-            Button(action: {}, label: {
+            Button(action: {
+                viewModel.finishGame()
+            }, label: {
                 Text("Dismiss")
             })
         }
@@ -64,7 +65,7 @@ struct GameView: View {
         .alert("Are you sure you want to restart the game?", isPresented: $isRestartAlertPresented) {
             
             Button(action: {
-                viewModel.prepareGame()
+                viewModel.restartGame()
             }, label: {
                 Text("Restart")
             })
@@ -99,14 +100,17 @@ struct GameView: View {
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
                 NavigationLink {
-                    LocationsView()
+                    LocationsView(viewModel: viewModel)
                 } label: {
                     Text("Locations")
                 }
             }
-            
         }
         .padding()
+        .onAppear {
+            viewModel.startNewGame()
+        }
+        
     }
 }
 

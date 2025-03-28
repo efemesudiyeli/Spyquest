@@ -154,6 +154,38 @@
         }
       }
     },
+    "Administrator" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yönetici"
+          }
+        }
+      }
+    },
+    "Ads Removed" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reklamlar Kaldırıldı"
+          }
+        }
+      }
+    },
+    "Air Hostess" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hostes"
+          }
+        }
+      }
+    },
     "Air Marshal" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -187,6 +219,38 @@
         }
       }
     },
+    "All Edition (%lld)" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hepsi Versiyon (%lld)"
+          }
+        }
+      }
+    },
+    "Ambassador" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Büyükelçi"
+          }
+        }
+      }
+    },
+    "Amusement Park" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lunapark"
+          }
+        }
+      }
+    },
     "Anesthesiologist" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -198,6 +262,17 @@
         }
       }
     },
+    "Animal Lover" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hayvan Sever"
+          }
+        }
+      }
+    },
     "Animal Trainer" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -205,6 +280,61 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hayvan Eğiticisi"
+          }
+        }
+      }
+    },
+    "Announcer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sunucu"
+          }
+        }
+      }
+    },
+    "Annoying Child" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rahatsız Edici Çocuk"
+          }
+        }
+      }
+    },
+    "Appraiser" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Değerleme Uzmanı"
+          }
+        }
+      }
+    },
+    "Aquarium" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Akvaryum"
+          }
+        }
+      }
+    },
+    "Archer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Okçu"
           }
         }
       }
@@ -285,12 +415,45 @@
         }
       }
     },
+    "Astronomer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Astronom"
+          }
+        }
+      }
+    },
     "At any time, players can discuss and vote to accuse someone of being the spy.\nIf the accused is the spy, the players win. If not, spy wins." : {
       "localizations" : {
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Herhangi bir anda oyuncular, birinin casus olduğunu öne sürmek için tartışabilir ve oy kullanabilir.\nSuçlanan kişi casus ise, oyuncular kazanır.                                                             Değilse, casus kazanır."
+          }
+        }
+      }
+    },
+    "Athlete" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atlet"
+          }
+        }
+      }
+    },
+    "Attendant" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Görevli"
           }
         }
       }
@@ -339,6 +502,28 @@
         }
       }
     },
+    "Ballet Dancer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bale Dansçısı"
+          }
+        }
+      }
+    },
+    "Ballet Theater" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bale Tiyatrosu"
+          }
+        }
+      }
+    },
     "Bank" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -372,6 +557,28 @@
         }
       }
     },
+    "Barista" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Barista"
+          }
+        }
+      }
+    },
+    "Barman" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Barmen"
+          }
+        }
+      }
+    },
     "Bartender" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -390,6 +597,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Beyzbol Stadyumu"
+          }
+        }
+      }
+    },
+    "Bassist" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bas Gitarist"
           }
         }
       }
@@ -438,6 +656,17 @@
         }
       }
     },
+    "Beautician" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Güzellik Uzmanı"
+          }
+        }
+      }
+    },
     "Beggar" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -460,6 +689,17 @@
         }
       }
     },
+    "Best Man" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sağdıç"
+          }
+        }
+      }
+    },
     "Biker" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -467,6 +707,83 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bisikletçi"
+          }
+        }
+      }
+    },
+    "Biologist" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Biyolog"
+          }
+        }
+      }
+    },
+    "Bishop" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Piskopos"
+          }
+        }
+      }
+    },
+    "Blacksmith" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Demirci"
+          }
+        }
+      }
+    },
+    "Blasting Engineer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Patlayıcı Mühendisi"
+          }
+        }
+      }
+    },
+    "Blind Person" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Görme Engelli Kişi"
+          }
+        }
+      }
+    },
+    "Blogger" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blog Yazarı"
+          }
+        }
+      }
+    },
+    "Blowhard" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Palavracı"
           }
         }
       }
@@ -504,6 +821,28 @@
         }
       }
     },
+    "Brave Captain" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cesur Kaptan"
+          }
+        }
+      }
+    },
+    "Brewer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bira Yapımcısı"
+          }
+        }
+      }
+    },
     "Brewery" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -526,6 +865,17 @@
         }
       }
     },
+    "Bride" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gelin"
+          }
+        }
+      }
+    },
     "Broadway Theater" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -537,6 +887,28 @@
         }
       }
     },
+    "Bus Driver" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otobüs Şoförü"
+          }
+        }
+      }
+    },
+    "Bus Stop" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otobüs Durağı"
+          }
+        }
+      }
+    },
     "Businessman" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -544,6 +916,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "İş İnsanı"
+          }
+        }
+      }
+    },
+    "Butcher" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kasap"
           }
         }
       }
@@ -565,7 +948,40 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kabin Görevlisi"
+            "value" : "Mürettebat Üyesi"
+          }
+        }
+      }
+    },
+    "Cafeteria Lady" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kantin Görevlisi"
+          }
+        }
+      }
+    },
+    "Camera Man" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kameraman"
+          }
+        }
+      }
+    },
+    "Camper" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kampçı"
           }
         }
       }
@@ -576,6 +992,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "İptal"
+          }
+        }
+      }
+    },
+    "Candy Factory" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şeker Fabrikası"
           }
         }
       }
@@ -597,7 +1024,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kaptan Pilot"
+            "value" : "Kaptan"
           }
         }
       }
@@ -646,6 +1073,50 @@
         }
       }
     },
+    "Caretaker" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bakıcı"
+          }
+        }
+      }
+    },
+    "Cargo Inspector" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kargo Müfettişi"
+          }
+        }
+      }
+    },
+    "Cargo Overseer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kargo Gözetmeni"
+          }
+        }
+      }
+    },
+    "Carnival" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Karnaval"
+          }
+        }
+      }
+    },
     "Cashier" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -664,6 +1135,72 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kumarhane"
+          }
+        }
+      }
+    },
+    "Castle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kale"
+          }
+        }
+      }
+    },
+    "Cat" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kedi"
+          }
+        }
+      }
+    },
+    "Cat Owner" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kedi Sahibi"
+          }
+        }
+      }
+    },
+    "Cat Show" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kedi Gösterisi"
+          }
+        }
+      }
+    },
+    "Cat Trainer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kedi Eğitmeni"
+          }
+        }
+      }
+    },
+    "Cat-Handler" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kedi Bakıcısı"
           }
         }
       }
@@ -712,6 +1249,28 @@
         }
       }
     },
+    "Chef" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şef"
+          }
+        }
+      }
+    },
+    "Chief" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İtfaiye Şefi"
+          }
+        }
+      }
+    },
     "Child" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -719,6 +1278,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Çocuk"
+          }
+        }
+      }
+    },
+    "Choreographer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Koreograf"
           }
         }
       }
@@ -756,6 +1326,17 @@
         }
       }
     },
+    "Climate Change Activist" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İklim Değişikliği Aktivisti"
+          }
+        }
+      }
+    },
     "Clown" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -763,6 +1344,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Palyaço"
+          }
+        }
+      }
+    },
+    "Clubhouse Manager" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kulüp Binası Yöneticisi\n"
           }
         }
       }
@@ -789,13 +1381,57 @@
         }
       }
     },
-    "Coat Check Manager" : {
+    "Coach" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Koç"
+          }
+        }
+      }
+    },
+    "Coal Mine" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kömür Madeni"
+          }
+        }
+      }
+    },
+    "Coat Check Lady" : {
       "extractionState" : "manual",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vestiyer Kontrol Müdürü"
+          }
+        }
+      }
+    },
+    "Coffee Shop" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kafe"
+          }
+        }
+      }
+    },
+    "Collector" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Koleksiyoncu"
           }
         }
       }
@@ -822,6 +1458,38 @@
         }
       }
     },
+    "Combined Edition (%lld)" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Birleşik Versiyon (%lld)"
+          }
+        }
+      }
+    },
+    "Comedian" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Komedyen"
+          }
+        }
+      }
+    },
+    "Comedy Club" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Komedi Kulübü"
+          }
+        }
+      }
+    },
     "Commander" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -840,6 +1508,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Yorumcu"
+          }
+        }
+      }
+    },
+    "Commuter" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seyahat Eden Kişi"
           }
         }
       }
@@ -899,6 +1578,17 @@
         }
       }
     },
+    "Coordinator" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Koordinatör"
+          }
+        }
+      }
+    },
     "Corporate Party" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -910,13 +1600,68 @@
         }
       }
     },
-    "Correction Officer" : {
+    "Correctional Officer" : {
       "extractionState" : "manual",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hapishane Memuru"
+          }
+        }
+      }
+    },
+    "Cosplayer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cosplayci"
+          }
+        }
+      }
+    },
+    "Costume Artist" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kostüm Tasarımcısı"
+          }
+        }
+      }
+    },
+    "Costume Designer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kostüm Tasarımcısı"
+          }
+        }
+      }
+    },
+    "Cowboy" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kovboy"
+          }
+        }
+      }
+    },
+    "Cowboy Ranch" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kovboy Çiftliği"
           }
         }
       }
@@ -932,12 +1677,34 @@
         }
       }
     },
+    "Crazy Cat Lady" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kedi Sever Çılgın Teyze"
+          }
+        }
+      }
+    },
     "Create Game" : {
       "localizations" : {
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Oyun Oluştur"
+          }
+        }
+      }
+    },
+    "Crewman" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Görevli"
           }
         }
       }
@@ -975,6 +1742,39 @@
         }
       }
     },
+    "Cruise Director" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kruvazör Direktörü"
+          }
+        }
+      }
+    },
+    "Cruise Ship" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kruvazör Gemisi"
+          }
+        }
+      }
+    },
+    "Crusader Army" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haçlı Ordusu"
+          }
+        }
+      }
+    },
     "Customer" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -982,6 +1782,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Müşteri"
+          }
+        }
+      }
+    },
+    "Dancer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dansçı"
+          }
+        }
+      }
+    },
+    "Day Spa" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spa Merkezi"
           }
         }
       }
@@ -1008,6 +1830,17 @@
         }
       }
     },
+    "Dean" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dekan"
+          }
+        }
+      }
+    },
     "Deckhand" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1030,6 +1863,83 @@
         }
       }
     },
+    "Delivery Driver" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Teslimat Şoförü"
+          }
+        }
+      }
+    },
+    "Delivery Person" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kurye"
+          }
+        }
+      }
+    },
+    "Dental Assistant" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diş Asistanı"
+          }
+        }
+      }
+    },
+    "Dental Hygienist" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diş Hijyenisti"
+          }
+        }
+      }
+    },
+    "Dentist" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dişçi"
+          }
+        }
+      }
+    },
+    "Dentist Office" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diş Muayenehanesi"
+          }
+        }
+      }
+    },
+    "Dermatologist" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dermatolog"
+          }
+        }
+      }
+    },
     "Deserter" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1041,6 +1951,17 @@
         }
       }
     },
+    "Designer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tasarımcı"
+          }
+        }
+      }
+    },
     "Detective" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1048,6 +1969,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dedektif"
+          }
+        }
+      }
+    },
+    "Diplomat" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diplomat"
           }
         }
       }
@@ -1069,6 +2001,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tamam"
+          }
+        }
+      }
+    },
+    "Dispatcher" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hareket Memuru"
+          }
+        }
+      }
+    },
+    "Diver" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dalgıç"
           }
         }
       }
@@ -1095,6 +2049,17 @@
         }
       }
     },
+    "Driller" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delici"
+          }
+        }
+      }
+    },
     "Driver" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1102,6 +2067,39 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sürücü"
+          }
+        }
+      }
+    },
+    "Drummer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Baterist"
+          }
+        }
+      }
+    },
+    "Drunk Person" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sarhoş Kişi"
+          }
+        }
+      }
+    },
+    "Dump Truck Operator" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kamyon Şoförü"
           }
         }
       }
@@ -1139,6 +2137,17 @@
         }
       }
     },
+    "Embassy" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elçilik"
+          }
+        }
+      }
+    },
     "Engineer" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1146,6 +2155,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mühendis"
+          }
+        }
+      }
+    },
+    "Enologist" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enolog"
           }
         }
       }
@@ -1161,6 +2181,39 @@
         }
       }
     },
+    "Event Organizer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Etkinlik Organizatörü"
+          }
+        }
+      }
+    },
+    "Exhibitor" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Katılımcı"
+          }
+        }
+      }
+    },
+    "Expedition Leader" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keşif Lideri"
+          }
+        }
+      }
+    },
     "Exporter" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1172,6 +2225,103 @@
         }
       }
     },
+    "Extra Edition (%lld)" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekstra Versiyon (%lld)"
+          }
+        }
+      }
+    },
+    "Famous Person" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ünlü Kişi"
+          }
+        }
+      }
+    },
+    "Fan" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fan"
+          }
+        }
+      }
+    },
+    "Farm" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çiftlik"
+          }
+        }
+      }
+    },
+    "Farmer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çiftçi"
+          }
+        }
+      }
+    },
+    "Farmhand" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çiftçi"
+          }
+        }
+      }
+    },
+    "Fashion Show" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Defile"
+          }
+        }
+      }
+    },
+    "Father of the Bride" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gelinin Babası"
+          }
+        }
+      }
+    },
+    "Feedback" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geribildirim"
+          }
+        }
+      }
+    },
     "Fire Eater" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1179,6 +2329,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ateş Yiyici"
+          }
+        }
+      }
+    },
+    "Fire Station" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İtfaiye İstasyonu"
+          }
+        }
+      }
+    },
+    "Firefighter" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İtfaiyeci"
           }
         }
       }
@@ -1205,6 +2377,27 @@
         }
       }
     },
+    "First Edition (%lld) " : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İlk Versiyon (%lld)"
+          }
+        }
+      }
+    },
+    "Fisherman" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Balıkçı"
+          }
+        }
+      }
+    },
     "Flight Attendant" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1212,6 +2405,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Uçuş Görevlisi"
+          }
+        }
+      }
+    },
+    "Florist" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çiçek Satıcısı"
+          }
+        }
+      }
+    },
+    "Flower Girl" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çiçekçi Kız"
           }
         }
       }
@@ -1227,6 +2442,17 @@
         }
       }
     },
+    "Flower Shop" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çiçekçi"
+          }
+        }
+      }
+    },
     "Food Critic" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1234,6 +2460,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Gurme"
+          }
+        }
+      }
+    },
+    "Food Sample Demonstrator" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tadım Standı Görevlisi"
           }
         }
       }
@@ -1271,6 +2508,17 @@
         }
       }
     },
+    "Freelancer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Serbest Çalışan"
+          }
+        }
+      }
+    },
     "Gambler" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1278,6 +2526,49 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kumarbaz"
+          }
+        }
+      }
+    },
+    "Game Operator" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oyun Operatörü"
+          }
+        }
+      }
+    },
+    "Game Setting" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oyun Kurulumu"
+          }
+        }
+      }
+    },
+    "Gamer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oyuncu"
+          }
+        }
+      }
+    },
+    "Gaming Convention" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oyun Etkinliği"
           }
         }
       }
@@ -1315,6 +2606,39 @@
         }
       }
     },
+    "Geek" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İnek"
+          }
+        }
+      }
+    },
+    "Geologist" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jeolog"
+          }
+        }
+      }
+    },
+    "Goaltender" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaleci"
+          }
+        }
+      }
+    },
     "Golden Gate Bridge" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1322,6 +2646,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Golden Gate Köprüsü"
+          }
+        }
+      }
+    },
+    "Golf Course" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Golf Sahası"
+          }
+        }
+      }
+    },
+    "Golfer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Golfçü"
           }
         }
       }
@@ -1337,6 +2683,17 @@
         }
       }
     },
+    "Gothic Girl" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gotik Kız"
+          }
+        }
+      }
+    },
     "Gourmet Guide" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1344,6 +2701,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Gurme Rehberi"
+          }
+        }
+      }
+    },
+    "Government Official" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Devlet Yetkilisi"
+          }
+        }
+      }
+    },
+    "Graduate Student" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mezun Öğrenci"
           }
         }
       }
@@ -1370,6 +2749,39 @@
         }
       }
     },
+    "Groom" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Damat"
+          }
+        }
+      }
+    },
+    "Ground Crew" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saha Ekibi"
+          }
+        }
+      }
+    },
+    "Groundskeeper" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bahçıvan"
+          }
+        }
+      }
+    },
     "Guard" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1377,6 +2789,83 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Güvenlik"
+          }
+        }
+      }
+    },
+    "Guide" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rehber"
+          }
+        }
+      }
+    },
+    "Guitarist" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gitarist"
+          }
+        }
+      }
+    },
+    "Gym Teacher" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beden Öğretmeni"
+          }
+        }
+      }
+    },
+    "Hairstylist" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saç Stilisti"
+          }
+        }
+      }
+    },
+    "Hammer Thrower" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çekiç Fırlatan"
+          }
+        }
+      }
+    },
+    "Happy Child" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mutlu Çocuk"
+          }
+        }
+      }
+    },
+    "Harbor Docks" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yük Limanı"
           }
         }
       }
@@ -1403,6 +2892,94 @@
         }
       }
     },
+    "Helicopter" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Helikopter"
+          }
+        }
+      }
+    },
+    "High Jumper" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yükseğe Zıplayan Kişi"
+          }
+        }
+      }
+    },
+    "Hiker" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dağcı"
+          }
+        }
+      }
+    },
+    "Hiking Trail" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tırmanış Parkuru"
+          }
+        }
+      }
+    },
+    "Hockey Fan" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hokey Fanı"
+          }
+        }
+      }
+    },
+    "Hockey Player" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hokey Oyuncusu"
+          }
+        }
+      }
+    },
+    "Homeless Person" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Evsize Kişi"
+          }
+        }
+      }
+    },
+    "Horse Trainer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "At Eğitmeni"
+          }
+        }
+      }
+    },
     "Hospital" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1414,6 +2991,17 @@
         }
       }
     },
+    "Host" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sunucu"
+          }
+        }
+      }
+    },
     "Hostess" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1421,6 +3009,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Garson"
+          }
+        }
+      }
+    },
+    "Hot Air Balloon" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sıcak Hava Balonu"
           }
         }
       }
@@ -1468,6 +3067,17 @@
         }
       }
     },
+    "Hydrologist" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hidrolog"
+          }
+        }
+      }
+    },
     "Ice Cream Trucker Driver" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1479,6 +3089,50 @@
         }
       }
     },
+    "Ice Hockey Stadium" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buz Hokeyi Stadyumu"
+          }
+        }
+      }
+    },
+    "Imprisoned Saracen" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esir"
+          }
+        }
+      }
+    },
+    "Inspector" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Müfettiş"
+          }
+        }
+      }
+    },
+    "Instructor" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eğitmen"
+          }
+        }
+      }
+    },
     "Intern" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1486,6 +3140,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Stajyer"
+          }
+        }
+      }
+    },
+    "Interpreter" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tercüman"
           }
         }
       }
@@ -1523,6 +3188,39 @@
         }
       }
     },
+    "Jazz Club" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jazz Kulübü"
+          }
+        }
+      }
+    },
+    "Jazz Fanatic" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jaz Fanatiği"
+          }
+        }
+      }
+    },
+    "Jester" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soytarı"
+          }
+        }
+      }
+    },
     "Jesus" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1530,6 +3228,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "İsa"
+          }
+        }
+      }
+    },
+    "Jeweler" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taş Tasarımcısı"
+          }
+        }
+      }
+    },
+    "Jewelry Store" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kuyumcu"
           }
         }
       }
@@ -1567,6 +3287,17 @@
         }
       }
     },
+    "Judge" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jüri"
+          }
+        }
+      }
+    },
     "Juggler" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1589,6 +3320,17 @@
         }
       }
     },
+    "King" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kral"
+          }
+        }
+      }
+    },
     "Kite Surfer" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1600,6 +3342,17 @@
         }
       }
     },
+    "Knight" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şovalye"
+          }
+        }
+      }
+    },
     "Know-It-All" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1607,6 +3360,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Her şeyi Bilen Kişi"
+          }
+        }
+      }
+    },
+    "Lab Technician" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Laborant"
+          }
+        }
+      }
+    },
+    "Laundromat" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çamaşırhane"
           }
         }
       }
@@ -1655,6 +3430,28 @@
         }
       }
     },
+    "Loader" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yükleyici"
+          }
+        }
+      }
+    },
+    "Lobbyist" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lobici"
+          }
+        }
+      }
+    },
     "Local Park" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1662,6 +3459,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Park"
+          }
+        }
+      }
+    },
+    "Location Sets" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lokasyon Setleri"
           }
         }
       }
@@ -1686,6 +3493,28 @@
         }
       }
     },
+    "Lone Tourist" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yalnız Turist"
+          }
+        }
+      }
+    },
+    "Lost Person" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaybolmuş Kişi"
+          }
+        }
+      }
+    },
     "Loudmouth" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1693,6 +3522,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bağıran Kişi"
+          }
+        }
+      }
+    },
+    "Machine Operator" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Makine Operatörü"
           }
         }
       }
@@ -1730,6 +3570,17 @@
         }
       }
     },
+    "Maintainence Man" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bakım Görevlisi"
+          }
+        }
+      }
+    },
     "Maintenance Worker" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1737,6 +3588,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bakım İşçisi"
+          }
+        }
+      }
+    },
+    "Makeup Artist" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Makyöz"
           }
         }
       }
@@ -1763,6 +3625,28 @@
         }
       }
     },
+    "Manicurist" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Manikürcü"
+          }
+        }
+      }
+    },
+    "Marine Biologist" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deniz Biyoloğu"
+          }
+        }
+      }
+    },
     "Mark the Apostle" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1785,6 +3669,17 @@
         }
       }
     },
+    "Masseuse" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Masöz"
+          }
+        }
+      }
+    },
     "Matthew the Apostle" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1792,6 +3687,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Havari Matthew"
+          }
+        }
+      }
+    },
+    "Mechanic" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamirci"
           }
         }
       }
@@ -1818,6 +3724,17 @@
         }
       }
     },
+    "Meteorologist" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meteoroloji Uzmanı"
+          }
+        }
+      }
+    },
     "Military Base" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1825,6 +3742,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Askeri Üs"
+          }
+        }
+      }
+    },
+    "Miner" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Madenci"
           }
         }
       }
@@ -1840,6 +3768,28 @@
         }
       }
     },
+    "Model" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Model"
+          }
+        }
+      }
+    },
+    "Monk" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keşiş"
+          }
+        }
+      }
+    },
     "Mourner" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1847,6 +3797,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Yas Tutan Kişi"
+          }
+        }
+      }
+    },
+    "Movie Studio" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Film Stüdyosu"
           }
         }
       }
@@ -1884,6 +3845,28 @@
         }
       }
     },
+    "Muscly Guy" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaslı Çocuk"
+          }
+        }
+      }
+    },
+    "Music Festival" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Müzik Festivali"
+          }
+        }
+      }
+    },
     "Musician" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1891,6 +3874,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Müzisyen"
+          }
+        }
+      }
+    },
+    "Napping Delegate" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uyuklayan Delege"
           }
         }
       }
@@ -1917,6 +3911,39 @@
         }
       }
     },
+    "News Reporter" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haber Sunucusu"
+          }
+        }
+      }
+    },
+    "Night Club" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gece Kulübü"
+          }
+        }
+      }
+    },
+    "Noble" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soylu"
+          }
+        }
+      }
+    },
     "Notary" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1939,6 +3966,28 @@
         }
       }
     },
+    "Observatory" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gözlemevi"
+          }
+        }
+      }
+    },
+    "Ocean Liner" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Okyanus Gemisi"
+          }
+        }
+      }
+    },
     "Officer" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1946,6 +3995,27 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Polis"
+          }
+        }
+      }
+    },
+    "Officiant" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nikah Memuru"
+          }
+        }
+      }
+    },
+    "OK" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamam"
           }
         }
       }
@@ -1983,6 +4053,39 @@
         }
       }
     },
+    "Organizer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Organizatör"
+          }
+        }
+      }
+    },
+    "Orphan" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yetim"
+          }
+        }
+      }
+    },
+    "Orphanage" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yetimhane"
+          }
+        }
+      }
+    },
     "Outfielder" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1990,6 +4093,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dış Saha Oyuncusu"
+          }
+        }
+      }
+    },
+    "Overseer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gözetmen"
           }
         }
       }
@@ -2016,6 +4130,17 @@
         }
       }
     },
+    "Paramedic" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paramedik"
+          }
+        }
+      }
+    },
     "Parent" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2038,6 +4163,17 @@
         }
       }
     },
+    "Party Girl" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parti Kızı"
+          }
+        }
+      }
+    },
     "Passenger" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2056,6 +4192,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Yolcu Treni"
+          }
+        }
+      }
+    },
+    "Pastry Chef" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pasta Şefi"
           }
         }
       }
@@ -2100,6 +4247,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fotoğrafçı"
+          }
+        }
+      }
+    },
+    "Pianist" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Piyanist"
           }
         }
       }
@@ -2200,6 +4358,17 @@
         }
       }
     },
+    "Polar Station" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kutup İnceleme Bölgesi"
+          }
+        }
+      }
+    },
     "Police" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2244,6 +4413,12 @@
         }
       }
     },
+    "Premium Forever" : {
+
+    },
+    "Premium Unlocked" : {
+
+    },
     "Priest" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2251,6 +4426,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rahip"
+          }
+        }
+      }
+    },
+    "Principal" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Okul Müdürü"
           }
         }
       }
@@ -2266,6 +4452,28 @@
         }
       }
     },
+    "Produce Seller" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ürün Satıcısı"
+          }
+        }
+      }
+    },
+    "Producer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yapımcı"
+          }
+        }
+      }
+    },
     "Prof. Plum" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2273,6 +4481,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Profesör Plum"
+          }
+        }
+      }
+    },
+    "Professor" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profesör"
           }
         }
       }
@@ -2299,6 +4518,49 @@
         }
       }
     },
+    "Purchases" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Satın Alım"
+          }
+        }
+      }
+    },
+    "Quality Control" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kalite Kontrol"
+          }
+        }
+      }
+    },
+    "Queen" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kraliçe"
+          }
+        }
+      }
+    },
+    "Race Track" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yarış Pisti"
+          }
+        }
+      }
+    },
     "Radioman" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2306,6 +4568,93 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Radyo Ustası"
+          }
+        }
+      }
+    },
+    "Ranch Owner" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çiftlik Sahibi"
+          }
+        }
+      }
+    },
+    "Rancher" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çiftçi"
+          }
+        }
+      }
+    },
+    "Ranger" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kolcu"
+          }
+        }
+      }
+    },
+    "Rate Us" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bizi Değerlendirin"
+          }
+        }
+      }
+    },
+    "Receptionist" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sekreter"
+          }
+        }
+      }
+    },
+    "Referee" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hakem"
+          }
+        }
+      }
+    },
+    "Refugee" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mülteci"
+          }
+        }
+      }
+    },
+    "Regular" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Müdavim"
           }
         }
       }
@@ -2327,6 +4676,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kaldır"
+          }
+        }
+      }
+    },
+    "Remove Ads" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reklamları Kaldır"
+          }
+        }
+      }
+    },
+    "Repair Technician" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamir Teknisyeni"
+          }
+        }
+      }
+    },
+    "Researcher" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Araştırmacı"
           }
         }
       }
@@ -2363,6 +4744,16 @@
         }
       }
     },
+    "Restore Purchases" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Satın Alımı Geri Yükle"
+          }
+        }
+      }
+    },
     "Retirement Home" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2374,6 +4765,61 @@
         }
       }
     },
+    "Rich Lord" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zengin Arsa Sahibi"
+          }
+        }
+      }
+    },
+    "Rich Passenger" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zengin Yolcu"
+          }
+        }
+      }
+    },
+    "Ride Operator" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hızlı Tren Operatörü"
+          }
+        }
+      }
+    },
+    "Rider" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Binici"
+          }
+        }
+      }
+    },
+    "Ring Bearer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yüzük Taşıyıcısı"
+          }
+        }
+      }
+    },
     "Robber" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2381,6 +4827,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Soyguncu"
+          }
+        }
+      }
+    },
+    "Rock Concert" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rock Konseri"
+          }
+        }
+      }
+    },
+    "Rodeo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rodeo"
           }
         }
       }
@@ -2413,7 +4881,62 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mürettebat"
+            "value" : "Denizci"
+          }
+        }
+      }
+    },
+    "Salesperson" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Satış Elemanı"
+          }
+        }
+      }
+    },
+    "Salty Old Pirate" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eski Korsan"
+          }
+        }
+      }
+    },
+    "Saxophonist" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saksafoncu"
+          }
+        }
+      }
+    },
+    "School" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Okul"
+          }
+        }
+      }
+    },
+    "Science Lab" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bilim Laboratuvarı"
           }
         }
       }
@@ -2429,6 +4952,17 @@
         }
       }
     },
+    "Scout" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gözcü"
+          }
+        }
+      }
+    },
     "Second Baseman" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2440,6 +4974,16 @@
         }
       }
     },
+    "Second Edition (%lld)" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İkinci Versiyon (%lld)"
+          }
+        }
+      }
+    },
     "Secretary" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2447,6 +4991,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sekreter"
+          }
+        }
+      }
+    },
+    "Secretary of State" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dışişleri Bakanı"
+          }
+        }
+      }
+    },
+    "Secretary-General" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genel Sekreter"
           }
         }
       }
@@ -2473,6 +5039,27 @@
         }
       }
     },
+    "Send Feedback" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geribildirim Gönder"
+          }
+        }
+      }
+    },
+    "Servant" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hizmetkar"
+          }
+        }
+      }
+    },
     "Service Attendant" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2480,6 +5067,49 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "İstasyon Görevlisi"
+          }
+        }
+      }
+    },
+    "Service Station" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Servis İstasyonu"
+          }
+        }
+      }
+    },
+    "Settings" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayarlar"
+          }
+        }
+      }
+    },
+    "Shelf Stocker" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Raf Düzenleme Sorumlusu"
+          }
+        }
+      }
+    },
+    "Shop Owner" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mağaza Sahibi"
           }
         }
       }
@@ -2506,6 +5136,28 @@
         }
       }
     },
+    "Shy Person" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utangaç Kişi"
+          }
+        }
+      }
+    },
+    "Sightseeing Bus" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tur Otobüsü"
+          }
+        }
+      }
+    },
     "Simon the Apostle" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2513,6 +5165,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Havari Simon"
+          }
+        }
+      }
+    },
+    "Singer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şarkıcı"
           }
         }
       }
@@ -2594,6 +5257,28 @@
         }
       }
     },
+    "Slave" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Köle"
+          }
+        }
+      }
+    },
+    "Smuggler" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaçakçı"
+          }
+        }
+      }
+    },
     "Sniper" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2616,6 +5301,17 @@
         }
       }
     },
+    "Solid Waste Engineer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Katı Atık Mühendisi"
+          }
+        }
+      }
+    },
     "Sommelier" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2633,7 +5329,18 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sonar Ustası"
+            "value" : "Sonar Teknisyeni"
+          }
+        }
+      }
+    },
+    "Sound Engineer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ses Mühendisi"
           }
         }
       }
@@ -2660,6 +5367,17 @@
         }
       }
     },
+    "Speaker" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konuşmacı"
+          }
+        }
+      }
+    },
     "Spectator" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2682,7 +5400,22 @@
         }
       }
     },
+    "Sprinter" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Koşucu"
+          }
+        }
+      }
+    },
+    "Spyquest" : {
+
+    },
     "Spyquest is a game where players ask questions to find the spy, who doesn’t know the location. The spy’s goal is to blend in and figure out the location without being detected." : {
+      "extractionState" : "stale",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
@@ -2692,7 +5425,84 @@
         }
       }
     },
+    "Squire" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lord"
+          }
+        }
+      }
+    },
+    "Stadium" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stadyum"
+          }
+        }
+      }
+    },
+    "Stage Crew" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sahne Ekibi"
+          }
+        }
+      }
+    },
+    "Stage Diver" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sahneye Atlayan Kişi"
+          }
+        }
+      }
+    },
+    "Stage Manager" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sahne Yöneticisi"
+          }
+        }
+      }
+    },
     "Stoker" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kömürcü"
+          }
+        }
+      }
+    },
+    "Street Performer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sokak Sanatçısı"
+          }
+        }
+      }
+    },
+    "Stroker" : {
       "extractionState" : "manual",
       "localizations" : {
         "tr" : {
@@ -2710,6 +5520,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Öğrenci"
+          }
+        }
+      }
+    },
+    "Stunt Man" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dublör"
+          }
+        }
+      }
+    },
+    "Stylist" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stilist"
           }
         }
       }
@@ -2747,6 +5579,28 @@
         }
       }
     },
+    "Supermarket" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Süpermarket"
+          }
+        }
+      }
+    },
+    "Supply Worker" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tedarik İşçisi"
+          }
+        }
+      }
+    },
     "Surgeon" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2779,6 +5633,17 @@
         }
       }
     },
+    "Taster" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tadımcı"
+          }
+        }
+      }
+    },
     "Teacher" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2797,6 +5662,39 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Takım Sahibi"
+          }
+        }
+      }
+    },
+    "Technical Support" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Teknik Destek"
+          }
+        }
+      }
+    },
+    "Technician" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Teknisyen"
+          }
+        }
+      }
+    },
+    "Teenager" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ergen"
           }
         }
       }
@@ -2853,6 +5751,17 @@
         }
       }
     },
+    "The U.N." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Birleşmiş Milletler"
+          }
+        }
+      }
+    },
     "Therapist" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2886,6 +5795,17 @@
         }
       }
     },
+    "Ticket Inspector" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bilet Görevlisi"
+          }
+        }
+      }
+    },
     "Ticket Seller" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2893,6 +5813,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bilet Satıcısı"
+          }
+        }
+      }
+    },
+    "Tied Up Prisoner" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bağlanmış Tutsak"
           }
         }
       }
@@ -2962,6 +5893,17 @@
         }
       }
     },
+    "Trainer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eğitmen"
+          }
+        }
+      }
+    },
     "Trespasser" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2980,6 +5922,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hakem"
+          }
+        }
+      }
+    },
+    "University" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Üniversite"
           }
         }
       }
@@ -3006,6 +5959,17 @@
         }
       }
     },
+    "Veterinarian" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Veteriner"
+          }
+        }
+      }
+    },
     "Vineyard" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3024,6 +5988,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Müdür"
+          }
+        }
+      }
+    },
+    "VIP" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VİP"
           }
         }
       }
@@ -3061,12 +6036,67 @@
         }
       }
     },
+    "We would love for you to rate our app and share your feedback with us. Thank you!" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uygulamamızı değerlendirmenizi ve geri bildirimlerinizi bizimle paylaşmanızı çok isteriz. Teşekkür ederiz!"
+          }
+        }
+      }
+    },
+    "Wedding" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Düğün"
+          }
+        }
+      }
+    },
+    "Wedding Crasher" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sorun Çıkaran"
+          }
+        }
+      }
+    },
+    "Wedding Planner" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Düğün Planlayıcısı"
+          }
+        }
+      }
+    },
     "Welcome to \n Spyquest" : {
+      "extractionState" : "stale",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Spyquest'e Hoşgeldiniz"
+          }
+        }
+      }
+    },
+    "Wildlife Enthusiast" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vahşi Hayat Meraklısı"
           }
         }
       }
@@ -3089,6 +6119,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Şarap Ustası"
+          }
+        }
+      }
+    },
+    "Worker" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İşçi"
           }
         }
       }
@@ -3130,6 +6171,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rolün: %@"
+          }
+        }
+      }
+    },
+    "Zoo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hayvanat Bahçesi"
+          }
+        }
+      }
+    },
+    "Zookeeper" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hayvanat Bahçesi Görevlisi"
           }
         }
       }

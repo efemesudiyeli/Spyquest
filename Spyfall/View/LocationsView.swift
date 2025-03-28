@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LocationsView: View {
+    @ObservedObject var viewModel: GameViewModel
     
     let columns = [
         GridItem(.flexible()),
@@ -15,27 +16,37 @@ struct LocationsView: View {
     ]
     
     var body: some View {
-        
-        GeometryReader { geometry in
+    
+        VStack {
+            if viewModel.isGameStarted {
+                Label("\(viewModel.formattedTimeInterval(viewModel.timeRemaining))", systemImage: "hourglass")
+                    .font(.title)
+                    .bold()
+                    .foregroundStyle(.primary)
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                    .padding(.vertical)
+                    .contentTransition(.numericText())
+
+            }
+            
             ScrollView {
-                LazyVGrid(columns: columns, spacing: 10) {
+                LazyVGrid(columns: columns, spacing: 14) {
                     ForEach(Location.locationData) { location in
                         VStack {
                             Text(location.name)
                         }
                     }
                 }
-                .frame(minHeight: geometry.size.height)
-                .padding(.horizontal)
+                .padding()
             }
         }
         .navigationTitle("Locations")
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.automatic)
     }
 }
 
 #Preview {
     NavigationStack {
-        LocationsView()
+        LocationsView(viewModel: GameViewModel(isSampleData: true))
     }
 }
