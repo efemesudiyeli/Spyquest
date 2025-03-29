@@ -124,16 +124,7 @@ struct MainMenuView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 12))
             }
         }
-        .presentPaywallIfNeeded(
-                       requiredEntitlementIdentifier: "Pro",
-                       purchaseCompleted: { customerInfo in
-                           print("Purchase completed: \(customerInfo.entitlements)")
-                       },
-                       restoreCompleted: { customerInfo in
-                           // Paywall will be dismissed automatically if "pro" is now active.
-                           print("Purchases restored: \(customerInfo.entitlements)")
-                       }
-                   )
+       
        
         
         

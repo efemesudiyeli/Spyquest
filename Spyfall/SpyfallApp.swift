@@ -8,6 +8,7 @@
 import SwiftUI
 import RevenueCat
 
+
 @main
 struct SpyfallApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate

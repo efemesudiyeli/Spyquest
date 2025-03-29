@@ -121,6 +121,149 @@
         }
       }
     },
+    "A beautiful yet dangerous island surrounded by pure white sands and crystal-clear waters. A treasure is always guarded somewhere on the shores, but few can reach it." : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bembeyaz kumlar ve kristal berraklığında sularla çevrili, güzel ama tehlikeli bir ada. Kıyılarda her zaman bir hazine korunuyor, ancak buna çok az kişi ulaşabilir."
+          }
+        }
+      }
+    },
+    "A dark ocean abyss, home to lost underwater cities and sea monsters. Only the bravest sailors survive in these depths." : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kayıp sualtı şehirlerine ve deniz canavarlarına ev sahipliği yapan karanlık bir okyanus uçurumu. Bu derinliklerde sadece en cesur denizciler hayatta kalır."
+          }
+        }
+      }
+    },
+    "A forgotten island, abandoned by those searching for its lost treasures. Dangers and traps lurk at every corner." : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kayıp hazinelerini arayanlar tarafından terk edilmiş, unutulmuş bir ada. Her köşede tehlikeler ve tuzaklar pusuya yatmış."
+          }
+        }
+      }
+    },
+    "A fortress built atop a giant rock, defended against government forces by pirates and rebels. It is surrounded by massive walls and strong guards." : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dev bir kaya üzerine inşa edilmiş, korsanlar ve asiler tarafından hükümet güçlerine karşı savunulan bir kale. Devasa duvarlar ve güçlü muhafızlarla çevrili."
+          }
+        }
+      }
+    },
+    "A hidden treasure in ancient caves, surrounded by historical legends. But every treasure is guarded by deadly traps." : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Antik mağaralarda gizli bir hazine, tarihi efsanelerle çevrili. Ancak her hazine ölümcül tuzaklarla korunuyor."
+          }
+        }
+      }
+    },
+    "A labyrinthine region formed by a chain of massive islands. Each island holds its own secret, many of which have yet to be discovered." : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Devasa adalar zincirinden oluşan labirent benzeri bir bölge. Her ada kendi sırrını barındırıyor, bunların çoğu henüz keşfedilmedi."
+          }
+        }
+      }
+    },
+    "A lively hub for trade and the central point where authorities battle pirates. The harbor is filled with colorful ships and a bustling marketplace." : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ticaret için canlı bir merkez ve yetkililerin korsanlarla savaştığı merkezi nokta. Liman renkli gemiler ve hareketli bir pazar yeri ile dolu."
+          }
+        }
+      }
+    },
+    "A mysterious region surrounded by rocky shores and the deep dark waters of the sea. Dangerous storms and mysterious creatures are on the hunt." : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kayalık kıyılar ve denizin derin karanlık suları ile çevrili gizemli bir bölge. Tehlikeli fırtınalar ve gizemli yaratıklar avda."
+          }
+        }
+      }
+    },
+    "A pirate city where the people struggle against tyrannical rule. Constant conflicts and robberies take place throughout the city." : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İnsanların zalim yönetime karşı mücadele ettiği bir korsan şehri. Şehir genelinde sürekli çatışmalar ve soygunlar gerçekleşiyor."
+          }
+        }
+      }
+    },
+    "A region surrounded by large coral reefs, each corner hiding new dangers. Lost ancient treasures and forgotten sea creatures lie hidden among the corals." : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Büyük mercan resifleriyle çevrili bir bölge, her köşe yeni tehlikeler gizliyor. Kaybolmuş antik hazineler ve unutulmuş deniz yaratıkları mercanlar arasında gizleniyor."
+          }
+        }
+      }
+    },
+    "A region surrounded by shallow waters and rocks, filled with sunken ships full of gold. Navigating here is perilous, and survival is incredibly difficult." : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sığ sular ve kayalarla çevrili, altın dolu batık gemilerle dolu bir bölge. Burada gezinmek tehlikeli ve hayatta kalmak inanılmaz derecede zor."
+          }
+        }
+      }
+    },
+    "A region where storms constantly shatter sea routes and the ocean's surface is tumultuous. Surviving here is nearly impossible, but those who endure the storms can gain great rewards." : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fırtınaların sürekli deniz yollarını parçaladığı ve okyanus yüzeyinin çalkantılı olduğu bir bölge. Burada hayatta kalmak neredeyse imkansız, ancak fırtınalara dayananlar büyük ödüller kazanabilir."
+          }
+        }
+      }
+    },
+    "A secret base hidden among giant trees. The tall trees are home to hanging houses and dangerous traps, making survival a challenge." : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dev ağaçlar arasında gizlenmiş gizli bir üs. Uzun ağaçlar asılı evlere ve tehlikeli tuzaklara ev sahipliği yapıyor, hayatta kalmayı zorlaştırıyor."
+          }
+        }
+      }
+    },
     "Abandoned Town" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -268,6 +411,50 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Lunapark"
+          }
+        }
+      }
+    },
+    "An abandoned rocky region that hides the darkest secrets of the sea. Ghostly pirates and dangerous sea monsters haunt the area." : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Denizin en karanlık sırlarını saklayan terk edilmiş kayalık bir bölge. Hayaletimsi korsanlar ve tehlikeli deniz canavarları bölgeyi mesken tutmuş."
+          }
+        }
+      }
+    },
+    "An island cursed by the spirits of dead pirates. Now a place haunted by ghosts and the ruins of old structures, entering here means certain disappearance." : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ölü korsanların ruhları tarafından lanetlenen bir ada. Şimdi hayaletler ve eski yapıların kalıntıları tarafından mesken tutulmuş bir yer, buraya girmek kesin bir kaybolma anlamına gelir."
+          }
+        }
+      }
+    },
+    "An island famous for its rapidly changing weather, where storms constantly rage, and survival is nearly impossible." : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hızla değişen hava durumu ile ünlü bir ada, fırtınaların sürekli kükredigi ve hayatta kalmanın neredeyse imkansız olduğu bir yer."
+          }
+        }
+      }
+    },
+    "An island surrounded by high mountains and constantly erupting lava, only brave pirates dare set foot here. Every step brings the threat of death." : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yüksek dağlar ve sürekli püsküren lavlarla çevrili bir ada, sadece cesur korsanlar buraya ayak basmaya cüret eder. Her adım ölüm tehdidi getirir."
           }
         }
       }
@@ -831,6 +1018,28 @@
         }
       }
     },
+    "Bloody Captain" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kanlı Kaptan"
+          }
+        }
+      }
+    },
+    "Bloody City" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kanlı Şehir"
+          }
+        }
+      }
+    },
     "Blowhard" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -838,6 +1047,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Palavracı"
+          }
+        }
+      }
+    },
+    "Blue Sands" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mavi Kumlar"
+          }
+        }
+      }
+    },
+    "Blue Waters Harbor" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mavi Sular Limanı"
           }
         }
       }
@@ -970,6 +1201,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Baraka"
+          }
+        }
+      }
+    },
+    "Bureaucrat" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bürokrat"
           }
         }
       }
@@ -1369,6 +1611,17 @@
         }
       }
     },
+    "Cave Protector" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mağara Koruyucusu"
+          }
+        }
+      }
+    },
     "CCTV Operatör" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1464,6 +1717,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sirk Çadırı"
+          }
+        }
+      }
+    },
+    "City Guard" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şehir Muhafızı"
           }
         }
       }
@@ -1644,7 +1908,7 @@
       }
     },
     "Commander" : {
-      "extractionState" : "manual",
+      "extractionState" : "translated",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
@@ -1738,6 +2002,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Koordinatör"
+          }
+        }
+      }
+    },
+    "Coral Hunter" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mercan Avcısı"
           }
         }
       }
@@ -1895,6 +2170,17 @@
         }
       }
     },
+    "Cruel Queen" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zalim Kraliçe"
+          }
+        }
+      }
+    },
     "Cruise Director" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1928,6 +2214,28 @@
         }
       }
     },
+    "Cursed" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lanetli"
+          }
+        }
+      }
+    },
+    "Cursed Rocks" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lanetli Kayalar"
+          }
+        }
+      }
+    },
     "Customer" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1950,6 +2258,17 @@
         }
       }
     },
+    "Dark Reef Island" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Karanlık Resif Adası"
+          }
+        }
+      }
+    },
     "Day Spa" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1968,6 +2287,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ölü"
+          }
+        }
+      }
+    },
+    "Dead Pirates' Vow" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ölü Korsanların Yemini"
           }
         }
       }
@@ -2214,7 +2544,7 @@
       }
     },
     "Diver" : {
-      "extractionState" : "manual",
+      "extractionState" : "translated",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
@@ -2389,6 +2719,17 @@
         }
       }
     },
+    "Endless Isles" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sonsuz Adalar"
+          }
+        }
+      }
+    },
     "Engineer" : {
       "extractionState" : "translated",
       "localizations" : {
@@ -2429,6 +2770,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Etkinlik Organizatörü"
+          }
+        }
+      }
+    },
+    "Evil Knight" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kötü Şövalye"
           }
         }
       }
@@ -2483,6 +2835,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ekstra Versiyon (%lld)"
+          }
+        }
+      }
+    },
+    "Famous for its dark reputation, this island is a center for forbidden trade and bloody gangs. Its interior is filled with abandoned villages, and danger is always close." : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Karanlık ünüyle meşhur olan bu ada, yasak ticaret ve kanlı çetelerin merkezi. İç kısımları terk edilmiş köylerle dolu ve tehlike her zaman yakında."
           }
         }
       }
@@ -2574,6 +2937,17 @@
         }
       }
     },
+    "Fighter" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dövüşçü"
+          }
+        }
+      }
+    },
     "Fire Eater" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2635,6 +3009,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "İlk Versiyon (%lld)"
+          }
+        }
+      }
+    },
+    "First Mate" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Birinci Yardımcı"
           }
         }
       }
@@ -2756,6 +3141,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kale"
+          }
+        }
+      }
+    },
+    "Fortress Commander" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kale Komutanı"
           }
         }
       }
@@ -2903,6 +3299,17 @@
         }
       }
     },
+    "Ghost Pirate" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hayalet Korsan"
+          }
+        }
+      }
+    },
     "Ghost Town" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2954,6 +3361,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Golden Gate Köprüsü"
+          }
+        }
+      }
+    },
+    "Golden Shallows" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Altın Sığlıklar"
           }
         }
       }
@@ -3057,6 +3475,50 @@
         }
       }
     },
+    "Great Pirate" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Büyük Korsan"
+          }
+        }
+      }
+    },
+    "Great Storm Island" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Büyük Fırtına Adası"
+          }
+        }
+      }
+    },
+    "Great Thief" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Büyük Hırsız"
+          }
+        }
+      }
+    },
+    "Great Warrior" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Büyük Savaşçı"
+          }
+        }
+      }
+    },
     "Groom" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3097,6 +3559,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Güvenlik"
+          }
+        }
+      }
+    },
+    "Guardian" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Koruyucu"
           }
         }
       }
@@ -3218,6 +3691,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Helikopter"
+          }
+        }
+      }
+    },
+    "Hell Island" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cehennem Adası"
           }
         }
       }
@@ -3398,7 +3882,7 @@
       }
     },
     "Hunter" : {
-      "extractionState" : "manual",
+      "extractionState" : "translated",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
@@ -3503,6 +3987,39 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tercüman"
+          }
+        }
+      }
+    },
+    "Investor" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yatırımcı"
+          }
+        }
+      }
+    },
+    "Island Guardian" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ada Koruyucusu"
+          }
+        }
+      }
+    },
+    "Islander" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adalı"
           }
         }
       }
@@ -3771,6 +4288,39 @@
         }
       }
     },
+    "Legendary Cannoneer" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Efsanevi Topçu"
+          }
+        }
+      }
+    },
+    "Legendary Pirate" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Efsanevi Korsan"
+          }
+        }
+      }
+    },
+    "Legendary Treasure Cave" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Efsanevi Hazine Mağarası"
+          }
+        }
+      }
+    },
     "Librarian" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3884,6 +4434,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Yalnız Turist"
+          }
+        }
+      }
+    },
+    "Lonely Captain" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yalnız Kaptan"
           }
         }
       }
@@ -4016,6 +4577,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Manikürcü"
+          }
+        }
+      }
+    },
+    "Map Maker" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Harita Yapımcısı"
           }
         }
       }
@@ -4295,6 +4867,17 @@
         }
       }
     },
+    "Mysterious Coral Reef" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gizemli Mercan Resifi"
+          }
+        }
+      }
+    },
     "Napping Delegate" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -4459,6 +5042,17 @@
         }
       }
     },
+    "Old Captain" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yaşlı Kaptan"
+          }
+        }
+      }
+    },
     "Old Church" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -4499,6 +5093,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Yaşlı İnsan"
+          }
+        }
+      }
+    },
+    "Once the pirate capital, now an abandoned pirate base, inhabited only by thieves and fugitives." : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bir zamanlar korsan başkenti, şimdi sadece hırsızlar ve kaçaklar tarafından mesken tutulan terk edilmiş bir korsan üssü."
           }
         }
       }
@@ -4756,12 +5361,100 @@
         }
       }
     },
+    "Pirate" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Korsan"
+          }
+        }
+      }
+    },
+    "Pirate Captain" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Korsan Kaptanı"
+          }
+        }
+      }
+    },
     "Pirate Edition (%lld)" : {
       "localizations" : {
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Korsan Versiyon (%lld)"
+          }
+        }
+      }
+    },
+    "Pirate Fortress" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Korsan Kalesi"
+          }
+        }
+      }
+    },
+    "Pirate Gang Leader" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Korsan Çetesi Lideri"
+          }
+        }
+      }
+    },
+    "Pirate Guide" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Korsan Rehberi"
+          }
+        }
+      }
+    },
+    "Pirate Hunter" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Korsan Avcısı"
+          }
+        }
+      }
+    },
+    "Pirate Leader" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Korsan Lideri"
+          }
+        }
+      }
+    },
+    "Pirate Merchant" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Korsan Tüccar"
           }
         }
       }
@@ -4773,6 +5466,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Korsan Gemisi"
+          }
+        }
+      }
+    },
+    "Pirate Soldier" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Korsan Askeri"
+          }
+        }
+      }
+    },
+    "Pirate Warrior" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Korsan Savaşçı"
           }
         }
       }
@@ -4836,6 +5551,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Şair"
+          }
+        }
+      }
+    },
+    "Poisonous Beast" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zehirli Canavar"
           }
         }
       }
@@ -4938,12 +5664,12 @@
       }
     },
     "Prisoner" : {
-      "extractionState" : "manual",
+      "extractionState" : "translated",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rehine"
+            "value" : "Mahkum"
           }
         }
       }
@@ -5010,6 +5736,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Maden Arayıcısı"
+          }
+        }
+      }
+    },
+    "Protector" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Koruyucu"
           }
         }
       }
@@ -5129,6 +5866,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bizi Değerlendirin"
+          }
+        }
+      }
+    },
+    "Rebel" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asi"
           }
         }
       }
@@ -5394,7 +6142,7 @@
       }
     },
     "Sailor" : {
-      "extractionState" : "manual",
+      "extractionState" : "translated",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
@@ -5492,6 +6240,39 @@
         }
       }
     },
+    "Sea Monster" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deniz Canavarı"
+          }
+        }
+      }
+    },
+    "Sea Sorcerer" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deniz Büyücüsü"
+          }
+        }
+      }
+    },
+    "Seaman" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gemici"
+          }
+        }
+      }
+    },
     "Second Baseman" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -5509,6 +6290,61 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "İkinci Versiyon (%lld)"
+          }
+        }
+      }
+    },
+    "Secret Enemy" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gizli Düşman"
+          }
+        }
+      }
+    },
+    "Secret Rebel" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gizli Asi"
+          }
+        }
+      }
+    },
+    "Secret Sorcerer" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gizli Büyücü"
+          }
+        }
+      }
+    },
+    "Secret Villain" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gizli Kötü Karakter"
+          }
+        }
+      }
+    },
+    "Secret Warrior" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gizli Savaşçı"
           }
         }
       }
@@ -5661,6 +6497,39 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Şerif’in Ofisi"
+          }
+        }
+      }
+    },
+    "Ship Captain" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gemi Kaptanı"
+          }
+        }
+      }
+    },
+    "Ship Engineer" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gemi Mühendisi"
+          }
+        }
+      }
+    },
+    "Ship Guide" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gemi Rehberi"
           }
         }
       }
@@ -5820,7 +6689,7 @@
       }
     },
     "Slave" : {
-      "extractionState" : "manual",
+      "extractionState" : "translated",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
@@ -5892,6 +6761,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sonar Teknisyeni"
+          }
+        }
+      }
+    },
+    "Sorcerer" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Büyücü"
           }
         }
       }
@@ -6082,6 +6962,72 @@
         }
       }
     },
+    "Storm Bringer" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fırtına Getiren"
+          }
+        }
+      }
+    },
+    "Storm Captain" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fırtına Kaptanı"
+          }
+        }
+      }
+    },
+    "Storm Guardian" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fırtına Koruyucusu"
+          }
+        }
+      }
+    },
+    "Storm Seeker" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fırtına Arayıcısı"
+          }
+        }
+      }
+    },
+    "Storm Seer" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fırtına Kahinі"
+          }
+        }
+      }
+    },
+    "Storm Watcher" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fırtına Gözcüsü"
+          }
+        }
+      }
+    },
     "Street Performer" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -6181,6 +7127,28 @@
         }
       }
     },
+    "Sunken Ship Captain" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Batık Gemi Kaptanı"
+          }
+        }
+      }
+    },
+    "Sunken Shipwrecks" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Batık Gemiler"
+          }
+        }
+      }
+    },
     "Supermarket" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -6214,6 +7182,17 @@
         }
       }
     },
+    "Swordsman" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kılıç Ustası"
+          }
+        }
+      }
+    },
     "Tank Engineer" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -6231,6 +7210,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rolünü görmek için tıkla."
+          }
+        }
+      }
+    },
+    "Target Seeker" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hedef Arayıcı"
           }
         }
       }
@@ -6464,6 +7454,17 @@
         }
       }
     },
+    "The Lost Island" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kayıp Ada"
+          }
+        }
+      }
+    },
     "The mine shaft is a deep, dark hole in the ground, filled with the potential for wealth and the danger of collapse. It's a treacherous place where miners risk their lives in search of precious metals." : {
       "extractionState" : "translated",
       "localizations" : {
@@ -6526,6 +7527,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Çiftlik sahibinin evi, çalışkan bir ailenin yaşadığı küçük, mütevazı bir meskendir. Etrafı geniş tarlalar ve hayvanlarla çevrilidir. Huzurlu olmasına rağmen, kısa sürede bir haydut baskınının veya komşu çiftçilerle bir anlaşmazlığın hedefi haline gelebilir."
+          }
+        }
+      }
+    },
+    "The remnants of ancient ships lying deep beneath the ocean. Sunken treasures and dangerous sea creatures are hidden among the wreckage." : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Okyanusun derinliklerinde yatan antik gemilerin kalıntıları. Batık hazineler ve tehlikeli deniz yaratıkları enkaz arasında gizleniyor."
           }
         }
       }
@@ -6640,12 +7652,23 @@
       }
     },
     "Thief" : {
-      "extractionState" : "manual",
+      "extractionState" : "translated",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hırsız"
+          }
+        }
+      }
+    },
+    "Thieves' Haven" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hırsızların Sığınağı"
           }
         }
       }
@@ -6869,6 +7892,17 @@
         }
       }
     },
+    "Trapsmith" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tuzak Ustası"
+          }
+        }
+      }
+    },
     "Traveler" : {
       "extractionState" : "translated",
       "localizations" : {
@@ -6876,6 +7910,61 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Gezgin"
+          }
+        }
+      }
+    },
+    "Treacherous Sea" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tehlikeli Deniz"
+          }
+        }
+      }
+    },
+    "Treasure Guardian" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hazine Koruyucusu"
+          }
+        }
+      }
+    },
+    "Treasure Hunter" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hazine Avcısı"
+          }
+        }
+      }
+    },
+    "Treasure Seeker" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hazine Arayıcı"
+          }
+        }
+      }
+    },
+    "Treehouse Island" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ağaç Ev Adası"
           }
         }
       }
@@ -6979,6 +8068,17 @@
         }
       }
     },
+    "Vicious Storms" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şiddetli Fırtınalar"
+          }
+        }
+      }
+    },
     "Vineyard" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -7045,6 +8145,17 @@
         }
       }
     },
+    "Warrior" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Savaşçı"
+          }
+        }
+      }
+    },
     "We would love for you to rate our app and share your feedback with us. Thank you!" : {
       "localizations" : {
         "tr" : {
@@ -7084,6 +8195,27 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Düğün Planlayıcısı"
+          }
+        }
+      }
+    },
+    "Wild Ocean Depths" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vahşi Okyanus Derinlikleri"
+          }
+        }
+      }
+    },
+    "Wild West Edition (%lld)" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vahşi Batı Versiyon (%lld)"
           }
         }
       }
@@ -7161,6 +8293,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "İşçi"
+          }
+        }
+      }
+    },
+    "Wounded" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yaralı"
           }
         }
       }

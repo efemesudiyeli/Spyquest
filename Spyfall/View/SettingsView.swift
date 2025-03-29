@@ -76,6 +76,12 @@ struct SettingsView: View {
                         } label: {
                             Text("Pirate Edition (\(LocationSets.pirateTheme.locations.count))")
                         }
+                        
+                        Button {
+                            selectedLocationSet = .wildWestTheme
+                        } label: {
+                            Text("Wild West Edition (\(LocationSets.wildWestTheme.locations.count))")
+                        }
                     } else {
                         Label {
                             Text("Combined Edition (\(LocationSets.spyfallCombined.locations.count))")
@@ -103,6 +109,14 @@ struct SettingsView: View {
                         
                         Label {
                             Text( "Pirate Edition (\(LocationSets.pirateTheme.locations.count))")
+                                .foregroundStyle(.gray)
+                        } icon: {
+                            Image(systemName: "crown.fill")
+                                .foregroundStyle(Color.premiumReverse)
+                        }
+                        
+                        Label {
+                            Text( "Wild West Edition (\(LocationSets.wildWestTheme.locations.count))")
                                 .foregroundStyle(.gray)
                         } icon: {
                             Image(systemName: "crown.fill")
