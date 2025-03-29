@@ -76,10 +76,13 @@ struct CreateGameView: View {
                 Image(systemName: "play.circle.fill")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 80)
+                    .frame(width: 140)
+                   
+                
             }
             .disabled(!viewModel.players.allSatisfy({ !$0.name.isEmpty }))
-            .padding(.bottom)
+            .padding(.bottom, 60)
+            .ignoresSafeArea(.keyboard)
             .foregroundStyle(.primary)
         }
         .navigationTitle("Create Game")

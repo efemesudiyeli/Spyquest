@@ -12,6 +12,7 @@ import RevenueCatUI
 struct MainMenuView: View {
     @ObservedObject var viewModel: GameViewModel
     @State var isPurchasePresenting: Bool = false
+    @State var displayPaywall = false
     
     var body: some View {
         VStack {
@@ -68,18 +69,14 @@ struct MainMenuView: View {
                         }
                     })
                     .frame(width: 160)
+
                     
-                    
-                   
-                    
-                    NavigationLink {
-                        ProPurchaseView(viewModel: viewModel)
+                    Button {
+                        displayPaywall.toggle()
                     } label: {
                         HStack {
                             Image(systemName: "crown.fill")
                                 .foregroundStyle(Color.premiumReverse)
-                                
-                                
                             Spacer()
                             
                             VStack {
@@ -90,21 +87,10 @@ struct MainMenuView: View {
                                     Text("Premium Forever")
                                         .foregroundStyle(Color.premiumReverse)
                                 }
-                                    
                             }
-                            
-  
                             Spacer()
                         }
-                        
-                        
-                    }
-                    
-                    .frame(width: 160)
-                  
-                    
-                    
-                    
+                    }  .frame(width: 160)
                     
                     NavigationLink {
                         SettingsView(viewModel: viewModel)
@@ -123,11 +109,10 @@ struct MainMenuView: View {
                 .background(.primary.opacity(0.9))
                 .clipShape(RoundedRectangle(cornerRadius: 12))
             }
+        }.sheet(isPresented: self.$displayPaywall) {
+            PaywallView(displayCloseButton: true).tint(Color.red)
         }
        
-       
-        
-        
         .navigationBarBackButtonHidden()
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {

@@ -146,10 +146,6 @@ struct SettingsView: View {
                 Text("Location Sets")
             }
 
-            
-            
-            
-            
             Section {
                 Button {
                     sendEmail()
