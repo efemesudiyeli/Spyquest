@@ -28,6 +28,7 @@ class GameViewModel: ObservableObject {
     
     @Published var showingRestoreAlert: Bool = false
     @Published var alertMessage: String = ""
+    @Published var isReviewAsked: Bool = false
     
     
     
@@ -233,10 +234,13 @@ class GameViewModel: ObservableObject {
     // MARK: - Review
     
     func requestReview() {
+        if !isReviewAsked {
             if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
                 SKStoreReviewController.requestReview(in: windowScene)
+                isReviewAsked = true
             }
         }
+    }
     
    
 }

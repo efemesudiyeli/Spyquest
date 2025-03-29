@@ -57,6 +57,8 @@ struct GameView: View {
         .alert("Time's up!", isPresented: $viewModel.isTimerFinished) {
             Button(action: {
                 viewModel.finishGame()
+                viewModel.requestReview()
+
             }, label: {
                 Text("Dismiss")
             })
@@ -66,6 +68,8 @@ struct GameView: View {
             
             Button(action: {
                 viewModel.restartGame()
+                viewModel.requestReview()
+
             }, label: {
                 Text("Restart")
             })

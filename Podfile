@@ -4,5 +4,4 @@ platform :ios, '16.0'
 target 'Spyfall' do
   use_frameworks!
   pod 'Google-Mobile-Ads-SDK'
-  pod 'RevenueCat'
 end

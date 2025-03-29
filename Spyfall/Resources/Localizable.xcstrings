@@ -1,6 +1,16 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    ":" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ":"
+          }
+        }
+      }
+    },
     "**Ask Questions:** Take turns asking questions about the location. Players answer honestly, while the spy tries to blend in.\n**Give Answers:** Provide answers related to the location. Be cautious not to reveal too much to the spy." : {
       "localizations" : {
         "tr" : {
@@ -107,6 +117,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "7. İpuçları"
+          }
+        }
+      }
+    },
+    "Abandoned Town" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terkedilmiş Kasaba"
           }
         }
       }
@@ -502,6 +523,17 @@
         }
       }
     },
+    "Bad Guy" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kötü Adam"
+          }
+        }
+      }
+    },
     "Ballet Dancer" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -520,6 +552,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bale Tiyatrosu"
+          }
+        }
+      }
+    },
+    "Bandit" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haydur"
+          }
+        }
+      }
+    },
+    "Bandit Camp" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haydut Kampı"
           }
         }
       }
@@ -734,7 +788,7 @@
       }
     },
     "Blacksmith" : {
-      "extractionState" : "manual",
+      "extractionState" : "translated",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
@@ -821,6 +875,17 @@
         }
       }
     },
+    "Bounty Hunter" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kelle Avcısı"
+          }
+        }
+      }
+    },
     "Brave Captain" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -887,6 +952,28 @@
         }
       }
     },
+    "Builder" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İnşaatçı"
+          }
+        }
+      }
+    },
+    "Bunkhouse" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Baraka"
+          }
+        }
+      }
+    },
     "Bus Driver" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -942,6 +1029,17 @@
         }
       }
     },
+    "Bystander" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seyirci"
+          }
+        }
+      }
+    },
     "Cabin Boy" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -949,6 +1047,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mürettebat Üyesi"
+          }
+        }
+      }
+    },
+    "Cactus Valley" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaktüs Vadisi"
+          }
+        }
+      }
+    },
+    "Cactus Valley is a vast, arid expanse surrounded by towering cacti. The heat is relentless, and only the toughest survive here. Outlaws use the valley to hide from the law, while travelers and ranchers brave the harsh conditions for their livelihood." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaktüs Vadisi, yüksek kaktüslerle çevrili geniş, kurak bir alandır. Sıcaklık acımasızdır ve burada sadece en güçlüler hayatta kalır. Kanun kaçakları kanunlardan saklanmak için vadiyi kullanırken, gezginler ve çiftçiler geçimlerini sağlamak için zorlu koşullara göğüs gerer."
           }
         }
       }
@@ -1019,7 +1139,7 @@
       }
     },
     "Captain" : {
-      "extractionState" : "manual",
+      "extractionState" : "translated",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
@@ -1227,6 +1347,28 @@
         }
       }
     },
+    "Cattle Driver" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sığır Çobanı"
+          }
+        }
+      }
+    },
+    "Cattle Ranch" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sığır Çiftliği"
+          }
+        }
+      }
+    },
     "CCTV Operatör" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1300,6 +1442,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Koro Üyesi"
+          }
+        }
+      }
+    },
+    "Churchgoer" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kiliseye Giden"
           }
         }
       }
@@ -1568,7 +1721,7 @@
       }
     },
     "Cook" : {
-      "extractionState" : "manual",
+      "extractionState" : "translated",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
@@ -1929,6 +2082,17 @@
         }
       }
     },
+    "Deputy" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şerif Yardımcısı"
+          }
+        }
+      }
+    },
     "Dermatologist" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1936,6 +2100,39 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dermatolog"
+          }
+        }
+      }
+    },
+    "Desert Native" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çöl Yerlisi"
+          }
+        }
+      }
+    },
+    "Desert Oasis" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çöl Vahası"
+          }
+        }
+      }
+    },
+    "Desert Traveler" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çöl Gezgini"
           }
         }
       }
@@ -2049,6 +2246,17 @@
         }
       }
     },
+    "Drifter" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Başıboş Gezgin"
+          }
+        }
+      }
+    },
     "Driller" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2093,6 +2301,17 @@
         }
       }
     },
+    "Drunken Gambler" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sarhoş Kumarbaz"
+          }
+        }
+      }
+    },
     "Dump Truck Operator" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2100,6 +2319,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kamyon Şoförü"
+          }
+        }
+      }
+    },
+    "Dusty Town" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tozlu Kasaba"
+          }
+        }
+      }
+    },
+    "Dusty Town is a small, run-down western town. The sun never seems to stop beating down on the main street, where saloons, gunfights, and secret deals take place daily. It's a place where danger lurks in every shadow, and everyone is watching their backs." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dusty Town küçük, köhne bir western kasabasıdır. Her gün barların, silahlı çatışmaların ve gizli anlaşmaların yapıldığı ana caddede güneş hiç batmıyor gibi görünüyor. Burası her gölgede tehlikenin kol gezdiği ve herkesin arkasını kolladığı bir yerdir."
           }
         }
       }
@@ -2149,7 +2390,7 @@
       }
     },
     "Engineer" : {
-      "extractionState" : "manual",
+      "extractionState" : "translated",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
@@ -2214,6 +2455,17 @@
         }
       }
     },
+    "Explorer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaşif"
+          }
+        }
+      }
+    },
     "Exporter" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2269,7 +2521,7 @@
       }
     },
     "Farmer" : {
-      "extractionState" : "manual",
+      "extractionState" : "translated",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
@@ -2377,7 +2629,7 @@
         }
       }
     },
-    "First Edition (%lld) " : {
+    "First Edition (%lld)" : {
       "localizations" : {
         "tr" : {
           "stringUnit" : {
@@ -2497,6 +2749,17 @@
         }
       }
     },
+    "Fort" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kale"
+          }
+        }
+      }
+    },
     "Free-Roaming Toddler" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2541,16 +2804,6 @@
         }
       }
     },
-    "Game Setting" : {
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Oyun Kurulumu"
-          }
-        }
-      }
-    },
     "Gamer" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2569,6 +2822,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Oyun Etkinliği"
+          }
+        }
+      }
+    },
+    "Gang Member" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çete Üyesi"
           }
         }
       }
@@ -2628,6 +2892,28 @@
         }
       }
     },
+    "Ghost" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hayalet"
+          }
+        }
+      }
+    },
+    "Ghost Town" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hayalet Kasaba"
+          }
+        }
+      }
+    },
     "Goaltender" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2635,6 +2921,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kaleci"
+          }
+        }
+      }
+    },
+    "Gold Mine" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Altın Madeni"
+          }
+        }
+      }
+    },
+    "Gold Prospector" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Altın Arayıcısı"
           }
         }
       }
@@ -2815,6 +3123,17 @@
         }
       }
     },
+    "Gunslinger" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Silahşör"
+          }
+        }
+      }
+    },
     "Gym Teacher" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2936,6 +3255,17 @@
         }
       }
     },
+    "Historian" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tarihçi"
+          }
+        }
+      }
+    },
     "Hockey Fan" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2965,6 +3295,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Evsize Kişi"
+          }
+        }
+      }
+    },
+    "Horse Ranch" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "At Çiftliği"
           }
         }
       }
@@ -3052,6 +3393,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nasıl Oynanır"
+          }
+        }
+      }
+    },
+    "Hunter" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avcı"
           }
         }
       }
@@ -3375,6 +3727,17 @@
         }
       }
     },
+    "Laborer" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İşçi"
+          }
+        }
+      }
+    },
     "Laundromat" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3393,6 +3756,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Avukat"
+          }
+        }
+      }
+    },
+    "Leader" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lider"
           }
         }
       }
@@ -3459,6 +3833,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Park"
+          }
+        }
+      }
+    },
+    "Location Set" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lokasyon Seti"
           }
         }
       }
@@ -3714,12 +4098,23 @@
       }
     },
     "Medic" : {
-      "extractionState" : "manual",
+      "extractionState" : "translated",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Doktor"
+            "value" : "Sağlıkçı"
+          }
+        }
+      }
+    },
+    "Merchant" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tüccar"
           }
         }
       }
@@ -3742,6 +4137,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Askeri Üs"
+          }
+        }
+      }
+    },
+    "Mine Shaft" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maden Ocağı"
           }
         }
       }
@@ -3786,6 +4192,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Keşiş"
+          }
+        }
+      }
+    },
+    "Mountain Pass" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dağ Geçidi"
           }
         }
       }
@@ -3889,6 +4306,17 @@
         }
       }
     },
+    "Native Warrior" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yerli Savaşçı"
+          }
+        }
+      }
+    },
     "Navigator" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3896,6 +4324,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Navigasyoncu"
+          }
+        }
+      }
+    },
+    "Neighbor" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Komşu"
           }
         }
       }
@@ -4020,6 +4459,17 @@
         }
       }
     },
+    "Old Church" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eski Kilise"
+          }
+        }
+      }
+    },
     "Old Lady" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -4093,6 +4543,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dış Saha Oyuncusu"
+          }
+        }
+      }
+    },
+    "Outlaw" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kanun Kaçağı"
+          }
+        }
+      }
+    },
+    "Outlaw Hideout" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kanun Kaçağı Saklanma Noktası"
           }
         }
       }
@@ -4175,7 +4647,7 @@
       }
     },
     "Passenger" : {
-      "extractionState" : "manual",
+      "extractionState" : "translated",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
@@ -4230,12 +4702,12 @@
       }
     },
     "Performer" : {
-      "extractionState" : "manual",
+      "extractionState" : "translated",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sanatçı"
+            "value" : "Performans Sanatçısı"
           }
         }
       }
@@ -4280,6 +4752,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pilot"
+          }
+        }
+      }
+    },
+    "Pirate Edition (%lld)" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Korsan Versiyon (%lld)"
           }
         }
       }
@@ -4414,13 +4896,27 @@
       }
     },
     "Premium Forever" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sonsuz Premium"
+          }
+        }
+      }
     },
     "Premium Unlocked" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Premium Açıldı"
+          }
+        }
+      }
     },
     "Priest" : {
-      "extractionState" : "manual",
+      "extractionState" : "translated",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
@@ -4503,6 +4999,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Suflör"
+          }
+        }
+      }
+    },
+    "Prospector" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maden Arayıcısı"
           }
         }
       }
@@ -4594,13 +5101,24 @@
         }
       }
     },
-    "Ranger" : {
-      "extractionState" : "manual",
+    "Rancher's House" : {
+      "extractionState" : "translated",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kolcu"
+            "value" : "Çiftçinin Evi"
+          }
+        }
+      }
+    },
+    "Ranger" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Koruma Görevlisi"
           }
         }
       }
@@ -4897,6 +5415,17 @@
         }
       }
     },
+    "Saloons and Bars" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salonlar ve Barlar"
+          }
+        }
+      }
+    },
     "Salty Old Pirate" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -4953,12 +5482,12 @@
       }
     },
     "Scout" : {
-      "extractionState" : "manual",
+      "extractionState" : "translated",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gözcü"
+            "value" : "İzci"
           }
         }
       }
@@ -5050,12 +5579,12 @@
       }
     },
     "Servant" : {
-      "extractionState" : "manual",
+      "extractionState" : "translated",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hizmetkar"
+            "value" : "Hizmetçi"
           }
         }
       }
@@ -5099,6 +5628,39 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Raf Düzenleme Sorumlusu"
+          }
+        }
+      }
+    },
+    "Sheriff" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şerif"
+          }
+        }
+      }
+    },
+    "Sheriff's Office" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şerif Ofisi"
+          }
+        }
+      }
+    },
+    "Sheriff’s Office" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şerif’in Ofisi"
           }
         }
       }
@@ -5291,7 +5853,7 @@
       }
     },
     "Soldier" : {
-      "extractionState" : "manual",
+      "extractionState" : "translated",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
@@ -5411,16 +5973,23 @@
         }
       }
     },
-    "Spyquest" : {
-
-    },
-    "Spyquest is a game where players ask questions to find the spy, who doesn’t know the location. The spy’s goal is to blend in and figure out the location without being detected." : {
-      "extractionState" : "stale",
+    "Spy" : {
+      "extractionState" : "translated",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Spyquest, oyuncuların casusu bulmak için sorular sorduğu bir oyundur. Casus, mekanın ne olduğunu bilmez. Casusun amacı, fark edilmeden oyuncuların arasına sızmak ve mekânı tahmin etmektir."
+            "value" : "Casus"
+          }
+        }
+      }
+    },
+    "Spyquest" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spyquest"
           }
         }
       }
@@ -5480,6 +6049,28 @@
         }
       }
     },
+    "Stagecoach Driver" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fayton Sürücüsü"
+          }
+        }
+      }
+    },
+    "Stationmaster" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İstasyon Şefi"
+          }
+        }
+      }
+    },
     "Stoker" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -5498,6 +6089,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sokak Sanatçısı"
+          }
+        }
+      }
+    },
+    "Street Urchin" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sokak Çocuğu"
           }
         }
       }
@@ -5644,6 +6246,17 @@
         }
       }
     },
+    "Tavern" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taverna"
+          }
+        }
+      }
+    },
     "Teacher" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -5710,6 +6323,17 @@
         }
       }
     },
+    "The abandoned town is a desolate place, once filled with life but now left to decay. Buildings crumble, and the streets are eerily silent. It's a place where only the bravest dare to explore, seeking old secrets or forgotten treasures." : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terk edilmiş kasaba, bir zamanlar hayat dolu ancak şimdi çürümeye bırakılmış ıssız bir yerdir. Binalar yıkılır ve sokaklar ürkütücü bir şekilde sessizdir. Sadece en cesurların, eski sırları veya unutulmuş hazineleri ararken keşfetmeye cesaret ettiği bir yerdir."
+          }
+        }
+      }
+    },
     "The app automatically assigns roles and locations to each player." : {
       "localizations" : {
         "tr" : {
@@ -5720,12 +6344,111 @@
         }
       }
     },
+    "The bandit camp is hidden deep in the forest or canyons, a haven for criminals. Here, outlaws plan their raids, divide spoils, and sometimes get caught in bloody infighting. It's a dangerous place for anyone who isn't part of the gang." : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haydut kampı, ormanın veya kanyonların derinliklerinde gizlenmiş, suçlular için bir sığınaktır. Burada, kanun kaçakları baskınlarını planlar, ganimetleri paylaşır ve bazen kanlı iç çatışmalara kapılırlar. Çetenin bir parçası olmayan herkes için tehlikeli bir yerdir."
+          }
+        }
+      }
+    },
+    "The bandit camp is hidden deep in the forest or canyons, a haven for criminals. Here, outlaws plan their raids, divide spoils, and sometimes get caught in bloody infighting. It’s a dangerous place for anyone who isn’t part of the gang." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haydut kampı, suçlular için bir sığınak olan ormanın veya kanyonların derinliklerinde gizlidir. Burada haydutlar baskınlarını planlar, ganimetleri paylaşır ve bazen kanlı çatışmalara girerler. Çetenin bir parçası olmayan herkes için tehlikeli bir yerdir."
+          }
+        }
+      }
+    },
+    "The bunkhouse is a modest building where cowboys, ranchers, and travelers rest after long days of hard work. It's a place of camaraderie, where stories are shared and meals are cooked in the warmth of the fire." : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Baraka, kovboyların, çiftçilerin ve yolcuların uzun ve zorlu günlerin ardından dinlendikleri mütevazı bir binadır. Hikayelerin paylaşıldığı ve yemeklerin ateşin sıcaklığında pişirildiği bir arkadaşlık yeridir."
+          }
+        }
+      }
+    },
+    "The cattle ranch is a vast open space where cowboys and ranchers work tirelessly to tend to herds of cattle. It's a harsh environment with extreme weather, but it's also a critical part of life in the West." : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sığır çiftliği, kovboyların ve çiftçilerin sığır sürülerine bakmak için yorulmadan çalıştığı geniş açık bir alandır. Aşırı hava koşulları ile zorlu bir ortamdır, ancak aynı zamanda Batı'daki yaşamın kritik bir parçasıdır."
+          }
+        }
+      }
+    },
+    "The desert oasis is a rare, life-saving spot in the vast, unforgiving desert. It's a place where travelers stop to rest, refill their water, and gather strength before continuing their journey across the barren land." : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çöl vahası, geniş, acımasız çölde nadir bulunan, hayat kurtaran bir noktadır. Yolcuların dinlenmek, sularını doldurmak ve çorak arazi boyunca yolculuklarına devam etmeden önce güç toplamak için durdukları bir yerdir."
+          }
+        }
+      }
+    },
+    "The fort is a military stronghold, built to protect settlers from attacks by outlaws or native tribes. It's a place of order and discipline, but its soldiers are often stretched thin as they face constant threats." : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kale, yerleşimcileri kanun kaçakları veya yerli kabileler tarafından saldırılardan korumak için inşa edilmiş askeri bir kaledir. Düzen ve disiplin yeridir, ancak askerleri sürekli tehditlerle karşı karşıya kaldıkça genellikle zorlanırlar."
+          }
+        }
+      }
+    },
     "The game ends when the spy is correctly identified or the spy guesses the location correctly." : {
       "localizations" : {
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Oyun, casus doğru şekilde tespit edildiğinde veya casus lokasyonu tahmin ettiğinde sona erer."
+          }
+        }
+      }
+    },
+    "The ghost town is a relic of the past, now empty and haunted by the spirits of those who once lived here. The creaking wood and broken windows tell tales of a once-thriving community, now swallowed by time." : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hayalet kasaba, geçmişten kalan bir kalıntıdır, şimdi boş ve bir zamanlar burada yaşayanların ruhları tarafından lanetlenmiştir. Gıcırdayan ahşap ve kırık pencereler, bir zamanlar gelişen, şimdi zamanın yuttuğu bir topluluğun hikayelerini anlatır."
+          }
+        }
+      }
+    },
+    "The gold mine is a treacherous place located deep within the desert. Many brave souls have ventured in to find riches, but few return. It is filled with hidden tunnels, dangerous caves, and the echo of old, forgotten treasure." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Altın madeni, çölün derinliklerinde bulunan tehlikeli bir yerdir. Pek çok cesur insan zenginlik bulmak için buraya girmiş, ancak çok azı geri dönebilmiştir. Gizli tüneller, tehlikeli mağaralar ve eski, unutulmuş hazinenin yankısıyla doludur."
+          }
+        }
+      }
+    },
+    "The horse ranch is a place of hard work and reward. Cowboys and ranchers care for the horses and cattle that roam the vast plains. It's a peaceful spot unless an outlaw gang decides to raid the ranch for supplies or livestock." : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "At çiftliği, zor çalışma ve ödül yeridir. Kovboylar ve çiftçiler, geniş ovalarda dolaşan atlara ve sığırlara bakarlar. Bir kanun kaçağı çetesi malzeme veya hayvan için çiftliğe baskın yapmaya karar vermediği sürece huzurlu bir yerdir."
           }
         }
       }
@@ -5741,12 +6464,133 @@
         }
       }
     },
+    "The mine shaft is a deep, dark hole in the ground, filled with the potential for wealth and the danger of collapse. It's a treacherous place where miners risk their lives in search of precious metals." : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maden kuyusu, zenginlik potansiyeli ve çökme tehlikesiyle dolu, yerdeki derin, karanlık bir deliğidir. Madencilerin değerli metaller arayışında hayatlarını riske attıkları tehlikeli bir yerdir."
+          }
+        }
+      }
+    },
+    "The mountain pass is a dangerous route through the rugged mountains. It's a shortcut for those who know the land, but it's fraught with peril. Bandits often ambush travelers here, hoping to steal their goods." : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dağ geçidi, engebeli dağlardan geçen tehlikeli bir rotadır. Araziyi bilenler için bir kısayoldur, ancak tehlikelerle doludur. Haydutlar sıklıkla burada yolculara pusu kurar, mallarını çalmayı umarak."
+          }
+        }
+      }
+    },
+    "The old church stands as a symbol of hope amidst the chaos of the Wild West. It has witnessed many stories—of love, loss, and redemption. Some come here for peace, while others seek shelter or hide from the law." : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eski kilise, Vahşi Batı'nın kaosunda umudun bir sembolü olarak durur. Aşk, kayıp ve kurtuluş hikayelerine tanıklık etmiştir. Bazıları huzur için buraya gelirken, diğerleri sığınak arar veya kanundan saklanır."
+          }
+        }
+      }
+    },
+    "The outlaw hideout is hidden deep in the wilds, a safe place for criminals on the run. It's a place where plans are made, supplies are stored, and alliances are forged. But it's also a place of constant paranoia, as outlaws fear the law catching up to them." : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kanun kaçağı sığınağı, vahşi doğanın derinliklerinde gizlenmiş, kaçak suçlular için güvenli bir yerdir. Planların yapıldığı, malzemelerin depolandığı ve ittifakların kurulduğu bir yerdir. Ancak aynı zamanda, kanun kaçakları kanunun kendilerine yetişmesinden korktukları için sürekli paranoya yaşanan bir yerdir."
+          }
+        }
+      }
+    },
+    "The rancher's house is a small, humble abode where a hardworking family lives. It is surrounded by vast fields and animals. Though peaceful, it can quickly become the target of an outlaw raid or a dispute with neighboring ranchers." : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çiftçinin evi, çalışkan bir ailenin yaşadığı küçük, mütevazı bir evdir. Geniş tarlalar ve hayvanlarla çevrilidir. Huzurlu olmasına rağmen, hızlı bir şekilde bir haydut baskınının hedefi veya komşu çiftçilerle bir anlaşmazlık konusu haline gelebilir."
+          }
+        }
+      }
+    },
+    "The rancher’s house is a small, humble abode where a hardworking family lives. It is surrounded by vast fields and animals. Though peaceful, it can quickly become the target of an outlaw raid or a dispute with neighboring ranchers." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çiftlik sahibinin evi, çalışkan bir ailenin yaşadığı küçük, mütevazı bir meskendir. Etrafı geniş tarlalar ve hayvanlarla çevrilidir. Huzurlu olmasına rağmen, kısa sürede bir haydut baskınının veya komşu çiftçilerle bir anlaşmazlığın hedefi haline gelebilir."
+          }
+        }
+      }
+    },
+    "The saloons and bars are the heart of social life in the Wild West. Here, gamblers test their luck, cowboys share their stories, and outlaws plot their next crime. The sound of piano music, clinking glasses, and the occasional gunshot fills the air as tensions rise." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salonlar ve barlar Vahşi Batı'da sosyal hayatın kalbidir. Burada kumarbazlar şanslarını dener, kovboylar hikâyelerini paylaşır ve kanun kaçakları bir sonraki suçlarını planlar. Piyano müziği, tokuşturulan kadehler ve ara sıra duyulan silah sesleri tansiyonu yükseltir."
+          }
+        }
+      }
+    },
+    "The Sheriff's Office is the law's last stand in the Wild West. It's a small building at the edge of town, where prisoners are held and justice is served. Behind its walls, fierce gunfights are often fought as outlaws try to escape their fate." : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şerif Ofisi, Vahşi Batı'da kanunun son kalesidir. Kasabanın kenarında, mahkumların tutulduğu ve adaletin sağlandığı küçük bir binadır. Duvarlarının arkasında, kanun kaçakları kaderlerinden kaçmaya çalışırken sık sık şiddetli silahlı çatışmalar yaşanır."
+          }
+        }
+      }
+    },
+    "The Sheriff’s Office is the law’s last stand in the Wild West. It's a small building at the edge of town, where prisoners are held and justice is served. Behind its walls, fierce gunfights are often fought as outlaws try to escape their fate." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şerif'in Ofisi, Vahşi Batı'da kanunların son kalesidir. Kasabanın kenarında, mahkûmların tutulduğu ve adaletin yerini bulduğu küçük bir binadır. Duvarlarının ardında, kanun kaçakları kaderlerinden kaçmaya çalışırken sık sık şiddetli silahlı çatışmalar yaşanır."
+          }
+        }
+      }
+    },
     "The spy can guess the location at any time. \nIf correct, the spy wins.\nIf wrong, the players win." : {
       "localizations" : {
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Casus, herhangi bir zamanda mekanı tahmin edebilir.                                                       Tahmini doğruysa, casus kazanır.                                                  Yanlışsa, oyuncular kazanır."
+          }
+        }
+      }
+    },
+    "The tavern is a gathering place for locals and strangers alike. It's where deals are made, fights are started, and rumors spread. The smell of whiskey and the sound of laughter fill the air as cowboys and outlaws mingle." : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meyhane, hem yerliler hem de yabancılar için bir buluşma yeridir. Anlaşmaların yapıldığı, kavgaların başladığı ve söylentilerin yayıldığı yerdir. Kovboylar ve kanun kaçakları birbirine karışırken viski kokusu ve kahkaha sesleri havayı doldurur."
+          }
+        }
+      }
+    },
+    "The train station is a busy hub of activity, where travelers come and go, and where secrets are exchanged. Trains arrive with goods, people, and opportunities, but they also bring danger and conflict." : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tren istasyonu, yolcuların gelip gittiği ve sırların değiş tokuş edildiği yoğun bir faaliyet merkezidir. Trenler mallar, insanlar ve fırsatlarla gelir, ancak aynı zamanda tehlike ve çatışma da getirirler."
           }
         }
       }
@@ -5758,6 +6602,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Birleşmiş Milletler"
+          }
+        }
+      }
+    },
+    "The Wild West Show is a traveling spectacle that brings the thrills of cowboy life to town. There are daring stunts, trick shooting, and dramatic reenactments of famous gunfights. It's a celebration of the West's rugged, exciting history." : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vahşi Batı Gösterisi, kovboy yaşamının heyecanını kasabaya getiren gezici bir gösteridir. Cesur akrobasi hareketleri, hileli atışlar ve ünlü silahlı çatışmaların dramatik yeniden canlandırmaları vardır. Batı'nın sert, heyecan verici tarihinin bir kutlamasıdır."
+          }
+        }
+      }
+    },
+    "The windmill is a symbol of hard work and perseverance in the West. It pumps water for the cattle and provides power for the farm, standing tall against the desert winds. It's a lifeline in the wilderness." : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yel değirmeni, Batı'da sıkı çalışma ve azmin sembolüdür. Sığırlar için su pompalar ve çiftlik için güç sağlar, çöl rüzgarlarına karşı dimdik durur. Vahşi doğada bir can simididir."
           }
         }
       }
@@ -5807,7 +6673,7 @@
       }
     },
     "Ticket Seller" : {
-      "extractionState" : "manual",
+      "extractionState" : "translated",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
@@ -5849,6 +6715,17 @@
         }
       }
     },
+    "Torturer" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İşkenceci"
+          }
+        }
+      }
+    },
     "Tour Guide" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -5867,6 +6744,50 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Turist"
+          }
+        }
+      }
+    },
+    "Town Doctor" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kasaba Doktoru"
+          }
+        }
+      }
+    },
+    "Town Sheriff" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kasaba Şerifi"
+          }
+        }
+      }
+    },
+    "Townsperson" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kasabalı"
+          }
+        }
+      }
+    },
+    "Trail Scout" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İzci"
           }
         }
       }
@@ -5893,6 +6814,50 @@
         }
       }
     },
+    "Train Engineer" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tren Mühendisi"
+          }
+        }
+      }
+    },
+    "Train Robbery Site" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tren Soygunu Bölgesi"
+          }
+        }
+      }
+    },
+    "Train robbery sites are notorious in the Wild West. A moving train filled with gold and valuables is a tempting target for outlaws. The narrow, winding tracks are the perfect place for a high-speed chase and a dangerous heist." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vahşi Batı'da tren soygunu alanları kötü şöhretlidir. Altın ve değerli eşyalarla dolu hareket halindeki bir tren haydutlar için cazip bir hedeftir. Dar, dolambaçlı raylar yüksek hızlı bir kovalamaca ve tehlikeli bir soygun için mükemmel bir yerdir."
+          }
+        }
+      }
+    },
+    "Train Station" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tren İstasyonu"
+          }
+        }
+      }
+    },
     "Trainer" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -5904,6 +6869,17 @@
         }
       }
     },
+    "Traveler" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gezgin"
+          }
+        }
+      }
+    },
     "Trespasser" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -5911,6 +6887,39 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kaçak"
+          }
+        }
+      }
+    },
+    "Tumbleweed Canyon" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taklaotu Kanyonu"
+          }
+        }
+      }
+    },
+    "Tumbleweed Canyon is a narrow, winding gorge surrounded by jagged rocks and endless tumbleweeds. It's known as a hideout for bandits and outlaws, where they plan their next robbery. Only the bravest venture into its depths, seeking riches or revenge." : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Küre Çalı Kanyonu, pürüzlü kayalar ve sonsuz küre çalılarla çevrili dar, kıvrımlı bir boğazdır. Haydutların ve kanun kaçaklarının sığınağı olarak bilinir, burada bir sonraki soygunu planlarlar. Sadece en cesurlar, zenginlik veya intikam peşinde derinliklerine girmeye cesaret eder."
+          }
+        }
+      }
+    },
+    "Tumbleweed Canyon is a narrow, winding gorge surrounded by jagged rocks and endless tumbleweeds. It’s known as a hideout for bandits and outlaws, where they plan their next robbery. Only the bravest venture into its depths, seeking riches or revenge." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taklaotu Kanyonu, sivri kayalar ve sonsuz yosunlarla çevrili dar, dolambaçlı bir geçittir. Haydutlar ve kanun kaçakları için bir sonraki soygunlarını planladıkları bir sığınak olarak bilinir. Sadece en cesur olanlar zenginlik ya da intikam arayışıyla derinliklerine iner."
           }
         }
       }
@@ -5960,7 +6969,7 @@
       }
     },
     "Veterinarian" : {
-      "extractionState" : "manual",
+      "extractionState" : "translated",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
@@ -6079,13 +7088,13 @@
         }
       }
     },
-    "Welcome to \n Spyquest" : {
-      "extractionState" : "stale",
+    "Wild West Show" : {
+      "extractionState" : "manual",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Spyquest'e Hoşgeldiniz"
+            "value" : "Vahşi Batı Gösterisi"
           }
         }
       }
@@ -6097,6 +7106,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vahşi Hayat Meraklısı"
+          }
+        }
+      }
+    },
+    "Windmill" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yel Değirmeni"
           }
         }
       }
@@ -6119,6 +7139,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Şarap Ustası"
+          }
+        }
+      }
+    },
+    "Witness" : {
+      "extractionState" : "translated",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tanık"
           }
         }
       }

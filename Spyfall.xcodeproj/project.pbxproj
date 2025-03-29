@@ -24,6 +24,8 @@
 		D5BB58382C623C6300E8D5A3 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5BB58372C623C6300E8D5A3 /* Launch Screen.storyboard */; };
 		D5C3024E2C4A4F0C001453CA /* LocationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C3024D2C4A4F0C001453CA /* LocationsView.swift */; };
 		D5C659C12C57E8AD004D48CE /* ProPurchaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C659C02C57E8AD004D48CE /* ProPurchaseView.swift */; };
+		D5C69A4E2D984E69007E1546 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = D5C69A4D2D984E69007E1546 /* RevenueCat */; };
+		D5C69A502D984E69007E1546 /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = D5C69A4F2D984E69007E1546 /* RevenueCatUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,8 +57,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5C69A502D984E69007E1546 /* RevenueCatUI in Frameworks */,
 				A682A35074E80B240B62A575 /* Pods_Spyfall.framework in Frameworks */,
 				D56DBED92C5676F700569C81 /* StoreKit.framework in Frameworks */,
+				D5C69A4E2D984E69007E1546 /* RevenueCat in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,8 +212,12 @@
 				en,
 				Base,
 				tr,
+				ja,
 			);
 			mainGroup = D5B604332C48E223004A17A8;
+			packageReferences = (
+				D5C69A4C2D984E69007E1546 /* XCRemoteSwiftPackageReference "purchases-ios" */,
+			);
 			productRefGroup = D5B6043D2C48E223004A17A8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -373,6 +381,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -429,6 +438,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -535,6 +545,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D5C69A4C2D984E69007E1546 /* XCRemoteSwiftPackageReference "purchases-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:RevenueCat/purchases-ios.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D5C69A4D2D984E69007E1546 /* RevenueCat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5C69A4C2D984E69007E1546 /* XCRemoteSwiftPackageReference "purchases-ios" */;
+			productName = RevenueCat;
+		};
+		D5C69A4F2D984E69007E1546 /* RevenueCatUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5C69A4C2D984E69007E1546 /* XCRemoteSwiftPackageReference "purchases-ios" */;
+			productName = RevenueCatUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D5B604342C48E223004A17A8 /* Project object */;
 }
