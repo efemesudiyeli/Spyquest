@@ -154,6 +154,9 @@ struct CreateGameView: View {
                     viewModel.adCoordinator.presentAd()
                 }
             }
+            .onTapGesture {
+                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+            }
     }
 }
 
