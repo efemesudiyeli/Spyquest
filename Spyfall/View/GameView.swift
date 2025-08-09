@@ -63,16 +63,7 @@ struct GameView: View {
             }, label: {
                 Text("Dismiss")
             })
-        }.presentPaywallIfNeeded(
-            requiredEntitlementIdentifier: "Pro",
-            purchaseCompleted: { customerInfo in
-                print("Purchase completed: \(customerInfo.entitlements)")
-            },
-            restoreCompleted: { customerInfo in
-                // Paywall will be dismissed automatically if "pro" is now active.
-                print("Purchases restored: \(customerInfo.entitlements)")
-            }
-        )
+        }
         
         .alert("Are you sure you want to restart the game?", isPresented: $isRestartAlertPresented) {
             

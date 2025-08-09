@@ -31,8 +31,7 @@ class GameViewModel: ObservableObject {
     @Published var isReviewAsked: Bool = false
     
     
-    
-
+    private var timeWhenPaused: TimeInterval = 0
     var roundTimer: Timer? = nil
     
     init() {
@@ -96,24 +95,21 @@ class GameViewModel: ObservableObject {
     }
     
     func restartGame() -> Void {
-       
         prepareGame()
-        
         if !isAdsRemoved {
             Task {
                 await adCoordinator.loadAd()
                 adCoordinator.presentAd()
             }
-            
         }
         startRoundTimer()
         isGameStarted = true
-       
+        
     }
     
     func finishGame() -> Void {
-      
-      
+        
+        
         isGameStarted = false
     }
     
@@ -138,7 +134,7 @@ class GameViewModel: ObservableObject {
                 withAnimation {
                     self.timeRemaining -= 1
                 }
-               
+                
             } else {
                 timer.invalidate()
                 self.isTimerFinished = true
@@ -194,6 +190,7 @@ class GameViewModel: ObservableObject {
             } else if let purchaserInfo = purchaserInfo {
                 print("Purchase successful: \(purchaserInfo)")
                 self.isAdsRemoved = true
+                self.checkPurchaseStatus()
             }
         }
     }
@@ -242,7 +239,7 @@ class GameViewModel: ObservableObject {
         }
     }
     
-   
+    
 }
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -276,7 +273,10 @@ class AdCoordinator: NSObject, GADFullScreenContentDelegate {
         }
         
         // View controller is an optional parameter. Pass in nil.
-        fullScreenAd.present(fromRootViewController: nil)
+        DispatchQueue.main.async {
+            fullScreenAd.present(fromRootViewController: nil)
+        }
+        
     }
     
     // MARK: - GADFullScreenContentDelegate methods
@@ -305,6 +305,7 @@ class AdCoordinator: NSObject, GADFullScreenContentDelegate {
     
     func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         print("\(#function) called")
+        
     }
     
 }

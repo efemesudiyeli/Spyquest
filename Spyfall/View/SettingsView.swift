@@ -36,114 +36,35 @@ struct SettingsView: View {
     var body: some View {
         List {
             Section {
-                Menu {
-                    Button {
-                        selectedLocationSet = .spyfallOne
-                    } label: {
-                        Text("First Edition (\(LocationSets.spyfallOne.locations.count))")
+                Picker("Current Setting:", selection: $selectedLocationSet) {
+                    ForEach(LocationSets.locationSets, id: \.self) { locationSet in
+                        Text("\(locationSet.rawValue) (\(locationSet.locations.count))")
+                            .tag(locationSet)
                     }
-                    
-                    Button {
-                        selectedLocationSet = .spyfallTwo
-                    } label: {
-                        Text("Second Edition (\(LocationSets.spyfallTwo.locations.count))")
-                    }
-                    
-                    
-                    
-                    if viewModel.isAdsRemoved {
-                        
-                        Button {
-                            selectedLocationSet = .spyfallCombined
-                        } label: {
-                            Text("Combined Edition (\(LocationSets.spyfallCombined.locations.count))")
-                        }
-                        
-                        Button {
-                            selectedLocationSet = .spyfallExtra
-                        } label: {
-                            Text("Extra Edition (\(LocationSets.spyfallExtra.locations.count))")
-                        }
-                        
-                        Button {
-                            selectedLocationSet = .spyfallAll
-                        } label: {
-                            Text("All Edition (\(LocationSets.spyfallAll.locations.count))")
-                        }
-                        
-                        Button {
-                            selectedLocationSet = .pirateTheme
-                        } label: {
-                            Text("Pirate Edition (\(LocationSets.pirateTheme.locations.count))")
-                        }
-                        
-                        Button {
-                            selectedLocationSet = .wildWestTheme
-                        } label: {
-                            Text("Wild West Edition (\(LocationSets.wildWestTheme.locations.count))")
-                        }
-                    } else {
-                        Label {
-                            Text("Combined Edition (\(LocationSets.spyfallCombined.locations.count))")
-                                .foregroundStyle(.gray)
-                        } icon: {
-                            Image(systemName: "crown.fill")
-                                .foregroundStyle(Color.premiumReverse)
-                        }
-
-                        Label {
-                            Text("Extra Edition (\(LocationSets.spyfallExtra.locations.count))")
-                                .foregroundStyle(.gray)
-                        } icon: {
-                            Image(systemName: "crown.fill")
-                                .foregroundStyle(Color.premiumReverse)
-                        }
-                        
-                        Label {
-                            Text( "All Edition (\(LocationSets.spyfallAll.locations.count))")
-                                .foregroundStyle(.gray)
-                        } icon: {
-                            Image(systemName: "crown.fill")
-                                .foregroundStyle(Color.premiumReverse)
-                        }
-                        
-                        Label {
-                            Text( "Pirate Edition (\(LocationSets.pirateTheme.locations.count))")
-                                .foregroundStyle(.gray)
-                        } icon: {
-                            Image(systemName: "crown.fill")
-                                .foregroundStyle(Color.premiumReverse)
-                        }
-                        
-                        Label {
-                            Text( "Wild West Edition (\(LocationSets.wildWestTheme.locations.count))")
-                                .foregroundStyle(.gray)
-                        } icon: {
-                            Image(systemName: "crown.fill")
-                                .foregroundStyle(Color.premiumReverse)
+                    ForEach(LocationSets.premiumSets, id: \.self) { premiumSet in
+                        if viewModel.isAdsRemoved {
+                            Text("\(premiumSet.rawValue) (\(premiumSet.locations.count))")
+                                .tag(premiumSet)
+                        } else {
+                            HStack {
+                                Text("\(premiumSet.rawValue) (\(premiumSet.locations.count))")
+                                    .foregroundStyle(.gray)
+                                Image(systemName: "crown.fill")
+                            }
+                            .tag(premiumSet)
+                            .selectionDisabled()
+                            
                         }
                     }
-                } label: {
-                    HStack {
-                        Text("Location Set")
-                        Spacer()
-                        Text(":")
-                        Spacer()
-                        Text("\(selectedLocationSet.rawValue)")
-                            .foregroundStyle(.blue)
-                    }
-                    .padding()
-                   
-                }.onChange(of: selectedLocationSet) { newValue in
+                }
+                
+                .pickerStyle(.menu)
+                .onChange(of: selectedLocationSet) { _, newValue in
                     CurrentSelectedLocationSet = newValue
                     Location.locationData = CurrentSelectedLocationSet.locations
                 }
-
-                
-                
-                
             } header: {
-                Text("Location Sets")
+                Text("Game Setting")
             }
 
             Section {
@@ -170,6 +91,25 @@ struct SettingsView: View {
             } footer: {
                 Text("We would love for you to rate our app and share your feedback with us. Thank you!")
             }
+            
+            Section {
+                Button {
+                    if let url = URL(string: UIApplication.openSettingsURLString),
+                                  UIApplication.shared.canOpenURL(url) {
+                                   UIApplication.shared.open(url)
+                               }
+                } label: {
+                    HStack {
+                        Image(systemName: "globe")
+                        Text("Change Language")
+                    }
+                }
+            } header: {
+                Text("Language")
+            } footer: {
+                Text("More languages will be added soon. Please send feedback which one do you want.")
+            }
+
         }
         
         .navigationTitle("Settings")

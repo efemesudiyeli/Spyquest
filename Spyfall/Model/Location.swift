@@ -43,6 +43,19 @@ enum LocationSets: String {
     case spyfallAll = "All Edition"
     case pirateTheme = "Pirates Edition"
     case wildWestTheme = "Wild West Edition"
+    
+    static let premiumSets: [LocationSets] = [
+        .spyfallCombined,
+        .spyfallExtra,
+        .spyfallAll,
+        .wildWestTheme,
+        .pirateTheme
+    ]
+    
+    static let locationSets: [LocationSets] = [
+        .spyfallOne,
+        .spyfallTwo
+    ]
 
     
     var locations: [Location] {

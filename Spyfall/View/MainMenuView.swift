@@ -16,18 +16,30 @@ struct MainMenuView: View {
     
     var body: some View {
         VStack {
-          
-          
-                Image("spyquestIcon-removebg")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 200)
-                    .colorMultiply(.primary)
-            Text("Spyquest")
-                .font(.title)
-                .fontWeight(.black)
-                .padding(.top, -40)
-         
+            Image("spyquestIcon-removebg")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 200)
+                .colorMultiply(.primary)
+            
+            if viewModel.isAdsRemoved {
+                VStack {
+                    Text("Spyquest")
+                        .font(.title)
+                        .fontWeight(.black)
+                        .padding(.top, -40)
+                    Text("Premium")
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .padding(.top, -30)
+                        .foregroundStyle(.premiumReverse)
+                }
+            } else {
+                Text("Spyquest")
+                    .font(.title)
+                    .fontWeight(.black)
+                    .padding(.top, -40)
+            }
             
             VStack {
                 Group {
@@ -41,11 +53,9 @@ struct MainMenuView: View {
                             Spacer()
                         }
                     })
-                    
                     .frame(width: 180, height: 24)
                     .bold()
                     
-
                     NavigationLink(destination: {
                         LocationsView(viewModel: viewModel)
                     }, label: {
@@ -69,8 +79,6 @@ struct MainMenuView: View {
                         }
                     })
                     .frame(width: 160)
-
-                    
                     Button {
                         displayPaywall.toggle()
                     } label: {
@@ -81,10 +89,10 @@ struct MainMenuView: View {
                             
                             VStack {
                                 if viewModel.isAdsRemoved {
-                                    Text("Premium Unlocked")
+                                    Text("Change Your Plan")
                                         .foregroundStyle(Color.premiumReverse)
                                 } else {
-                                    Text("Premium Forever")
+                                    Text("Unlock All Features")
                                         .foregroundStyle(Color.premiumReverse)
                                 }
                             }
@@ -112,23 +120,20 @@ struct MainMenuView: View {
         }.sheet(isPresented: self.$displayPaywall) {
             PaywallView(displayCloseButton: true).tint(Color.red)
         }
-       
-        .navigationBarBackButtonHidden()
-        .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-              
+        .onChange(of: displayPaywall) { _, isPresented in
+            if !isPresented {
+                viewModel.checkPurchaseStatus()
             }
-            
         }
+        .navigationBarBackButtonHidden()
         .onAppear {
+            viewModel.checkPurchaseStatus()
             viewModel.fetchProduct()
             viewModel.finishGame()
+            
         }
-        
     }
-    
 }
-
 
 #Preview {
     NavigationStack {
