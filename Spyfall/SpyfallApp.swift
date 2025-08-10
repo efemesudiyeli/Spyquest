@@ -7,6 +7,7 @@
 
 import SwiftUI
 import RevenueCat
+import Firebase
 
 
 @main
@@ -17,6 +18,7 @@ struct SpyfallApp: App {
     
     init() {
         Purchases.configure(withAPIKey: "appl_moqHeYbCPILiImIfZoskKVKuqxa")
+        FirebaseApp.configure()
     }
     
     var body: some Scene {

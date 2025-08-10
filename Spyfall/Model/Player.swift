@@ -7,12 +7,12 @@
 
 import Foundation
 
-enum Role {
-    case player
-    case spy
+enum Role: String, Codable {
+    case player = "player"
+    case spy = "spy"
 }
 
-struct Player: Hashable, Identifiable {
+struct Player: Hashable, Identifiable, Codable {
     var id: UUID = UUID()
     var name: String
     var role: Role?
