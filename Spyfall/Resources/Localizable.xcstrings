@@ -1126,7 +1126,20 @@
       }
     },
     "Back to Lobby" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Retour au lobby"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lobiye Dön"
+          }
+        }
+      }
     },
     "Backstage Crew" : {
       "extractionState" : "manual",
@@ -2757,6 +2770,23 @@
         }
       }
     },
+    "Civilian" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Civil"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sivil"
+          }
+        }
+      }
+    },
     "Cleaner" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3386,10 +3416,36 @@
       }
     },
     "Create New Room" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Créer une nouvelle salle"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yeni Oda Oluştur"
+          }
+        }
+      }
     },
     "Create Room" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Créer la salle"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oda Oluştur"
+          }
+        }
+      }
     },
     "Crewman" : {
       "extractionState" : "manual",
@@ -4074,7 +4130,20 @@
       }
     },
     "Don't get caught! Ask questions to figure out where you are." : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ne vous faites pas prendre! Posez des questions pour savoir où vous êtes."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yakalanma! Nerede olduğunu anlamak için sorular sor."
+          }
+        }
+      }
     },
     "Doorman" : {
       "extractionState" : "manual",
@@ -4315,7 +4384,20 @@
       }
     },
     "End Game" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terminer le jeu"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oyunu Bitir"
+          }
+        }
+      }
     },
     "Endless Isles" : {
       "extractionState" : "translated",
@@ -4390,9 +4472,6 @@
           }
         }
       }
-    },
-    "Error" : {
-
     },
     "Event Organizer" : {
       "extractionState" : "manual",
@@ -5108,7 +5187,36 @@
       }
     },
     "Game Over!" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Partie terminée!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oyun Bitti!"
+          }
+        }
+      }
+    },
+    "Game Cancelled" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Partie annulée"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oyun İptal Edildi"
+          }
+        }
+      }
     },
     "Game Setting" : {
 
@@ -5250,7 +5358,20 @@
       }
     },
     "Get Ready!" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Préparez-vous!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hazır Ol!"
+          }
+        }
+      }
     },
     "Ghost" : {
       "extractionState" : "translated",
@@ -5899,7 +6020,20 @@
       }
     },
     "Help your team identify the spy!" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aidez votre équipe à identifier l'espion!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Takımına casusu tanımlamada yardım et!"
+          }
+        }
+      }
     },
     "High Jumper" : {
       "extractionState" : "manual",
@@ -6587,7 +6721,20 @@
 
     },
     "Join Existing Room" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rejoindre une salle existante"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mevcut Odaya Katıl"
+          }
+        }
+      }
     },
     "Join Room" : {
 
@@ -6987,9 +7134,6 @@
           }
         }
       }
-    },
-    "Location" : {
-
     },
     "Location Set" : {
       "localizations" : {
@@ -7894,6 +8038,22 @@
         }
       }
     },
+    "Not enough players to continue. Minimum 2 players required." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pas assez de joueurs pour continuer. Minimum 2 joueurs requis."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Devam etmek için yeterli oyuncu yok. En az 2 oyuncu gerekli."
+          }
+        }
+      }
+    },
     "Noble" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -7929,7 +8089,20 @@
       }
     },
     "Number of Players" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nombre de joueurs"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oyuncu Sayısı"
+          }
+        }
+      }
     },
     "Nurse" : {
       "extractionState" : "manual",
@@ -9722,7 +9895,36 @@
       }
     },
     "Room Code" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Code de la salle"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oda Kodu"
+          }
+        }
+      }
+    },
+    "Room Update" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mise à jour de la salle"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oda Güncellemesi"
+          }
+        }
+      }
     },
     "Runner" : {
       "extractionState" : "manual",
@@ -10184,9 +10386,6 @@
       }
     },
     "Select Game Setting" : {
-
-    },
-    "Select Location" : {
 
     },
     "Send Feedback" : {
@@ -11026,7 +11225,20 @@
       }
     },
     "Start Game" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Commencer le jeu"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oyunu Başlat"
+          }
+        }
+      }
     },
     "Stationmaster" : {
       "extractionState" : "translated",
@@ -11437,7 +11649,20 @@
       }
     },
     "Tap to continue when everyone is ready" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Touchez pour continuer quand tout le monde est prêt"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Herkes hazır olduğunda devam etmek için tıkla"
+          }
+        }
+      }
     },
     "Tap to see role." : {
       "localizations" : {
@@ -12031,7 +12256,20 @@
       }
     },
     "The spy was: %@" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'espion était: %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Casus şuydu: %@"
+          }
+        }
+      }
     },
     "The tavern is a gathering place for locals and strangers alike. It's where deals are made, fights are started, and rumors spread. The smell of whiskey and the sound of laughter fill the air as cowboys and outlaws mingle." : {
       "extractionState" : "translated",
@@ -12902,13 +13140,52 @@
       }
     },
     "Waiting for host to start the game..." : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En attente que l'hôte commence le jeu..."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sunucunun oyunu başlatması bekleniyor..."
+          }
+        }
+      }
     },
     "Waiting Room" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salle d'attente"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bekleme Odası"
+          }
+        }
+      }
     },
     "Waiting..." : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En attente..."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bekleniyor..."
+          }
+        }
+      }
     },
     "Warrior" : {
       "extractionState" : "translated",
@@ -12995,7 +13272,20 @@
       }
     },
     "Welcome!" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bienvenue!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hoş Geldiniz!"
+          }
+        }
+      }
     },
     "Wild Ocean Depths" : {
       "extractionState" : "translated",
@@ -13221,7 +13511,37 @@
       }
     },
     "You are the SPY!" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous êtes l'ESPION!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CASUS sensin!"
+          }
+        }
+      }
+    },
+    "You were removed from the room. The host may have left or removed you." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous avez été retiré de la salle. L'hôte a peut-être quitté ou vous a retiré."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odadan çıkarıldınız. Sunucu ayrılmış veya sizi çıkarmış olabilir."
+          }
+        }
+      }
     },
     "You'll need at least 3 players. but the game is best played with 4-6 players." : {
       "localizations" : {
@@ -13240,7 +13560,20 @@
       }
     },
     "Your Name" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Votre nom"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adınız"
+          }
+        }
+      }
     },
     "Your Role" : {
 
@@ -13262,7 +13595,20 @@
       }
     },
     "Your role will be revealed in:" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Votre rôle sera révélé dans:"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rolün şu sürede açıklanacak:"
+          }
+        }
+      }
     },
     "Zoo" : {
       "extractionState" : "manual",

@@ -3,6 +3,7 @@ import FirebaseAuth
 
 struct MultiplayerGameView: View {
     @ObservedObject var viewModel: MultiplayerGameViewModel
+    @Environment(\.dismiss) private var dismiss
     @State private var showingRole = false
     @State private var showingGameEnd = false
     @State private var timeRemaining: TimeInterval = 8.5 * 60
@@ -26,6 +27,8 @@ struct MultiplayerGameView: View {
                     }
                 case .finished:
                     gameEndView(room: room)
+                case .cancelled:
+                    gameCancelledView(room: room)
                 }
             } else {
                 ProgressView("Loading...")
@@ -36,6 +39,7 @@ struct MultiplayerGameView: View {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button("Leave Room") {
                     viewModel.leaveRoom()
+                    dismiss()
                 }
                 .foregroundColor(.red)
             }
@@ -50,6 +54,13 @@ struct MultiplayerGameView: View {
                 startGameTimer()
             }
         }
+        .alert("Room Update", isPresented: .constant(!viewModel.errorMessage.isEmpty)) {
+            Button("OK") {
+                viewModel.errorMessage = ""
+            }
+        } message: {
+            Text(viewModel.errorMessage)
+        }
     }
     
     private func waitingRoomView(room: GameRoom) -> some View {
@@ -59,9 +70,7 @@ struct MultiplayerGameView: View {
                     .font(.largeTitle)
                     .fontWeight(.bold)
                 
-                Text("Location: \(room.location.nameKey)")
-                    .font(.title2)
-                    .foregroundColor(.secondary)
+
                 
                 VStack(spacing: 5) {
                     Text("Room Code")
@@ -114,10 +123,10 @@ struct MultiplayerGameView: View {
                     .foregroundColor(.white)
                     .padding()
                     .frame(maxWidth: .infinity)
-                    .background(room.players.count >= 3 ? Color.green : Color.gray)
+                    .background(room.players.count >= 2 ? Color.green : Color.gray)
                     .cornerRadius(10)
                 }
-                .disabled(room.players.count < 3)
+                .disabled(room.players.count < 2)
             } else {
                 Text("Waiting for host to start the game...")
                     .font(.subheadline)
@@ -126,6 +135,35 @@ struct MultiplayerGameView: View {
             }
             
             Spacer()
+        }
+        .padding()
+    }
+    
+    private func gameCancelledView(room: GameRoom) -> some View {
+        VStack(spacing: 30) {
+            Image(systemName: "exclamationmark.triangle.fill")
+                .font(.system(size: 80))
+                .foregroundColor(.orange)
+            
+            Text(NSLocalizedString("Game Cancelled", comment: ""))
+                .font(.largeTitle)
+                .fontWeight(.bold)
+                .foregroundColor(.orange)
+            
+            Text(NSLocalizedString("Not enough players to continue. Minimum 2 players required.", comment: ""))
+                .font(.title3)
+                .foregroundColor(.secondary)
+                .multilineTextAlignment(.center)
+            
+            Button(NSLocalizedString("Back to Lobby", comment: "")) {
+                viewModel.leaveRoom()
+                dismiss()
+            }
+            .foregroundColor(.white)
+            .padding()
+            .frame(maxWidth: .infinity)
+            .background(Color.blue)
+            .cornerRadius(10)
         }
         .padding()
     }
@@ -161,9 +199,11 @@ struct MultiplayerGameView: View {
         VStack(spacing: 20) {
             HStack {
                 VStack(alignment: .leading) {
-                    Text("Location: \(room.location.nameKey)")
-                        .font(.title2)
-                        .fontWeight(.semibold)
+                                if let player = currentPlayer, player.role != .spy {
+                Text("Location: \(room.location.name)")
+                    .font(.title2)
+                    .fontWeight(.semibold)
+            }
                     
                     Text("Time Remaining: \(formattedTime(timeRemaining))")
                         .font(.headline)
@@ -200,7 +240,7 @@ struct MultiplayerGameView: View {
                                 .font(.system(size: 60))
                                 .foregroundColor(.blue)
                             
-                            Text("You are a \(player.playerLocationRole ?? "Civilian")")
+                            Text("You are a \(NSLocalizedString(player.playerLocationRole ?? "Civilian", comment: ""))")
                                 .font(.title2)
                                 .fontWeight(.bold)
                                 .foregroundColor(.blue)
@@ -240,9 +280,11 @@ struct MultiplayerGameView: View {
                 .fontWeight(.bold)
             
             VStack(spacing: 20) {
-                Text("Location was: \(room.location.nameKey)")
-                    .font(.title2)
-                    .foregroundColor(.secondary)
+                        if let player = currentPlayer, player.role != .spy {
+            Text("Location was: \(room.location.name)")
+                .font(.title2)
+                .foregroundColor(.secondary)
+        }
                 
                 if let spy = room.players.first(where: { $0.role == .spy }) {
                     Text("The spy was: \(spy.name)")
@@ -254,6 +296,7 @@ struct MultiplayerGameView: View {
             
             Button("Back to Lobby") {
                 viewModel.leaveRoom()
+                dismiss()
             }
             .foregroundColor(.white)
             .padding()
