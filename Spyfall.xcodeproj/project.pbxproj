@@ -10,6 +10,9 @@
 		D52279DC2C5F71000099B3A0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52279DB2C5F71000099B3A0 /* SettingsView.swift */; };
 		D56DBED92C5676F700569C81 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D56DBED82C5676F700569C81 /* StoreKit.framework */; };
 		D599C0C42C4A6793002D0976 /* HowToPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D599C0C32C4A6793002D0976 /* HowToPlayView.swift */; };
+		D5AE4C612E48F608006E6DA3 /* MultiplayerGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AE4C5F2E48F608006E6DA3 /* MultiplayerGameView.swift */; };
+		D5AE4C622E48F608006E6DA3 /* MultiplayerLobbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AE4C602E48F608006E6DA3 /* MultiplayerLobbyView.swift */; };
+		D5AE4C642E48F61B006E6DA3 /* MultiplayerGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AE4C632E48F61B006E6DA3 /* MultiplayerGameViewModel.swift */; };
 		D5B604402C48E223004A17A8 /* SpyfallApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B6043F2C48E223004A17A8 /* SpyfallApp.swift */; };
 		D5B604422C48E223004A17A8 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B604412C48E223004A17A8 /* GameView.swift */; };
 		D5B604442C48E224004A17A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5B604432C48E224004A17A8 /* Assets.xcassets */; };
@@ -22,6 +25,10 @@
 		D5B6045C2C492130004A17A8 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D5B6045B2C492130004A17A8 /* Localizable.xcstrings */; };
 		D5BB58382C623C6300E8D5A3 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5BB58372C623C6300E8D5A3 /* Launch Screen.storyboard */; };
 		D5C04C9A2E48F27100172BCF /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = D5C04C992E48F27100172BCF /* GoogleMobileAds */; };
+		D5C04C9D2E48F47A00172BCF /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D5C04C9C2E48F47A00172BCF /* FirebaseAuth */; };
+		D5C04C9F2E48F47A00172BCF /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = D5C04C9E2E48F47A00172BCF /* FirebaseCore */; };
+		D5C04CA12E48F47A00172BCF /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = D5C04CA02E48F47A00172BCF /* FirebaseDatabase */; };
+		D5C04CA32E48F4F500172BCF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D5C04CA22E48F4F500172BCF /* GoogleService-Info.plist */; };
 		D5C3024E2C4A4F0C001453CA /* LocationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C3024D2C4A4F0C001453CA /* LocationsView.swift */; };
 		D5C69A4E2D984E69007E1546 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = D5C69A4D2D984E69007E1546 /* RevenueCat */; };
 		D5C69A502D984E69007E1546 /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = D5C69A4F2D984E69007E1546 /* RevenueCatUI */; };
@@ -32,6 +39,9 @@
 		D52279DB2C5F71000099B3A0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		D56DBED82C5676F700569C81 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		D599C0C32C4A6793002D0976 /* HowToPlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayView.swift; sourceTree = "<group>"; };
+		D5AE4C5F2E48F608006E6DA3 /* MultiplayerGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplayerGameView.swift; sourceTree = "<group>"; };
+		D5AE4C602E48F608006E6DA3 /* MultiplayerLobbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplayerLobbyView.swift; sourceTree = "<group>"; };
+		D5AE4C632E48F61B006E6DA3 /* MultiplayerGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplayerGameViewModel.swift; sourceTree = "<group>"; };
 		D5B6043C2C48E223004A17A8 /* Spyfall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spyfall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5B6043F2C48E223004A17A8 /* SpyfallApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpyfallApp.swift; sourceTree = "<group>"; };
 		D5B604412C48E223004A17A8 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
@@ -44,6 +54,7 @@
 		D5B604582C49168E004A17A8 /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 		D5B6045B2C492130004A17A8 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		D5BB58372C623C6300E8D5A3 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		D5C04CA22E48F4F500172BCF /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D5C3024D2C4A4F0C001453CA /* LocationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -53,8 +64,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5C04C9A2E48F27100172BCF /* GoogleMobileAds in Frameworks */,
+				D5C04C9D2E48F47A00172BCF /* FirebaseAuth in Frameworks */,
 				D5C69A502D984E69007E1546 /* RevenueCatUI in Frameworks */,
 				D56DBED92C5676F700569C81 /* StoreKit.framework in Frameworks */,
+				D5C04C9F2E48F47A00172BCF /* FirebaseCore in Frameworks */,
+				D5C04CA12E48F47A00172BCF /* FirebaseDatabase in Frameworks */,
 				D5C69A4E2D984E69007E1546 /* RevenueCat in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -98,6 +112,7 @@
 				D5B6045A2C4920E9004A17A8 /* Resources */,
 				D5B604432C48E224004A17A8 /* Assets.xcassets */,
 				D5B604452C48E224004A17A8 /* Preview Content */,
+				D5C04CA22E48F4F500172BCF /* GoogleService-Info.plist */,
 			);
 			path = Spyfall;
 			sourceTree = "<group>";
@@ -125,6 +140,8 @@
 				D5B604412C48E223004A17A8 /* GameView.swift */,
 				D5B604522C48E606004A17A8 /* CreateGameView.swift */,
 				D5B604582C49168E004A17A8 /* MainMenuView.swift */,
+				D5AE4C5F2E48F608006E6DA3 /* MultiplayerGameView.swift */,
+				D5AE4C602E48F608006E6DA3 /* MultiplayerLobbyView.swift */,
 				D5C3024D2C4A4F0C001453CA /* LocationsView.swift */,
 				D599C0C32C4A6793002D0976 /* HowToPlayView.swift */,
 				D52279DB2C5F71000099B3A0 /* SettingsView.swift */,
@@ -136,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				D5B604542C48FC88004A17A8 /* ViewModel.swift */,
+				D5AE4C632E48F61B006E6DA3 /* MultiplayerGameViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -200,6 +218,7 @@
 			packageReferences = (
 				D5C69A4C2D984E69007E1546 /* XCRemoteSwiftPackageReference "purchases-ios" */,
 				D5C04C982E48F27100172BCF /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
+				D5C04C9B2E48F47A00172BCF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = D5B6043D2C48E223004A17A8 /* Products */;
 			projectDirPath = "";
@@ -217,6 +236,7 @@
 			files = (
 				D5B604472C48E224004A17A8 /* Preview Assets.xcassets in Resources */,
 				D5B604442C48E224004A17A8 /* Assets.xcassets in Resources */,
+				D5C04CA32E48F4F500172BCF /* GoogleService-Info.plist in Resources */,
 				D5BB58382C623C6300E8D5A3 /* Launch Screen.storyboard in Resources */,
 				D5B6045C2C492130004A17A8 /* Localizable.xcstrings in Resources */,
 			);
@@ -230,9 +250,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5B604552C48FC88004A17A8 /* ViewModel.swift in Sources */,
+				D5AE4C642E48F61B006E6DA3 /* MultiplayerGameViewModel.swift in Sources */,
 				D5B604592C49168E004A17A8 /* MainMenuView.swift in Sources */,
 				D5B604532C48E606004A17A8 /* CreateGameView.swift in Sources */,
 				D599C0C42C4A6793002D0976 /* HowToPlayView.swift in Sources */,
+				D5AE4C612E48F608006E6DA3 /* MultiplayerGameView.swift in Sources */,
+				D5AE4C622E48F608006E6DA3 /* MultiplayerLobbyView.swift in Sources */,
 				D5B604512C48E29C004A17A8 /* Location.swift in Sources */,
 				D5B604422C48E223004A17A8 /* GameView.swift in Sources */,
 				D5C3024E2C4A4F0C001453CA /* LocationsView.swift in Sources */,
@@ -478,6 +501,14 @@
 				minimumVersion = 11.7.0;
 			};
 		};
+		D5C04C9B2E48F47A00172BCF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.1.0;
+			};
+		};
 		D5C69A4C2D984E69007E1546 /* XCRemoteSwiftPackageReference "purchases-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:RevenueCat/purchases-ios.git";
@@ -493,6 +524,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D5C04C982E48F27100172BCF /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
 			productName = GoogleMobileAds;
+		};
+		D5C04C9C2E48F47A00172BCF /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5C04C9B2E48F47A00172BCF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		D5C04C9E2E48F47A00172BCF /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5C04C9B2E48F47A00172BCF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		D5C04CA02E48F47A00172BCF /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5C04C9B2E48F47A00172BCF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
 		};
 		D5C69A4D2D984E69007E1546 /* RevenueCat */ = {
 			isa = XCSwiftPackageProductDependency;

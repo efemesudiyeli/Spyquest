@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct Location: Hashable, Identifiable {
+struct Location: Hashable, Identifiable, Codable {
     var id: UUID = UUID()
     let nameKey: String
     let roles: [String]

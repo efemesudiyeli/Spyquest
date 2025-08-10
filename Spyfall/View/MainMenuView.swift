@@ -57,6 +57,18 @@ struct MainMenuView: View {
                     .bold()
                     
                     NavigationLink(destination: {
+                        MultiplayerLobbyView()
+                    }, label: {
+                        HStack {
+                            Image(systemName: "person.2.fill")
+                            Spacer()
+                            Text("Multiplayer")
+                            Spacer()
+                        }
+                    })
+                    .frame(width: 160)
+                    
+                    NavigationLink(destination: {
                         LocationsView(viewModel: viewModel)
                     }, label: {
                         HStack {
