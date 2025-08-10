@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A682A35074E80B240B62A575 /* Pods_Spyfall.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAA3E41E19758AC64B625DE5 /* Pods_Spyfall.framework */; };
 		D52279DC2C5F71000099B3A0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52279DB2C5F71000099B3A0 /* SettingsView.swift */; };
 		D56DBED92C5676F700569C81 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D56DBED82C5676F700569C81 /* StoreKit.framework */; };
 		D599C0C42C4A6793002D0976 /* HowToPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D599C0C32C4A6793002D0976 /* HowToPlayView.swift */; };
@@ -22,14 +21,13 @@
 		D5B604592C49168E004A17A8 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B604582C49168E004A17A8 /* MainMenuView.swift */; };
 		D5B6045C2C492130004A17A8 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D5B6045B2C492130004A17A8 /* Localizable.xcstrings */; };
 		D5BB58382C623C6300E8D5A3 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5BB58372C623C6300E8D5A3 /* Launch Screen.storyboard */; };
+		D5C04C9A2E48F27100172BCF /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = D5C04C992E48F27100172BCF /* GoogleMobileAds */; };
 		D5C3024E2C4A4F0C001453CA /* LocationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C3024D2C4A4F0C001453CA /* LocationsView.swift */; };
 		D5C69A4E2D984E69007E1546 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = D5C69A4D2D984E69007E1546 /* RevenueCat */; };
 		D5C69A502D984E69007E1546 /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = D5C69A4F2D984E69007E1546 /* RevenueCatUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8D8E7666E827DE2E2CA45295 /* Pods-Spyfall.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spyfall.release.xcconfig"; path = "Target Support Files/Pods-Spyfall/Pods-Spyfall.release.xcconfig"; sourceTree = "<group>"; };
-		9F7635D525CE9BE4E8427342 /* Pods-Spyfall.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spyfall.debug.xcconfig"; path = "Target Support Files/Pods-Spyfall/Pods-Spyfall.debug.xcconfig"; sourceTree = "<group>"; };
 		D511F3F12C541F4600B0C449 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D52279DB2C5F71000099B3A0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		D56DBED82C5676F700569C81 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -47,7 +45,6 @@
 		D5B6045B2C492130004A17A8 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		D5BB58372C623C6300E8D5A3 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		D5C3024D2C4A4F0C001453CA /* LocationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsView.swift; sourceTree = "<group>"; };
-		DAA3E41E19758AC64B625DE5 /* Pods_Spyfall.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spyfall.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,8 +52,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5C04C9A2E48F27100172BCF /* GoogleMobileAds in Frameworks */,
 				D5C69A502D984E69007E1546 /* RevenueCatUI in Frameworks */,
-				A682A35074E80B240B62A575 /* Pods_Spyfall.framework in Frameworks */,
 				D56DBED92C5676F700569C81 /* StoreKit.framework in Frameworks */,
 				D5C69A4E2D984E69007E1546 /* RevenueCat in Frameworks */,
 			);
@@ -69,18 +66,8 @@
 			isa = PBXGroup;
 			children = (
 				D56DBED82C5676F700569C81 /* StoreKit.framework */,
-				DAA3E41E19758AC64B625DE5 /* Pods_Spyfall.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D22B3387E1455CC1F6721BB1 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				9F7635D525CE9BE4E8427342 /* Pods-Spyfall.debug.xcconfig */,
-				8D8E7666E827DE2E2CA45295 /* Pods-Spyfall.release.xcconfig */,
-			);
-			path = Pods;
 			sourceTree = "<group>";
 		};
 		D5B604332C48E223004A17A8 = {
@@ -88,7 +75,6 @@
 			children = (
 				D5B6043E2C48E223004A17A8 /* Spyfall */,
 				D5B6043D2C48E223004A17A8 /* Products */,
-				D22B3387E1455CC1F6721BB1 /* Pods */,
 				4EA9A097C553050C1D926D85 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -170,12 +156,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D5B6044A2C48E224004A17A8 /* Build configuration list for PBXNativeTarget "Spyfall" */;
 			buildPhases = (
-				0490A078E8E2D699F820EF07 /* [CP] Check Pods Manifest.lock */,
 				D5B604382C48E223004A17A8 /* Sources */,
 				D5B604392C48E223004A17A8 /* Frameworks */,
 				D5B6043A2C48E223004A17A8 /* Resources */,
-				F10E60D1749AAF6C5FA695C1 /* [CP] Copy Pods Resources */,
-				8041E5DC39D1671974C290FA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -216,6 +199,7 @@
 			mainGroup = D5B604332C48E223004A17A8;
 			packageReferences = (
 				D5C69A4C2D984E69007E1546 /* XCRemoteSwiftPackageReference "purchases-ios" */,
+				D5C04C982E48F27100172BCF /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 			);
 			productRefGroup = D5B6043D2C48E223004A17A8 /* Products */;
 			projectDirPath = "";
@@ -239,65 +223,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		0490A078E8E2D699F820EF07 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Spyfall-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8041E5DC39D1671974C290FA /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Spyfall/Pods-Spyfall-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Spyfall/Pods-Spyfall-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Spyfall/Pods-Spyfall-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F10E60D1749AAF6C5FA695C1 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Spyfall/Pods-Spyfall-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Spyfall/Pods-Spyfall-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Spyfall/Pods-Spyfall-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D5B604382C48E223004A17A8 /* Sources */ = {
@@ -445,7 +370,6 @@
 		};
 		D5B6044B2C48E224004A17A8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9F7635D525CE9BE4E8427342 /* Pods-Spyfall.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -485,7 +409,6 @@
 		};
 		D5B6044C2C48E224004A17A8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8D8E7666E827DE2E2CA45295 /* Pods-Spyfall.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -547,6 +470,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		D5C04C982E48F27100172BCF /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.7.0;
+			};
+		};
 		D5C69A4C2D984E69007E1546 /* XCRemoteSwiftPackageReference "purchases-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:RevenueCat/purchases-ios.git";
@@ -558,6 +489,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		D5C04C992E48F27100172BCF /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5C04C982E48F27100172BCF /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
+		};
 		D5C69A4D2D984E69007E1546 /* RevenueCat */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D5C69A4C2D984E69007E1546 /* XCRemoteSwiftPackageReference "purchases-ios" */;
