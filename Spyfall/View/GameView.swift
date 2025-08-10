@@ -107,7 +107,7 @@ struct GameView: View {
                 NavigationLink {
                     LocationsView(viewModel: viewModel)
                 } label: {
-                    Text("Locations")
+                    Text(NSLocalizedString("Locations", comment: ""))
                 }
             }
         }

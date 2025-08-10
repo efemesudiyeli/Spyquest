@@ -35,6 +35,7 @@ struct MultiplayerGameView: View {
             }
         }
         .navigationBarBackButtonHidden()
+        
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button("Leave Room") {
@@ -42,6 +43,13 @@ struct MultiplayerGameView: View {
                     dismiss()
                 }
                 .foregroundColor(.red)
+            }
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink {
+                    LocationsView(viewModel: viewModel)
+                } label: {
+                    Text(NSLocalizedString("Locations", comment: ""))
+                }
             }
         }
         .onAppear {

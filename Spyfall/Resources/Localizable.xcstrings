@@ -92,6 +92,16 @@
         }
       }
     },
+    "%lld %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld %2$@"
+          }
+        }
+      }
+    },
     "%lld players" : {
 
     },
@@ -5169,6 +5179,22 @@
         }
       }
     },
+    "Game Cancelled" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Partie annulée"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oyun İptal Edildi"
+          }
+        }
+      }
+    },
     "Game Operator" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -5198,22 +5224,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Oyun Bitti!"
-          }
-        }
-      }
-    },
-    "Game Cancelled" : {
-      "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Partie annulée"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Oyun İptal Edildi"
           }
         }
       }
@@ -8038,22 +8048,6 @@
         }
       }
     },
-    "Not enough players to continue. Minimum 2 players required." : {
-      "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pas assez de joueurs pour continuer. Minimum 2 joueurs requis."
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Devam etmek için yeterli oyuncu yok. En az 2 oyuncu gerekli."
-          }
-        }
-      }
-    },
     "Noble" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -8067,6 +8061,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Soylu"
+          }
+        }
+      }
+    },
+    "Not enough players to continue. Minimum 2 players required." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pas assez de joueurs pour continuer. Minimum 2 joueurs requis."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Devam etmek için yeterli oyuncu yok. En az 2 oyuncu gerekli."
           }
         }
       }
@@ -9890,6 +9900,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rodeo"
+          }
+        }
+      }
+    },
+    "roles" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "rôles"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "roller"
           }
         }
       }

@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct LocationsView: View {
-    @ObservedObject var viewModel: GameViewModel
+struct LocationsView<ViewModel: ObservableObject>: View {
+    @ObservedObject var viewModel: ViewModel
     
     let columns = [
         GridItem(.flexible()),
@@ -16,37 +16,44 @@ struct LocationsView: View {
     ]
     
     var body: some View {
-    
         VStack {
-            if viewModel.isGameStarted {
-                Label("\(viewModel.formattedTimeInterval(viewModel.timeRemaining))", systemImage: "hourglass")
-                    .font(.title)
-                    .bold()
-                    .foregroundStyle(.primary)
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
-                    .padding(.vertical)
-                    .contentTransition(.numericText())
-
-            }
-            
             ScrollView {
-                LazyVGrid(columns: columns, spacing: 14) {
+                LazyVGrid(columns: columns, spacing: 16) {
                     ForEach(Location.locationData) { location in
-                        VStack {
-                            Text(location.name)
-                        }
+                        LocationCard(location: location)
                     }
                 }
                 .padding()
             }
         }
-        .navigationTitle("Locations")
+        .navigationTitle(NSLocalizedString("Locations", comment: ""))
         .navigationBarTitleDisplayMode(.automatic)
+    }
+}
+
+struct LocationCard: View {
+    let location: Location
+    
+    var body: some View {
+        VStack(spacing: 12) {
+            Text(location.name)
+                .font(.headline)
+                .fontWeight(.semibold)
+                .multilineTextAlignment(.center)
+            
+            Text("\(location.roles.count) \(NSLocalizedString("roles", comment: ""))")
+                .font(.caption)
+                .foregroundColor(.secondary)
+        }
+        .frame(maxWidth: .infinity)
+        .padding()
+        .background(Color(.systemGray6))
+        .cornerRadius(12)
     }
 }
 
 #Preview {
     NavigationStack {
-        LocationsView(viewModel: GameViewModel(isSampleData: true))
+        LocationsView(viewModel: MultiplayerGameViewModel())
     }
 }
