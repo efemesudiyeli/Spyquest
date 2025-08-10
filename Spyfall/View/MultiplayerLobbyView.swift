@@ -6,8 +6,7 @@ struct MultiplayerLobbyView: View {
     @State private var showingCreateRoom = false
     @State private var showingJoinRoom = false
     @State private var roomCode = ""
-    @State private var selectedLocation: Location = Location.locationData.first ?? Location(nameKey: "", roles: [""])
-    @State private var playerCount = 6
+    @State private var playerCount = 2
     @State private var playerName = ""
     @State private var navigateToGame = false
     
@@ -49,7 +48,7 @@ struct MultiplayerLobbyView: View {
         } message: {
             Text("Enter your name and the 6-digit room code")
         }
-        .alert("Error", isPresented: .constant(!viewModel.errorMessage.isEmpty)) {
+        .alert("Room Update", isPresented: .constant(!viewModel.errorMessage.isEmpty)) {
             Button("OK") {
                 viewModel.errorMessage = ""
             }
@@ -164,25 +163,10 @@ struct MultiplayerLobbyView: View {
                 }
                 
                 VStack(alignment: .leading, spacing: 10) {
-                    Text("Select Location")
-                        .font(.headline)
-                    
-                    Picker("Location", selection: $selectedLocation) {
-                        ForEach(Location.locationData, id: \.nameKey) { location in
-                            Text(location.nameKey).tag(location)
-                        }
-                    }
-                    .pickerStyle(MenuPickerStyle())
-                    .padding()
-                    .background(Color(.systemGray6))
-                    .cornerRadius(10)
-                }
-                
-                VStack(alignment: .leading, spacing: 10) {
                     Text("Number of Players")
                         .font(.headline)
                     
-                    Stepper("\(playerCount) players", value: $playerCount, in: 3...8)
+                    Stepper("\(playerCount) players", value: $playerCount, in: 2...8)
                         .padding()
                         .background(Color(.systemGray6))
                         .cornerRadius(10)
@@ -190,7 +174,7 @@ struct MultiplayerLobbyView: View {
                 
                 Button(action: {
                     if !playerName.isEmpty {
-                        viewModel.createGameRoom(location: selectedLocation, playerCount: playerCount, playerName: playerName) { success in
+                        viewModel.createGameRoom(playerCount: playerCount, playerName: playerName) { success in
                             if success {
                                 showingCreateRoom = false
                                 navigateToGame = true

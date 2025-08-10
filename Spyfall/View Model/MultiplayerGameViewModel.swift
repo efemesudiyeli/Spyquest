@@ -41,7 +41,7 @@ class MultiplayerGameViewModel: ObservableObject {
         }
     }
     
-    func createGameRoom(location: Location, playerCount: Int, playerName: String, completion: @escaping (Bool) -> Void) {
+    func createGameRoom(playerCount: Int, playerName: String, completion: @escaping (Bool) -> Void) {
         guard let user = currentUser else { 
             completion(false)
             return 
@@ -50,12 +50,13 @@ class MultiplayerGameViewModel: ObservableObject {
         isLoading = true
         errorMessage = ""
         
+        let randomLocation = Location.locationData.randomElement() ?? Location(nameKey: "Beach", roles: ["Tourist", "Lifeguard", "Vendor", "Swimmer", "Photographer"])
         let roomCode = generateRoomCode()
         let newRoom = GameRoom(
             id: roomCode,
             hostId: user.uid,
             hostName: playerName,
-            location: location,
+            location: randomLocation,
             maxPlayers: playerCount,
             players: [Player(name: playerName, role: .player)],
             status: .waiting,
@@ -136,15 +137,58 @@ class MultiplayerGameViewModel: ObservableObject {
     
     private func observeRoomChanges(roomCode: String) {
         currentRoomRef?.observe(.value) { [weak self] snapshot in
-            guard let self = self,
-                  let roomData = snapshot.value as? [String: Any],
-                  let room = GameRoom.fromDictionary(roomData) else { return }
+            guard let self = self else { return }
             
-            DispatchQueue.main.async {
-                self.currentRoom = room
+            if let roomData = snapshot.value as? [String: Any],
+               let room = GameRoom.fromDictionary(roomData) {
+                
+                DispatchQueue.main.async {
+                    self.currentRoom = room
+                    
+                    if room.players.isEmpty {
+                        self.autoCloseEmptyRoom()
+                    } else if room.status == .playing && room.players.count < 2 {
+                        self.cancelGameDueToInsufficientPlayers()
+                    }
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.autoCloseEmptyRoom()
+                }
             }
         }
     }
+    
+    private func autoCloseEmptyRoom() {
+        currentRoomRef?.removeValue()
+        currentRoom = nil
+        currentPlayerName = ""
+        currentRoomRef?.removeAllObservers()
+        currentRoomRef = nil
+    }
+    
+    private func cancelGameDueToInsufficientPlayers() {
+        guard let room = currentRoom else { return }
+        
+        var updatedRoom = room
+        updatedRoom.status = .cancelled
+        
+        currentRoomRef?.updateChildValues([
+            "status": "cancelled",
+            "players": updatedRoom.players.map { player in
+                var updatedPlayer = player
+                updatedPlayer.role = nil
+                updatedPlayer.playerLocationRole = nil
+                return updatedPlayer.toDictionary()
+            }
+        ])
+        
+        DispatchQueue.main.async {
+            self.errorMessage = "Game cancelled: Not enough players to continue. Minimum 2 players required."
+        }
+    }
+    
+
     
     func startGame() {
         guard let room = currentRoom,
@@ -175,6 +219,7 @@ class MultiplayerGameViewModel: ObservableObject {
             ])
         }
         
+        // Clear local state without showing any error message
         currentRoom = nil
         currentPlayerName = ""
         currentRoomRef?.removeAllObservers()
@@ -213,6 +258,7 @@ struct GameRoom: Identifiable, Codable {
         case waiting = "waiting"
         case playing = "playing"
         case finished = "finished"
+        case cancelled = "cancelled"
     }
     
     mutating func assignRoles() {
@@ -223,7 +269,7 @@ struct GameRoom: Identifiable, Codable {
                 players[index].role = .spy
             } else {
                 players[index].role = .player
-                players[index].playerLocationRole = location.localizedRoles.randomElement()
+                players[index].playerLocationRole = location.roles.randomElement()
             }
         }
     }
