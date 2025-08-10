@@ -57,7 +57,7 @@ struct MainMenuView: View {
                     .bold()
                     
                     NavigationLink(destination: {
-                        MultiplayerLobbyView()
+                        MultiplayerLobbyView(gameViewModel: viewModel)
                     }, label: {
                         HStack {
                             Image(systemName: "person.2.fill")
@@ -74,7 +74,7 @@ struct MainMenuView: View {
                         HStack {
                             Image(systemName: "location")
                             Spacer()
-                            Text("Locations")
+                            Text(NSLocalizedString("Locations", comment: ""))
                             Spacer()
                         }
                     })

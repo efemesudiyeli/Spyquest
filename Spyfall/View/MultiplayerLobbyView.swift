@@ -3,6 +3,7 @@ import FirebaseAuth
 
 struct MultiplayerLobbyView: View {
     @StateObject private var viewModel = MultiplayerGameViewModel()
+    @ObservedObject var gameViewModel: GameViewModel
     @State private var showingCreateRoom = false
     @State private var showingJoinRoom = false
     @State private var roomCode = ""
@@ -219,5 +220,5 @@ struct MultiplayerLobbyView: View {
 
 
 #Preview {
-    MultiplayerLobbyView()
+    MultiplayerLobbyView(gameViewModel: GameViewModel())
 }
