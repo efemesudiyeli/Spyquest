@@ -8,6 +8,7 @@ struct MultiplayerGameView: View {
     @State private var showingGameEnd = false
     @State private var timeRemaining: TimeInterval = 8.5 * 60
     @State private var isTimerFinished = false
+    @State private var gameTimer: Timer?
     
     private var currentPlayer: Player? {
         viewModel.currentRoom?.players.first { $0.name == viewModel.currentPlayerName }
@@ -55,19 +56,24 @@ struct MultiplayerGameView: View {
             }
         }
         .onAppear {
-            if let room = viewModel.currentRoom, room.status == .playing {
-                startGameTimer()
+            if let room = viewModel.currentRoom, room.status == .playing, gameTimer == nil {
+                startGameTimer(reset: false)
             }
         }
         .onChange(of: viewModel.currentRoom?.status) { _, newStatus in
             if newStatus == .playing {
-                startGameTimer()
+                startGameTimer(reset: true)
             } else if newStatus == .waiting {
                 // Reset game states when restarting
                 showingRole = false
                 showingGameEnd = false
                 isTimerFinished = false
                 timeRemaining = 8.5 * 60
+                gameTimer?.invalidate()
+                gameTimer = nil
+            } else if newStatus == .finished || newStatus == .cancelled {
+                gameTimer?.invalidate()
+                gameTimer = nil
             }
         }
         .alert("Room Update", isPresented: .constant(!viewModel.errorMessage.isEmpty)) {
@@ -383,15 +389,19 @@ struct MultiplayerGameView: View {
         .padding()
     }
     
-    private func startGameTimer() {
-        timeRemaining = 8.5 * 60
-        isTimerFinished = false
+    private func startGameTimer(reset: Bool) {
+        if reset {
+            timeRemaining = 8.5 * 60
+            isTimerFinished = false
+        }
         
-        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+        gameTimer?.invalidate()
+        gameTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
             if timeRemaining > 0 {
                 timeRemaining -= 1
             } else {
                 timer.invalidate()
+                gameTimer = nil
                 isTimerFinished = true
             }
         }
