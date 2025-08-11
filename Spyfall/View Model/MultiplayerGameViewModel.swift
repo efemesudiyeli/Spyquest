@@ -272,6 +272,9 @@ class MultiplayerGameViewModel: ObservableObject {
         
         // Check if majority has voted and reduce time to 10 seconds
         checkMajorityVoteAndReduceTime()
+        
+        // Check if we should end voting automatically
+        checkAutoEndVoting()
     }
     
     private func checkMajorityVoteAndReduceTime() {
@@ -452,6 +455,71 @@ class MultiplayerGameViewModel: ObservableObject {
         currentRoomRef?.updateChildValues([
             "spyGuess": guess
         ])
+        
+        // Check if we should end voting automatically
+        checkAutoEndVoting()
+    }
+    
+    private func checkAutoEndVoting() {
+        guard let room = currentRoom,
+              room.status == .voting else { return }
+        
+        // Get current votes count
+        currentRoomRef?.child("votes").observeSingleEvent(of: .value) { [weak self] snapshot in
+            guard let self = self else { return }
+            
+            if let votesData = snapshot.value as? [String: String] {
+                let voteCount = votesData.count
+                let totalPlayers = room.players.count
+                
+                // If everyone has voted (including spy), end voting automatically
+                if voteCount >= totalPlayers && room.hostId == self.currentUser?.uid {
+                    print("DEBUG: Auto-ending voting - everyone has voted and spy has guessed")
+                    self.endVotingAndReveal()
+                }
+            }
+        }
+    }
+    
+    // Public function for VotingView to check voting end conditions
+    func checkVotingEndConditions() {
+        guard let room = currentRoom,
+              room.status == .voting else { return }
+        
+        let localNow = Date().timeIntervalSince1970
+        let serverNow = localNow + TimeInterval(Double(serverTimeOffsetMs) / 1000.0)
+        
+        // Check if voting time is up
+        if let votingStartAt = room.votingStartAt,
+           let votingDurationSeconds = room.votingDurationSeconds {
+            let elapsed = max(0, serverNow - votingStartAt)
+            let remaining = max(0, Double(votingDurationSeconds) - elapsed)
+            
+            if remaining <= 0 && room.hostId == currentUser?.uid {
+                print("DEBUG: Voting time is up, ending voting automatically")
+                endVotingAndReveal()
+                return
+            }
+        }
+        
+        // Check if everyone has voted and spy has made a guess
+        if let spyGuess = room.spyGuess, !spyGuess.isEmpty {
+            // Get current votes count from Firebase
+            currentRoomRef?.child("votes").observeSingleEvent(of: .value) { [weak self] snapshot in
+                guard let self = self else { return }
+                
+                if let votesData = snapshot.value as? [String: String] {
+                    let voteCount = votesData.count
+                    let totalPlayers = room.players.count
+                    
+                    // If everyone has voted (including spy), end voting
+                    if voteCount >= totalPlayers && room.hostId == self.currentUser?.uid {
+                        print("DEBUG: Everyone has voted and spy has guessed, ending voting automatically")
+                        self.endVotingAndReveal()
+                    }
+                }
+            }
+        }
     }
     
     private func generateRoomCode() -> String {

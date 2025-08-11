@@ -15,15 +15,30 @@ struct MultiplayerLobbyView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 20) {
-                if !viewModel.isAuthenticated {
-                    authenticationView
+                if !viewModel.isAuthenticated && false {
+                    // Show loading while auto-signing in
+                    VStack(spacing: 20) {
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle())
+                            .scaleEffect(1.5)
+                        
+                        Text("Signing you in...")
+                            .font(.title3)
+                            .foregroundColor(.secondary)
+                    }
                 } else {
                     lobbyView
                 }
             }
             .padding()
-            .navigationTitle("Multiplayer")
+            .navigationTitle("Online Mode")
             .navigationBarTitleDisplayMode(.large)
+            .onAppear {
+                // Auto-sign in anonymously if not already authenticated
+                if !viewModel.isAuthenticated && !viewModel.isLoading {
+                    viewModel.signInAnonymously()
+                }
+            }
         }
         .sheet(isPresented: $showingCreateRoom) {
             createRoomSheet
@@ -33,8 +48,9 @@ struct MultiplayerLobbyView: View {
                 EmptyView()
             }
         )
-        .alert("Join Room", isPresented: $showingJoinRoom) {
+        .alert("Join Your Friends", isPresented: $showingJoinRoom) {
             TextField("Your Name", text: $playerName)
+                .textInputAutocapitalization(.words)
             TextField("Room Code", text: $roomCode)
                 .textInputAutocapitalization(.characters)
             Button("Join") {
@@ -59,49 +75,26 @@ struct MultiplayerLobbyView: View {
         }
     }
     
-    private var authenticationView: some View {
-        VStack(spacing: 20) {
-            Image(systemName: "person.crop.circle.badge.plus")
-                .font(.system(size: 60))
-                .foregroundColor(.blue)
-            
-            Text("Sign in to play multiplayer")
-                .font(.title2)
-                .multilineTextAlignment(.center)
-            
-            Button(action: {
-                viewModel.signInAnonymously()
-            }) {
-                HStack {
-                    if viewModel.isLoading {
-                        ProgressView()
-                            .progressViewStyle(CircularProgressViewStyle(tint: .white))
-                            .scaleEffect(0.8)
-                    } else {
-                        Image(systemName: "person.fill")
-                    }
-                    Text("Sign In Anonymously")
-                }
-                .foregroundColor(.white)
-                .padding()
-                .frame(maxWidth: .infinity)
-                .background(Color.blue)
-                .cornerRadius(10)
-            }
-            .disabled(viewModel.isLoading)
-        }
-    }
-    
     private var lobbyView: some View {
         VStack(spacing: 20) {
             HStack {
                 VStack(alignment: .leading) {
+                    HStack {
+                        Spacer()
+                        Image(systemName: "globe")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 100)
+                        Spacer()
+                    }
                     Text("Welcome!")
                         .font(.title2)
                         .fontWeight(.semibold)
+                        .fontDesign(.rounded)
                     Text("Ready to play with friends?")
                         .font(.subheadline)
                         .foregroundColor(.secondary)
+                        .fontDesign(.monospaced)
                 }
                 Spacer()
             }
@@ -112,9 +105,15 @@ struct MultiplayerLobbyView: View {
                 }) {
                     HStack {
                         Image(systemName: "plus.circle.fill")
-                            .foregroundColor(.green)
-                        Text("Create New Room")
-                            .fontWeight(.semibold)
+                            .foregroundColor(.reverse2)
+                            .font(.title2)
+                        VStack(alignment: .leading){
+                            Text("Create New Room")
+                                .fontWeight(.semibold)
+                            Text("Start a new game and get a room code.")
+                                .font(.footnote)
+                                .foregroundStyle(.gray)
+                        }.multilineTextAlignment(.leading)
                         Spacer()
                         Image(systemName: "chevron.right")
                             .foregroundColor(.secondary)
@@ -122,17 +121,23 @@ struct MultiplayerLobbyView: View {
                     .foregroundColor(.primary)
                     .padding()
                     .background(Color(.systemGray6))
-                    .cornerRadius(10)
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
                 }
                 
                 Button(action: {
                     showingJoinRoom = true
                 }) {
                     HStack {
-                        Image(systemName: "person.2.circle.fill")
-                            .foregroundColor(.blue)
-                        Text("Join Existing Room")
-                            .fontWeight(.semibold)
+                        Image(systemName: "arrowshape.turn.up.right.circle.fill")
+                            .foregroundColor(.reverse2)
+                            .font(.title2)
+                        VStack(alignment: .leading){
+                            Text("Join Existing Room")
+                                .fontWeight(.semibold)
+                            Text("Enter a code to join your friend’s game.")
+                                .font(.footnote)
+                                .foregroundStyle(.gray)
+                        }.multilineTextAlignment(.leading)
                         Spacer()
                         Image(systemName: "chevron.right")
                             .foregroundColor(.secondary)
@@ -140,13 +145,20 @@ struct MultiplayerLobbyView: View {
                     .foregroundColor(.primary)
                     .padding()
                     .background(Color(.systemGray6))
-                    .cornerRadius(10)
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
                 }
             }
             
 
             
             Spacer()
+            
+            VStack {
+                Text("Tip:")
+                    .bold()
+                Text("Share the room code with friends to start playing!")
+            }   .font(.callout)
+                .fontDesign(.monospaced)
         }
     }
     
