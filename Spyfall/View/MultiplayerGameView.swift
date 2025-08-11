@@ -713,73 +713,6 @@ struct VotingView: View {
                     }
                 }
                 
-                // Spy guess section
-                if isCurrentPlayerSpy {
-                    VStack(spacing: 15) {
-                        Divider()
-                            .padding(.vertical)
-                        
-                        Text("Make Your Guess!")
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .foregroundColor(.red)
-                        
-                        Text("Try to guess the location before time runs out!")
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
-                            .multilineTextAlignment(.center)
-                        
-                        // Location selection grid
-                        ScrollView {
-                            LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 2), spacing: 12) {
-                                ForEach(room.selectedLocationSet.locations, id: \.id) { location in
-                                    Button(action: {
-                                        viewModel.makeSpyGuess(guess: location.nameKey)
-                                        showingSpyGuessAlert = true
-                                    }) {
-                                        VStack(spacing: 8) {
-                                            Text(location.name)
-                                                .font(.headline)
-                                                .fontWeight(.semibold)
-                                                .multilineTextAlignment(.center)
-                                                .foregroundColor(.primary)
-                                            
-                                            Text("\(location.roles.count) roles")
-                                                .font(.caption)
-                                                .foregroundColor(.secondary)
-                                        }
-                                        .frame(maxWidth: .infinity)
-                                        .padding()
-                                        .background(Color.red.opacity(0.1))
-                                        .cornerRadius(12)
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 12)
-                                                .stroke(Color.red.opacity(0.3), lineWidth: 1)
-                                        )
-                                    }
-                                    .buttonStyle(PlainButtonStyle())
-                                }
-                            }
-                            .padding(.horizontal)
-                        }
-                        .frame(maxHeight: 300)
-                        .onAppear {
-                            print("DEBUG: Current game location: \(room.location.nameKey)")
-                            print("DEBUG: Selected location set: \(room.selectedLocationSet.rawValue)")
-                            print("DEBUG: Available locations count: \(room.selectedLocationSet.locations.count)")
-                            
-                            // Debug: Show all location nameKeys
-                            print("DEBUG: All location nameKeys (no filtering):")
-                            for location in room.selectedLocationSet.locations {
-                                print("  - \(location.nameKey)")
-                            }
-                        }
-                    }
-                    .padding()
-                    .background(Color.red.opacity(0.05))
-                    .cornerRadius(15)
-                }
-                
                 Spacer()
                 
                 if let currentVote = viewModel.currentVote {
@@ -790,62 +723,239 @@ struct VotingView: View {
             }
             .padding(.top)
             
+            // Remove the manual "End Voting & Reveal" button
+            // Voting will end automatically when:
+            // 1. Time runs out
+            // 2. Everyone has voted AND spy has made a guess
             
-            
-            if room.hostId == viewModel.currentUser?.uid {
-                Button(action: {
-                    viewModel.endVotingAndReveal()
-                }) {
-                    HStack {
-                        Image(systemName: "checkmark.circle.fill")
-                        Text("End Voting & Reveal")
-                    }
-                    .foregroundColor(.reverse)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.reverse2)
-                    .cornerRadius(10)
-                }
-            } else {
-                Text("Waiting for host to end voting...")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-                    .multilineTextAlignment(.center)
-            }
+            Spacer()
             
         }
         .padding(.horizontal)
         .onAppear {
             currentTime = Date().timeIntervalSince1970
-            timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
-                currentTime = Date().timeIntervalSince1970
-                
-                // Check if voting time is up and auto-end voting
-                if let votingStartAt = room.votingStartAt,
-                   let votingDurationSeconds = room.votingDurationSeconds {
-                    let localNow = currentTime
-                    let serverNow = localNow + TimeInterval(Double(viewModel.serverTimeOffsetMs) / 1000.0)
-                    let elapsed = max(0, serverNow - votingStartAt)
-                    let remaining = max(0, Double(votingDurationSeconds) - elapsed)
-                    
-                    if remaining <= 0 && room.hostId == viewModel.currentUser?.uid {
-                        viewModel.endVotingAndReveal()
-                    }
-                }
-            }
+            startReliableTimer()
         }
         .onDisappear {
-            timer?.invalidate()
-            timer = nil
+            stopTimer()
         }
         .alert("Guess Submitted!", isPresented: $showingSpyGuessAlert) {
             Button("OK") { }
         } message: {
             Text("Your location guess has been submitted. Good luck!")
         }
+        .overlay(
+            // Always visible bottom sheet for spy
+            Group {
+                if isCurrentPlayerSpy {
+                    VStack {
+                        Spacer()
+                        SpyGuessSheet(room: room, viewModel: viewModel, showingAlert: $showingSpyGuessAlert)
+                    }
+                }
+            }
+        )
     }
     
+    // Remove the private checkVotingEndConditions function
     
+    private func startReliableTimer() {
+        // Stop any existing timer
+        stopTimer()
+        
+        // Create a more reliable timer using DispatchQueue
+        let queue = DispatchQueue.global(qos: .userInteractive)
+        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
+            DispatchQueue.main.async {
+                // Update current time
+                self.currentTime = Date().timeIntervalSince1970
+                
+                // Check if voting should end automatically
+                self.viewModel.checkVotingEndConditions()
+            }
+        }
+        
+        // Ensure timer runs even during scroll
+        RunLoop.main.add(timer!, forMode: .common)
+    }
+    
+    private func stopTimer() {
+        timer?.invalidate()
+        timer = nil
+    }
+}
+
+struct SpyGuessSheet: View {
+    let room: GameRoom
+    @ObservedObject var viewModel: MultiplayerGameViewModel
+    @Binding var showingAlert: Bool
+    @State private var dragOffset: CGFloat = 0
+    @State private var isExpanded = false
+    
+    private let collapsedHeight: CGFloat = 120  // Daha yukarıda, lokasyonların ucundan görünsün
+    private let expandedHeight: CGFloat = 400
+    private let minDragDistance: CGFloat = 50
+    
+    var body: some View {
+        VStack(spacing: 0) {
+            // Content - Her zaman görünür
+            VStack(spacing: 16) {
+                // Header - Her zaman görünür
+                HStack {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Make Your Guess!")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .foregroundColor(.red)
+                        
+                        if isExpanded {
+                            Text("Try to guess the location before time runs out!")
+                                .font(.subheadline)
+                                .foregroundColor(.secondary)
+                                .multilineTextAlignment(.leading)
+                        }
+                    }
+                    
+                    Spacer()
+                    
+                    // Expand/Collapse indicator
+                    Image(systemName: isExpanded ? "chevron.down" : "chevron.up")
+                        .foregroundColor(.red)
+                        .font(.title3)
+                }
+                
+                if isExpanded {
+                    Divider()
+                    
+                    // Location grid - Sadece expanded'da
+                    ScrollView {
+                        LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 2), spacing: 16) {
+                            ForEach(room.selectedLocationSet.locations, id: \.id) { location in
+                                Button(action: {
+                                    viewModel.makeSpyGuess(guess: location.nameKey)
+                                    showingAlert = true
+                                }) {
+                                    VStack(spacing: 12) {
+                                        Text(location.name)
+                                            .font(.headline)
+                                            .fontWeight(.semibold)
+                                            .multilineTextAlignment(.center)
+                                            .foregroundColor(.primary)
+                                            .lineLimit(2)
+                                        
+                                        Text("\(location.roles.count) roles")
+                                            .font(.caption)
+                                            .foregroundColor(.secondary)
+                                    }
+                                    .frame(maxWidth: .infinity)
+                                    .padding()
+                                    .background(Color.red.opacity(0.1))
+                                    .cornerRadius(16)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 16)
+                                            .stroke(Color.red.opacity(0.3), lineWidth: 1)
+                                    )
+                                }
+                                .buttonStyle(PlainButtonStyle())
+                            }
+                        }
+                        .padding()
+                    }
+                } else {
+                    // Collapsed state - Lokasyonların ucundan görünsün
+                    HStack {
+                        Image(systemName: "eye.fill")
+                            .foregroundColor(.red)
+                        Text("Tap to expand and see all locations")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                        Spacer()
+                    }
+                    .padding(.horizontal)
+                }
+            }
+            .padding()
+            .background(Color(.systemBackground))
+            .cornerRadius(20, corners: [.topLeft, .topRight])
+            .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: -5)
+        }
+        
+        .frame(height: isExpanded ? expandedHeight : collapsedHeight)
+        .offset(y: dragOffset)
+        .gesture(
+            DragGesture()
+                .onChanged { value in
+                    let newOffset = value.translation.height
+                    if isExpanded {
+                        // When expanded, only allow dragging down
+                        dragOffset = max(0, newOffset)
+                    } else {
+                        // When collapsed, only allow dragging up
+                        dragOffset = min(0, newOffset)
+                    }
+                }
+                .onEnded { value in
+                    let dragDistance = value.translation.height
+                    
+                    if isExpanded {
+                        // If dragged down significantly, collapse
+                        if dragDistance > minDragDistance {
+                            withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
+                                isExpanded = false
+                                dragOffset = 0
+                            }
+                        } else {
+                            // Snap back to expanded
+                            withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
+                                dragOffset = 0
+                            }
+                        }
+                    } else {
+                        // If dragged up significantly, expand
+                        if dragDistance < -minDragDistance {
+                            withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
+                                isExpanded = true
+                                dragOffset = 0
+                            }
+                        } else {
+                            // Snap back to collapsed
+                            withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
+                                dragOffset = 0
+                            }
+                        }
+                    }
+                }
+        )
+        .onTapGesture {
+            // Tap to toggle state
+            withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
+                isExpanded.toggle()
+            }
+        }
+        .onAppear {
+            print("DEBUG: SpyGuessSheet loaded")
+            print("DEBUG: Current game location: \(room.location.nameKey)")
+            print("DEBUG: Selected location set: \(room.selectedLocationSet.rawValue)")
+            print("DEBUG: Available locations count: \(room.selectedLocationSet.locations.count)")
+        }
+    }
+}
+
+// Extension for corner radius
+extension View {
+    func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
+        clipShape(RoundedCorner(radius: radius, corners: corners))
+    }
+}
+
+struct RoundedCorner: Shape {
+    var radius: CGFloat = .infinity
+    var corners: UIRectCorner = .allCorners
+
+    func path(in rect: CGRect) -> Path {
+        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        return Path(path.cgPath)
+    }
 }
 
 struct PlayerCard: View {
