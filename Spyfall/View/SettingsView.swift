@@ -34,84 +34,97 @@ struct SettingsView: View {
     }
     
     var body: some View {
-        List {
-            Section {
-                Picker("Current Setting:", selection: $selectedLocationSet) {
-                    ForEach(LocationSets.locationSets, id: \.self) { locationSet in
-                        Text("\(locationSet.rawValue) (\(locationSet.locations.count))")
-                            .tag(locationSet)
-                    }
-                    ForEach(LocationSets.premiumSets, id: \.self) { premiumSet in
-                        if viewModel.isAdsRemoved {
-                            Text("\(premiumSet.rawValue) (\(premiumSet.locations.count))")
-                                .tag(premiumSet)
-                        } else {
-                            HStack {
+        VStack {
+            List {
+                Section {
+                    Picker("Current Setting:", selection: $selectedLocationSet) {
+                        ForEach(LocationSets.locationSets, id: \.self) { locationSet in
+                            Text("\(locationSet.rawValue) (\(locationSet.locations.count))")
+                                .tag(locationSet)
+                        }
+                        ForEach(LocationSets.premiumSets, id: \.self) { premiumSet in
+                            if viewModel.isAdsRemoved {
                                 Text("\(premiumSet.rawValue) (\(premiumSet.locations.count))")
-                                    .foregroundStyle(.gray)
-                                Image(systemName: "crown.fill")
+                                    .tag(premiumSet)
+                            } else {
+                                HStack {
+                                    Text("\(premiumSet.rawValue) (\(premiumSet.locations.count))")
+                                        .foregroundStyle(.gray)
+                                    Image(systemName: "crown.fill")
+                                }
+                                .tag(premiumSet)
+                                .selectionDisabled()
+                                
                             }
-                            .tag(premiumSet)
-                            .selectionDisabled()
-                            
                         }
                     }
+                    
+                    .pickerStyle(.menu)
+                    .onChange(of: selectedLocationSet) { _, newValue in
+                        CurrentSelectedLocationSet = newValue
+                        Location.locationData = CurrentSelectedLocationSet.locations
+                    }
+                } header: {
+                    Text("Game Setting")
                 }
                 
-                .pickerStyle(.menu)
-                .onChange(of: selectedLocationSet) { _, newValue in
-                    CurrentSelectedLocationSet = newValue
-                    Location.locationData = CurrentSelectedLocationSet.locations
-                }
-            } header: {
-                Text("Game Setting")
-            }
-
-            Section {
-                Button {
-                    sendEmail()
-                } label: {
-                    HStack {
-                        Image(systemName: "square.and.pencil")
-                        Text("Send Feedback")
+                Section {
+                    Button {
+                        sendEmail()
+                    } label: {
+                        HStack {
+                            Image(systemName: "square.and.pencil")
+                            Text("Send Feedback")
+                        }
                     }
+                    
+                    Button {
+                        viewModel.requestReview()
+                    } label: {
+                        HStack {
+                            Image(systemName: "hand.thumbsup")
+                            Text("Rate Us")
+                        }
+                    }
+                    
+                } header: {
+                    Text("Feedback")
+                } footer: {
+                    Text("We would love for you to rate our app and share your feedback with us. Thank you!")
                 }
                 
-                Button {
-                    viewModel.requestReview()
-                } label: {
-                    HStack {
-                        Image(systemName: "hand.thumbsup")
-                        Text("Rate Us")
+                Section {
+                    Button {
+                        if let url = URL(string: UIApplication.openSettingsURLString),
+                           UIApplication.shared.canOpenURL(url) {
+                            UIApplication.shared.open(url)
+                        }
+                    } label: {
+                        HStack {
+                            Image(systemName: "globe")
+                            Text("Change Language")
+                        }
                     }
+                } header: {
+                    Text("Language")
+                } footer: {
+                    Text("More languages will be added soon. Please send feedback which one do you want.")
                 }
                 
-            } header: {
-                Text("Feedback")
-            } footer: {
-                Text("We would love for you to rate our app and share your feedback with us. Thank you!")
+                
+                
+                
             }
-            
-            Section {
-                Button {
-                    if let url = URL(string: UIApplication.openSettingsURLString),
-                                  UIApplication.shared.canOpenURL(url) {
-                                   UIApplication.shared.open(url)
-                               }
-                } label: {
-                    HStack {
-                        Image(systemName: "globe")
-                        Text("Change Language")
-                    }
+            Spacer()
+            HStack{
+                Spacer()
+                if let versionNumber = Bundle.main.releaseVersionNumber, let buildNumber = Bundle.main.buildVersionNumber {
+                    Text("v\(versionNumber) b\(buildNumber)")
+                        .fontWeight(.ultraLight)
                 }
-            } header: {
-                Text("Language")
-            } footer: {
-                Text("More languages will be added soon. Please send feedback which one do you want.")
-            }
+            }.padding(.trailing)
 
         }
-        
         .navigationTitle("Settings")
         .navigationBarTitleDisplayMode(.large)
         
