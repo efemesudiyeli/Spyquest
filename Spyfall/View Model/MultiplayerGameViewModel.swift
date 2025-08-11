@@ -52,7 +52,7 @@ class MultiplayerGameViewModel: ObservableObject {
         
         let randomLocation = Location.locationData.randomElement() ?? Location(nameKey: "Beach", roles: ["Tourist", "Lifeguard", "Vendor", "Swimmer", "Photographer"])
         let roomCode = generateRoomCode()
-        let newRoom = GameRoom(
+        var newRoom = GameRoom(
             id: roomCode,
             hostId: user.uid,
             hostName: playerName,
@@ -62,6 +62,8 @@ class MultiplayerGameViewModel: ObservableObject {
             status: .waiting,
             createdAt: Date()
         )
+        // Initialize all players as unready (including host)
+        newRoom.readyPlayers = [playerName: false]
         
         let roomData = newRoom.toDictionary()
         databaseRef.child("rooms").child(roomCode).setValue(roomData) { [weak self] error, _ in
@@ -101,9 +103,13 @@ class MultiplayerGameViewModel: ObservableObject {
                     var updatedRoom = room
                     let newPlayer = Player(name: playerName, role: .player)
                     updatedRoom.players.append(newPlayer)
+                    var updatedReady = room.readyPlayers ?? [:]
+                    updatedReady[playerName] = false
+                    updatedRoom.readyPlayers = updatedReady
                     
                     self.currentRoomRef?.updateChildValues([
-                        "players": updatedRoom.players.map { $0.toDictionary() }
+                        "players": updatedRoom.players.map { $0.toDictionary() },
+                        "readyPlayers": updatedReady
                     ]) { error, _ in
                         DispatchQueue.main.async {
                             self.isLoading = false
@@ -207,20 +213,17 @@ class MultiplayerGameViewModel: ObservableObject {
         guard let room = currentRoom,
               room.hostId == currentUser?.uid else { return }
         
+        // Ensure everyone is ready before starting
+        let allReady = areAllPlayersReady(in: room)
+        guard allReady else { return }
+        
         var updatedRoom = room
-        updatedRoom.status = .revealing
+        updatedRoom.status = .playing
         updatedRoom.assignRoles()
-        // Initialize ready flags for all players; host is pre-marked ready
-        var initialReady: [String: Bool] = Dictionary(
-            uniqueKeysWithValues: updatedRoom.players.map { ($0.name, false) }
-        )
-        initialReady[updatedRoom.hostName] = true
-        updatedRoom.readyPlayers = initialReady
         
         currentRoomRef?.updateChildValues([
-            "status": "revealing",
-            "players": updatedRoom.players.map { $0.toDictionary() },
-            "readyPlayers": initialReady
+            "status": "playing",
+            "players": updatedRoom.players.map { $0.toDictionary() }
         ])
     }
 
@@ -260,6 +263,20 @@ class MultiplayerGameViewModel: ObservableObject {
             "status": "waiting",
             "players": updatedRoom.players.map { $0.toDictionary() },
             "readyPlayers": NSNull()
+        ])
+    }
+
+    func toggleReady() {
+        guard var room = currentRoom else { return }
+        var ready = room.readyPlayers ?? [:]
+        let current = ready[currentPlayerName] ?? false
+        ready[currentPlayerName] = !current
+        room.readyPlayers = ready
+        DispatchQueue.main.async {
+            self.currentRoom = room
+        }
+        currentRoomRef?.updateChildValues([
+            "readyPlayers": ready
         ])
     }
 
@@ -316,6 +333,12 @@ class MultiplayerGameViewModel: ObservableObject {
         }
         
         return code
+    }
+
+    func areAllPlayersReady(in room: GameRoom) -> Bool {
+        let ready = room.readyPlayers ?? [:]
+        let allPlayerNames = room.players.map { $0.name }
+        return !allPlayerNames.isEmpty && allPlayerNames.allSatisfy { ready[$0] == true }
     }
 }
 
