@@ -139,21 +139,34 @@ class MultiplayerGameViewModel: ObservableObject {
         currentRoomRef?.observe(.value) { [weak self] snapshot in
             guard let self = self else { return }
             
-            if let roomData = snapshot.value as? [String: Any],
-               let room = GameRoom.fromDictionary(roomData) {
-                
-                DispatchQueue.main.async {
-                    self.currentRoom = room
+            if let roomData = snapshot.value as? [String: Any] {
+                if let room = GameRoom.fromDictionary(roomData) {
+                    DispatchQueue.main.async {
+                        self.currentRoom = room
+                        
+                        if room.players.isEmpty {
+                            self.autoCloseEmptyRoom()
+                        } else if room.status == .playing && room.players.count < 2 {
+                            self.cancelGameDueToInsufficientPlayers()
+                        }
+                    }
+                } else {
+                    // Log the parsing error for debugging
+                    print("Failed to parse room data: \(roomData)")
                     
-                    if room.players.isEmpty {
-                        self.autoCloseEmptyRoom()
-                    } else if room.status == .playing && room.players.count < 2 {
-                        self.cancelGameDueToInsufficientPlayers()
+                    // Only auto-close if the room is actually deleted
+                    if snapshot.exists() == false {
+                        DispatchQueue.main.async {
+                            self.autoCloseEmptyRoom()
+                        }
                     }
                 }
             } else {
-                DispatchQueue.main.async {
-                    self.autoCloseEmptyRoom()
+                // Only auto-close if the room is actually deleted
+                if snapshot.exists() == false {
+                    DispatchQueue.main.async {
+                        self.autoCloseEmptyRoom()
+                    }
                 }
             }
         }
@@ -200,6 +213,31 @@ class MultiplayerGameViewModel: ObservableObject {
         
         currentRoomRef?.updateChildValues([
             "status": "playing",
+            "players": updatedRoom.players.map { $0.toDictionary() }
+        ])
+    }
+    
+    func restartGame() {
+        guard let room = currentRoom,
+              room.hostId == currentUser?.uid else { return }
+        
+        var updatedRoom = room
+        updatedRoom.status = .waiting
+        
+        // Reset all player roles
+        for index in updatedRoom.players.indices {
+            updatedRoom.players[index].role = nil
+            updatedRoom.players[index].playerLocationRole = nil
+        }
+        
+        // Update local state immediately for better UX
+        DispatchQueue.main.async {
+            self.currentRoom = updatedRoom
+        }
+        
+        // Update Firebase for synchronization
+        currentRoomRef?.updateChildValues([
+            "status": "waiting",
             "players": updatedRoom.players.map { $0.toDictionary() }
         ])
     }
@@ -337,26 +375,37 @@ extension Location {
 
 extension Player {
     func toDictionary() -> [String: Any] {
-        return [
-            "name": name,
-            "role": role?.rawValue ?? "",
-            "playerLocationRole": playerLocationRole ?? ""
+        var dict: [String: Any] = [
+            "name": name
         ]
+        
+        if let role = role {
+            dict["role"] = role.rawValue
+        }
+        
+        if let playerLocationRole = playerLocationRole {
+            dict["playerLocationRole"] = playerLocationRole
+        }
+        
+        return dict
     }
     
     static func fromDictionary(_ dict: [String: Any]) -> Player? {
-        guard let name = dict["name"] as? String,
-              let roleString = dict["role"] as? String,
-              let role = Role(rawValue: roleString) else {
+        guard let name = dict["name"] as? String else {
             return nil
+        }
+        
+        let role: Role?
+        if let roleString = dict["role"] as? String {
+            role = Role(rawValue: roleString)
+        } else {
+            role = nil
         }
         
         let playerLocationRole = dict["playerLocationRole"] as? String
         
         var player = Player(name: name, role: role)
-        if let locationRole = playerLocationRole, !locationRole.isEmpty {
-            player.playerLocationRole = locationRole
-        }
+        player.playerLocationRole = playerLocationRole
         
         return player
     }

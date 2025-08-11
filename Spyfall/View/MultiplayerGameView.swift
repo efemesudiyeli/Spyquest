@@ -60,6 +60,12 @@ struct MultiplayerGameView: View {
         .onChange(of: viewModel.currentRoom?.status) { _, newStatus in
             if newStatus == .playing {
                 startGameTimer()
+            } else if newStatus == .waiting {
+                // Reset game states when restarting
+                showingRole = false
+                showingGameEnd = false
+                isTimerFinished = false
+                timeRemaining = 8.5 * 60
             }
         }
         .alert("Room Update", isPresented: .constant(!viewModel.errorMessage.isEmpty)) {
@@ -121,20 +127,38 @@ struct MultiplayerGameView: View {
             }
             
             if room.hostId == viewModel.currentUser?.uid {
-                Button(action: {
-                    viewModel.startGame()
-                }) {
-                    HStack {
-                        Image(systemName: "play.fill")
-                        Text("Start Game")
+                VStack(spacing: 10) {
+                    Button(action: {
+                        viewModel.startGame()
+                    }) {
+                        HStack {
+                            Image(systemName: "play.fill")
+                            Text("Start Game")
+                        }
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(room.players.count >= 2 ? Color.green : Color.gray)
+                        .cornerRadius(10)
                     }
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(room.players.count >= 2 ? Color.green : Color.gray)
-                    .cornerRadius(10)
+                    .disabled(room.players.count < 2)
+                    
+                    if room.status == .finished {
+                        Button(action: {
+                            viewModel.restartGame()
+                        }) {
+                            HStack {
+                                Image(systemName: "arrow.clockwise")
+                                Text(NSLocalizedString("Restart Game", comment: ""))
+                            }
+                            .foregroundColor(.white)
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color.orange)
+                            .cornerRadius(10)
+                        }
+                    }
                 }
-                .disabled(room.players.count < 2)
             } else {
                 Text("Waiting for host to start the game...")
                     .font(.subheadline)
@@ -178,28 +202,57 @@ struct MultiplayerGameView: View {
     
     private func roleRevealView(room: GameRoom) -> some View {
         VStack(spacing: 30) {
-            Text("Get Ready!")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-            
-            Text("Your role will be revealed in:")
-                .font(.title2)
-                .foregroundColor(.secondary)
-            
-            Text("3")
-                .font(.system(size: 80, weight: .bold))
-                .foregroundColor(.blue)
-            
-            Text("Tap to continue when everyone is ready")
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-                .multilineTextAlignment(.center)
-        }
-        .padding()
-        .onTapGesture {
-            withAnimation {
-                showingRole = true
+            VStack(spacing: 30) {
+                Text("Get Ready!")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                
+                Text("Your role will be revealed in:")
+                    .font(.title2)
+                    .foregroundColor(.secondary)
+                
+                Text("3")
+                    .font(.system(size: 80, weight: .bold))
+                    .foregroundColor(.blue)
+                
+                Text("Tap to continue when everyone is ready")
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+                    .multilineTextAlignment(.center)
             }
+            .padding()
+            .onTapGesture {
+                withAnimation {
+                    showingRole = true
+                }
+            }
+            
+            // Add restart and back to lobby buttons
+            VStack(spacing: 15) {
+                HStack(spacing: 15) {
+                    Button(NSLocalizedString("Back to Lobby", comment: "")) {
+                        viewModel.leaveRoom()
+                        dismiss()
+                    }
+                    .foregroundColor(.white)
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color.blue)
+                    .cornerRadius(10)
+                    
+                    if room.hostId == viewModel.currentUser?.uid {
+                        Button(NSLocalizedString("Restart Game", comment: "")) {
+                            viewModel.restartGame()
+                        }
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.green)
+                        .cornerRadius(10)
+                    }
+                }
+            }
+            .padding(.horizontal)
         }
     }
     
@@ -265,15 +318,40 @@ struct MultiplayerGameView: View {
                 .cornerRadius(15)
             }
             
-            if isTimerFinished {
-                Button("End Game") {
-                    showingGameEnd = true
+            VStack(spacing: 15) {
+                if isTimerFinished {
+                    Button("End Game") {
+                        showingGameEnd = true
+                    }
+                    .foregroundColor(.white)
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color.red)
+                    .cornerRadius(10)
                 }
-                .foregroundColor(.white)
-                .padding()
-                .frame(maxWidth: .infinity)
-                .background(Color.red)
-                .cornerRadius(10)
+                
+                HStack(spacing: 15) {
+                    Button(NSLocalizedString("Back to Lobby", comment: "")) {
+                        viewModel.leaveRoom()
+                        dismiss()
+                    }
+                    .foregroundColor(.white)
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color.blue)
+                    .cornerRadius(10)
+                    
+                    if room.hostId == viewModel.currentUser?.uid {
+                        Button(NSLocalizedString("Restart Game", comment: "")) {
+                            viewModel.restartGame()
+                        }
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.green)
+                        .cornerRadius(10)
+                    }
+                }
             }
             
             Spacer()
@@ -302,15 +380,28 @@ struct MultiplayerGameView: View {
                 }
             }
             
-            Button("Back to Lobby") {
-                viewModel.leaveRoom()
-                dismiss()
+            HStack(spacing: 15) {
+                Button("Back to Lobby") {
+                    viewModel.leaveRoom()
+                    dismiss()
+                }
+                .foregroundColor(.white)
+                .padding()
+                .frame(maxWidth: .infinity)
+                .background(Color.blue)
+                .cornerRadius(10)
+                
+                if room.hostId == viewModel.currentUser?.uid {
+                    Button(NSLocalizedString("Restart Game", comment: "")) {
+                        viewModel.restartGame()
+                    }
+                    .foregroundColor(.white)
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color.green)
+                    .cornerRadius(10)
+                }
             }
-            .foregroundColor(.white)
-            .padding()
-            .frame(maxWidth: .infinity)
-            .background(Color.blue)
-            .cornerRadius(10)
             
             Spacer()
         }
