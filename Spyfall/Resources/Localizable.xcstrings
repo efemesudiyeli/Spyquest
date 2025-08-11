@@ -105,6 +105,19 @@
     "%lld players" : {
 
     },
+    "%lld/%lld ready" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld/%2$lld ready"
+          }
+        }
+      }
+    },
+    "0/%lld ready" : {
+
+    },
     "1. Setup" : {
       "localizations" : {
         "fr" : {
@@ -4405,6 +4418,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Oyunu Bitir"
+          }
+        }
+      }
+    },
+    "End Round For All" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terminer le tour pour tous"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Herkes için raundu bitir"
           }
         }
       }
@@ -9512,6 +9541,9 @@
         }
       }
     },
+    "Ready" : {
+
+    },
     "Ready to play with friends?" : {
 
     },
@@ -11249,6 +11281,9 @@
           }
         }
       }
+    },
+    "Start" : {
+
     },
     "Start Game" : {
       "localizations" : {

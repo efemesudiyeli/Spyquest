@@ -20,6 +20,8 @@ struct MultiplayerGameView: View {
                 switch room.status {
                 case .waiting:
                     waitingRoomView(room: room)
+                case .revealing:
+                    roleRevealView(room: room)
                 case .playing:
                     if showingRole {
                         gamePlayingView(room: room)
@@ -62,6 +64,8 @@ struct MultiplayerGameView: View {
         }
         .onChange(of: viewModel.currentRoom?.status) { _, newStatus in
             if newStatus == .playing {
+                // Reveal roles for all and start the timer together
+                showingRole = true
                 startGameTimer(reset: true)
             } else if newStatus == .waiting {
                 // Reset game states when restarting
@@ -71,7 +75,7 @@ struct MultiplayerGameView: View {
                 timeRemaining = 8.5 * 60
                 gameTimer?.invalidate()
                 gameTimer = nil
-            } else if newStatus == .finished || newStatus == .cancelled {
+            } else if newStatus == .finished || newStatus == .cancelled || newStatus == .revealing {
                 gameTimer?.invalidate()
                 gameTimer = nil
             }
@@ -157,7 +161,7 @@ struct MultiplayerGameView: View {
                         }) {
                             HStack {
                                 Image(systemName: "arrow.clockwise")
-                                Text(NSLocalizedString("Back to Lobby", comment: ""))
+                                Text(NSLocalizedString("End Round For All", comment: ""))
                             }
                             .foregroundColor(.white)
                             .padding()
@@ -221,29 +225,69 @@ struct MultiplayerGameView: View {
                     .multilineTextAlignment(.center)
             }
             .padding()
-            .onTapGesture {
-                withAnimation {
-                    showingRole = true
-                }
-            }
+            .onTapGesture { }
             
-            // Add only the host restart button here; in-content Leave Room removed
-            if room.hostId == viewModel.currentUser?.uid {
-                VStack(spacing: 15) {
-                    HStack(spacing: 15) {
-                        Button(NSLocalizedString("Back to Lobby", comment: "")) {
-                            viewModel.restartGame()
+            // Ready status and host control
+            VStack(spacing: 12) {
+                // Ready progress
+                if let ready = room.readyPlayers {
+                    let readyCount = ready.values.filter { $0 }.count
+                    Text("\(readyCount)/\(room.players.count) ready")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                } else {
+                    Text("0/\(room.players.count) ready")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                }
+                
+                // Ready button for non-hosts
+                if room.hostId != viewModel.currentUser?.uid {
+                    Button(action: {
+                        viewModel.markCurrentPlayerReady()
+                        viewModel.tryStartIfAllReady()
+                    }) {
+                        HStack {
+                            Image(systemName: "hand.thumbsup.fill")
+                            Text(NSLocalizedString("Ready", comment: ""))
                         }
                         .foregroundColor(.white)
                         .padding()
                         .frame(maxWidth: .infinity)
-                        .background(Color.green)
+                        .background(Color.blue)
                         .cornerRadius(10)
                     }
                 }
-                .padding(.horizontal)
+                
+                // Host start button (host does not need to be ready)
+                if room.hostId == viewModel.currentUser?.uid {
+                    Button(action: {
+                        if isAllReady(room: room) {
+                            showingRole = true
+                            // move status to playing
+                            viewModel.tryStartIfAllReady()
+                        }
+                    }) {
+                        HStack {
+                            Image(systemName: "checkmark.circle.fill")
+                            Text(NSLocalizedString("Start", comment: ""))
+                        }
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(isAllReady(room: room) ? Color.green : Color.gray)
+                        .cornerRadius(10)
+                    }
+                    .disabled(!isAllReady(room: room))
+                }
             }
+            .padding(.horizontal)
         }
+    }
+
+    private func isAllReady(room: GameRoom) -> Bool {
+        guard let ready = room.readyPlayers else { return false }
+        return ready.values.allSatisfy { $0 } && ready.count == room.players.count
     }
     
     private func gamePlayingView(room: GameRoom) -> some View {
@@ -323,7 +367,7 @@ struct MultiplayerGameView: View {
                 // In-content Leave Room removed; only host restart remains
                 if room.hostId == viewModel.currentUser?.uid {
                     HStack(spacing: 15) {
-                        Button(NSLocalizedString("Back to Lobby", comment: "")) {
+                        Button(NSLocalizedString("End Round For All", comment: "")) {
                             viewModel.restartGame()
                         }
                         .foregroundColor(.white)
