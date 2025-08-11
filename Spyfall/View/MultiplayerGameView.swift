@@ -38,9 +38,11 @@ struct MultiplayerGameView: View {
         
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-                Button("Leave Room") {
+                Button(action: {
                     viewModel.leaveRoom()
                     dismiss()
+                }) {
+                    Image(systemName: "door.left.hand.open")
                 }
                 .foregroundColor(.red)
             }
@@ -149,7 +151,7 @@ struct MultiplayerGameView: View {
                         }) {
                             HStack {
                                 Image(systemName: "arrow.clockwise")
-                                Text(NSLocalizedString("Restart Game", comment: ""))
+                                Text(NSLocalizedString("Back to Lobby", comment: ""))
                             }
                             .foregroundColor(.white)
                             .padding()
@@ -187,15 +189,7 @@ struct MultiplayerGameView: View {
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)
             
-            Button(NSLocalizedString("Back to Lobby", comment: "")) {
-                viewModel.leaveRoom()
-                dismiss()
-            }
-            .foregroundColor(.white)
-            .padding()
-            .frame(maxWidth: .infinity)
-            .background(Color.blue)
-            .cornerRadius(10)
+            // Removed in-content Leave Room per design; use top-left toolbar button instead
         }
         .padding()
     }
@@ -227,21 +221,11 @@ struct MultiplayerGameView: View {
                 }
             }
             
-            // Add restart and back to lobby buttons
-            VStack(spacing: 15) {
-                HStack(spacing: 15) {
-                    Button(NSLocalizedString("Back to Lobby", comment: "")) {
-                        viewModel.leaveRoom()
-                        dismiss()
-                    }
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.blue)
-                    .cornerRadius(10)
-                    
-                    if room.hostId == viewModel.currentUser?.uid {
-                        Button(NSLocalizedString("Restart Game", comment: "")) {
+            // Add only the host restart button here; in-content Leave Room removed
+            if room.hostId == viewModel.currentUser?.uid {
+                VStack(spacing: 15) {
+                    HStack(spacing: 15) {
+                        Button(NSLocalizedString("Back to Lobby", comment: "")) {
                             viewModel.restartGame()
                         }
                         .foregroundColor(.white)
@@ -251,8 +235,8 @@ struct MultiplayerGameView: View {
                         .cornerRadius(10)
                     }
                 }
+                .padding(.horizontal)
             }
-            .padding(.horizontal)
         }
     }
     
@@ -330,19 +314,10 @@ struct MultiplayerGameView: View {
                     .cornerRadius(10)
                 }
                 
-                HStack(spacing: 15) {
-                    Button(NSLocalizedString("Back to Lobby", comment: "")) {
-                        viewModel.leaveRoom()
-                        dismiss()
-                    }
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.blue)
-                    .cornerRadius(10)
-                    
-                    if room.hostId == viewModel.currentUser?.uid {
-                        Button(NSLocalizedString("Restart Game", comment: "")) {
+                // In-content Leave Room removed; only host restart remains
+                if room.hostId == viewModel.currentUser?.uid {
+                    HStack(spacing: 15) {
+                        Button(NSLocalizedString("Back to Lobby", comment: "")) {
                             viewModel.restartGame()
                         }
                         .foregroundColor(.white)
@@ -381,7 +356,7 @@ struct MultiplayerGameView: View {
             }
             
             HStack(spacing: 15) {
-                Button("Back to Lobby") {
+                Button(NSLocalizedString("Leave Room", comment: "")) {
                     viewModel.leaveRoom()
                     dismiss()
                 }
@@ -392,7 +367,7 @@ struct MultiplayerGameView: View {
                 .cornerRadius(10)
                 
                 if room.hostId == viewModel.currentUser?.uid {
-                    Button(NSLocalizedString("Restart Game", comment: "")) {
+                    Button(NSLocalizedString("Back to Lobby", comment: "")) {
                         viewModel.restartGame()
                     }
                     .foregroundColor(.white)
