@@ -9700,9 +9700,6 @@
         }
       }
     },
-    "Restart Game" : {
-
-    },
     "Restaurant" : {
       "extractionState" : "manual",
       "localizations" : {
