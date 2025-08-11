@@ -208,13 +208,32 @@ class MultiplayerGameViewModel: ObservableObject {
               room.hostId == currentUser?.uid else { return }
         
         var updatedRoom = room
-        updatedRoom.status = .playing
+        updatedRoom.status = .revealing
         updatedRoom.assignRoles()
+        // Initialize ready flags for all players; host is pre-marked ready
+        var initialReady: [String: Bool] = Dictionary(
+            uniqueKeysWithValues: updatedRoom.players.map { ($0.name, false) }
+        )
+        initialReady[updatedRoom.hostName] = true
+        updatedRoom.readyPlayers = initialReady
         
         currentRoomRef?.updateChildValues([
-            "status": "playing",
-            "players": updatedRoom.players.map { $0.toDictionary() }
+            "status": "revealing",
+            "players": updatedRoom.players.map { $0.toDictionary() },
+            "readyPlayers": initialReady
         ])
+    }
+
+    func tryStartIfAllReady() {
+        guard let room = currentRoom else { return }
+        let ready = room.readyPlayers ?? [:]
+        let nonHostPlayers = room.players.filter { $0.name != room.hostName }.map { $0.name }
+        let allReady = nonHostPlayers.allSatisfy { ready[$0] == true }
+        if allReady {
+            currentRoomRef?.updateChildValues([
+                "status": "playing"
+            ])
+        }
     }
     
     func restartGame() {
@@ -223,6 +242,7 @@ class MultiplayerGameViewModel: ObservableObject {
         
         var updatedRoom = room
         updatedRoom.status = .waiting
+        updatedRoom.readyPlayers = nil
         
         // Reset all player roles
         for index in updatedRoom.players.indices {
@@ -238,7 +258,21 @@ class MultiplayerGameViewModel: ObservableObject {
         // Update Firebase for synchronization
         currentRoomRef?.updateChildValues([
             "status": "waiting",
-            "players": updatedRoom.players.map { $0.toDictionary() }
+            "players": updatedRoom.players.map { $0.toDictionary() },
+            "readyPlayers": NSNull()
+        ])
+    }
+
+    func markCurrentPlayerReady() {
+        guard var room = currentRoom else { return }
+        var ready = room.readyPlayers ?? [:]
+        ready[currentPlayerName] = true
+        room.readyPlayers = ready
+        DispatchQueue.main.async {
+            self.currentRoom = room
+        }
+        currentRoomRef?.updateChildValues([
+            "readyPlayers": ready
         ])
     }
     
@@ -248,12 +282,15 @@ class MultiplayerGameViewModel: ObservableObject {
         
         var updatedPlayers = room.players
         updatedPlayers.removeAll { $0.name == currentPlayerName }
+        var updatedReady = room.readyPlayers ?? [:]
+        updatedReady.removeValue(forKey: currentPlayerName)
         
         if updatedPlayers.isEmpty {
             currentRoomRef?.removeValue()
         } else {
             currentRoomRef?.updateChildValues([
-                "players": updatedPlayers.map { $0.toDictionary() }
+                "players": updatedPlayers.map { $0.toDictionary() },
+                "readyPlayers": updatedReady
             ])
         }
         
@@ -291,9 +328,11 @@ struct GameRoom: Identifiable, Codable {
     var players: [Player]
     var status: GameStatus
     let createdAt: Date
+    var readyPlayers: [String: Bool]? = nil
     
     enum GameStatus: String, Codable, CaseIterable {
         case waiting = "waiting"
+        case revealing = "revealing"
         case playing = "playing"
         case finished = "finished"
         case cancelled = "cancelled"
@@ -313,7 +352,7 @@ struct GameRoom: Identifiable, Codable {
     }
     
     func toDictionary() -> [String: Any] {
-        return [
+        var dict: [String: Any] = [
             "id": id,
             "hostId": hostId,
             "hostName": hostName,
@@ -323,6 +362,10 @@ struct GameRoom: Identifiable, Codable {
             "status": status.rawValue,
             "createdAt": createdAt.timeIntervalSince1970
         ]
+        if let readyPlayers = readyPlayers {
+            dict["readyPlayers"] = readyPlayers
+        }
+        return dict
     }
     
     static func fromDictionary(_ dict: [String: Any]) -> GameRoom? {
@@ -341,8 +384,7 @@ struct GameRoom: Identifiable, Codable {
         
         let players = playersArray.compactMap { Player.fromDictionary($0) }
         let createdAt = Date(timeIntervalSince1970: createdAtInterval)
-        
-        return GameRoom(
+        var room = GameRoom(
             id: id,
             hostId: hostId,
             hostName: hostName,
@@ -352,6 +394,10 @@ struct GameRoom: Identifiable, Codable {
             status: status,
             createdAt: createdAt
         )
+        if let ready = dict["readyPlayers"] as? [String: Bool] {
+            room.readyPlayers = ready
+        }
+        return room
     }
 }
 
