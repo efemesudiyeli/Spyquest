@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -58,6 +58,10 @@
 		D5C3024D2C4A4F0C001453CA /* LocationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		D5AE4C652E4A1B59006E6DA3 /* Extension */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Extension; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		D5B604392C48E223004A17A8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -104,6 +108,7 @@
 		D5B6043E2C48E223004A17A8 /* Spyfall */ = {
 			isa = PBXGroup;
 			children = (
+				D5AE4C652E4A1B59006E6DA3 /* Extension */,
 				D511F3F12C541F4600B0C449 /* Info.plist */,
 				D5B6043F2C48E223004A17A8 /* SpyfallApp.swift */,
 				D5B6044D2C48E256004A17A8 /* Model */,
@@ -181,6 +186,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				D5AE4C652E4A1B59006E6DA3 /* Extension */,
 			);
 			name = Spyfall;
 			productName = Spyfall;
@@ -398,7 +406,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Spyfall/Preview Content\"";
 				DEVELOPMENT_TEAM = D3VSY2P4B2;
 				ENABLE_PREVIEWS = YES;
@@ -437,7 +445,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Spyfall/Preview Content\"";
 				DEVELOPMENT_TEAM = D3VSY2P4B2;
 				ENABLE_PREVIEWS = YES;
