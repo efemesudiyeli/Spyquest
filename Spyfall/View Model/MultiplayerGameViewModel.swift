@@ -10,12 +10,15 @@ class MultiplayerGameViewModel: ObservableObject {
     @Published var isLoading = false
     @Published var errorMessage = ""
     @Published var currentPlayerName: String = ""
+    @Published var serverTimeOffsetMs: Int64 = 0
+    @Published var currentVote: String? = nil
     
     private var databaseRef = Database.database().reference()
     private var currentRoomRef: DatabaseReference?
     
     init() {
         setupAuthStateListener()
+        observeServerTimeOffset()
     }
     
     private func setupAuthStateListener() {
@@ -23,6 +26,16 @@ class MultiplayerGameViewModel: ObservableObject {
             DispatchQueue.main.async {
                 self?.currentUser = user
                 self?.isAuthenticated = user != nil
+            }
+        }
+    }
+    
+    private func observeServerTimeOffset() {
+        let offsetRef = Database.database().reference(withPath: ".info/serverTimeOffset")
+        offsetRef.observe(.value) { [weak self] snapshot in
+            guard let millis = snapshot.value as? Int64 else { return }
+            DispatchQueue.main.async {
+                self?.serverTimeOffsetMs = millis
             }
         }
     }
@@ -41,7 +54,7 @@ class MultiplayerGameViewModel: ObservableObject {
         }
     }
     
-    func createGameRoom(playerCount: Int, playerName: String, completion: @escaping (Bool) -> Void) {
+    func createGameRoom(playerCount: Int, playerName: String, selectedLocationSet: LocationSets, completion: @escaping (Bool) -> Void) {
         guard let user = currentUser else { 
             completion(false)
             return 
@@ -50,7 +63,16 @@ class MultiplayerGameViewModel: ObservableObject {
         isLoading = true
         errorMessage = ""
         
-        let randomLocation = Location.locationData.randomElement() ?? Location(nameKey: "Beach", roles: ["Tourist", "Lifeguard", "Vendor", "Swimmer", "Photographer"])
+        // Use the selected location set to get random location
+        let availableLocations = selectedLocationSet.locations
+        print("DEBUG: Selected location set: \(selectedLocationSet.rawValue)")
+        print("DEBUG: Available locations count: \(availableLocations.count)")
+        
+        let randomIndex = Int.random(in: 0..<availableLocations.count)
+        let randomLocation = availableLocations[randomIndex]
+        
+        print("DEBUG: Selected random location: \(randomLocation.nameKey)")
+        
         let roomCode = generateRoomCode()
         var newRoom = GameRoom(
             id: roomCode,
@@ -60,7 +82,8 @@ class MultiplayerGameViewModel: ObservableObject {
             maxPlayers: playerCount,
             players: [Player(name: playerName, role: .player)],
             status: .waiting,
-            createdAt: Date()
+            createdAt: Date(),
+            selectedLocationSet: selectedLocationSet
         )
         // Initialize all players as unready (including host)
         newRoom.readyPlayers = [playerName: false]
@@ -207,8 +230,6 @@ class MultiplayerGameViewModel: ObservableObject {
         }
     }
     
-
-    
     func startGame() {
         guard let room = currentRoom,
               room.hostId == currentUser?.uid else { return }
@@ -223,10 +244,99 @@ class MultiplayerGameViewModel: ObservableObject {
         
         currentRoomRef?.updateChildValues([
             "status": "playing",
-            "players": updatedRoom.players.map { $0.toDictionary() }
+            "players": updatedRoom.players.map { $0.toDictionary() },
+            "gameStartAt": ServerValue.timestamp(),
+            "gameDurationSeconds": Int(8.5 * 60)
         ])
     }
-
+    
+    func startVoting() {
+        guard let room = currentRoom,
+              room.hostId == currentUser?.uid else { return }
+        
+        currentRoomRef?.updateChildValues([
+            "status": "voting",
+            "votingStartAt": ServerValue.timestamp(),
+            "votingDurationSeconds": 60,
+            "votes": [:]
+        ])
+    }
+    
+    func voteForPlayer(playerName: String) {
+        guard let room = currentRoom,
+              room.status == .voting else { return }
+        
+        currentVote = playerName
+        
+        currentRoomRef?.child("votes").child(currentPlayerName).setValue(playerName)
+        
+        // Check if majority has voted and reduce time to 10 seconds
+        checkMajorityVoteAndReduceTime()
+    }
+    
+    private func checkMajorityVoteAndReduceTime() {
+        guard let room = currentRoom,
+              room.status == .voting else { return }
+        
+        // Get current votes count
+        currentRoomRef?.child("votes").observeSingleEvent(of: .value) { [weak self] snapshot in
+            guard let self = self else { return }
+            
+            if let votesData = snapshot.value as? [String: String] {
+                let voteCount = votesData.count
+                let totalPlayers = room.players.count
+                let majorityThreshold = (totalPlayers / 2) + 1
+                
+                // If majority has voted, reduce voting time to 10 seconds
+                if voteCount >= majorityThreshold {
+                    self.currentRoomRef?.updateChildValues([
+                        "votingDurationSeconds": 10
+                    ])
+                }
+            }
+        }
+    }
+    
+    func endVotingAndReveal() {
+        guard let room = currentRoom,
+              room.hostId == currentUser?.uid else { return }
+        
+        // Calculate voting results
+        currentRoomRef?.child("votes").observeSingleEvent(of: .value) { [weak self] snapshot in
+            guard let self = self else { return }
+            
+            if let votesData = snapshot.value as? [String: String] {
+                let voteCounts = Dictionary(grouping: votesData.values, by: { $0 })
+                    .mapValues { $0.count }
+                
+                let mostVotedPlayer = voteCounts.max(by: { $0.value < $1.value })?.key ?? "No one"
+                let spyName = room.players.first(where: { $0.role == .spy })?.name ?? "Unknown"
+                let spyCaught = mostVotedPlayer == spyName
+                
+                // Check if spy made a correct guess
+                let spyGuessCorrect: Bool?
+                if let spyGuess = room.spyGuess {
+                    spyGuessCorrect = spyGuess.lowercased() == room.location.nameKey.lowercased()
+                } else {
+                    spyGuessCorrect = nil
+                }
+                
+                let votingResult = VotingResult(
+                    mostVotedPlayer: mostVotedPlayer,
+                    spyName: spyName,
+                    spyCaught: spyCaught,
+                    voteCounts: voteCounts,
+                    spyGuessCorrect: spyGuessCorrect
+                )
+                
+                self.currentRoomRef?.updateChildValues([
+                    "status": "finished",
+                    "votingResult": votingResult.toDictionary()
+                ])
+            }
+        }
+    }
+    
     func tryStartIfAllReady() {
         guard let room = currentRoom else { return }
         let ready = room.readyPlayers ?? [:]
@@ -262,10 +372,17 @@ class MultiplayerGameViewModel: ObservableObject {
         currentRoomRef?.updateChildValues([
             "status": "waiting",
             "players": updatedRoom.players.map { $0.toDictionary() },
-            "readyPlayers": NSNull()
+            "readyPlayers": NSNull(),
+            "gameStartAt": NSNull(),
+            "gameDurationSeconds": NSNull(),
+            "votingStartAt": NSNull(),
+            "votingDurationSeconds": NSNull(),
+            "votes": NSNull(),
+            "votingResult": NSNull(),
+            "spyGuess": NSNull()
         ])
     }
-
+    
     func toggleReady() {
         guard var room = currentRoom else { return }
         var ready = room.readyPlayers ?? [:]
@@ -279,7 +396,7 @@ class MultiplayerGameViewModel: ObservableObject {
             "readyPlayers": ready
         ])
     }
-
+    
     func markCurrentPlayerReady() {
         guard var room = currentRoom else { return }
         var ready = room.readyPlayers ?? [:]
@@ -318,7 +435,24 @@ class MultiplayerGameViewModel: ObservableObject {
         currentRoomRef = nil
     }
     
-
+    func endGameForAll() {
+        guard let room = currentRoom else { return }
+        currentRoomRef?.updateChildValues([
+            "status": "finished"
+        ])
+    }
+    
+    func makeSpyGuess(guess: String) {
+        guard let room = currentRoom,
+              room.status == .voting,
+              let currentPlayer = room.players.first(where: { $0.name == currentPlayerName }),
+              currentPlayer.role == .spy else { return }
+        
+        // Update spy guess in Firebase
+        currentRoomRef?.updateChildValues([
+            "spyGuess": guess
+        ])
+    }
     
     private func generateRoomCode() -> String {
         let letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -334,7 +468,7 @@ class MultiplayerGameViewModel: ObservableObject {
         
         return code
     }
-
+    
     func areAllPlayersReady(in room: GameRoom) -> Bool {
         let ready = room.readyPlayers ?? [:]
         let allPlayerNames = room.players.map { $0.name }
@@ -352,11 +486,20 @@ struct GameRoom: Identifiable, Codable {
     var status: GameStatus
     let createdAt: Date
     var readyPlayers: [String: Bool]? = nil
+    var gameStartAt: TimeInterval? = nil
+    var gameDurationSeconds: Int? = nil
+    var votingStartAt: TimeInterval? = nil
+    var votingDurationSeconds: Int? = nil
+    var votes: [String: String]? = nil
+    var votingResult: VotingResult? = nil
+    var spyGuess: String? = nil
+    var selectedLocationSet: LocationSets
     
     enum GameStatus: String, Codable, CaseIterable {
         case waiting = "waiting"
         case revealing = "revealing"
         case playing = "playing"
+        case voting = "voting"
         case finished = "finished"
         case cancelled = "cancelled"
     }
@@ -383,10 +526,32 @@ struct GameRoom: Identifiable, Codable {
             "maxPlayers": maxPlayers,
             "players": players.map { $0.toDictionary() },
             "status": status.rawValue,
-            "createdAt": createdAt.timeIntervalSince1970
+            "createdAt": createdAt.timeIntervalSince1970,
+            "selectedLocationSet": selectedLocationSet.rawValue
         ]
         if let readyPlayers = readyPlayers {
             dict["readyPlayers"] = readyPlayers
+        }
+        if let gameStartAt = gameStartAt {
+            dict["gameStartAt"] = gameStartAt
+        }
+        if let gameDurationSeconds = gameDurationSeconds {
+            dict["gameDurationSeconds"] = gameDurationSeconds
+        }
+        if let votingStartAt = votingStartAt {
+            dict["votingStartAt"] = votingStartAt
+        }
+        if let votingDurationSeconds = votingDurationSeconds {
+            dict["votingDurationSeconds"] = votingDurationSeconds
+        }
+        if let votes = votes {
+            dict["votes"] = votes
+        }
+        if let votingResult = votingResult {
+            dict["votingResult"] = votingResult.toDictionary()
+        }
+        if let spyGuess = spyGuess {
+            dict["spyGuess"] = spyGuess
         }
         return dict
     }
@@ -401,7 +566,9 @@ struct GameRoom: Identifiable, Codable {
               let playersArray = dict["players"] as? [[String: Any]],
               let statusString = dict["status"] as? String,
               let status = GameStatus(rawValue: statusString),
-              let createdAtInterval = dict["createdAt"] as? TimeInterval else {
+              let createdAtInterval = dict["createdAt"] as? TimeInterval,
+              let selectedLocationSetRaw = dict["selectedLocationSet"] as? String,
+              let selectedLocationSet = LocationSets(rawValue: selectedLocationSetRaw) else {
             return nil
         }
         
@@ -415,12 +582,74 @@ struct GameRoom: Identifiable, Codable {
             maxPlayers: maxPlayers,
             players: players,
             status: status,
-            createdAt: createdAt
+            createdAt: createdAt,
+            selectedLocationSet: selectedLocationSet
         )
         if let ready = dict["readyPlayers"] as? [String: Bool] {
             room.readyPlayers = ready
         }
+        if let gameStartAt = dict["gameStartAt"] as? TimeInterval {
+            room.gameStartAt = gameStartAt / ((gameStartAt > 1000000000000) ? 1000.0 : 1.0)
+        }
+        if let duration = dict["gameDurationSeconds"] as? Int {
+            room.gameDurationSeconds = duration
+        }
+        if let votingStartAt = dict["votingStartAt"] as? TimeInterval {
+            room.votingStartAt = votingStartAt / ((votingStartAt > 1000000000000) ? 1000.0 : 1.0)
+        }
+        if let votingDuration = dict["votingDurationSeconds"] as? Int {
+            room.votingDurationSeconds = votingDuration
+        }
+        if let votes = dict["votes"] as? [String: String] {
+            room.votes = votes
+        }
+        if let votingResultDict = dict["votingResult"] as? [String: Any] {
+            room.votingResult = VotingResult.fromDictionary(votingResultDict)
+        }
+        if let spyGuess = dict["spyGuess"] as? String {
+            room.spyGuess = spyGuess
+        }
         return room
+    }
+}
+
+struct VotingResult: Codable {
+    let mostVotedPlayer: String
+    let spyName: String
+    let spyCaught: Bool
+    let voteCounts: [String: Int]
+    let spyGuessCorrect: Bool?
+    
+    func toDictionary() -> [String: Any] {
+        var dict: [String: Any] = [
+            "mostVotedPlayer": mostVotedPlayer,
+            "spyName": spyName,
+            "spyCaught": spyCaught,
+            "voteCounts": voteCounts
+        ]
+        if let spyGuessCorrect = spyGuessCorrect {
+            dict["spyGuessCorrect"] = spyGuessCorrect
+        }
+        return dict
+    }
+    
+    static func fromDictionary(_ dict: [String: Any]) -> VotingResult? {
+        guard let mostVotedPlayer = dict["mostVotedPlayer"] as? String,
+              let spyName = dict["spyName"] as? String,
+              let spyCaught = dict["spyCaught"] as? Bool,
+              let voteCounts = dict["voteCounts"] as? [String: Int] else {
+            return nil
+        }
+        
+        let spyGuessCorrect = dict["spyGuessCorrect"] as? Bool
+        
+        return VotingResult(
+            mostVotedPlayer: mostVotedPlayer,
+            spyName: spyName,
+            spyCaught: spyCaught,
+            voteCounts: voteCounts,
+            spyGuessCorrect: spyGuessCorrect
+        )
     }
 }
 

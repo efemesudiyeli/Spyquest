@@ -108,6 +108,9 @@
     "%lld players" : {
 
     },
+    "%lld roles" : {
+
+    },
     "%lld/%lld ready" : {
       "localizations" : {
         "en" : {
@@ -117,6 +120,27 @@
           }
         }
       }
+    },
+    "%llds" : {
+
+    },
+    "✅ Spy guessed correctly!" : {
+
+    },
+    "❌ Spy guessed incorrectly!" : {
+
+    },
+    "🎉 PLAYERS WIN!" : {
+
+    },
+    "🎉 The spy was caught!" : {
+
+    },
+    "🎭 SPY WINS!" : {
+
+    },
+    "😱 The spy got away!" : {
+
     },
     "0/%lld ready" : {
 
@@ -4441,6 +4465,9 @@
         }
       }
     },
+    "End Voting & Reveal" : {
+
+    },
     "Endless Isles" : {
       "extractionState" : "translated",
       "localizations" : {
@@ -5857,6 +5884,9 @@
         }
       }
     },
+    "Guess Submitted!" : {
+
+    },
     "Guide" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -7018,9 +7048,6 @@
         }
       }
     },
-    "Leave Room" : {
-
-    },
     "Legendary Cannoneer" : {
       "extractionState" : "translated",
       "localizations" : {
@@ -7415,6 +7442,9 @@
         }
       }
     },
+    "Make Your Guess!" : {
+
+    },
     "Makeup Artist" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -7787,6 +7817,9 @@
           }
         }
       }
+    },
+    "Most voted player: %@" : {
+
     },
     "Mountain Pass" : {
       "extractionState" : "manual",
@@ -9052,6 +9085,9 @@
           }
         }
       }
+    },
+    "Players to vote for:" : {
+
     },
     "Poet" : {
       "extractionState" : "manual",
@@ -11167,6 +11203,9 @@
         }
       }
     },
+    "Spy's guess: %@" : {
+
+    },
     "Spyquest" : {
       "localizations" : {
         "fr" : {
@@ -12949,6 +12988,9 @@
         }
       }
     },
+    "Try to guess the location before time runs out!" : {
+
+    },
     "Tumbleweed Canyon" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -13199,6 +13241,12 @@
         }
       }
     },
+    "Voting Results" : {
+
+    },
+    "Voting Time!" : {
+
+    },
     "Waiter" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -13215,6 +13263,9 @@
           }
         }
       }
+    },
+    "Waiting for host to end voting..." : {
+
     },
     "Waiting for host to start the game..." : {
       "localizations" : {
@@ -13364,6 +13415,9 @@
           }
         }
       }
+    },
+    "Who do you think is the spy?" : {
+
     },
     "Wild Ocean Depths" : {
       "extractionState" : "translated",
@@ -13604,6 +13658,9 @@
         }
       }
     },
+    "You voted for: %@" : {
+
+    },
     "You were removed from the room. The host may have left or removed you." : {
       "extractionState" : "stale",
       "localizations" : {
@@ -13636,6 +13693,9 @@
           }
         }
       }
+    },
+    "Your location guess has been submitted. Good luck!" : {
+
     },
     "Your Name" : {
       "localizations" : {
