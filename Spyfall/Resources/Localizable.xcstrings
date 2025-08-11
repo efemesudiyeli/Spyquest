@@ -92,6 +92,9 @@
         }
       }
     },
+    "%lld" : {
+
+    },
     "%lld %@" : {
       "localizations" : {
         "en" : {
@@ -13030,6 +13033,9 @@
         }
       }
     },
+    "Unready" : {
+
+    },
     "Unwanted Guest" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -13243,6 +13249,7 @@
       }
     },
     "Waiting..." : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
