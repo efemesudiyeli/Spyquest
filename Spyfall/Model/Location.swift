@@ -35,7 +35,7 @@ struct Location: Hashable, Identifiable, Codable {
     }
 }
 
-enum LocationSets: String {
+enum LocationSets: String, Codable {
     case spyfallOne = "First Edition"
     case spyfallTwo = "Second Edition"
     case spyfallCombined = "Combined Edition"

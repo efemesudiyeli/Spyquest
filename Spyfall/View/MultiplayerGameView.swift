@@ -4,6 +4,7 @@ import FirebaseAuth
 struct MultiplayerGameView: View {
     @ObservedObject var viewModel: MultiplayerGameViewModel
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.scenePhase) private var scenePhase
     @State private var showingRole = false
     @State private var showingGameEnd = false
     @State private var timeRemaining: TimeInterval = 8.5 * 60
@@ -30,6 +31,8 @@ struct MultiplayerGameView: View {
                     } else {
                         countdownView(room: room)
                     }
+                case .voting:
+                    VotingView(room: room, viewModel: viewModel)
                 case .finished:
                     gameEndView(room: room)
                 case .cancelled:
@@ -60,9 +63,7 @@ struct MultiplayerGameView: View {
             }
         }
         .onAppear {
-            if let room = viewModel.currentRoom, room.status == .playing, gameTimer == nil {
-                startGameTimer(reset: false)
-            }
+            syncTimerWithServerIfNeeded()
         }
         .onChange(of: viewModel.currentRoom?.status) { _, newStatus in
             if newStatus == .playing {
@@ -80,11 +81,32 @@ struct MultiplayerGameView: View {
                 revealTimer?.invalidate()
                 revealTimer = nil
                 revealCountdown = 0
+            } else if newStatus == .voting {
+                // Reset voting states
+                viewModel.currentVote = nil
             } else if newStatus == .finished || newStatus == .cancelled || newStatus == .revealing {
                 gameTimer?.invalidate()
                 gameTimer = nil
                 revealTimer?.invalidate()
                 revealTimer = nil
+            }
+        }
+        .onChange(of: viewModel.currentRoom?.gameStartAt) { _, _ in
+            syncTimerWithServerIfNeeded()
+        }
+        .onChange(of: viewModel.serverTimeOffsetMs) { _, _ in
+            syncTimerWithServerIfNeeded()
+        }
+        .onChange(of: scenePhase) { _, newPhase in
+            if newPhase == .active {
+                syncTimerWithServerIfNeeded()
+                if let room = viewModel.currentRoom, room.status == .playing, gameTimer == nil, showingRole {
+                    startGameTimer(reset: false)
+                }
+            } else if newPhase == .background || newPhase == .inactive {
+                // Optionally pause local timer to save resources; server sync will correct on resume
+                gameTimer?.invalidate()
+                gameTimer = nil
             }
         }
         .alert("Room Update", isPresented: .constant(!viewModel.errorMessage.isEmpty)) {
@@ -103,7 +125,7 @@ struct MultiplayerGameView: View {
                     .font(.largeTitle)
                     .fontWeight(.bold)
                 
-
+                
                 
                 VStack(spacing: 5) {
                     Text("Room Code")
@@ -166,7 +188,7 @@ struct MultiplayerGameView: View {
                     .background(isReady ? Color.orange : Color.blue)
                     .cornerRadius(10)
                 }
-
+                
                 if room.hostId == viewModel.currentUser?.uid {
                     Button(action: {
                         viewModel.startGame()
@@ -254,49 +276,49 @@ struct MultiplayerGameView: View {
                         .foregroundColor(.secondary)
                 }
                 
-               
-                    // Ready button for non-hosts
-                    if room.hostId != viewModel.currentUser?.uid {
-                        Button(action: {
-                            viewModel.markCurrentPlayerReady()
-                        }) {
-                            HStack {
-                                Image(systemName: "hand.thumbsup.fill")
-                                Text(NSLocalizedString("Ready", comment: ""))
-                            }
-                            .foregroundColor(.white)
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(Color.blue)
-                            .cornerRadius(10)
+                
+                // Ready button for non-hosts
+                if room.hostId != viewModel.currentUser?.uid {
+                    Button(action: {
+                        viewModel.markCurrentPlayerReady()
+                    }) {
+                        HStack {
+                            Image(systemName: "hand.thumbsup.fill")
+                            Text(NSLocalizedString("Ready", comment: ""))
                         }
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.blue)
+                        .cornerRadius(10)
                     }
-                    
-                    // Host start button (host does not need to be ready)
-                    if room.hostId == viewModel.currentUser?.uid {
-                        Button(action: {
-                            if isAllReady(room: room) {
-                                // Move status to playing; countdown will handle reveal and timer
-                                viewModel.tryStartIfAllReady()
-                            }
-                        }) {
-                            HStack {
-                                Image(systemName: "checkmark.circle.fill")
-                                Text(NSLocalizedString("Start", comment: ""))
-                            }
-                            .foregroundColor(.white)
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(isAllReady(room: room) ? Color.green : Color.gray)
-                            .cornerRadius(10)
+                }
+                
+                // Host start button (host does not need to be ready)
+                if room.hostId == viewModel.currentUser?.uid {
+                    Button(action: {
+                        if isAllReady(room: room) {
+                            // Move status to playing; countdown will handle reveal and timer
+                            viewModel.tryStartIfAllReady()
                         }
-                        .disabled(!isAllReady(room: room))
+                    }) {
+                        HStack {
+                            Image(systemName: "checkmark.circle.fill")
+                            Text(NSLocalizedString("Start", comment: ""))
+                        }
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(isAllReady(room: room) ? Color.green : Color.gray)
+                        .cornerRadius(10)
                     }
+                    .disabled(!isAllReady(room: room))
+                }
             }
             .padding(.horizontal)
         }
     }
-
+    
     private func isAllReady(room: GameRoom) -> Bool {
         guard let ready = room.readyPlayers else { return false }
         let nonHostPlayers = room.players.filter { $0.name != room.hostName }.map { $0.name }
@@ -307,11 +329,11 @@ struct MultiplayerGameView: View {
         VStack(spacing: 20) {
             HStack {
                 VStack(alignment: .leading) {
-                                if let player = currentPlayer, player.role != .spy {
-                Text("Location: \(room.location.name)")
-                    .font(.title2)
-                    .fontWeight(.semibold)
-            }
+                    if let player = currentPlayer, player.role != .spy {
+                        Text("Location: \(room.location.name)")
+                            .font(.title2)
+                            .fontWeight(.semibold)
+                    }
                     
                     Text("Time Remaining: \(formattedTime(timeRemaining))")
                         .font(.headline)
@@ -370,7 +392,7 @@ struct MultiplayerGameView: View {
             VStack(spacing: 15) {
                 if isTimerFinished {
                     Button("End Game") {
-                        showingGameEnd = true
+                        viewModel.endGameForAll()
                     }
                     .foregroundColor(.white)
                     .padding()
@@ -379,13 +401,10 @@ struct MultiplayerGameView: View {
                     .cornerRadius(10)
                 }
                 
-                Spacer()
-                
-                // In-content Leave Room removed; only host restart remains
                 if room.hostId == viewModel.currentUser?.uid {
                     HStack(spacing: 15) {
                         Button(NSLocalizedString("End Round For All", comment: "")) {
-                            viewModel.restartGame()
+                            viewModel.startVoting()
                         }
                         .foregroundColor(.white)
                         .padding()
@@ -396,7 +415,7 @@ struct MultiplayerGameView: View {
                 }
             }
             
-        
+            
         }
         .padding()
     }
@@ -407,12 +426,85 @@ struct MultiplayerGameView: View {
                 .font(.largeTitle)
                 .fontWeight(.bold)
             
+            if let votingResult = room.votingResult {
+                VStack(spacing: 15) {
+                    Text("Voting Results")
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                    
+                    Text("Most voted player: \(votingResult.mostVotedPlayer)")
+                        .font(.headline)
+                    
+                    // Show spy guess if available
+                    if let spyGuess = room.spyGuess {
+                        VStack(spacing: 8) {
+                            Text("Spy's guess: \(spyGuess)")
+                                .font(.headline)
+                                .foregroundColor(.orange)
+                            
+                            if let spyGuessCorrect = votingResult.spyGuessCorrect {
+                                if spyGuessCorrect {
+                                    Text("✅ Spy guessed correctly!")
+                                        .font(.title3)
+                                        .fontWeight(.bold)
+                                        .foregroundColor(.red)
+                                } else {
+                                    Text("❌ Spy guessed incorrectly!")
+                                        .font(.title3)
+                                        .fontWeight(.bold)
+                                        .foregroundColor(.green)
+                                }
+                            }
+                        }
+                        .padding()
+                        .background(Color(.systemGray6))
+                        .cornerRadius(10)
+                    }
+                    
+                    // Determine winner
+                    let spyWins = votingResult.spyGuessCorrect == true
+                    let playersWin = votingResult.spyCaught || votingResult.spyGuessCorrect == false
+                    
+                    if spyWins {
+                        Text("🎭 SPY WINS!")
+                            .font(.title)
+                            .fontWeight(.bold)
+                            .foregroundColor(.red)
+                    } else if playersWin {
+                        Text("🎉 PLAYERS WIN!")
+                            .font(.title)
+                            .fontWeight(.bold)
+                            .foregroundColor(.green)
+                    }
+                    
+                    if votingResult.spyCaught {
+                        Text("🎉 The spy was caught!")
+                            .font(.title3)
+                            .fontWeight(.bold)
+                            .foregroundColor(.green)
+                    } else if !votingResult.spyCaught && votingResult.spyGuessCorrect != true {
+                        Text("😱 The spy got away!")
+                            .font(.title3)
+                            .fontWeight(.bold)
+                            .foregroundColor(.red)
+                    }
+                    
+                    Text("The spy was: \(votingResult.spyName)")
+                        .font(.headline)
+                        .fontWeight(.bold)
+                        .foregroundColor(.orange)
+                }
+                .padding()
+                .background(Color(.systemGray6))
+                .cornerRadius(15)
+            }
+            
             VStack(spacing: 20) {
-                        if let player = currentPlayer, player.role != .spy {
-            Text("Location was: \(room.location.name)")
-                .font(.title2)
-                .foregroundColor(.secondary)
-        }
+                if let player = currentPlayer, player.role != .spy {
+                    Text("Location was: \(room.location.name)")
+                        .font(.title2)
+                        .foregroundColor(.secondary)
+                }
                 
                 if let spy = room.players.first(where: { $0.role == .spy }) {
                     Text("The spy was: \(spy.name)")
@@ -423,16 +515,6 @@ struct MultiplayerGameView: View {
             }
             
             HStack(spacing: 15) {
-                Button(NSLocalizedString("Leave Room", comment: "")) {
-                    viewModel.leaveRoom()
-                    dismiss()
-                }
-                .foregroundColor(.white)
-                .padding()
-                .frame(maxWidth: .infinity)
-                .background(Color.blue)
-                .cornerRadius(10)
-                
                 if room.hostId == viewModel.currentUser?.uid {
                     Button(NSLocalizedString("Back to Lobby", comment: "")) {
                         viewModel.restartGame()
@@ -445,7 +527,7 @@ struct MultiplayerGameView: View {
                 }
             }
             
-            Spacer()
+            
         }
         .padding()
     }
@@ -458,6 +540,7 @@ struct MultiplayerGameView: View {
         
         gameTimer?.invalidate()
         gameTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+            syncTimerWithServerIfNeeded()
             if timeRemaining > 0 {
                 timeRemaining -= 1
             } else {
@@ -467,7 +550,7 @@ struct MultiplayerGameView: View {
             }
         }
     }
-
+    
     private func startRevealCountdown() {
         revealTimer?.invalidate()
         revealCountdown = 3
@@ -486,7 +569,7 @@ struct MultiplayerGameView: View {
             }
         }
     }
-
+    
     private func countdownView(room: GameRoom) -> some View {
         VStack(spacing: 24) {
             Text(NSLocalizedString("Get Ready!", comment: ""))
@@ -505,6 +588,264 @@ struct MultiplayerGameView: View {
         let seconds = Int(time) % 60
         return String(format: "%02d:%02d", minutes, seconds)
     }
+    
+    private func syncTimerWithServerIfNeeded() {
+        guard let room = viewModel.currentRoom,
+              room.status == .playing,
+              let startAt = room.gameStartAt,
+              let duration = room.gameDurationSeconds else { return }
+        
+        let localNow = Date().timeIntervalSince1970
+        let serverNow = localNow + TimeInterval(Double(viewModel.serverTimeOffsetMs) / 1000.0)
+        let elapsed = max(0, serverNow - startAt)
+        let remaining = max(0, Double(duration) - elapsed)
+        if abs(remaining - timeRemaining) > 1.5 {
+            timeRemaining = remaining
+        }
+        if remaining <= 0 {
+            isTimerFinished = true
+            gameTimer?.invalidate()
+            gameTimer = nil
+        }
+    }
+}
+
+struct VotingView: View {
+    let room: GameRoom
+    @ObservedObject var viewModel: MultiplayerGameViewModel
+    
+    @State private var currentTime: TimeInterval = Date().timeIntervalSince1970
+    @State private var timer: Timer? = nil
+    @State private var showingSpyGuessAlert = false
+    
+    private var isCurrentPlayerSpy: Bool {
+        guard let currentPlayer = room.players.first(where: { $0.name == viewModel.currentPlayerName }) else { return false }
+        return currentPlayer.role == .spy
+    }
+    
+    var body: some View {
+        VStack() {
+            Text("Voting Time!")
+                .fontDesign(.rounded)
+                .font(.largeTitle)
+                .fontWeight(.black)
+            
+            Text("Who do you think is the spy?")
+                .font(.title2)
+                .foregroundColor(.secondary)
+                .fontDesign(.monospaced)
+                .multilineTextAlignment(.center)
+            
+            if let votingStartAt = room.votingStartAt,
+               let votingDurationSeconds = room.votingDurationSeconds {
+                let localNow = currentTime
+                let serverNow = localNow + TimeInterval(Double(viewModel.serverTimeOffsetMs) / 1000.0)
+                let elapsed = max(0, serverNow - votingStartAt)
+                let remaining = max(0, Double(votingDurationSeconds) - elapsed)
+                
+                Spacer()
+                HStack{
+                    Image(systemName: "hourglass.circle.fill")
+                    
+                    Text("\(Int(remaining))s")
+                    
+                        .fontWeight(.semibold)
+                        .fontDesign(.rounded)
+                        .foregroundColor(remaining < 10 ? .red : .primary)
+                }.font(.largeTitle)
+                    .padding(.top)
+                
+                if remaining <= 0 {
+                    Text("Time's up!")
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .foregroundColor(.red)
+                }
+            }
+            
+            Spacer()
+            
+            VStack(spacing: 15) {
+                Text("Players to vote for:")
+                    .font(.headline)
+                    .fontDesign(.rounded)
+                
+                LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 2), spacing: 10) {
+                    ForEach(room.players, id: \.name) { player in
+                        if player.name != viewModel.currentPlayerName {
+                            Button(action: {
+                                viewModel.voteForPlayer(playerName: player.name)
+                            }) {
+                                VStack(spacing: 8) {
+                                    HStack{
+                                        Image(systemName: "person.crop.circle.fill")
+                                        Spacer()
+                                        Text(player.name)
+                                        Spacer()
+                                        
+                                    }.font(.headline)
+                                        .fontWeight(.semibold)
+                                    
+                                    if viewModel.currentVote == player.name {
+                                        Image(systemName: "checkmark.circle.fill")
+                                            .foregroundColor(Color.reverse2)
+                                            .font(.title2)
+                                    } else {
+                                        Image(systemName: "circle")
+                                            .foregroundColor(Color.reverse2)
+                                            .font(.title2)
+                                    }
+                                }
+                                .foregroundColor(.primary)
+                                .padding()
+                                .frame(maxWidth: .infinity)
+                                .background(viewModel.currentVote == player.name ? Color.green.opacity(1) : Color(.systemGray6))
+                                .cornerRadius(10)
+                                .shadow(
+                                    color: Color.reverse2,
+                                    radius: 0,
+                                    x: 2.5,
+                                    y: 2
+                                )
+                            }
+                            .disabled(viewModel.currentVote == player.name)
+                        }
+                    }
+                }
+                
+                // Spy guess section
+                if isCurrentPlayerSpy {
+                    VStack(spacing: 15) {
+                        Divider()
+                            .padding(.vertical)
+                        
+                        Text("Make Your Guess!")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .foregroundColor(.red)
+                        
+                        Text("Try to guess the location before time runs out!")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                            .multilineTextAlignment(.center)
+                        
+                        // Location selection grid
+                        ScrollView {
+                            LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 2), spacing: 12) {
+                                ForEach(room.selectedLocationSet.locations, id: \.id) { location in
+                                    Button(action: {
+                                        viewModel.makeSpyGuess(guess: location.nameKey)
+                                        showingSpyGuessAlert = true
+                                    }) {
+                                        VStack(spacing: 8) {
+                                            Text(location.name)
+                                                .font(.headline)
+                                                .fontWeight(.semibold)
+                                                .multilineTextAlignment(.center)
+                                                .foregroundColor(.primary)
+                                            
+                                            Text("\(location.roles.count) roles")
+                                                .font(.caption)
+                                                .foregroundColor(.secondary)
+                                        }
+                                        .frame(maxWidth: .infinity)
+                                        .padding()
+                                        .background(Color.red.opacity(0.1))
+                                        .cornerRadius(12)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 12)
+                                                .stroke(Color.red.opacity(0.3), lineWidth: 1)
+                                        )
+                                    }
+                                    .buttonStyle(PlainButtonStyle())
+                                }
+                            }
+                            .padding(.horizontal)
+                        }
+                        .frame(maxHeight: 300)
+                        .onAppear {
+                            print("DEBUG: Current game location: \(room.location.nameKey)")
+                            print("DEBUG: Selected location set: \(room.selectedLocationSet.rawValue)")
+                            print("DEBUG: Available locations count: \(room.selectedLocationSet.locations.count)")
+                            
+                            // Debug: Show all location nameKeys
+                            print("DEBUG: All location nameKeys (no filtering):")
+                            for location in room.selectedLocationSet.locations {
+                                print("  - \(location.nameKey)")
+                            }
+                        }
+                    }
+                    .padding()
+                    .background(Color.red.opacity(0.05))
+                    .cornerRadius(15)
+                }
+                
+                Spacer()
+                
+                if let currentVote = viewModel.currentVote {
+                    Text("You voted for: \(currentVote)")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                }
+            }
+            .padding(.top)
+            
+            
+            
+            if room.hostId == viewModel.currentUser?.uid {
+                Button(action: {
+                    viewModel.endVotingAndReveal()
+                }) {
+                    HStack {
+                        Image(systemName: "checkmark.circle.fill")
+                        Text("End Voting & Reveal")
+                    }
+                    .foregroundColor(.reverse)
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color.reverse2)
+                    .cornerRadius(10)
+                }
+            } else {
+                Text("Waiting for host to end voting...")
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+                    .multilineTextAlignment(.center)
+            }
+            
+        }
+        .padding(.horizontal)
+        .onAppear {
+            currentTime = Date().timeIntervalSince1970
+            timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
+                currentTime = Date().timeIntervalSince1970
+                
+                // Check if voting time is up and auto-end voting
+                if let votingStartAt = room.votingStartAt,
+                   let votingDurationSeconds = room.votingDurationSeconds {
+                    let localNow = currentTime
+                    let serverNow = localNow + TimeInterval(Double(viewModel.serverTimeOffsetMs) / 1000.0)
+                    let elapsed = max(0, serverNow - votingStartAt)
+                    let remaining = max(0, Double(votingDurationSeconds) - elapsed)
+                    
+                    if remaining <= 0 && room.hostId == viewModel.currentUser?.uid {
+                        viewModel.endVotingAndReveal()
+                    }
+                }
+            }
+        }
+        .onDisappear {
+            timer?.invalidate()
+            timer = nil
+        }
+        .alert("Guess Submitted!", isPresented: $showingSpyGuessAlert) {
+            Button("OK") { }
+        } message: {
+            Text("Your location guess has been submitted. Good luck!")
+        }
+    }
+    
+    
 }
 
 struct PlayerCard: View {
@@ -543,7 +884,26 @@ struct PlayerCard: View {
         .cornerRadius(10)
     }
 }
-
 #Preview {
-    MultiplayerGameView(viewModel: MultiplayerGameViewModel())
+    VotingView(
+        room: GameRoom(
+            id: "ABC123",
+            hostId: "host123",
+            hostName: "Host Player",
+            location: Location(nameKey: "Beach", roles: ["Tourist", "Lifeguard", "Vendor"]),
+            maxPlayers: 6,
+            players: [
+                Player(name: "Host Player", role: .player),
+                Player(name: "Player 1", role: .player),
+                Player(name: "Player 2", role: .spy),
+                Player(name: "Player 3", role: .player),
+                Player(name: "Player 4", role: .player)
+            ],
+            status: .voting,
+            createdAt: Date(),
+            votingStartAt: Date().timeIntervalSince1970 - 10, // 10 seconds ago
+            votingDurationSeconds: 30, selectedLocationSet: LocationSets.spyfallOne
+        ),
+        viewModel: MultiplayerGameViewModel()
+    )
 }

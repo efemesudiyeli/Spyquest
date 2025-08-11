@@ -10,6 +10,7 @@ struct MultiplayerLobbyView: View {
     @State private var playerCount = 2
     @State private var playerName = ""
     @State private var navigateToGame = false
+    @State private var selectedLocationSet: LocationSets = .spyfallOne
     
     var body: some View {
         NavigationView {
@@ -173,9 +174,40 @@ struct MultiplayerLobbyView: View {
                         .cornerRadius(10)
                 }
                 
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("Location Set")
+                        .font(.headline)
+                    
+                    Picker("Location Set", selection: $selectedLocationSet) {
+                        ForEach(LocationSets.locationSets, id: \.self) { locationSet in
+                            Text("\(locationSet.rawValue) (\(locationSet.locations.count))")
+                                .tag(locationSet)
+                        }
+                        ForEach(LocationSets.premiumSets, id: \.self) { premiumSet in
+                            if gameViewModel.isAdsRemoved {
+                                Text("\(premiumSet.rawValue) (\(premiumSet.locations.count))")
+                                    .tag(premiumSet)
+                            } else {
+                                HStack {
+                                    Text("\(premiumSet.rawValue) (\(premiumSet.locations.count))")
+                                        .foregroundStyle(.gray)
+                                    Image(systemName: "crown.fill")
+                                        .foregroundColor(.yellow)
+                                }
+                                .tag(premiumSet)
+                                .selectionDisabled()
+                            }
+                        }
+                    }
+                    .pickerStyle(.menu)
+                    .padding()
+                    .background(Color(.systemGray6))
+                    .cornerRadius(10)
+                }
+                
                 Button(action: {
                     if !playerName.isEmpty {
-                        viewModel.createGameRoom(playerCount: playerCount, playerName: playerName) { success in
+                        viewModel.createGameRoom(playerCount: playerCount, playerName: playerName, selectedLocationSet: selectedLocationSet) { success in
                             if success {
                                 showingCreateRoom = false
                                 navigateToGame = true
