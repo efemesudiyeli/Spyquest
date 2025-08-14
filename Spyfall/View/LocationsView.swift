@@ -13,14 +13,25 @@ struct LocationsView<ViewModel: ObservableObject>: View {
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible()),
+        GridItem(.flexible()),
     ]
     
     var body: some View {
         VStack {
             ScrollView {
-                LazyVGrid(columns: columns, spacing: 16) {
-                    ForEach(Location.locationData) { location in
+                LazyVGrid(columns: columns, spacing: 12) {
+                    ForEach(Array(Location.locationData.enumerated()), id: \.element.id) {
+ index,
+ location in
                         LocationCard(location: location)
+                            
+                            .background(
+                                (index % 2 == 0) ? Color(
+                                    .tertiarySystemGroupedBackground
+                                ) : Color(.secondarySystemGroupedBackground)
+                            )
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+
                     }
                 }
                 .padding()
@@ -35,20 +46,15 @@ struct LocationCard: View {
     let location: Location
     
     var body: some View {
-        VStack(spacing: 12) {
-            Text(location.name)
-                .font(.headline)
-                .fontWeight(.semibold)
-                .multilineTextAlignment(.center)
-            
-            Text("\(location.roles.count) \(NSLocalizedString("roles", comment: ""))")
-                .font(.caption)
-                .foregroundColor(.secondary)
-        }
-        .frame(maxWidth: .infinity)
-        .padding()
-        .background(Color(.systemGray6))
-        .cornerRadius(12)
+        Text(location.name)
+            .font(.subheadline)
+            .fontWeight(.medium)
+            .fontDesign(.monospaced)
+            .multilineTextAlignment(.center)
+            .lineLimit(2)
+            .frame(maxWidth: .infinity, minHeight: 60)
+            .padding(.horizontal, 8)
+            .padding(.vertical, 12)
     }
 }
 
