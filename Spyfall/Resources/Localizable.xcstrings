@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
     ":" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -66,6 +69,9 @@
         }
       }
     },
+    "#" : {
+
+    },
     "%@" : {
       "localizations" : {
         "fr" : {
@@ -104,9 +110,6 @@
           }
         }
       }
-    },
-    "%lld players" : {
-
     },
     "%lld roles" : {
 
@@ -2837,6 +2840,9 @@
         }
       }
     },
+    "Classic Mode" : {
+
+    },
     "Cleaner" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3465,7 +3471,14 @@
         }
       }
     },
+    "Create Lobby" : {
+
+    },
+    "Create New Lobby" : {
+
+    },
     "Create New Room" : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -3482,6 +3495,7 @@
       }
     },
     "Create Room" : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -4516,10 +4530,19 @@
         }
       }
     },
+    "Enter a code to join your friend’s game" : {
+
+    },
     "Enter your name" : {
 
     },
-    "Enter your name and the 6-digit room code" : {
+    "Enter your name and lobby code" : {
+
+    },
+    "Enter your name and lobby code to continue." : {
+
+    },
+    "Enter your name to continue." : {
 
     },
     "Entertainer" : {
@@ -6786,10 +6809,11 @@
         }
       }
     },
-    "Join" : {
+    "Join Existing Lobby" : {
 
     },
     "Join Existing Room" : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -6805,7 +6829,7 @@
         }
       }
     },
-    "Join Room" : {
+    "Join Lobby" : {
 
     },
     "Journalist" : {
@@ -7165,6 +7189,18 @@
       }
     },
     "Loading..." : {
+
+    },
+    "Lobby code" : {
+
+    },
+    "Lobby Code" : {
+
+    },
+    "Lobby Details" : {
+
+    },
+    "Lobby Update" : {
 
     },
     "Lobbyist" : {
@@ -7920,9 +7956,6 @@
         }
       }
     },
-    "Multiplayer" : {
-
-    },
     "Muscly Guy" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -8076,6 +8109,9 @@
         }
       }
     },
+    "New Mode!" : {
+
+    },
     "News Reporter" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -8161,6 +8197,7 @@
       }
     },
     "Number of Players" : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -8378,6 +8415,9 @@
           }
         }
       }
+    },
+    "Online Mode" : {
+
     },
     "Organizer" : {
       "extractionState" : "manual",
@@ -9221,6 +9261,9 @@
         }
       }
     },
+    "Premium sets require the Premium upgrade." : {
+
+    },
     "Priest" : {
       "extractionState" : "translated",
       "localizations" : {
@@ -9989,6 +10032,7 @@
       }
     },
     "Room Code" : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -10005,6 +10049,7 @@
       }
     },
     "Room Update" : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -10549,6 +10594,9 @@
         }
       }
     },
+    "Set your name, players, and locations" : {
+
+    },
     "Settings" : {
       "localizations" : {
         "fr" : {
@@ -10564,6 +10612,12 @@
           }
         }
       }
+    },
+    "Share the code and get everyone ready" : {
+
+    },
+    "Share the lobby code with friends to start playing!" : {
+
     },
     "Shelf Stocker" : {
       "extractionState" : "manual",
@@ -10769,10 +10823,7 @@
         }
       }
     },
-    "Sign In Anonymously" : {
-
-    },
-    "Sign in to play multiplayer" : {
+    "Signing you in..." : {
 
     },
     "Simon the Apostle" : {
@@ -11322,6 +11373,9 @@
       }
     },
     "Start" : {
+
+    },
+    "Start a new game and get a lobby code." : {
 
     },
     "Start Game" : {
@@ -12597,6 +12651,9 @@
         }
       }
     },
+    "Tip:" : {
+
+    },
     "Tire Specialist" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -13280,7 +13337,11 @@
         }
       }
     },
+    "Waiting Lobby" : {
+
+    },
     "Waiting Room" : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -13695,6 +13756,7 @@
 
     },
     "Your Name" : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {

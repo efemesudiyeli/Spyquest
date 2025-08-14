@@ -6,7 +6,7 @@ import SwiftUI
 class MultiplayerGameViewModel: ObservableObject {
     @Published var currentUser: User?
     @Published var isAuthenticated = false
-    @Published var currentRoom: GameRoom?
+    @Published var currentLobby: GameLobby?
     @Published var isLoading = false
     @Published var errorMessage = ""
     @Published var currentPlayerName: String = ""
@@ -14,7 +14,7 @@ class MultiplayerGameViewModel: ObservableObject {
     @Published var currentVote: String? = nil
     
     private var databaseRef = Database.database().reference()
-    private var currentRoomRef: DatabaseReference?
+    private var currentLobbyRef: DatabaseReference?
     
     init() {
         setupAuthStateListener()
@@ -54,7 +54,7 @@ class MultiplayerGameViewModel: ObservableObject {
         }
     }
     
-    func createGameRoom(playerCount: Int, playerName: String, selectedLocationSet: LocationSets, completion: @escaping (Bool) -> Void) {
+    func createGameLobby(playerCount: Int, playerName: String, selectedLocationSet: LocationSets, completion: @escaping (Bool) -> Void) {
         guard let user = currentUser else { 
             completion(false)
             return 
@@ -73,9 +73,9 @@ class MultiplayerGameViewModel: ObservableObject {
         
         print("DEBUG: Selected random location: \(randomLocation.nameKey)")
         
-        let roomCode = generateRoomCode()
-        var newRoom = GameRoom(
-            id: roomCode,
+        let lobbyCode = generateLobbyCode()
+        var newLobby = GameLobby(
+            id: lobbyCode,
             hostId: user.uid,
             hostName: playerName,
             location: randomLocation,
@@ -86,10 +86,10 @@ class MultiplayerGameViewModel: ObservableObject {
             selectedLocationSet: selectedLocationSet
         )
         // Initialize all players as unready (including host)
-        newRoom.readyPlayers = [playerName: false]
+        newLobby.readyPlayers = [playerName: false]
         
-        let roomData = newRoom.toDictionary()
-        databaseRef.child("rooms").child(roomCode).setValue(roomData) { [weak self] error, _ in
+        let lobbyData = newLobby.toDictionary()
+        databaseRef.child("lobbys").child(lobbyCode).setValue(lobbyData) { [weak self] error, _ in
             DispatchQueue.main.async {
                 self?.isLoading = false
                 if let error = error {
@@ -97,16 +97,16 @@ class MultiplayerGameViewModel: ObservableObject {
                     completion(false)
                 } else {
                     self?.currentPlayerName = playerName
-                    self?.currentRoom = newRoom
-                    self?.currentRoomRef = self?.databaseRef.child("rooms").child(roomCode)
-                    self?.observeRoomChanges(roomCode: roomCode)
+                    self?.currentLobby = newLobby
+                    self?.currentLobbyRef = self?.databaseRef.child("lobbys").child(lobbyCode)
+                    self?.observeLobbyChanges(lobbyCode: lobbyCode)
                     completion(true)
                 }
             }
         }
     }
     
-    func joinRoom(roomCode: String, playerName: String, completion: @escaping (Bool) -> Void) {
+    func joinLobby(lobbyCode: String, playerName: String, completion: @escaping (Bool) -> Void) {
         guard let user = currentUser else { 
             completion(false)
             return 
@@ -115,23 +115,23 @@ class MultiplayerGameViewModel: ObservableObject {
         isLoading = true
         errorMessage = ""
         
-        currentRoomRef = databaseRef.child("rooms").child(roomCode)
-        currentRoomRef?.observeSingleEvent(of: .value) { [weak self] snapshot in
+        currentLobbyRef = databaseRef.child("lobbys").child(lobbyCode)
+        currentLobbyRef?.observeSingleEvent(of: .value) { [weak self] snapshot in
             guard let self = self else { return }
             
-            if let roomData = snapshot.value as? [String: Any],
-               let room = GameRoom.fromDictionary(roomData) {
+            if let lobbyData = snapshot.value as? [String: Any],
+               let lobby = GameLobby.fromDictionary(lobbyData) {
                 
-                if room.players.count < room.maxPlayers && room.status == .waiting {
-                    var updatedRoom = room
+                if lobby.players.count < lobby.maxPlayers && lobby.status == .waiting {
+                    var updatedLobby = lobby
                     let newPlayer = Player(name: playerName, role: .player)
-                    updatedRoom.players.append(newPlayer)
-                    var updatedReady = room.readyPlayers ?? [:]
+                    updatedLobby.players.append(newPlayer)
+                    var updatedReady = lobby.readyPlayers ?? [:]
                     updatedReady[playerName] = false
-                    updatedRoom.readyPlayers = updatedReady
+                    updatedLobby.readyPlayers = updatedReady
                     
-                    self.currentRoomRef?.updateChildValues([
-                        "players": updatedRoom.players.map { $0.toDictionary() },
+                    self.currentLobbyRef?.updateChildValues([
+                        "players": updatedLobby.players.map { $0.toDictionary() },
                         "readyPlayers": updatedReady
                     ]) { error, _ in
                         DispatchQueue.main.async {
@@ -141,8 +141,8 @@ class MultiplayerGameViewModel: ObservableObject {
                                 completion(false)
                             } else {
                                 self.currentPlayerName = playerName
-                                self.currentRoom = updatedRoom
-                                self.observeRoomChanges(roomCode: roomCode)
+                                self.currentLobby = updatedLobby
+                                self.observeLobbyChanges(lobbyCode: lobbyCode)
                                 completion(true)
                             }
                         }
@@ -150,74 +150,74 @@ class MultiplayerGameViewModel: ObservableObject {
                 } else {
                     DispatchQueue.main.async {
                         self.isLoading = false
-                        self.errorMessage = "Room is full or game has already started"
+                        self.errorMessage = "Lobby is full or game has already started"
                         completion(false)
                     }
                 }
             } else {
                 DispatchQueue.main.async {
                     self.isLoading = false
-                    self.errorMessage = "Room not found"
+                    self.errorMessage = "Lobby not found"
                     completion(false)
                 }
             }
         }
     }
     
-    private func observeRoomChanges(roomCode: String) {
-        currentRoomRef?.observe(.value) { [weak self] snapshot in
+    private func observeLobbyChanges(lobbyCode: String) {
+        currentLobbyRef?.observe(.value) { [weak self] snapshot in
             guard let self = self else { return }
             
-            if let roomData = snapshot.value as? [String: Any] {
-                if let room = GameRoom.fromDictionary(roomData) {
+            if let lobbyData = snapshot.value as? [String: Any] {
+                if let lobby = GameLobby.fromDictionary(lobbyData) {
                     DispatchQueue.main.async {
-                        self.currentRoom = room
+                        self.currentLobby = lobby
                         
-                        if room.players.isEmpty {
-                            self.autoCloseEmptyRoom()
-                        } else if room.status == .playing && room.players.count < 2 {
+                        if lobby.players.isEmpty {
+                            self.autoCloseEmptyLobby()
+                        } else if lobby.status == .playing && lobby.players.count < 2 {
                             self.cancelGameDueToInsufficientPlayers()
                         }
                     }
                 } else {
                     // Log the parsing error for debugging
-                    print("Failed to parse room data: \(roomData)")
+                    print("Failed to parse lobby data: \(lobbyData)")
                     
-                    // Only auto-close if the room is actually deleted
+                    // Only auto-close if the lobby is actually deleted
                     if snapshot.exists() == false {
                         DispatchQueue.main.async {
-                            self.autoCloseEmptyRoom()
+                            self.autoCloseEmptyLobby()
                         }
                     }
                 }
             } else {
-                // Only auto-close if the room is actually deleted
+                // Only auto-close if the lobby is actually deleted
                 if snapshot.exists() == false {
                     DispatchQueue.main.async {
-                        self.autoCloseEmptyRoom()
+                        self.autoCloseEmptyLobby()
                     }
                 }
             }
         }
     }
     
-    private func autoCloseEmptyRoom() {
-        currentRoomRef?.removeValue()
-        currentRoom = nil
+    private func autoCloseEmptyLobby() {
+        currentLobbyRef?.removeValue()
+        currentLobby = nil
         currentPlayerName = ""
-        currentRoomRef?.removeAllObservers()
-        currentRoomRef = nil
+        currentLobbyRef?.removeAllObservers()
+        currentLobbyRef = nil
     }
     
     private func cancelGameDueToInsufficientPlayers() {
-        guard let room = currentRoom else { return }
+        guard let lobby = currentLobby else { return }
         
-        var updatedRoom = room
-        updatedRoom.status = .cancelled
+        var updatedLobby = lobby
+        updatedLobby.status = .cancelled
         
-        currentRoomRef?.updateChildValues([
+        currentLobbyRef?.updateChildValues([
             "status": "cancelled",
-            "players": updatedRoom.players.map { player in
+            "players": updatedLobby.players.map { player in
                 var updatedPlayer = player
                 updatedPlayer.role = nil
                 updatedPlayer.playerLocationRole = nil
@@ -231,30 +231,30 @@ class MultiplayerGameViewModel: ObservableObject {
     }
     
     func startGame() {
-        guard let room = currentRoom,
-              room.hostId == currentUser?.uid else { return }
+        guard let lobby = currentLobby,
+              lobby.hostId == currentUser?.uid else { return }
         
         // Ensure everyone is ready before starting
-        let allReady = areAllPlayersReady(in: room)
+        let allReady = areAllPlayersReady(in: lobby)
         guard allReady else { return }
         
-        var updatedRoom = room
-        updatedRoom.status = .playing
-        updatedRoom.assignRoles()
+        var updatedLobby = lobby
+        updatedLobby.status = .playing
+        updatedLobby.assignRoles()
         
-        currentRoomRef?.updateChildValues([
+        currentLobbyRef?.updateChildValues([
             "status": "playing",
-            "players": updatedRoom.players.map { $0.toDictionary() },
+            "players": updatedLobby.players.map { $0.toDictionary() },
             "gameStartAt": ServerValue.timestamp(),
             "gameDurationSeconds": Int(8.5 * 60)
         ])
     }
     
     func startVoting() {
-        guard let room = currentRoom,
-              room.hostId == currentUser?.uid else { return }
+        guard let lobby = currentLobby,
+              lobby.hostId == currentUser?.uid else { return }
         
-        currentRoomRef?.updateChildValues([
+        currentLobbyRef?.updateChildValues([
             "status": "voting",
             "votingStartAt": ServerValue.timestamp(),
             "votingDurationSeconds": 60,
@@ -263,12 +263,12 @@ class MultiplayerGameViewModel: ObservableObject {
     }
     
     func voteForPlayer(playerName: String) {
-        guard let room = currentRoom,
-              room.status == .voting else { return }
+        guard let lobby = currentLobby,
+              lobby.status == .voting else { return }
         
         currentVote = playerName
         
-        currentRoomRef?.child("votes").child(currentPlayerName).setValue(playerName)
+        currentLobbyRef?.child("votes").child(currentPlayerName).setValue(playerName)
         
         // Check if majority has voted and reduce time to 10 seconds
         checkMajorityVoteAndReduceTime()
@@ -278,21 +278,21 @@ class MultiplayerGameViewModel: ObservableObject {
     }
     
     private func checkMajorityVoteAndReduceTime() {
-        guard let room = currentRoom,
-              room.status == .voting else { return }
+        guard let lobby = currentLobby,
+              lobby.status == .voting else { return }
         
         // Get current votes count
-        currentRoomRef?.child("votes").observeSingleEvent(of: .value) { [weak self] snapshot in
+        currentLobbyRef?.child("votes").observeSingleEvent(of: .value) { [weak self] snapshot in
             guard let self = self else { return }
             
             if let votesData = snapshot.value as? [String: String] {
                 let voteCount = votesData.count
-                let totalPlayers = room.players.count
+                let totalPlayers = lobby.players.count
                 let majorityThreshold = (totalPlayers / 2) + 1
                 
                 // If majority has voted, reduce voting time to 10 seconds
                 if voteCount >= majorityThreshold {
-                    self.currentRoomRef?.updateChildValues([
+                    self.currentLobbyRef?.updateChildValues([
                         "votingDurationSeconds": 10
                     ])
                 }
@@ -301,11 +301,11 @@ class MultiplayerGameViewModel: ObservableObject {
     }
     
     func endVotingAndReveal() {
-        guard let room = currentRoom,
-              room.hostId == currentUser?.uid else { return }
+        guard let lobby = currentLobby,
+              lobby.hostId == currentUser?.uid else { return }
         
         // Calculate voting results
-        currentRoomRef?.child("votes").observeSingleEvent(of: .value) { [weak self] snapshot in
+        currentLobbyRef?.child("votes").observeSingleEvent(of: .value) { [weak self] snapshot in
             guard let self = self else { return }
             
             if let votesData = snapshot.value as? [String: String] {
@@ -313,13 +313,13 @@ class MultiplayerGameViewModel: ObservableObject {
                     .mapValues { $0.count }
                 
                 let mostVotedPlayer = voteCounts.max(by: { $0.value < $1.value })?.key ?? "No one"
-                let spyName = room.players.first(where: { $0.role == .spy })?.name ?? "Unknown"
+                let spyName = lobby.players.first(where: { $0.role == .spy })?.name ?? "Unknown"
                 let spyCaught = mostVotedPlayer == spyName
                 
                 // Check if spy made a correct guess
                 let spyGuessCorrect: Bool?
-                if let spyGuess = room.spyGuess {
-                    spyGuessCorrect = spyGuess.lowercased() == room.location.nameKey.lowercased()
+                if let spyGuess = lobby.spyGuess {
+                    spyGuessCorrect = spyGuess.lowercased() == lobby.location.nameKey.lowercased()
                 } else {
                     spyGuessCorrect = nil
                 }
@@ -332,7 +332,7 @@ class MultiplayerGameViewModel: ObservableObject {
                     spyGuessCorrect: spyGuessCorrect
                 )
                 
-                self.currentRoomRef?.updateChildValues([
+                self.currentLobbyRef?.updateChildValues([
                     "status": "finished",
                     "votingResult": votingResult.toDictionary()
                 ])
@@ -341,40 +341,40 @@ class MultiplayerGameViewModel: ObservableObject {
     }
     
     func tryStartIfAllReady() {
-        guard let room = currentRoom else { return }
-        let ready = room.readyPlayers ?? [:]
-        let nonHostPlayers = room.players.filter { $0.name != room.hostName }.map { $0.name }
+        guard let lobby = currentLobby else { return }
+        let ready = lobby.readyPlayers ?? [:]
+        let nonHostPlayers = lobby.players.filter { $0.name != lobby.hostName }.map { $0.name }
         let allReady = nonHostPlayers.allSatisfy { ready[$0] == true }
         if allReady {
-            currentRoomRef?.updateChildValues([
+            currentLobbyRef?.updateChildValues([
                 "status": "playing"
             ])
         }
     }
     
     func restartGame() {
-        guard let room = currentRoom,
-              room.hostId == currentUser?.uid else { return }
+        guard let lobby = currentLobby,
+              lobby.hostId == currentUser?.uid else { return }
         
-        var updatedRoom = room
-        updatedRoom.status = .waiting
-        updatedRoom.readyPlayers = nil
+        var updatedLobby = lobby
+        updatedLobby.status = .waiting
+        updatedLobby.readyPlayers = nil
         
         // Reset all player roles
-        for index in updatedRoom.players.indices {
-            updatedRoom.players[index].role = nil
-            updatedRoom.players[index].playerLocationRole = nil
+        for index in updatedLobby.players.indices {
+            updatedLobby.players[index].role = nil
+            updatedLobby.players[index].playerLocationRole = nil
         }
         
         // Update local state immediately for better UX
         DispatchQueue.main.async {
-            self.currentRoom = updatedRoom
+            self.currentLobby = updatedLobby
         }
         
         // Update Firebase for synchronization
-        currentRoomRef?.updateChildValues([
+        currentLobbyRef?.updateChildValues([
             "status": "waiting",
-            "players": updatedRoom.players.map { $0.toDictionary() },
+            "players": updatedLobby.players.map { $0.toDictionary() },
             "readyPlayers": NSNull(),
             "gameStartAt": NSNull(),
             "gameDurationSeconds": NSNull(),
@@ -387,72 +387,72 @@ class MultiplayerGameViewModel: ObservableObject {
     }
     
     func toggleReady() {
-        guard var room = currentRoom else { return }
-        var ready = room.readyPlayers ?? [:]
+        guard var lobby = currentLobby else { return }
+        var ready = lobby.readyPlayers ?? [:]
         let current = ready[currentPlayerName] ?? false
         ready[currentPlayerName] = !current
-        room.readyPlayers = ready
+        lobby.readyPlayers = ready
         DispatchQueue.main.async {
-            self.currentRoom = room
+            self.currentLobby = lobby
         }
-        currentRoomRef?.updateChildValues([
+        currentLobbyRef?.updateChildValues([
             "readyPlayers": ready
         ])
     }
     
     func markCurrentPlayerReady() {
-        guard var room = currentRoom else { return }
-        var ready = room.readyPlayers ?? [:]
+        guard var lobby = currentLobby else { return }
+        var ready = lobby.readyPlayers ?? [:]
         ready[currentPlayerName] = true
-        room.readyPlayers = ready
+        lobby.readyPlayers = ready
         DispatchQueue.main.async {
-            self.currentRoom = room
+            self.currentLobby = lobby
         }
-        currentRoomRef?.updateChildValues([
+        currentLobbyRef?.updateChildValues([
             "readyPlayers": ready
         ])
     }
     
-    func leaveRoom() {
-        guard let room = currentRoom,
+    func leaveLobby() {
+        guard let lobby = currentLobby,
               let user = currentUser else { return }
         
-        var updatedPlayers = room.players
+        var updatedPlayers = lobby.players
         updatedPlayers.removeAll { $0.name == currentPlayerName }
-        var updatedReady = room.readyPlayers ?? [:]
+        var updatedReady = lobby.readyPlayers ?? [:]
         updatedReady.removeValue(forKey: currentPlayerName)
         
         if updatedPlayers.isEmpty {
-            currentRoomRef?.removeValue()
+            currentLobbyRef?.removeValue()
         } else {
-            currentRoomRef?.updateChildValues([
+            currentLobbyRef?.updateChildValues([
                 "players": updatedPlayers.map { $0.toDictionary() },
                 "readyPlayers": updatedReady
             ])
         }
         
         // Clear local state without showing any error message
-        currentRoom = nil
+        currentLobby = nil
         currentPlayerName = ""
-        currentRoomRef?.removeAllObservers()
-        currentRoomRef = nil
+        currentLobbyRef?.removeAllObservers()
+        currentLobbyRef = nil
     }
     
     func endGameForAll() {
-        guard let room = currentRoom else { return }
-        currentRoomRef?.updateChildValues([
+        guard let lobby = currentLobby else { return }
+        currentLobbyRef?.updateChildValues([
             "status": "finished"
         ])
     }
     
     func makeSpyGuess(guess: String) {
-        guard let room = currentRoom,
-              room.status == .voting,
-              let currentPlayer = room.players.first(where: { $0.name == currentPlayerName }),
+        guard let lobby = currentLobby,
+              lobby.status == .voting,
+              let currentPlayer = lobby.players.first(where: { $0.name == currentPlayerName }),
               currentPlayer.role == .spy else { return }
         
         // Update spy guess in Firebase
-        currentRoomRef?.updateChildValues([
+        currentLobbyRef?.updateChildValues([
             "spyGuess": guess
         ])
         
@@ -461,19 +461,19 @@ class MultiplayerGameViewModel: ObservableObject {
     }
     
     private func checkAutoEndVoting() {
-        guard let room = currentRoom,
-              room.status == .voting else { return }
+        guard let lobby = currentLobby,
+              lobby.status == .voting else { return }
         
         // Get current votes count
-        currentRoomRef?.child("votes").observeSingleEvent(of: .value) { [weak self] snapshot in
+        currentLobbyRef?.child("votes").observeSingleEvent(of: .value) { [weak self] snapshot in
             guard let self = self else { return }
             
             if let votesData = snapshot.value as? [String: String] {
                 let voteCount = votesData.count
-                let totalPlayers = room.players.count
+                let totalPlayers = lobby.players.count
                 
                 // If everyone has voted (including spy), end voting automatically
-                if voteCount >= totalPlayers && room.hostId == self.currentUser?.uid {
+                if voteCount >= totalPlayers && lobby.hostId == self.currentUser?.uid {
                     print("DEBUG: Auto-ending voting - everyone has voted and spy has guessed")
                     self.endVotingAndReveal()
                 }
@@ -483,19 +483,19 @@ class MultiplayerGameViewModel: ObservableObject {
     
     // Public function for VotingView to check voting end conditions
     func checkVotingEndConditions() {
-        guard let room = currentRoom,
-              room.status == .voting else { return }
+        guard let lobby = currentLobby,
+              lobby.status == .voting else { return }
         
         let localNow = Date().timeIntervalSince1970
         let serverNow = localNow + TimeInterval(Double(serverTimeOffsetMs) / 1000.0)
         
         // Check if voting time is up
-        if let votingStartAt = room.votingStartAt,
-           let votingDurationSeconds = room.votingDurationSeconds {
+        if let votingStartAt = lobby.votingStartAt,
+           let votingDurationSeconds = lobby.votingDurationSeconds {
             let elapsed = max(0, serverNow - votingStartAt)
             let remaining = max(0, Double(votingDurationSeconds) - elapsed)
             
-            if remaining <= 0 && room.hostId == currentUser?.uid {
+            if remaining <= 0 && lobby.hostId == currentUser?.uid {
                 print("DEBUG: Voting time is up, ending voting automatically")
                 endVotingAndReveal()
                 return
@@ -503,17 +503,17 @@ class MultiplayerGameViewModel: ObservableObject {
         }
         
         // Check if everyone has voted and spy has made a guess
-        if let spyGuess = room.spyGuess, !spyGuess.isEmpty {
+        if let spyGuess = lobby.spyGuess, !spyGuess.isEmpty {
             // Get current votes count from Firebase
-            currentRoomRef?.child("votes").observeSingleEvent(of: .value) { [weak self] snapshot in
+            currentLobbyRef?.child("votes").observeSingleEvent(of: .value) { [weak self] snapshot in
                 guard let self = self else { return }
                 
                 if let votesData = snapshot.value as? [String: String] {
                     let voteCount = votesData.count
-                    let totalPlayers = room.players.count
+                    let totalPlayers = lobby.players.count
                     
                     // If everyone has voted (including spy), end voting
-                    if voteCount >= totalPlayers && room.hostId == self.currentUser?.uid {
+                    if voteCount >= totalPlayers && lobby.hostId == self.currentUser?.uid {
                         print("DEBUG: Everyone has voted and spy has guessed, ending voting automatically")
                         self.endVotingAndReveal()
                     }
@@ -522,7 +522,7 @@ class MultiplayerGameViewModel: ObservableObject {
         }
     }
     
-    private func generateRoomCode() -> String {
+    private func generateLobbyCode() -> String {
         let letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         let numbers = "0123456789"
         var code = ""
@@ -537,14 +537,14 @@ class MultiplayerGameViewModel: ObservableObject {
         return code
     }
     
-    func areAllPlayersReady(in room: GameRoom) -> Bool {
-        let ready = room.readyPlayers ?? [:]
-        let allPlayerNames = room.players.map { $0.name }
+    func areAllPlayersReady(in lobby: GameLobby) -> Bool {
+        let ready = lobby.readyPlayers ?? [:]
+        let allPlayerNames = lobby.players.map { $0.name }
         return !allPlayerNames.isEmpty && allPlayerNames.allSatisfy { ready[$0] == true }
     }
 }
 
-struct GameRoom: Identifiable, Codable {
+struct GameLobby: Identifiable, Codable {
     let id: String
     let hostId: String
     let hostName: String
@@ -624,7 +624,7 @@ struct GameRoom: Identifiable, Codable {
         return dict
     }
     
-    static func fromDictionary(_ dict: [String: Any]) -> GameRoom? {
+    static func fromDictionary(_ dict: [String: Any]) -> GameLobby? {
         guard let id = dict["id"] as? String,
               let hostId = dict["hostId"] as? String,
               let hostName = dict["hostName"] as? String,
@@ -642,7 +642,7 @@ struct GameRoom: Identifiable, Codable {
         
         let players = playersArray.compactMap { Player.fromDictionary($0) }
         let createdAt = Date(timeIntervalSince1970: createdAtInterval)
-        var room = GameRoom(
+        var lobby = GameLobby(
             id: id,
             hostId: hostId,
             hostName: hostName,
@@ -654,30 +654,30 @@ struct GameRoom: Identifiable, Codable {
             selectedLocationSet: selectedLocationSet
         )
         if let ready = dict["readyPlayers"] as? [String: Bool] {
-            room.readyPlayers = ready
+            lobby.readyPlayers = ready
         }
         if let gameStartAt = dict["gameStartAt"] as? TimeInterval {
-            room.gameStartAt = gameStartAt / ((gameStartAt > 1000000000000) ? 1000.0 : 1.0)
+            lobby.gameStartAt = gameStartAt / ((gameStartAt > 1000000000000) ? 1000.0 : 1.0)
         }
         if let duration = dict["gameDurationSeconds"] as? Int {
-            room.gameDurationSeconds = duration
+            lobby.gameDurationSeconds = duration
         }
         if let votingStartAt = dict["votingStartAt"] as? TimeInterval {
-            room.votingStartAt = votingStartAt / ((votingStartAt > 1000000000000) ? 1000.0 : 1.0)
+            lobby.votingStartAt = votingStartAt / ((votingStartAt > 1000000000000) ? 1000.0 : 1.0)
         }
         if let votingDuration = dict["votingDurationSeconds"] as? Int {
-            room.votingDurationSeconds = votingDuration
+            lobby.votingDurationSeconds = votingDuration
         }
         if let votes = dict["votes"] as? [String: String] {
-            room.votes = votes
+            lobby.votes = votes
         }
         if let votingResultDict = dict["votingResult"] as? [String: Any] {
-            room.votingResult = VotingResult.fromDictionary(votingResultDict)
+            lobby.votingResult = VotingResult.fromDictionary(votingResultDict)
         }
         if let spyGuess = dict["spyGuess"] as? String {
-            room.spyGuess = spyGuess
+            lobby.spyGuess = spyGuess
         }
-        return room
+        return lobby
     }
 }
 
