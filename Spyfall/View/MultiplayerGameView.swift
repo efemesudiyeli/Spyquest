@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 import FirebaseAuth
 
 struct MultiplayerGameView: View {
@@ -12,31 +13,32 @@ struct MultiplayerGameView: View {
     @State private var gameTimer: Timer?
     @State private var revealCountdown: Int = 0
     @State private var revealTimer: Timer?
+    @State private var lobbyCodeCopied: Bool = false
     
     private var currentPlayer: Player? {
-        viewModel.currentRoom?.players.first { $0.name == viewModel.currentPlayerName }
+        viewModel.currentLobby?.players.first { $0.name == viewModel.currentPlayerName }
     }
     
     var body: some View {
         VStack {
-            if let room = viewModel.currentRoom {
-                switch room.status {
+            if let lobby = viewModel.currentLobby {
+                switch lobby.status {
                 case .waiting:
-                    waitingRoomView(room: room)
+                    waitingLobbyView(lobby: lobby)
                 case .revealing:
-                    roleRevealView(room: room)
+                    roleRevealView(lobby: lobby)
                 case .playing:
                     if showingRole {
-                        gamePlayingView(room: room)
+                        gamePlayingView(lobby: lobby)
                     } else {
-                        countdownView(room: room)
+                        countdownView(lobby: lobby)
                     }
                 case .voting:
-                    VotingView(room: room, viewModel: viewModel)
+                    VotingView(lobby: lobby, viewModel: viewModel)
                 case .finished:
-                    gameEndView(room: room)
+                    gameEndView(lobby: lobby)
                 case .cancelled:
-                    gameCancelledView(room: room)
+                    gameCancelledView(lobby: lobby)
                 }
             } else {
                 ProgressView("Loading...")
@@ -47,7 +49,7 @@ struct MultiplayerGameView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button(action: {
-                    viewModel.leaveRoom()
+                    viewModel.leaveLobby()
                     dismiss()
                 }) {
                     Image(systemName: "door.left.hand.open")
@@ -65,7 +67,7 @@ struct MultiplayerGameView: View {
         .onAppear {
             syncTimerWithServerIfNeeded()
         }
-        .onChange(of: viewModel.currentRoom?.status) { _, newStatus in
+        .onChange(of: viewModel.currentLobby?.status) { _, newStatus in
             if newStatus == .playing {
                 // Begin 3-2-1 countdown, reveal roles afterwards, then start game timer
                 showingRole = false
@@ -91,7 +93,7 @@ struct MultiplayerGameView: View {
                 revealTimer = nil
             }
         }
-        .onChange(of: viewModel.currentRoom?.gameStartAt) { _, _ in
+        .onChange(of: viewModel.currentLobby?.gameStartAt) { _, _ in
             syncTimerWithServerIfNeeded()
         }
         .onChange(of: viewModel.serverTimeOffsetMs) { _, _ in
@@ -100,7 +102,7 @@ struct MultiplayerGameView: View {
         .onChange(of: scenePhase) { _, newPhase in
             if newPhase == .active {
                 syncTimerWithServerIfNeeded()
-                if let room = viewModel.currentRoom, room.status == .playing, gameTimer == nil, showingRole {
+                if let lobby = viewModel.currentLobby, lobby.status == .playing, gameTimer == nil, showingRole {
                     startGameTimer(reset: false)
                 }
             } else if newPhase == .background || newPhase == .inactive {
@@ -109,7 +111,7 @@ struct MultiplayerGameView: View {
                 gameTimer = nil
             }
         }
-        .alert("Room Update", isPresented: .constant(!viewModel.errorMessage.isEmpty)) {
+        .alert("Lobby Update", isPresented: .constant(!viewModel.errorMessage.isEmpty)) {
             Button("OK") {
                 viewModel.errorMessage = ""
             }
@@ -118,104 +120,165 @@ struct MultiplayerGameView: View {
         }
     }
     
-    private func waitingRoomView(room: GameRoom) -> some View {
-        VStack(spacing: 20) {
-            VStack(spacing: 10) {
-                Text("Waiting Room")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                
-                
-                
-                VStack(spacing: 5) {
-                    Text("Room Code")
-                        .font(.headline)
-                        .fontWeight(.semibold)
-                    
-                    Text(room.id)
-                        .font(.system(size: 32, weight: .bold, design: .monospaced))
-                        .foregroundColor(.blue)
-                        .padding()
+    private func waitingLobbyView(lobby: GameLobby) -> some View {
+        ScrollView {
+            VStack(spacing: 16) {
+                // Cohesive card
+                VStack(spacing: 0) {
+                    // Header
+                    HStack(spacing: 12) {
+                        ZStack {
+                            Circle()
+                                .fill(Color(.systemGray6))
+                                .frame(width: 48, height: 48)
+                            Image(systemName: "hourglass.circle.fill")
+                                .font(.title2)
+                                .foregroundColor(.blue)
+                        }
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text("Waiting Lobby")
+                                .font(.headline)
+                            Text("Share the code and get everyone ready")
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                                .fontDesign(.monospaced)
+                        }
+                        Spacer()
+                    }
+                    .padding(.vertical, 12)
+
+                    Divider()
+
+                    // Lobby Code
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Lobby Code")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                        HStack(alignment: .center, spacing: 8) {
+                            Text("#")
+                                .font(.system(size: 28, weight: .bold, design: .monospaced))
+                                .foregroundColor(.secondary)
+                            Text(lobby.id)
+                                .font(.system(size: 32, weight: .bold, design: .monospaced))
+                                .foregroundColor(.blue)
+                                .textSelection(.enabled)
+                            Spacer()
+                            Button(action: {
+                                UIPasteboard.general.string = lobby.id
+                                let impactFeedback = UIImpactFeedbackGenerator(style: .light)
+                                impactFeedback.impactOccurred()
+                                withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                                    lobbyCodeCopied = true
+                                }
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+                                    withAnimation(.easeOut(duration: 0.2)) {
+                                        lobbyCodeCopied = false
+                                    }
+                                }
+                            }) {
+                                Image(systemName: lobbyCodeCopied ? "checkmark.circle.fill" : "doc.on.doc")
+                                    .font(.system(size: 16, weight: .semibold))
+                            }
+                            .buttonStyle(.plain)
+                            .foregroundColor(lobbyCodeCopied ? .green : .blue)
+                        }
+                        .padding(12)
                         .background(Color(.systemGray6))
-                        .cornerRadius(10)
-                        .textSelection(.enabled)
-                }
-            }
-            
-            VStack(alignment: .leading, spacing: 15) {
-                HStack {
-                    Text("Players (\(room.players.count)/\(room.maxPlayers))")
-                        .font(.headline)
-                    
-                    Spacer()
-                    
-                    if let hostPlayer = room.players.first(where: { $0.name == room.hostName }) {
-                        HStack(spacing: 5) {
-                            Image(systemName: "crown.fill")
-                                .foregroundColor(.yellow)
-                            Text("Host: \(hostPlayer.name)")
-                                .font(.subheadline)
-                                .fontWeight(.medium)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                    }
+                    .padding(.vertical, 12)
+
+                    Divider()
+
+                    // Players
+                    VStack(alignment: .leading, spacing: 12) {
+                        HStack {
+                            Text("Players (\(lobby.players.count)/\(lobby.maxPlayers))")
+                                .font(.headline)
+                            Spacer()
+                            if let hostPlayer = lobby.players.first(where: { $0.name == lobby.hostName }) {
+                                HStack(spacing: 5) {
+                                    Image(systemName: "crown.fill")
+                                        .foregroundColor(.yellow)
+                                    Text("Host: \(hostPlayer.name)")
+                                        .font(.subheadline)
+                                        .fontWeight(.medium)
+                                }
+                            }
+                        }
+
+                        LazyVStack(spacing: 10) {
+                            ForEach(lobby.players, id: \.name) { player in
+                                PlayerCard(
+                                    player: player,
+                                    isHost: player.name == lobby.hostName,
+                                    ready: lobby.readyPlayers?[player.name] ?? false
+                                )
+                                .frame(maxWidth: .infinity, minHeight: 72)
+                            }
                         }
                     }
+                    .padding(.vertical, 12)
                 }
-                
-                LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 2), spacing: 10) {
-                    ForEach(room.players, id: \.name) { player in
-                        PlayerCard(
-                            player: player,
-                            isHost: player.name == room.hostName,
-                            ready: room.readyPlayers?[player.name] ?? false
-                        )
-                    }
-                }
+                .padding(.horizontal, 16)
+          
+                .clipShape(RoundedRectangle(cornerRadius: 16))
+
             }
-            
-            Spacer()
-            
+            .padding()
+        }
+        .safeAreaInset(edge: .bottom) {
             VStack(spacing: 12) {
-                Button(action: {
-                    viewModel.toggleReady()
-                }) {
-                    let isReady = room.readyPlayers?[viewModel.currentPlayerName] ?? false
-                    HStack {
-                        Image(systemName: isReady ? "hand.thumbsdown.fill" : "hand.thumbsup.fill")
-                        Text(isReady ? NSLocalizedString("Unready", comment: "") : NSLocalizedString("Ready", comment: ""))
-                    }
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(isReady ? Color.orange : Color.blue)
-                    .cornerRadius(10)
-                }
-                
-                if room.hostId == viewModel.currentUser?.uid {
+                if let lobby = viewModel.currentLobby {
+                    let isReady = lobby.readyPlayers?[viewModel.currentPlayerName] ?? false
                     Button(action: {
-                        viewModel.startGame()
+                        viewModel.toggleReady()
                     }) {
                         HStack {
-                            Image(systemName: "play.fill")
-                            Text("Start Game")
+                            Image(systemName: isReady ? "hand.thumbsdown.fill" : "hand.thumbsup.fill")
+                            Text(isReady ? NSLocalizedString("Unready", comment: "") : NSLocalizedString("Ready", comment: ""))
+                                .fontWeight(.semibold)
                         }
-                        .foregroundColor(.white)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background((viewModel.areAllPlayersReady(in: room) && room.players.count >= 2) ? Color.green : Color.gray)
-                        .cornerRadius(10)
+                        .foregroundColor(.reverse)
+                        .frame(maxWidth: .infinity, minHeight: 48)
+                        .background(isReady ? Color.orange : Color.reverse2)
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
                     }
-                    .disabled(!(viewModel.areAllPlayersReady(in: room) && room.players.count >= 2))
-                } else {
-                    Text("Waiting for host to start the game...")
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                        .multilineTextAlignment(.center)
+
+                    if lobby.hostId == viewModel.currentUser?.uid {
+                        Button(action: {
+                            viewModel.startGame()
+                        }) {
+                            HStack {
+                                Image(systemName: "play.fill")
+                                Text("Start Game")
+                                    .fontWeight(.semibold)
+                            }
+                            .foregroundColor(.reverse)
+                            .frame(maxWidth: .infinity, minHeight: 48)
+                            .background((viewModel.areAllPlayersReady(in: lobby) && lobby.players.count >= 2) ? Color.green : Color.gray)
+                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                        }
+                        .disabled(!(viewModel.areAllPlayersReady(in: lobby) && lobby.players.count >= 2))
+                    } else {
+                        Text("Waiting for host to start the game...")
+                            .font(.caption)
+                            .fontDesign(.monospaced)
+                            .foregroundColor(.secondary)
+                            .multilineTextAlignment(.center)
+                    }
                 }
             }
+            .padding(.horizontal)
+            .padding(.top, 10)
+            .padding(.bottom, 8)
+           
         }
-        .padding()
+        .navigationTitle("Waiting Lobby")
+        .navigationBarTitleDisplayMode(.large)
     }
     
-    private func gameCancelledView(room: GameRoom) -> some View {
+    private func gameCancelledView(lobby: GameLobby) -> some View {
         VStack(spacing: 30) {
             Image(systemName: "exclamationmark.triangle.fill")
                 .font(.system(size: 80))
@@ -231,12 +294,12 @@ struct MultiplayerGameView: View {
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)
             
-            // Removed in-content Leave Room per design; use top-left toolbar button instead
+            // Removed in-content Leave Lobby per design; use top-left toolbar button instead
         }
         .padding()
     }
     
-    private func roleRevealView(room: GameRoom) -> some View {
+    private func roleRevealView(lobby: GameLobby) -> some View {
         VStack(spacing: 30) {
             VStack(spacing: 30) {
                 Text("Get Ready!")
@@ -262,23 +325,24 @@ struct MultiplayerGameView: View {
             // Ready status and host control
             VStack(spacing: 12) {
                 // Ready progress
-                if let ready = room.readyPlayers {
-                    let nonHostReady = ready.filter { $0.key != room.hostName }
+                if let ready = lobby.readyPlayers {
+                    let nonHostReady = ready.filter { $0.key != lobby.hostName }
                     let readyCount = nonHostReady.values.filter { $0 }.count
-                    let total = room.players.count
+                    let total = lobby.players.count
                     Text("\(readyCount + 1)/\(total) ready")
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                 } else {
-                    let total = room.players.filter { $0.name != room.hostName }.count
+                    let total = lobby.players.filter { $0.name != lobby.hostName }.count
                     Text("0/\(total) ready")
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                 }
                 
                 
+                
                 // Ready button for non-hosts
-                if room.hostId != viewModel.currentUser?.uid {
+                if lobby.hostId != viewModel.currentUser?.uid {
                     Button(action: {
                         viewModel.markCurrentPlayerReady()
                     }) {
@@ -295,9 +359,9 @@ struct MultiplayerGameView: View {
                 }
                 
                 // Host start button (host does not need to be ready)
-                if room.hostId == viewModel.currentUser?.uid {
+                if lobby.hostId == viewModel.currentUser?.uid {
                     Button(action: {
-                        if isAllReady(room: room) {
+                        if isAllReady(lobby: lobby) {
                             // Move status to playing; countdown will handle reveal and timer
                             viewModel.tryStartIfAllReady()
                         }
@@ -309,28 +373,28 @@ struct MultiplayerGameView: View {
                         .foregroundColor(.white)
                         .padding()
                         .frame(maxWidth: .infinity)
-                        .background(isAllReady(room: room) ? Color.green : Color.gray)
+                        .background(isAllReady(lobby: lobby) ? Color.green : Color.gray)
                         .cornerRadius(10)
                     }
-                    .disabled(!isAllReady(room: room))
+                    .disabled(!isAllReady(lobby: lobby))
                 }
             }
             .padding(.horizontal)
         }
     }
     
-    private func isAllReady(room: GameRoom) -> Bool {
-        guard let ready = room.readyPlayers else { return false }
-        let nonHostPlayers = room.players.filter { $0.name != room.hostName }.map { $0.name }
+    private func isAllReady(lobby: GameLobby) -> Bool {
+        guard let ready = lobby.readyPlayers else { return false }
+        let nonHostPlayers = lobby.players.filter { $0.name != lobby.hostName }.map { $0.name }
         return nonHostPlayers.allSatisfy { ready[$0] == true }
     }
     
-    private func gamePlayingView(room: GameRoom) -> some View {
+    private func gamePlayingView(lobby: GameLobby) -> some View {
         VStack(spacing: 20) {
             HStack {
                 VStack(alignment: .leading) {
                     if let player = currentPlayer, player.role != .spy {
-                        Text("Location: \(room.location.name)")
+                        Text("Location: \(lobby.location.name)")
                             .font(.title2)
                             .fontWeight(.semibold)
                     }
@@ -401,7 +465,7 @@ struct MultiplayerGameView: View {
                     .cornerRadius(10)
                 }
                 
-                if room.hostId == viewModel.currentUser?.uid {
+                if lobby.hostId == viewModel.currentUser?.uid {
                     HStack(spacing: 15) {
                         Button(NSLocalizedString("End Round For All", comment: "")) {
                             viewModel.startVoting()
@@ -420,13 +484,13 @@ struct MultiplayerGameView: View {
         .padding()
     }
     
-    private func gameEndView(room: GameRoom) -> some View {
+    private func gameEndView(lobby: GameLobby) -> some View {
         VStack(spacing: 30) {
             Text("Game Over!")
                 .font(.largeTitle)
                 .fontWeight(.bold)
             
-            if let votingResult = room.votingResult {
+            if let votingResult = lobby.votingResult {
                 VStack(spacing: 15) {
                     Text("Voting Results")
                         .font(.title2)
@@ -436,7 +500,7 @@ struct MultiplayerGameView: View {
                         .font(.headline)
                     
                     // Show spy guess if available
-                    if let spyGuess = room.spyGuess {
+                    if let spyGuess = lobby.spyGuess {
                         VStack(spacing: 8) {
                             Text("Spy's guess: \(spyGuess)")
                                 .font(.headline)
@@ -501,12 +565,12 @@ struct MultiplayerGameView: View {
             
             VStack(spacing: 20) {
                 if let player = currentPlayer, player.role != .spy {
-                    Text("Location was: \(room.location.name)")
+                    Text("Location was: \(lobby.location.name)")
                         .font(.title2)
                         .foregroundColor(.secondary)
                 }
                 
-                if let spy = room.players.first(where: { $0.role == .spy }) {
+                if let spy = lobby.players.first(where: { $0.role == .spy }) {
                     Text("The spy was: \(spy.name)")
                         .font(.title3)
                         .fontWeight(.semibold)
@@ -515,7 +579,7 @@ struct MultiplayerGameView: View {
             }
             
             HStack(spacing: 15) {
-                if room.hostId == viewModel.currentUser?.uid {
+                if lobby.hostId == viewModel.currentUser?.uid {
                     Button(NSLocalizedString("Back to Lobby", comment: "")) {
                         viewModel.restartGame()
                     }
@@ -570,7 +634,7 @@ struct MultiplayerGameView: View {
         }
     }
     
-    private func countdownView(room: GameRoom) -> some View {
+    private func countdownView(lobby: GameLobby) -> some View {
         VStack(spacing: 24) {
             Text(NSLocalizedString("Get Ready!", comment: ""))
                 .font(.largeTitle)
@@ -590,10 +654,10 @@ struct MultiplayerGameView: View {
     }
     
     private func syncTimerWithServerIfNeeded() {
-        guard let room = viewModel.currentRoom,
-              room.status == .playing,
-              let startAt = room.gameStartAt,
-              let duration = room.gameDurationSeconds else { return }
+        guard let lobby = viewModel.currentLobby,
+              lobby.status == .playing,
+              let startAt = lobby.gameStartAt,
+              let duration = lobby.gameDurationSeconds else { return }
         
         let localNow = Date().timeIntervalSince1970
         let serverNow = localNow + TimeInterval(Double(viewModel.serverTimeOffsetMs) / 1000.0)
@@ -611,7 +675,7 @@ struct MultiplayerGameView: View {
 }
 
 struct VotingView: View {
-    let room: GameRoom
+    let lobby: GameLobby
     @ObservedObject var viewModel: MultiplayerGameViewModel
     
     @State private var currentTime: TimeInterval = Date().timeIntervalSince1970
@@ -619,7 +683,7 @@ struct VotingView: View {
     @State private var showingSpyGuessAlert = false
     
     private var isCurrentPlayerSpy: Bool {
-        guard let currentPlayer = room.players.first(where: { $0.name == viewModel.currentPlayerName }) else { return false }
+        guard let currentPlayer = lobby.players.first(where: { $0.name == viewModel.currentPlayerName }) else { return false }
         return currentPlayer.role == .spy
     }
     
@@ -636,8 +700,8 @@ struct VotingView: View {
                 .fontDesign(.monospaced)
                 .multilineTextAlignment(.center)
             
-            if let votingStartAt = room.votingStartAt,
-               let votingDurationSeconds = room.votingDurationSeconds {
+            if let votingStartAt = lobby.votingStartAt,
+               let votingDurationSeconds = lobby.votingDurationSeconds {
                 let localNow = currentTime
                 let serverNow = localNow + TimeInterval(Double(viewModel.serverTimeOffsetMs) / 1000.0)
                 let elapsed = max(0, serverNow - votingStartAt)
@@ -671,7 +735,7 @@ struct VotingView: View {
                     .fontDesign(.rounded)
                 
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 2), spacing: 10) {
-                    ForEach(room.players, id: \.name) { player in
+                    ForEach(lobby.players, id: \.name) { player in
                         if player.name != viewModel.currentPlayerName {
                             Button(action: {
                                 viewModel.voteForPlayer(playerName: player.name)
@@ -750,7 +814,7 @@ struct VotingView: View {
                 if isCurrentPlayerSpy {
                     VStack {
                         Spacer()
-                        SpyGuessSheet(room: room, viewModel: viewModel, showingAlert: $showingSpyGuessAlert)
+                        SpyGuessSheet(lobby: lobby, viewModel: viewModel, showingAlert: $showingSpyGuessAlert)
                     }
                 }
             }
@@ -786,7 +850,7 @@ struct VotingView: View {
 }
 
 struct SpyGuessSheet: View {
-    let room: GameRoom
+    let lobby: GameLobby
     @ObservedObject var viewModel: MultiplayerGameViewModel
     @Binding var showingAlert: Bool
     @State private var dragOffset: CGFloat = 0
@@ -830,7 +894,7 @@ struct SpyGuessSheet: View {
                     // Location grid - Sadece expanded'da
                     ScrollView {
                         LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 2), spacing: 16) {
-                            ForEach(room.selectedLocationSet.locations, id: \.id) { location in
+                            ForEach(lobby.selectedLocationSet.locations, id: \.id) { location in
                                 Button(action: {
                                     viewModel.makeSpyGuess(guess: location.nameKey)
                                     showingAlert = true
@@ -934,9 +998,9 @@ struct SpyGuessSheet: View {
         }
         .onAppear {
             print("DEBUG: SpyGuessSheet loaded")
-            print("DEBUG: Current game location: \(room.location.nameKey)")
-            print("DEBUG: Selected location set: \(room.selectedLocationSet.rawValue)")
-            print("DEBUG: Available locations count: \(room.selectedLocationSet.locations.count)")
+            print("DEBUG: Current game location: \(lobby.location.nameKey)")
+            print("DEBUG: Selected location set: \(lobby.selectedLocationSet.rawValue)")
+            print("DEBUG: Available locations count: \(lobby.selectedLocationSet.locations.count)")
         }
     }
 }
@@ -962,41 +1026,43 @@ struct PlayerCard: View {
     let player: Player
     let isHost: Bool
     let ready: Bool
+    private let avatarSize: CGFloat = 26
+    private let minHeight: CGFloat = 72
     
     var body: some View {
-        HStack {
-            VStack(alignment: .leading, spacing: 5) {
-                HStack {
+        HStack(alignment: .center, spacing: 12) {
+            VStack(alignment: .leading, spacing: 6) {
+                HStack(spacing: 6) {
                     Text(player.name)
                         .font(.headline)
                         .fontWeight(.semibold)
-                    
                     if isHost {
                         Image(systemName: "crown.fill")
                             .foregroundColor(.yellow)
                             .font(.caption)
                     }
                 }
-                
                 Text(ready ? "Ready" : "Unready")
                     .font(.caption)
                     .foregroundColor(.secondary)
+                    .fontDesign(.monospaced)
             }
-            
-            Spacer()
-            
+            Spacer(minLength: 8)
             Image(systemName: "person.circle.fill")
-                .font(.title2)
+                .resizable()
+                .scaledToFit()
+                .frame(width: avatarSize, height: avatarSize)
                 .foregroundColor(ready ? .green : .blue)
         }
+        .frame(minHeight: minHeight)
         .padding()
         .background(Color(.systemGray6))
-        .cornerRadius(10)
+        .clipShape(RoundedRectangle(cornerRadius: 10))
     }
 }
 #Preview {
     VotingView(
-        room: GameRoom(
+        lobby: GameLobby(
             id: "ABC123",
             hostId: "host123",
             hostName: "Host Player",
@@ -1016,4 +1082,34 @@ struct PlayerCard: View {
         ),
         viewModel: MultiplayerGameViewModel()
     )
+}
+
+#Preview("Waiting Lobby") {
+    let vm = MultiplayerGameViewModel()
+    let samplePlayers: [Player] = [
+        Player(name: "Host Player", role: .player),
+        Player(name: "Player 1", role: .player),
+        Player(name: "Player 2", role: .spy),
+        Player(name: "Player 3", role: .player)
+    ]
+    let lobby = GameLobby(
+        id: "ABC123",
+        hostId: "host123",
+        hostName: "Host Player",
+        location: Location(nameKey: "Beach", roles: ["Tourist", "Lifeguard", "Vendor"]),
+        maxPlayers: 6,
+        players: samplePlayers,
+        status: .waiting,
+        createdAt: Date(),
+        readyPlayers: [
+            "Host Player": true,
+            "Player 1": false,
+            "Player 2": true,
+            "Player 3": false
+        ],
+        selectedLocationSet: LocationSets.spyfallOne
+    )
+    vm.currentLobby = lobby
+    vm.currentPlayerName = "Player 1"
+    return MultiplayerGameView(viewModel: vm)
 }

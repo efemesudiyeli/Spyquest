@@ -4,9 +4,9 @@ import FirebaseAuth
 struct MultiplayerLobbyView: View {
     @StateObject private var viewModel = MultiplayerGameViewModel()
     @ObservedObject var gameViewModel: GameViewModel
-    @State private var showingCreateRoom = false
-    @State private var showingJoinRoom = false
-    @State private var roomCode = ""
+    @State private var showingCreateLobby = false
+    @State private var showingJoinLobby = false
+    @State private var lobbyCode = ""
     @State private var playerCount = 2
     @State private var playerName = ""
     @State private var navigateToGame = false
@@ -40,33 +40,20 @@ struct MultiplayerLobbyView: View {
                 }
             }
         }
-        .sheet(isPresented: $showingCreateRoom) {
-            createRoomSheet
+        .sheet(isPresented: $showingCreateLobby) {
+            createLobbySheet
+                .presentationDetents([.medium])
+        }
+        .sheet(isPresented: $showingJoinLobby) {
+            joinLobbySheet
+                .presentationDetents([.medium])
         }
         .background(
             NavigationLink(destination: MultiplayerGameView(viewModel: viewModel), isActive: $navigateToGame) {
                 EmptyView()
             }
         )
-        .alert("Join Your Friends", isPresented: $showingJoinRoom) {
-            TextField("Your Name", text: $playerName)
-                .textInputAutocapitalization(.words)
-            TextField("Room Code", text: $roomCode)
-                .textInputAutocapitalization(.characters)
-            Button("Join") {
-                if !roomCode.isEmpty && !playerName.isEmpty {
-                    viewModel.joinRoom(roomCode: roomCode.uppercased(), playerName: playerName) { success in
-                        if success {
-                            navigateToGame = true
-                        }
-                    }
-                }
-            }
-            Button("Cancel", role: .cancel) { }
-        } message: {
-            Text("Enter your name and the 6-digit room code")
-        }
-        .alert("Room Update", isPresented: .constant(!viewModel.errorMessage.isEmpty)) {
+        .alert("Lobby Update", isPresented: .constant(!viewModel.errorMessage.isEmpty && !showingJoinLobby)) {
             Button("OK") {
                 viewModel.errorMessage = ""
             }
@@ -101,16 +88,16 @@ struct MultiplayerLobbyView: View {
             
             VStack(spacing: 15) {
                 Button(action: {
-                    showingCreateRoom = true
+                    showingCreateLobby = true
                 }) {
                     HStack {
                         Image(systemName: "plus.circle.fill")
                             .foregroundColor(.reverse2)
                             .font(.title2)
                         VStack(alignment: .leading){
-                            Text("Create New Room")
+                            Text("Create New Lobby")
                                 .fontWeight(.semibold)
-                            Text("Start a new game and get a room code.")
+                            Text("Start a new game and get a lobby code.")
                                 .font(.footnote)
                                 .foregroundStyle(.gray)
                         }.multilineTextAlignment(.leading)
@@ -125,16 +112,16 @@ struct MultiplayerLobbyView: View {
                 }
                 
                 Button(action: {
-                    showingJoinRoom = true
+                    showingJoinLobby = true
                 }) {
                     HStack {
                         Image(systemName: "arrowshape.turn.up.right.circle.fill")
                             .foregroundColor(.reverse2)
                             .font(.title2)
                         VStack(alignment: .leading){
-                            Text("Join Existing Room")
+                            Text("Join Existing Lobby")
                                 .fontWeight(.semibold)
-                            Text("Enter a code to join your friend’s game.")
+                            Text("Enter a code to join your friend’s game")
                                 .font(.footnote)
                                 .foregroundStyle(.gray)
                         }.multilineTextAlignment(.leading)
@@ -156,106 +143,316 @@ struct MultiplayerLobbyView: View {
             VStack {
                 Text("Tip:")
                     .bold()
-                Text("Share the room code with friends to start playing!")
+                Text("Share the lobby code with friends to start playing!")
             }   .font(.callout)
                 .fontDesign(.monospaced)
         }
     }
     
-    private var createRoomSheet: some View {
+    fileprivate var createLobbySheet: some View {
         NavigationView {
-            VStack(spacing: 20) {
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("Your Name")
-                        .font(.headline)
-                    
-                    TextField("Enter your name", text: $playerName)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .padding()
-                        .background(Color(.systemGray6))
-                        .cornerRadius(10)
-                }
-                
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("Number of Players")
-                        .font(.headline)
-                    
-                    Stepper("\(playerCount) players", value: $playerCount, in: 2...8)
-                        .padding()
-                        .background(Color(.systemGray6))
-                        .cornerRadius(10)
-                }
-                
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("Location Set")
-                        .font(.headline)
-                    
-                    Picker("Location Set", selection: $selectedLocationSet) {
-                        ForEach(LocationSets.locationSets, id: \.self) { locationSet in
-                            Text("\(locationSet.rawValue) (\(locationSet.locations.count))")
-                                .tag(locationSet)
+            ScrollView {
+                VStack(spacing: 16) {
+                    VStack(spacing: 0) {
+                        HStack(spacing: 12) {
+                            ZStack {
+                                Circle()
+                                    .fill(Color(.systemGray6))
+                                    .frame(width: 48, height: 48)
+                                Image(systemName: "person.3.fill")
+                                    .font(.headline)
+                                    .foregroundColor(.reverse2)
+                            }
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text("Lobby Details")
+                                    .font(.headline)
+                                Text("Set your name, players, and locations")
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                            }
+                            Spacer()
                         }
-                        ForEach(LocationSets.premiumSets, id: \.self) { premiumSet in
-                            if gameViewModel.isAdsRemoved {
-                                Text("\(premiumSet.rawValue) (\(premiumSet.locations.count))")
-                                    .tag(premiumSet)
-                            } else {
-                                HStack {
-                                    Text("\(premiumSet.rawValue) (\(premiumSet.locations.count))")
-                                        .foregroundStyle(.gray)
-                                    Image(systemName: "crown.fill")
-                                        .foregroundColor(.yellow)
+                        .padding(.vertical, 12)
+
+                        Divider()
+
+                        HStack(spacing: 12) {
+                            Image(systemName: "person.fill").foregroundColor(.secondary)
+                            TextField("Enter your name", text: $playerName)
+                                .textInputAutocapitalization(.words)
+                                .textContentType(.name)
+                                .submitLabel(.done)
+                                .onSubmit {
+                                    if !playerName.isEmpty {
+                                        viewModel.createGameLobby(
+                                            playerCount: playerCount,
+                                            playerName: playerName,
+                                            selectedLocationSet: selectedLocationSet
+                                        ) { success in
+                                            if success {
+                                                showingCreateLobby = false
+                                                navigateToGame = true
+                                            }
+                                        }
+                                    }
                                 }
-                                .tag(premiumSet)
-                                .selectionDisabled()
+                        }
+                        .padding(.vertical, 12)
+
+                        Divider()
+
+                        HStack(spacing: 12) {
+                            Image(systemName: "person.2.fill").foregroundColor(.secondary)
+                            Text("Players")
+                            Spacer()
+                            Text("\(playerCount)")
+                                .font(.subheadline)
+                                .foregroundColor(.secondary)
+                            Stepper("", value: $playerCount, in: 2...8)
+                                .labelsHidden()
+                        }
+                        .padding(.vertical, 12)
+
+                        Divider()
+
+                        VStack(alignment: .leading, spacing: 8) {
+                            HStack(spacing: 12) {
+                                Image(systemName: "map.fill").foregroundColor(.secondary)
+                                Text("Location Set")
+                                Spacer()
+                                Picker("", selection: $selectedLocationSet) {
+                                    ForEach(LocationSets.locationSets, id: \.self) { locationSet in
+                                        Text("\(locationSet.rawValue) (\(locationSet.locations.count))")
+                                            .tag(locationSet)
+                                    }
+                                    ForEach(LocationSets.premiumSets, id: \.self) { premiumSet in
+                                        if gameViewModel.isAdsRemoved {
+                                            Text("\(premiumSet.rawValue) (\(premiumSet.locations.count))")
+                                                .tag(premiumSet)
+                                        } else {
+                                            HStack {
+                                                Text("\(premiumSet.rawValue) (\(premiumSet.locations.count))")
+                                                    .foregroundStyle(.gray)
+                                                Image(systemName: "crown.fill")
+                                                    .foregroundColor(.yellow)
+                                            }
+                                            .tag(premiumSet)
+                                            .selectionDisabled()
+                                        }
+                                    }
+                                }
+                                .labelsHidden()
+                                .pickerStyle(.menu)
+                            }
+
+                            if !gameViewModel.isAdsRemoved {
+                                HStack(spacing: 6) {
+                                    Image(systemName: "crown.fill").foregroundColor(.yellow)
+                                    Text("Premium sets require the Premium upgrade.")
+                                        .foregroundColor(.secondary)
+                                }
+                                .font(.caption)
                             }
                         }
+                        .padding(.vertical, 12)
                     }
-                    .pickerStyle(.menu)
-                    .padding()
-                    .background(Color(.systemGray6))
-                    .cornerRadius(10)
-                }
-                
-                Button(action: {
-                    if !playerName.isEmpty {
-                        viewModel.createGameRoom(playerCount: playerCount, playerName: playerName, selectedLocationSet: selectedLocationSet) { success in
-                            if success {
-                                showingCreateRoom = false
-                                navigateToGame = true
+                    .padding(.horizontal, 16)
+                    .background(Color(.secondarySystemGroupedBackground))
+                    .clipShape(RoundedRectangle(cornerRadius: 16))
+
+                    Button(action: {
+                        if !playerName.isEmpty {
+                            viewModel.createGameLobby(
+                                playerCount: playerCount,
+                                playerName: playerName,
+                                selectedLocationSet: selectedLocationSet
+                            ) { success in
+                                if success {
+                                    showingCreateLobby = false
+                                    navigateToGame = true
+                                }
                             }
                         }
-                    }
-                }) {
-                    HStack {
-                        if viewModel.isLoading {
-                            ProgressView()
-                                .progressViewStyle(CircularProgressViewStyle(tint: .white))
-                                .scaleEffect(0.8)
-                        } else {
-                            Image(systemName: "play.fill")
+                    }) {
+                        HStack(spacing: 8) {
+                            if viewModel.isLoading {
+                                ProgressView()
+                                    .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                                    .scaleEffect(0.9)
+                            } else {
+                                Image(systemName: "play.fill")
+                            }
+                            Text("Create Lobby")
+                                .fontWeight(.semibold)
                         }
-                        Text("Create Room")
+                        .foregroundColor(.reverse)
+                        .frame(maxWidth: .infinity, minHeight: 48)
+                        .background(Color.reverse2)
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
                     }
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.green)
-                    .cornerRadius(10)
+                    .disabled(viewModel.isLoading || playerName.isEmpty)
+                    .opacity((viewModel.isLoading || playerName.isEmpty) ? 0.7 : 1)
+
+                    if playerName.isEmpty {
+                        Text("Enter your name to continue.")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                            .padding(.bottom)
+                    }
                 }
-                .disabled(viewModel.isLoading || playerName.isEmpty)
-                
-                Spacer()
+                .padding()
             }
-            .padding()
-            .navigationTitle("Create Room")
+            .background(Color(.systemGroupedBackground))
+            .navigationTitle("Create Lobby")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Cancel") {
-                        showingCreateRoom = false
+                        showingCreateLobby = false
                     }
                 }
+            }
+        }
+    }
+
+    fileprivate var joinLobbySheet: some View {
+        NavigationView {
+            ScrollView {
+                VStack(spacing: 16) {
+                    if !viewModel.errorMessage.isEmpty {
+                        HStack(alignment: .top, spacing: 10) {
+                            Image(systemName: "exclamationmark.triangle.fill")
+                                .foregroundColor(.red)
+                            Text(viewModel.errorMessage)
+                                .foregroundColor(.red)
+                                .font(.subheadline)
+                                .fixedSize(horizontal: false, vertical: true)
+                            Spacer(minLength: 0)
+                            Button(action: { viewModel.errorMessage = "" }) {
+                                Image(systemName: "xmark.circle.fill")
+                                    .foregroundColor(.red.opacity(0.8))
+                            }
+                            .buttonStyle(.plain)
+                        }
+                        .padding(12)
+                        .background(Color.red.opacity(0.12))
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                        
+                    }
+                    VStack(spacing: 0) {
+                        HStack(spacing: 12) {
+                            ZStack {
+                                Circle()
+                                    .fill(Color(.systemGray6))
+                                    .frame(width: 48, height: 48)
+                                Image(systemName: "arrow.right")
+                                    .font(.title2)
+                                    .foregroundColor(.reverse2)
+                            }
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text("Join Lobby")
+                                    .font(.headline)
+                                Text("Enter your name and lobby code")
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                            }
+                            Spacer()
+                        }
+                        .padding(.vertical, 12)
+
+                        Divider()
+
+                        HStack(spacing: 12) {
+                            Image(systemName: "person.fill").foregroundColor(.secondary)
+                            TextField("Enter your name", text: $playerName)
+                                .textInputAutocapitalization(.words)
+                                .textContentType(.name)
+                                .submitLabel(.next)
+                        }
+                        .padding(.vertical, 12)
+
+                        Divider()
+
+                        HStack(spacing: 12) {
+                            Image(systemName: "number").foregroundColor(.secondary)
+                            TextField("Lobby code", text: $lobbyCode)
+                                .textInputAutocapitalization(.characters)
+                                .autocorrectionDisabled()
+                                .textCase(.uppercase)
+                                .submitLabel(.join)
+                                .onSubmit {
+                                    if !lobbyCode.isEmpty && !playerName.isEmpty {
+                                        viewModel.joinLobby(
+                                            lobbyCode: lobbyCode.uppercased(),
+                                            playerName: playerName
+                                        ) { success in
+                                            if success {
+                                                showingJoinLobby = false
+                                                navigateToGame = true
+                                            }
+                                        }
+                                    }
+                                }
+                        }
+                        .padding(.vertical, 12)
+                    }
+                    .padding(.horizontal, 16)
+                    .background(Color(.secondarySystemGroupedBackground))
+                    .clipShape(RoundedRectangle(cornerRadius: 16))
+
+                    Button(action: {
+                        if !lobbyCode.isEmpty && !playerName.isEmpty {
+                            viewModel.joinLobby(
+                                lobbyCode: lobbyCode.uppercased(),
+                                playerName: playerName
+                            ) { success in
+                                if success {
+                                    showingJoinLobby = false
+                                    navigateToGame = true
+                                }
+                            }
+                        }
+                    }) {
+                        HStack(spacing: 8) {
+                            if viewModel.isLoading {
+                                ProgressView()
+                                    .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                                    .scaleEffect(0.9)
+                            } else {
+                                Image(systemName: "arrow.right")
+                            }
+                            Text("Join Lobby")
+                                .fontWeight(.semibold)
+                        }
+                        .foregroundColor(.reverse)
+                        .frame(maxWidth: .infinity, minHeight: 48)
+                        .background(Color.reverse2)
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                    }
+                    .disabled(viewModel.isLoading || lobbyCode.isEmpty || playerName.isEmpty)
+                    .opacity((viewModel.isLoading || lobbyCode.isEmpty || playerName.isEmpty) ? 0.7 : 1)
+
+                    if lobbyCode.isEmpty || playerName.isEmpty {
+                        Text("Enter your name and lobby code to continue.")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                            .padding(.bottom)
+                    }
+                }
+                .padding()
+            }
+            .background(Color(.systemGroupedBackground))
+            .navigationTitle("Join Lobby")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Cancel") {
+                        showingJoinLobby = false
+                    }
+                }
+            }
+            .onAppear {
+                viewModel.errorMessage = ""
             }
         }
     }
@@ -265,4 +462,16 @@ struct MultiplayerLobbyView: View {
 
 #Preview {
     MultiplayerLobbyView(gameViewModel: GameViewModel())
+}
+
+#Preview("Create Lobby Sheet") {
+    let gameViewModel = GameViewModel()
+    let lobbyView = MultiplayerLobbyView(gameViewModel: gameViewModel)
+    return lobbyView.createLobbySheet
+}
+
+#Preview("Join Lobby Sheet") {
+    let gameViewModel = GameViewModel()
+    let lobbyView = MultiplayerLobbyView(gameViewModel: gameViewModel)
+    return lobbyView.joinLobbySheet
 }
