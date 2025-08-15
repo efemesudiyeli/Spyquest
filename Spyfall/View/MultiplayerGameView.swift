@@ -24,21 +24,21 @@ struct MultiplayerGameView: View {
             if let lobby = viewModel.currentLobby {
                 switch lobby.status {
                 case .waiting:
-                    waitingLobbyView(lobby: lobby)
+                    WaitingLobbyView(lobby: lobby, viewModel: viewModel)
                 case .revealing:
-                    roleRevealView(lobby: lobby)
+                    RoleRevealView(lobby: lobby, viewModel: viewModel)
                 case .playing:
                     if showingRole {
-                        gamePlayingView(lobby: lobby)
+                        GamePlayingView(lobby: lobby, viewModel: viewModel)
                     } else {
-                        countdownView(lobby: lobby)
+                        CountdownView(countdown: revealCountdown)
                     }
                 case .voting:
                     VotingView(lobby: lobby, viewModel: viewModel)
                 case .finished:
-                    gameEndView(lobby: lobby)
+                    GameEndView(lobby: lobby, viewModel: viewModel)
                 case .cancelled:
-                    gameCancelledView(lobby: lobby)
+                    GameCancelledView()
                 }
             } else {
                 ProgressView("Loading...")
@@ -120,268 +120,268 @@ struct MultiplayerGameView: View {
         }
     }
     
-    private func waitingLobbyView(lobby: GameLobby) -> some View {
-        ScrollView {
-            VStack(spacing: 16) {
-                // Cohesive card
-                VStack(spacing: 0) {
-                    // Header
-                    HStack(spacing: 12) {
-                        ZStack {
-                            Circle()
-                                .fill(Color(.systemGray6))
-                                .frame(width: 48, height: 48)
-                            Image(systemName: "hourglass.circle.fill")
-                                .font(.title2)
-                                .foregroundColor(.blue)
-                        }
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text("Waiting Lobby")
-                                .font(.headline)
-                            Text("Share the code and get everyone ready")
-                                .font(.caption)
-                                .foregroundColor(.secondary)
-                                .fontDesign(.monospaced)
-                        }
-                        Spacer()
-                    }
-                    .padding(.vertical, 12)
-
-                    Divider()
-
-                    // Lobby Code
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("Lobby Code")
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
-                        HStack(alignment: .center, spacing: 8) {
-                            Text("#")
-                                .font(.system(size: 28, weight: .bold, design: .monospaced))
-                                .foregroundColor(.secondary)
-                            Text(lobby.id)
-                                .font(.system(size: 32, weight: .bold, design: .monospaced))
-                                .foregroundColor(.blue)
-                                .textSelection(.enabled)
-                            Spacer()
-                            Button(action: {
-                                UIPasteboard.general.string = lobby.id
-                                let impactFeedback = UIImpactFeedbackGenerator(style: .light)
-                                impactFeedback.impactOccurred()
-                                withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
-                                    lobbyCodeCopied = true
-                                }
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
-                                    withAnimation(.easeOut(duration: 0.2)) {
-                                        lobbyCodeCopied = false
-                                    }
-                                }
-                            }) {
-                                Image(systemName: lobbyCodeCopied ? "checkmark.circle.fill" : "doc.on.doc")
-                                    .font(.system(size: 16, weight: .semibold))
-                            }
-                            .buttonStyle(.plain)
-                            .foregroundColor(lobbyCodeCopied ? .green : .blue)
-                        }
-                        .padding(12)
-                        .background(Color(.systemGray6))
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                    }
-                    .padding(.vertical, 12)
-
-                    Divider()
-
-                    // Players
-                    VStack(alignment: .leading, spacing: 12) {
-                        HStack {
-                            Text("Players (\(lobby.players.count)/\(lobby.maxPlayers))")
-                                .font(.headline)
-                            Spacer()
-                            if let hostPlayer = lobby.players.first(where: { $0.name == lobby.hostName }) {
-                                HStack(spacing: 5) {
-                                    Image(systemName: "crown.fill")
-                                        .foregroundColor(.yellow)
-                                    Text("Host: \(hostPlayer.name)")
-                                        .font(.subheadline)
-                                        .fontWeight(.medium)
-                                }
-                            }
-                        }
-
-                        LazyVStack(spacing: 10) {
-                            ForEach(lobby.players, id: \.name) { player in
-                                PlayerCard(
-                                    player: player,
-                                    isHost: player.name == lobby.hostName,
-                                    ready: lobby.readyPlayers?[player.name] ?? false
-                                )
-                                .frame(maxWidth: .infinity, minHeight: 72)
-                            }
-                        }
-                    }
-                    .padding(.vertical, 12)
-                }
-                .padding(.horizontal, 16)
-          
-                .clipShape(RoundedRectangle(cornerRadius: 16))
-
-            }
-            .padding()
-        }
-        .safeAreaInset(edge: .bottom) {
-            VStack(spacing: 12) {
-                if let lobby = viewModel.currentLobby {
-                    let isReady = lobby.readyPlayers?[viewModel.currentPlayerName] ?? false
-                    Button(action: {
-                        viewModel.toggleReady()
-                    }) {
-                        HStack {
-                            Image(systemName: isReady ? "hand.thumbsdown.fill" : "hand.thumbsup.fill")
-                            Text(isReady ? NSLocalizedString("Unready", comment: "") : NSLocalizedString("Ready", comment: ""))
-                                .fontWeight(.semibold)
-                        }
-                        .foregroundColor(.reverse)
-                        .frame(maxWidth: .infinity, minHeight: 48)
-                        .background(isReady ? Color.orange : Color.reverse2)
-                        .clipShape(RoundedRectangle(cornerRadius: 12))
-                    }
-
-                    if lobby.hostId == viewModel.currentUser?.uid {
-                        Button(action: {
-                            viewModel.startGame()
-                        }) {
-                            HStack {
-                                Image(systemName: "play.fill")
-                                Text("Start Game")
-                                    .fontWeight(.semibold)
-                            }
-                            .foregroundColor(.reverse)
-                            .frame(maxWidth: .infinity, minHeight: 48)
-                            .background((viewModel.areAllPlayersReady(in: lobby) && lobby.players.count >= 2) ? Color.green : Color.gray)
-                            .clipShape(RoundedRectangle(cornerRadius: 12))
-                        }
-                        .disabled(!(viewModel.areAllPlayersReady(in: lobby) && lobby.players.count >= 2))
-                    } else {
-                        Text("Waiting for host to start the game...")
-                            .font(.caption)
-                            .fontDesign(.monospaced)
-                            .foregroundColor(.secondary)
-                            .multilineTextAlignment(.center)
-                    }
-                }
-            }
-            .padding(.horizontal)
-            .padding(.top, 10)
-            .padding(.bottom, 8)
-        
-        }
-        .navigationTitle("Waiting Lobby")
-        .navigationBarTitleDisplayMode(.large)
-    }
+//    private func waitingLobbyView(lobby: GameLobby) -> some View {
+//        ScrollView {
+//            VStack(spacing: 16) {
+//                // Cohesive card
+//                VStack(spacing: 0) {
+//                    // Header
+//                    HStack(spacing: 12) {
+//                        ZStack {
+//                            Circle()
+//                                .fill(Color(.systemGray6))
+//                                .frame(width: 48, height: 48)
+//                            Image(systemName: "hourglass.circle.fill")
+//                                .font(.title2)
+//                                .foregroundColor(.blue)
+//                        }
+//                        VStack(alignment: .leading, spacing: 2) {
+//                            Text("Waiting Lobby")
+//                                .font(.headline)
+//                            Text("Share the code and get everyone ready")
+//                                .font(.caption)
+//                                .foregroundColor(.secondary)
+//                                .fontDesign(.monospaced)
+//                        }
+//                        Spacer()
+//                    }
+//                    .padding(.vertical, 12)
+//
+//                    Divider()
+//
+//                    // Lobby Code
+//                    VStack(alignment: .leading, spacing: 8) {
+//                        Text("Lobby Code")
+//                            .font(.subheadline)
+//                            .foregroundColor(.secondary)
+//                        HStack(alignment: .center, spacing: 8) {
+//                            Text("#")
+//                                .font(.system(size: 28, weight: .bold, design: .monospaced))
+//                                .foregroundColor(.secondary)
+//                            Text(lobby.id)
+//                                .font(.system(size: 32, weight: .bold, design: .monospaced))
+//                                .foregroundColor(.blue)
+//                                .textSelection(.enabled)
+//                            Spacer()
+//                            Button(action: {
+//                                UIPasteboard.general.string = lobby.id
+//                                let impactFeedback = UIImpactFeedbackGenerator(style: .light)
+//                                impactFeedback.impactOccurred()
+//                                withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+//                                    lobbyCodeCopied = true
+//                                }
+//                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+//                                    withAnimation(.easeOut(duration: 0.2)) {
+//                                        lobbyCodeCopied = false
+//                                    }
+//                                }
+//                            }) {
+//                                Image(systemName: lobbyCodeCopied ? "checkmark.circle.fill" : "doc.on.doc")
+//                                    .font(.system(size: 16, weight: .semibold))
+//                            }
+//                            .buttonStyle(.plain)
+//                            .foregroundColor(lobbyCodeCopied ? .green : .blue)
+//                        }
+//                        .padding(12)
+//                        .background(Color(.systemGray6))
+//                        .clipShape(RoundedRectangle(cornerRadius: 10))
+//                    }
+//                    .padding(.vertical, 12)
+//
+//                    Divider()
+//
+//                    // Players
+//                    VStack(alignment: .leading, spacing: 12) {
+//                        HStack {
+//                            Text("Players (\(lobby.players.count)/\(lobby.maxPlayers))")
+//                                .font(.headline)
+//                            Spacer()
+//                            if let hostPlayer = lobby.players.first(where: { $0.name == lobby.hostName }) {
+//                                HStack(spacing: 5) {
+//                                    Image(systemName: "crown.fill")
+//                                        .foregroundColor(.yellow)
+//                                    Text("Host: \(hostPlayer.name)")
+//                                        .font(.subheadline)
+//                                        .fontWeight(.medium)
+//                                }
+//                            }
+//                        }
+//
+//                        LazyVStack(spacing: 10) {
+//                            ForEach(lobby.players, id: \.name) { player in
+//                                PlayerCard(
+//                                    player: player,
+//                                    isHost: player.name == lobby.hostName,
+//                                    ready: lobby.readyPlayers?[player.name] ?? false
+//                                )
+//                                .frame(maxWidth: .infinity, minHeight: 72)
+//                            }
+//                        }
+//                    }
+//                    .padding(.vertical, 12)
+//                }
+//                .padding(.horizontal, 16)
+//          
+//                .clipShape(RoundedRectangle(cornerRadius: 16))
+//
+//            }
+//            .padding()
+//        }
+//        .safeAreaInset(edge: .bottom) {
+//            VStack(spacing: 12) {
+//                if let lobby = viewModel.currentLobby {
+//                    let isReady = lobby.readyPlayers?[viewModel.currentPlayerName] ?? false
+//                    Button(action: {
+//                        viewModel.toggleReady()
+//                    }) {
+//                        HStack {
+//                            Image(systemName: isReady ? "hand.thumbsdown.fill" : "hand.thumbsup.fill")
+//                            Text(isReady ? NSLocalizedString("Unready", comment: "") : NSLocalizedString("Ready", comment: ""))
+//                                .fontWeight(.semibold)
+//                        }
+//                        .foregroundColor(.reverse)
+//                        .frame(maxWidth: .infinity, minHeight: 48)
+//                        .background(isReady ? Color.orange : Color.reverse2)
+//                        .clipShape(RoundedRectangle(cornerRadius: 12))
+//                    }
+//
+//                    if lobby.hostId == viewModel.currentUser?.uid {
+//                        Button(action: {
+//                            viewModel.startGame()
+//                        }) {
+//                            HStack {
+//                                Image(systemName: "play.fill")
+//                                Text("Start Game")
+//                                    .fontWeight(.semibold)
+//                            }
+//                            .foregroundColor(.reverse)
+//                            .frame(maxWidth: .infinity, minHeight: 48)
+//                            .background((viewModel.areAllPlayersReady(in: lobby) && lobby.players.count >= 2) ? Color.green : Color.gray)
+//                            .clipShape(RoundedRectangle(cornerRadius: 12))
+//                        }
+//                        .disabled(!(viewModel.areAllPlayersReady(in: lobby) && lobby.players.count >= 2))
+//                    } else {
+//                        Text("Waiting for host to start the game...")
+//                            .font(.caption)
+//                            .fontDesign(.monospaced)
+//                            .foregroundColor(.secondary)
+//                            .multilineTextAlignment(.center)
+//                    }
+//                }
+//            }
+//            .padding(.horizontal)
+//            .padding(.top, 10)
+//            .padding(.bottom, 8)
+//        
+//        }
+//        .navigationTitle("Waiting Lobby")
+//        .navigationBarTitleDisplayMode(.large)
+//    }
     
-    private func gameCancelledView(lobby: GameLobby) -> some View {
-        VStack(spacing: 30) {
-            Image(systemName: "exclamationmark.triangle.fill")
-                .font(.system(size: 80))
-                .foregroundColor(.orange)
-            
-            Text(NSLocalizedString("Game Cancelled", comment: ""))
-                .font(.largeTitle)
-                .fontWeight(.bold)
-                .foregroundColor(.orange)
-            
-            Text(NSLocalizedString("Not enough players to continue. Minimum 2 players required.", comment: ""))
-                .font(.title3)
-                .foregroundColor(.secondary)
-                .multilineTextAlignment(.center)
-            
-            // Removed in-content Leave Lobby per design; use top-left toolbar button instead
-        }
-        .padding()
-    }
+//    private func gameCancelledView(lobby: GameLobby) -> some View {
+//        VStack(spacing: 30) {
+//            Image(systemName: "exclamationmark.triangle.fill")
+//                .font(.system(size: 80))
+//                .foregroundColor(.orange)
+//            
+//            Text(NSLocalizedString("Game Cancelled", comment: ""))
+//                .font(.largeTitle)
+//                .fontWeight(.bold)
+//                .foregroundColor(.orange)
+//            
+//            Text(NSLocalizedString("Not enough players to continue. Minimum 2 players required.", comment: ""))
+//                .font(.title3)
+//                .foregroundColor(.secondary)
+//                .multilineTextAlignment(.center)
+//            
+//            // Removed in-content Leave Lobby per design; use top-left toolbar button instead
+//        }
+//        .padding()
+//    }
     
-    private func roleRevealView(lobby: GameLobby) -> some View {
-        VStack(spacing: 30) {
-            VStack(spacing: 30) {
-                Text("Get Ready!")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                
-                Text("Your role will be revealed in:")
-                    .font(.title2)
-                    .foregroundColor(.secondary)
-                
-                Text("3")
-                    .font(.system(size: 80, weight: .bold))
-                    .foregroundColor(.blue)
-                
-                Text("Tap to continue when everyone is ready")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-                    .multilineTextAlignment(.center)
-            }
-            .padding()
-            .onTapGesture { }
-            
-            // Ready status and host control
-            VStack(spacing: 12) {
-                // Ready progress
-                if let ready = lobby.readyPlayers {
-                    let nonHostReady = ready.filter { $0.key != lobby.hostName }
-                    let readyCount = nonHostReady.values.filter { $0 }.count
-                    let total = lobby.players.count
-                    Text("\(readyCount + 1)/\(total) ready")
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                } else {
-                    let total = lobby.players.filter { $0.name != lobby.hostName }.count
-                    Text("0/\(total) ready")
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                }
-                
-                
-                
-                // Ready button for non-hosts
-                if lobby.hostId != viewModel.currentUser?.uid {
-                    Button(action: {
-                        viewModel.markCurrentPlayerReady()
-                    }) {
-                        HStack {
-                            Image(systemName: "hand.thumbsup.fill")
-                            Text(NSLocalizedString("Ready", comment: ""))
-                        }
-                        .foregroundColor(.white)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color.blue)
-                        .cornerRadius(10)
-                    }
-                }
-                
-                // Host start button (host does not need to be ready)
-                if lobby.hostId == viewModel.currentUser?.uid {
-                    Button(action: {
-                        if isAllReady(lobby: lobby) {
-                            // Move status to playing; countdown will handle reveal and timer
-                            viewModel.tryStartIfAllReady()
-                        }
-                    }) {
-                        HStack {
-                            Image(systemName: "checkmark.circle.fill")
-                            Text(NSLocalizedString("Start", comment: ""))
-                        }
-                        .foregroundColor(.white)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(isAllReady(lobby: lobby) ? Color.green : Color.gray)
-                        .cornerRadius(10)
-                    }
-                    .disabled(!isAllReady(lobby: lobby))
-                }
-            }
-            .padding(.horizontal)
-        }
-    }
+//    private func roleRevealView(lobby: GameLobby) -> some View {
+//        VStack(spacing: 30) {
+//            VStack(spacing: 30) {
+//                Text("Get Ready!")
+//                    .font(.largeTitle)
+//                    .fontWeight(.bold)
+//                
+//                Text("Your role will be revealed in:")
+//                    .font(.title2)
+//                    .foregroundColor(.secondary)
+//                
+//                Text("3")
+//                    .font(.system(size: 80, weight: .bold))
+//                    .foregroundColor(.blue)
+//                
+//                Text("Tap to continue when everyone is ready")
+//                    .font(.subheadline)
+//                    .foregroundColor(.secondary)
+//                    .multilineTextAlignment(.center)
+//            }
+//            .padding()
+//            .onTapGesture { }
+//            
+//            // Ready status and host control
+//            VStack(spacing: 12) {
+//                // Ready progress
+//                if let ready = lobby.readyPlayers {
+//                    let nonHostReady = ready.filter { $0.key != lobby.hostName }
+//                    let readyCount = nonHostReady.values.filter { $0 }.count
+//                    let total = lobby.players.count
+//                    Text("\(readyCount + 1)/\(total) ready")
+//                        .font(.subheadline)
+//                        .foregroundColor(.secondary)
+//                } else {
+//                    let total = lobby.players.filter { $0.name != lobby.hostName }.count
+//                    Text("0/\(total) ready")
+//                        .font(.subheadline)
+//                        .foregroundColor(.secondary)
+//                }
+//                
+//                
+//                
+//                // Ready button for non-hosts
+//                if lobby.hostId != viewModel.currentUser?.uid {
+//                    Button(action: {
+//                        viewModel.markCurrentPlayerReady()
+//                    }) {
+//                        HStack {
+//                            Image(systemName: "hand.thumbsup.fill")
+//                            Text(NSLocalizedString("Ready", comment: ""))
+//                        }
+//                        .foregroundColor(.white)
+//                        .padding()
+//                        .frame(maxWidth: .infinity)
+//                        .background(Color.blue)
+//                        .cornerRadius(10)
+//                    }
+//                }
+//                
+//                // Host start button (host does not need to be ready)
+//                if lobby.hostId == viewModel.currentUser?.uid {
+//                    Button(action: {
+//                        if isAllReady(lobby: lobby) {
+//                            // Move status to playing; countdown will handle reveal and timer
+//                            viewModel.tryStartIfAllReady()
+//                        }
+//                    }) {
+//                        HStack {
+//                            Image(systemName: "checkmark.circle.fill")
+//                            Text(NSLocalizedString("Start", comment: ""))
+//                        }
+//                        .foregroundColor(.white)
+//                        .padding()
+//                        .frame(maxWidth: .infinity)
+//                        .background(isAllReady(lobby: lobby) ? Color.green : Color.gray)
+//                        .cornerRadius(10)
+//                    }
+//                    .disabled(!isAllReady(lobby: lobby))
+//                }
+//            }
+//            .padding(.horizontal)
+//        }
+//    }
     
     private func isAllReady(lobby: GameLobby) -> Bool {
         guard let ready = lobby.readyPlayers else { return false }
@@ -389,212 +389,296 @@ struct MultiplayerGameView: View {
         return nonHostPlayers.allSatisfy { ready[$0] == true }
     }
     
-    private func gamePlayingView(lobby: GameLobby) -> some View {
-        VStack(spacing: 20) {
-            HStack {
-                VStack(alignment: .leading) {
-                    if let player = currentPlayer, player.role != .spy {
-                        Text("Location: \(lobby.location.name)")
-                            .font(.title2)
-                            .fontWeight(.semibold)
-                    }
-                    
-                    Text("Time Remaining: \(formattedTime(timeRemaining))")
-                        .font(.headline)
-                        .foregroundColor(.secondary)
-                }
-                Spacer()
-            }
-            
-            Spacer()
-            
-            if let player = currentPlayer {
-                VStack(spacing: 20) {
-                    Text("Your Role")
-                        .font(.title)
-                        .fontWeight(.bold)
-                    
-                    if player.role == .spy {
-                        VStack(spacing: 10) {
-                            Image(systemName: "eye.fill")
-                                .font(.system(size: 60))
-                                .foregroundColor(.red)
-                            
-                            Text("You are the SPY!")
-                                .font(.title2)
-                                .fontWeight(.bold)
-                                .foregroundColor(.red)
-                            
-                            Text("Don't get caught! Ask questions to figure out where you are.")
-                                .font(.body)
-                                .multilineTextAlignment(.center)
-                                .foregroundColor(.secondary)
-                        }
-                    } else {
-                        VStack(spacing: 10) {
-                            Image(systemName: "person.fill")
-                                .font(.system(size: 60))
-                                .foregroundColor(.blue)
-                            
-                            Text("You are a \(NSLocalizedString(player.playerLocationRole ?? "Civilian", comment: ""))")
-                                .font(.title2)
-                                .fontWeight(.bold)
-                                .foregroundColor(.blue)
-                            
-                            Text("Help your team identify the spy!")
-                                .font(.body)
-                                .multilineTextAlignment(.center)
-                                .foregroundColor(.secondary)
-                        }
-                    }
-                }
-                .padding()
-                .background(Color(.systemGray6))
-                .cornerRadius(15)
-            }
-            
-            VStack(spacing: 15) {
-                if isTimerFinished {
-                    Button("End Game") {
-                        viewModel.endGameForAll()
-                    }
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.red)
-                    .cornerRadius(10)
-                }
-                
-                if lobby.hostId == viewModel.currentUser?.uid {
-                    HStack(spacing: 15) {
-                        Button(NSLocalizedString("End Round For All", comment: "")) {
-                            viewModel.startVoting()
-                        }
-                        .foregroundColor(.white)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color.green)
-                        .cornerRadius(10)
-                    }
-                }
-            }
-            
-            
-        }
-        .padding()
-    }
+//    private func gamePlayingView(lobby: GameLobby) -> some View {
+//        VStack(spacing: 20) {
+//            HStack {
+//                VStack(alignment: .leading) {
+//                    if let player = currentPlayer, player.role != .spy {
+//                        Text("Location: \(lobby.location.name)")
+//                            .font(.title2)
+//                            .fontWeight(.semibold)
+//                    }
+//                    
+//                    Text("Time Remaining: \(formattedTime(timeRemaining))")
+//                        .font(.headline)
+//                        .foregroundColor(.secondary)
+//                }
+//                Spacer()
+//            }
+//            
+//            Spacer()
+//            
+//            if let player = currentPlayer {
+//                VStack(spacing: 20) {
+//                    Text("Your Role")
+//                        .font(.title)
+//                        .fontWeight(.bold)
+//                    
+//                    if player.role == .spy {
+//                        VStack(spacing: 10) {
+//                            Image(systemName: "eye.fill")
+//                                .font(.system(size: 60))
+//                                .foregroundColor(.red)
+//                            
+//                            Text("You are the SPY!")
+//                                .font(.title2)
+//                                .fontWeight(.bold)
+//                                .foregroundColor(.red)
+//                            
+//                            Text("Don't get caught! Ask questions to figure out where you are.")
+//                                .font(.body)
+//                                .multilineTextAlignment(.center)
+//                                .foregroundColor(.secondary)
+//                        }
+//                    } else {
+//                        VStack(spacing: 10) {
+//                            Image(systemName: "person.fill")
+//                                .font(.system(size: 60))
+//                                .foregroundColor(.blue)
+//                            
+//                            Text("You are a \(NSLocalizedString(player.playerLocationRole ?? "Civilian", comment: ""))")
+//                                .font(.title2)
+//                                .fontWeight(.bold)
+//                                .foregroundColor(.blue)
+//                            
+//                            Text("Help your team identify the spy!")
+//                                .font(.body)
+//                                .multilineTextAlignment(.center)
+//                                .foregroundColor(.secondary)
+//                        }
+//                    }
+//                }
+//                .padding()
+//                .background(Color(.systemGray6))
+//                .cornerRadius(15)
+//            }
+//            
+//            VStack(spacing: 15) {
+//                if isTimerFinished {
+//                    Button("End Game") {
+//                        viewModel.endGameForAll()
+//                    }
+//                    .foregroundColor(.white)
+//                    .padding()
+//                    .frame(maxWidth: .infinity)
+//                    .background(Color.red)
+//                    .cornerRadius(10)
+//                }
+//                
+//                if lobby.hostId == viewModel.currentUser?.uid {
+//                    HStack(spacing: 15) {
+//                        Button(NSLocalizedString("End Round For All", comment: "")) {
+//                            viewModel.startVoting()
+//                        }
+//                        .foregroundColor(.white)
+//                        .padding()
+//                        .frame(maxWidth: .infinity)
+//                        .background(Color.green)
+//                        .cornerRadius(10)
+//                    }
+//                }
+//            }
+//            
+//            
+//        }
+//        .padding()
+//    }
     
-    private func gameEndView(lobby: GameLobby) -> some View {
-        VStack(spacing: 30) {
-            Text("Game Over!")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-            
-            if let votingResult = lobby.votingResult {
-                VStack(spacing: 15) {
-                    Text("Voting Results")
-                        .font(.title2)
-                        .fontWeight(.semibold)
-                    
-                    Text("Most voted player: \(votingResult.mostVotedPlayer)")
-                        .font(.headline)
-                    
-                    // Show spy guess if available
-                    if let spyGuess = lobby.spyGuess {
-                        VStack(spacing: 8) {
-                            Text("Spy's guess: \(spyGuess)")
-                                .font(.headline)
-                                .foregroundColor(.orange)
-                            
-                            if let spyGuessCorrect = votingResult.spyGuessCorrect {
-                                if spyGuessCorrect {
-                                    Text("✅ Spy guessed correctly!")
-                                        .font(.title3)
-                                        .fontWeight(.bold)
-                                        .foregroundColor(.red)
-                                } else {
-                                    Text("❌ Spy guessed incorrectly!")
-                                        .font(.title3)
-                                        .fontWeight(.bold)
-                                        .foregroundColor(.green)
-                                }
-                            }
-                        }
-                        .padding()
-                        .background(Color(.systemGray6))
-                        .cornerRadius(10)
-                    }
-                    
-                    // Determine winner
-                    let spyWins = votingResult.spyGuessCorrect == true
-                    let playersWin = votingResult.spyCaught || votingResult.spyGuessCorrect == false
-                    
-                    if spyWins {
-                        Text("🎭 SPY WINS!")
-                            .font(.title)
-                            .fontWeight(.bold)
-                            .foregroundColor(.red)
-                    } else if playersWin {
-                        Text("🎉 PLAYERS WIN!")
-                            .font(.title)
-                            .fontWeight(.bold)
-                            .foregroundColor(.green)
-                    }
-                    
-                    if votingResult.spyCaught {
-                        Text("🎉 The spy was caught!")
-                            .font(.title3)
-                            .fontWeight(.bold)
-                            .foregroundColor(.green)
-                    } else if !votingResult.spyCaught && votingResult.spyGuessCorrect != true {
-                        Text("😱 The spy got away!")
-                            .font(.title3)
-                            .fontWeight(.bold)
-                            .foregroundColor(.red)
-                    }
-                    
-                    Text("The spy was: \(votingResult.spyName)")
-                        .font(.headline)
-                        .fontWeight(.bold)
-                        .foregroundColor(.orange)
-                }
-                .padding()
-                .background(Color(.systemGray6))
-                .cornerRadius(15)
-            }
-            
-            VStack(spacing: 20) {
-                if let player = currentPlayer, player.role != .spy {
-                    Text("Location was: \(lobby.location.name)")
-                        .font(.title2)
-                        .foregroundColor(.secondary)
-                }
-                
-                if let spy = lobby.players.first(where: { $0.role == .spy }) {
-                    Text("The spy was: \(spy.name)")
-                        .font(.title3)
-                        .fontWeight(.semibold)
-                        .foregroundColor(.red)
-                }
-            }
-            
-            HStack(spacing: 15) {
-                if lobby.hostId == viewModel.currentUser?.uid {
-                    Button(NSLocalizedString("Back to Lobby", comment: "")) {
-                        viewModel.restartGame()
-                    }
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.green)
-                    .cornerRadius(10)
-                }
-            }
-            
-            
-        }
-        .padding()
-    }
+//    private func gameEndView(lobby: GameLobby) -> some View {
+//        ScrollView {
+//            VStack(spacing: 16) {
+//                // Main result card
+//                VStack(spacing: 0) {
+//                    // Header
+//                    HStack(spacing: 12) {
+//                        ZStack {
+//                            Circle()
+//                                .fill(Color(.systemGray6))
+//                                .frame(width: 48, height: 48)
+//                            Image(systemName: "flag.checkered.circle.fill")
+//                                .font(.title2)
+//                                .foregroundColor(.blue)
+//                        }
+//                        VStack(alignment: .leading, spacing: 2) {
+//                            Text("Game Results")
+//                                .font(.headline)
+//                            Text("See how the game ended")
+//                                .font(.caption)
+//                                .foregroundColor(.secondary)
+//                                .fontDesign(.monospaced)
+//                        }
+//                        Spacer()
+//                    }
+//                    .padding(.vertical, 12)
+//
+//                    Divider()
+//
+//                    // Winner announcement
+//                    if let votingResult = lobby.votingResult {
+//                        VStack(spacing: 16) {
+//                            // Winner section
+//                            let spyWins = votingResult.spyGuessCorrect == true
+//                            let playersWin = votingResult.spyCaught || votingResult.spyGuessCorrect == false
+//                            
+//                            VStack(spacing: 12) {
+//                                if spyWins {
+//                                    HStack(spacing: 8) {
+//                                        Image(systemName: "eye.fill")
+//                                            .foregroundColor(.red)
+//                                        Text("SPY WINS!")
+//                                            .font(.title2)
+//                                            .fontWeight(.bold)
+//                                            .foregroundColor(.red)
+//                                    }
+//                                } else if playersWin {
+//                                    HStack(spacing: 8) {
+//                                        Image(systemName: "person.3.fill")
+//                                            .foregroundColor(.green)
+//                                        Text("PLAYERS WIN!")
+//                                            .font(.title2)
+//                                            .fontWeight(.bold)
+//                                            .foregroundColor(.green)
+//                                    }
+//                                }
+//                                
+//                                // Outcome description
+//                                if votingResult.spyCaught {
+//                                    Text("The spy was caught!")
+//                                        .font(.subheadline)
+//                                        .foregroundColor(.green)
+//                                        .fontWeight(.medium)
+//                                } else if !votingResult.spyCaught && votingResult.spyGuessCorrect != true {
+//                                    Text("The spy got away!")
+//                                        .font(.subheadline)
+//                                        .foregroundColor(.red)
+//                                        .fontWeight(.medium)
+//                                }
+//                            }
+//                            .padding()
+//                            .background(Color(.systemGray6))
+//                            .clipShape(RoundedRectangle(cornerRadius: 10))
+//                        }
+//                        .padding(.vertical, 12)
+//
+//                        Divider()
+//
+//                        // Voting details
+//                        VStack(alignment: .leading, spacing: 12) {
+//                            Text("Voting Results")
+//                                .font(.headline)
+//                            
+//                            VStack(spacing: 8) {
+//                                HStack {
+//                                    Text("Most voted player:")
+//                                        .foregroundColor(.secondary)
+//                                    Spacer()
+//                                    Text(votingResult.mostVotedPlayer)
+//                                        .fontWeight(.semibold)
+//                                }
+//                                
+//                                HStack {
+//                                    Text("The spy was:")
+//                                        .foregroundColor(.secondary)
+//                                    Spacer()
+//                                    Text(votingResult.spyName)
+//                                        .fontWeight(.semibold)
+//                                        .foregroundColor(.red)
+//                                }
+//                                
+//                                // Spy guess section
+//                                if let spyGuess = lobby.spyGuess {
+//                                    HStack {
+//                                        Text("Spy's guess:")
+//                                            .foregroundColor(.secondary)
+//                                        Spacer()
+//                                        VStack(alignment: .trailing, spacing: 4) {
+//                                            Text(spyGuess)
+//                                                .fontWeight(.semibold)
+//                                                .foregroundColor(.orange)
+//                                            
+//                                            if let spyGuessCorrect = votingResult.spyGuessCorrect {
+//                                                HStack(spacing: 4) {
+//                                                    Image(systemName: spyGuessCorrect ? "checkmark.circle.fill" : "xmark.circle.fill")
+//                                                        .foregroundColor(spyGuessCorrect ? .green : .red)
+//                                                    Text(spyGuessCorrect ? "Correct" : "Wrong")
+//                                                        .font(.caption)
+//                                                        .foregroundColor(spyGuessCorrect ? .green : .red)
+//                                                }
+//                                            }
+//                                        }
+//                                    }
+//                                }
+//                            }
+//                        }
+//                        .padding(.vertical, 12)
+//
+//                        Divider()
+//
+//                        // Game details
+//                        VStack(alignment: .leading, spacing: 12) {
+//                            Text("Game Details")
+//                                .font(.headline)
+//                            
+//                            VStack(spacing: 8) {
+//                                if let player = currentPlayer, player.role != .spy {
+//                                    HStack {
+//                                        Text("Location was:")
+//                                            .foregroundColor(.secondary)
+//                                        Spacer()
+//                                        Text(lobby.location.name)
+//                                            .fontWeight(.semibold)
+//                                    }
+//                                }
+//                                
+//                                HStack {
+//                                    Text("Players:")
+//                                        .foregroundColor(.secondary)
+//                                    Spacer()
+//                                    Text("\(lobby.players.count)")
+//                                        .fontWeight(.semibold)
+//                                }
+//                            }
+//                        }
+//                        .padding(.vertical, 12)
+//                    }
+//                }
+//                .padding(.horizontal, 16)
+//                .background(Color(.secondarySystemGroupedBackground))
+//                .clipShape(RoundedRectangle(cornerRadius: 16))
+//            }
+//            .padding()
+//        }
+//        .safeAreaInset(edge: .bottom) {
+//            VStack(spacing: 12) {
+//                if lobby.hostId == viewModel.currentUser?.uid {
+//                    Button(action: {
+//                        viewModel.restartGame()
+//                    }) {
+//                        HStack {
+//                            Image(systemName: "arrow.clockwise")
+//                            Text(NSLocalizedString("Back to Lobby", comment: ""))
+//                                .fontWeight(.semibold)
+//                        }
+//                        .foregroundColor(.reverse)
+//                        .frame(maxWidth: .infinity, minHeight: 48)
+//                        .background(Color.reverse2)
+//                        .clipShape(RoundedRectangle(cornerRadius: 12))
+//                    }
+//                } else {
+//                    Text("Waiting for host to restart the game...")
+//                        .font(.caption)
+//                        .fontDesign(.monospaced)
+//                        .foregroundColor(.secondary)
+//                        .multilineTextAlignment(.center)
+//                }
+//            }
+//            .padding(.horizontal)
+//            .padding(.top, 10)
+//            .padding(.bottom, 8)
+//        }
+//        .navigationTitle("Game Results")
+//        .navigationBarTitleDisplayMode(.large)
+//    }
     
     private func startGameTimer(reset: Bool) {
         if reset {
@@ -1022,44 +1106,7 @@ struct RoundedCorner: Shape {
     }
 }
 
-struct PlayerCard: View {
-    let player: Player
-    let isHost: Bool
-    let ready: Bool
-    private let avatarSize: CGFloat = 26
-    private let minHeight: CGFloat = 72
-    
-    var body: some View {
-        HStack(alignment: .center, spacing: 12) {
-            VStack(alignment: .leading, spacing: 6) {
-                HStack(spacing: 6) {
-                    Text(player.name)
-                        .font(.headline)
-                        .fontWeight(.semibold)
-                    if isHost {
-                        Image(systemName: "crown.fill")
-                            .foregroundColor(.yellow)
-                            .font(.caption)
-                    }
-                }
-                Text(ready ? "Ready" : "Unready")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-                    .fontDesign(.monospaced)
-            }
-            Spacer(minLength: 8)
-            Image(systemName: "person.circle.fill")
-                .resizable()
-                .scaledToFit()
-                .frame(width: avatarSize, height: avatarSize)
-                .foregroundColor(ready ? .green : .blue)
-        }
-        .frame(minHeight: minHeight)
-        .padding()
-        .background(Color(.systemGray6))
-        .clipShape(RoundedRectangle(cornerRadius: 10))
-    }
-}
+
 #Preview {
     VotingView(
         lobby: GameLobby(
