@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LocationsView<ViewModel: ObservableObject>: View {
     @ObservedObject var viewModel: ViewModel
+    let locationSet: LocationSets
     
     let columns = [
         GridItem(.flexible()),
@@ -20,9 +21,7 @@ struct LocationsView<ViewModel: ObservableObject>: View {
         VStack {
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 12) {
-                    ForEach(Array(Location.locationData.enumerated()), id: \.element.id) {
- index,
- location in
+                    ForEach(Array(locationSet.locations.enumerated()), id: \.element.id) { index, location in
                         LocationCard(location: location)
                             
                             .background(
@@ -60,6 +59,6 @@ struct LocationCard: View {
 
 #Preview {
     NavigationStack {
-        LocationsView(viewModel: MultiplayerGameViewModel())
+        LocationsView(viewModel: MultiplayerGameViewModel(), locationSet: .spyfallOne)
     }
 }

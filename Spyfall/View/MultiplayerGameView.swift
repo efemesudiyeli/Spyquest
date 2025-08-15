@@ -58,7 +58,7 @@ struct MultiplayerGameView: View {
             }
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavigationLink {
-                    LocationsView(viewModel: viewModel)
+                    LocationsView(viewModel: viewModel, locationSet: viewModel.currentLobby?.selectedLocationSet ?? .spyfallOne)
                 } label: {
                     Text(NSLocalizedString("Locations", comment: ""))
                 }
@@ -272,7 +272,7 @@ struct MultiplayerGameView: View {
             .padding(.horizontal)
             .padding(.top, 10)
             .padding(.bottom, 8)
-           
+        
         }
         .navigationTitle("Waiting Lobby")
         .navigationBarTitleDisplayMode(.large)

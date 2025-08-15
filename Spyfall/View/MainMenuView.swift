@@ -92,7 +92,7 @@ struct MainMenuView: View {
                     }
                     
                     NavigationLink(destination: {
-                        LocationsView(viewModel: viewModel)
+                        LocationsView(viewModel: viewModel, locationSet: CurrentSelectedLocationSet)
                     }, label: {
                         HStack {
                             Image(systemName: "location")

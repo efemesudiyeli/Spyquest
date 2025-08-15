@@ -105,7 +105,7 @@ struct GameView: View {
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
                 NavigationLink {
-                    LocationsView(viewModel: viewModel)
+                    LocationsView(viewModel: viewModel, locationSet: CurrentSelectedLocationSet)
                 } label: {
                     Text(NSLocalizedString("Locations", comment: ""))
                 }
