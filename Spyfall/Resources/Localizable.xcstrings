@@ -117,24 +117,6 @@
     "%llds" : {
 
     },
-    "✅ Spy guessed correctly!" : {
-
-    },
-    "❌ Spy guessed incorrectly!" : {
-
-    },
-    "🎉 PLAYERS WIN!" : {
-
-    },
-    "🎉 The spy was caught!" : {
-
-    },
-    "🎭 SPY WINS!" : {
-
-    },
-    "😱 The spy got away!" : {
-
-    },
     "0/%lld ready" : {
 
     },
@@ -3309,6 +3291,9 @@
         }
       }
     },
+    "Correct" : {
+
+    },
     "Correctional Officer" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -5264,6 +5249,9 @@
         }
       }
     },
+    "Game Details" : {
+
+    },
     "Game Operator" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -5282,6 +5270,7 @@
       }
     },
     "Game Over!" : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -5296,6 +5285,9 @@
           }
         }
       }
+    },
+    "Game Results" : {
+
     },
     "Game Setting" : {
 
@@ -7260,7 +7252,7 @@
         }
       }
     },
-    "Location was: %@" : {
+    "Location was:" : {
 
     },
     "Location: %@" : {
@@ -7841,7 +7833,7 @@
         }
       }
     },
-    "Most voted player: %@" : {
+    "Most voted player:" : {
 
     },
     "Mountain Pass" : {
@@ -9114,6 +9106,12 @@
       }
     },
     "Players to vote for:" : {
+
+    },
+    "PLAYERS WIN!" : {
+
+    },
+    "Players:" : {
 
     },
     "Poet" : {
@@ -10515,6 +10513,9 @@
         }
       }
     },
+    "See how the game ended" : {
+
+    },
     "Select Game Setting" : {
 
     },
@@ -11242,7 +11243,10 @@
         }
       }
     },
-    "Spy's guess: %@" : {
+    "SPY WINS!" : {
+
+    },
+    "Spy's guess:" : {
 
     },
     "Spyquest" : {
@@ -12403,7 +12407,17 @@
         }
       }
     },
+    "The spy got away!" : {
+
+    },
+    "The spy was caught!" : {
+
+    },
+    "The spy was:" : {
+
+    },
     "The spy was: %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -13312,6 +13326,9 @@
         }
       }
     },
+    "Waiting for host to restart the game..." : {
+
+    },
     "Waiting for host to start the game..." : {
       "localizations" : {
         "fr" : {
@@ -13654,6 +13671,9 @@
           }
         }
       }
+    },
+    "Wrong" : {
+
     },
     "Wrongly Accused Man" : {
       "extractionState" : "manual",

@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D50262892E4FF0DF0052837B /* WaitingLobbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50262882E4FF0DE0052837B /* WaitingLobbyView.swift */; };
+		D502628A2E4FF0DF0052837B /* GameCancelledView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50262832E4FF0DE0052837B /* GameCancelledView.swift */; };
+		D502628B2E4FF0DF0052837B /* GameEndView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50262842E4FF0DE0052837B /* GameEndView.swift */; };
+		D502628C2E4FF0DF0052837B /* GamePlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50262852E4FF0DE0052837B /* GamePlayingView.swift */; };
+		D502628D2E4FF0DF0052837B /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50262822E4FF0DE0052837B /* CountdownView.swift */; };
+		D502628E2E4FF0DF0052837B /* PlayerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50262862E4FF0DE0052837B /* PlayerCard.swift */; };
+		D502628F2E4FF0DF0052837B /* RoleRevealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50262872E4FF0DE0052837B /* RoleRevealView.swift */; };
 		D52279DC2C5F71000099B3A0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52279DB2C5F71000099B3A0 /* SettingsView.swift */; };
 		D56DBED92C5676F700569C81 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D56DBED82C5676F700569C81 /* StoreKit.framework */; };
 		D599C0C42C4A6793002D0976 /* HowToPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D599C0C32C4A6793002D0976 /* HowToPlayView.swift */; };
@@ -35,6 +42,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D50262822E4FF0DE0052837B /* CountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownView.swift; sourceTree = "<group>"; };
+		D50262832E4FF0DE0052837B /* GameCancelledView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCancelledView.swift; sourceTree = "<group>"; };
+		D50262842E4FF0DE0052837B /* GameEndView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEndView.swift; sourceTree = "<group>"; };
+		D50262852E4FF0DE0052837B /* GamePlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlayingView.swift; sourceTree = "<group>"; };
+		D50262862E4FF0DE0052837B /* PlayerCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCard.swift; sourceTree = "<group>"; };
+		D50262872E4FF0DE0052837B /* RoleRevealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleRevealView.swift; sourceTree = "<group>"; };
+		D50262882E4FF0DE0052837B /* WaitingLobbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingLobbyView.swift; sourceTree = "<group>"; };
 		D511F3F12C541F4600B0C449 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D52279DB2C5F71000099B3A0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		D56DBED82C5676F700569C81 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -150,6 +164,13 @@
 				D5C3024D2C4A4F0C001453CA /* LocationsView.swift */,
 				D599C0C32C4A6793002D0976 /* HowToPlayView.swift */,
 				D52279DB2C5F71000099B3A0 /* SettingsView.swift */,
+				D50262822E4FF0DE0052837B /* CountdownView.swift */,
+				D50262832E4FF0DE0052837B /* GameCancelledView.swift */,
+				D50262842E4FF0DE0052837B /* GameEndView.swift */,
+				D50262852E4FF0DE0052837B /* GamePlayingView.swift */,
+				D50262862E4FF0DE0052837B /* PlayerCard.swift */,
+				D50262872E4FF0DE0052837B /* RoleRevealView.swift */,
+				D50262882E4FF0DE0052837B /* WaitingLobbyView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -257,6 +278,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D50262892E4FF0DF0052837B /* WaitingLobbyView.swift in Sources */,
+				D502628A2E4FF0DF0052837B /* GameCancelledView.swift in Sources */,
+				D502628B2E4FF0DF0052837B /* GameEndView.swift in Sources */,
+				D502628C2E4FF0DF0052837B /* GamePlayingView.swift in Sources */,
+				D502628D2E4FF0DF0052837B /* CountdownView.swift in Sources */,
+				D502628E2E4FF0DF0052837B /* PlayerCard.swift in Sources */,
+				D502628F2E4FF0DF0052837B /* RoleRevealView.swift in Sources */,
 				D5B604552C48FC88004A17A8 /* ViewModel.swift in Sources */,
 				D5AE4C642E48F61B006E6DA3 /* MultiplayerGameViewModel.swift in Sources */,
 				D5B604592C49168E004A17A8 /* MainMenuView.swift in Sources */,
