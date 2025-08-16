@@ -262,18 +262,36 @@ struct GameEndView: View {
         .safeAreaInset(edge: .bottom) {
             VStack(spacing: 12) {
                 if lobby.hostId == viewModel.currentUser?.uid {
-                    Button(action: {
-                        viewModel.restartGame()
-                    }) {
-                        HStack {
-                            Image(systemName: "arrow.clockwise")
-                            Text(NSLocalizedString("Back to Lobby", comment: ""))
-                                .fontWeight(.semibold)
+                    HStack(spacing: 16) {
+                        // Restart Game Button
+                        Button(action: {
+                            viewModel.restartGame()
+                        }) {
+                            HStack {
+                                Image(systemName: "arrow.clockwise.circle.fill")
+                                Text("Restart Game")
+                                    .fontWeight(.semibold)
+                            }
+                            .foregroundColor(.reverse)
+                            .frame(maxWidth: .infinity, minHeight: 44)
+                            .background(Color.blue)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
                         }
-                        .foregroundColor(.reverse)
-                        .frame(maxWidth: .infinity, minHeight: 48)
-                        .background(Color.reverse2)
-                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                        
+                        // Back to Lobby Button
+                        Button(action: {
+                            viewModel.returnToLobbyForAll()
+                        }) {
+                            HStack {
+                                Image(systemName: "house.circle.fill")
+                                Text("Back to Lobby")
+                                    .fontWeight(.semibold)
+                            }
+                            .foregroundColor(.reverse)
+                            .frame(maxWidth: .infinity, minHeight: 44)
+                            .background(Color.orange)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                        }
                     }
                 } else {
                     Text("Waiting for host to restart the game...")
