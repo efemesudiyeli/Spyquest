@@ -18,12 +18,17 @@ struct PlayerCard: View {
         HStack(alignment: .center, spacing: 12) {
             VStack(alignment: .leading, spacing: 6) {
                 HStack(spacing: 6) {
+                    if player.isPremium {
+                        Image(systemName: "star.fill")
+                            .foregroundColor(.premiumReverse)
+                            .font(.caption)
+                    }
                     Text(player.name)
                         .font(.headline)
                         .fontWeight(.semibold)
                     if isHost {
                         Image(systemName: "crown.fill")
-                            .foregroundColor(.yellow)
+                            .foregroundColor(.reverse2)
                             .font(.caption)
                     }
                 }
@@ -41,34 +46,77 @@ struct PlayerCard: View {
         }
         .frame(minHeight: minHeight)
         .padding()
-        .background(Color(.systemGray6))
+        .background(
+            Group {
+                if player.isPremium {
+                    LinearGradient(
+                        gradient: Gradient(colors: [
+                            Color.purple.opacity(0.15),
+                            Color.purple.opacity(0.08),
+                            Color.purple.opacity(0.05)
+                        ]),
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                } else {
+                    Color(.systemGray5)
+                }
+            }
+        )
         .clipShape(RoundedRectangle(cornerRadius: 10))
+        .overlay(
+            Group {
+                if player.isPremium {
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(
+                            LinearGradient(
+                                gradient: Gradient(colors: [
+                                    Color.purple.opacity(0.3),
+                                    Color.purple.opacity(0.1)
+                                ]),
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            ),
+                            lineWidth: 1
+                        )
+                }
+            }
+        )
     }
 }
 
-#Preview("Host Ready") {
+#Preview("Host Ready - Regular") {
     PlayerCard(
-        player: Player(name: "Host Player", role: .player),
+        player: Player(name: "Host Player", role: .player, isPremium: false),
         isHost: true,
         ready: true
     )
     .padding()
 }
 
-#Preview("Player Unready") {
+#Preview("Player Unready - Regular") {
     PlayerCard(
-        player: Player(name: "Player 1", role: .player),
+        player: Player(name: "Player 1", role: .player, isPremium: false),
         isHost: false,
         ready: false
     )
     .padding()
 }
 
-#Preview("Spy Ready") {
+#Preview("Host Ready - Premium") {
     PlayerCard(
-        player: Player(name: "Player 2", role: .spy),
-        isHost: false,
+        player: Player(name: "Host Player", role: .player, isPremium: true),
+        isHost: true,
         ready: true
+    )
+    .padding()
+}
+
+#Preview("Player Unready - Premium") {
+    PlayerCard(
+        player: Player(name: "Player 1", role: .player, isPremium: true),
+        isHost: false,
+        ready: false
     )
     .padding()
 }
