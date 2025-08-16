@@ -122,20 +122,19 @@ struct GameEndView: View {
                                         Text("Spy's guess:")
                                             .foregroundColor(.secondary)
                                         Spacer()
-                                        VStack(alignment: .trailing, spacing: 4) {
-                                            Text(spyGuess)
-                                                .fontWeight(.semibold)
-                                                .foregroundColor(.orange)
+                                        HStack(spacing: 4) {
+                                           
                                             
                                             if let spyGuessCorrect = votingResult.spyGuessCorrect {
                                                 HStack(spacing: 4) {
                                                     Image(systemName: spyGuessCorrect ? "checkmark.circle.fill" : "xmark.circle.fill")
                                                         .foregroundColor(spyGuessCorrect ? .green : .red)
-                                                    Text(spyGuessCorrect ? "Correct" : "Wrong")
-                                                        .font(.caption)
-                                                        .foregroundColor(spyGuessCorrect ? .green : .red)
+                                        
                                                 }
                                             }
+                                            Text(spyGuess)
+                                                .fontWeight(.semibold)
+                                                .foregroundColor(.orange)
                                         }
                                     }
                                 }
@@ -151,14 +150,12 @@ struct GameEndView: View {
                                 .font(.headline)
                             
                             VStack(spacing: 8) {
-                                if let player = currentPlayer, player.role != .spy {
-                                    HStack {
-                                        Text("Location was:")
-                                            .foregroundColor(.secondary)
-                                        Spacer()
-                                        Text(lobby.location.name)
-                                            .fontWeight(.semibold)
-                                    }
+                                HStack {
+                                    Text("Location was:")
+                                        .foregroundColor(.secondary)
+                                    Spacer()
+                                    Text(lobby.location.name)
+                                        .fontWeight(.semibold)
                                 }
                                 
                                 HStack {
