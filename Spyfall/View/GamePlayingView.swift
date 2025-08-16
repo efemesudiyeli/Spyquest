@@ -10,10 +10,12 @@ import SwiftUI
 struct GamePlayingView: View {
     let lobby: GameLobby
     @ObservedObject var viewModel: MultiplayerGameViewModel
-    @State private var timeRemaining: TimeInterval = 8.5 * 60
-    @State private var isTimerFinished: Bool = false
+    @State private var timeRemaining: Int = 0
     @State private var gameTimer: Timer?
+    @State private var isTimerFinished: Bool = false
     @State private var notes: String = ""
+    @State private var showRestartConfirmation: Bool = false
+    @State private var showReturnToLobbyConfirmation: Bool = false
     @State private var showingNotepad: Bool = true
     
     private var currentPlayer: Player? {
@@ -31,10 +33,10 @@ struct GamePlayingView: View {
         if let gameStartAt = lobby.gameStartAt,
            let gameDuration = lobby.gameDurationSeconds {
             let elapsed = Date().timeIntervalSince1970 - gameStartAt
-            timeRemaining = max(0, Double(gameDuration) - elapsed)
+            timeRemaining = max(0, Int(Double(gameDuration) - elapsed))
         } else {
             // Fallback to default time
-            timeRemaining = 8.5 * 60
+            timeRemaining = Int(8.5 * 60)
         }
         
         // Reset timer if needed
@@ -94,7 +96,7 @@ struct GamePlayingView: View {
                     
                     // Timer Display
                     VStack(spacing: 8) {
-                        Text(formattedTime(timeRemaining))
+                        Text(formattedTime(TimeInterval(timeRemaining)))
                             .font(.system(size: 48, weight: .black, design: .monospaced))
                             .foregroundColor(.blue)
                             .contentTransition(.numericText())
@@ -354,18 +356,53 @@ struct GamePlayingView: View {
                     }
                 } else {
                     if lobby.hostId == viewModel.currentUser?.uid {
-                        Button(action: {
-                            viewModel.startVoting()
-                        }) {
-                            HStack {
-                                Image(systemName: "hand.raised.fill")
-                                Text(NSLocalizedString("Start voting for all", comment: ""))
-                                    .fontWeight(.semibold)
+                        VStack(spacing: 12) {
+                            // Start Voting Button
+                            Button(action: {
+                                viewModel.startVoting()
+                            }) {
+                                HStack {
+                                    Image(systemName: "hand.raised.fill")
+                                    Text(NSLocalizedString("Start voting for all", comment: ""))
+                                        .fontWeight(.semibold)
+                                }
+                                .foregroundColor(.reverse)
+                                .frame(maxWidth: .infinity, minHeight: 48)
+                                .background(Color.green)
+                                .clipShape(RoundedRectangle(cornerRadius: 12))
                             }
-                            .foregroundColor(.reverse)
-                            .frame(maxWidth: .infinity, minHeight: 48)
-                            .background(Color.green)
-                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                            
+                            HStack(spacing: 16) {
+                                // Restart Game Button
+                                Button(action: {
+                                    showRestartConfirmation = true
+                                }) {
+                                    HStack {
+                                        Image(systemName: "arrow.clockwise.circle.fill")
+                                        Text("Restart Game")
+                                            .fontWeight(.semibold)
+                                    }
+                                    .foregroundColor(.reverse)
+                                    .frame(maxWidth: .infinity, minHeight: 44)
+                                    .background(Color.blue)
+                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                                }
+                                
+                                // Back to Lobby Button
+                                Button(action: {
+                                    showReturnToLobbyConfirmation = true
+                                }) {
+                                    HStack {
+                                        Image(systemName: "house.circle.fill")
+                                        Text("End Game & Return")
+                                            .fontWeight(.semibold)
+                                    }
+                                    .foregroundColor(.reverse)
+                                    .frame(maxWidth: .infinity, minHeight: 44)
+                                    .background(Color.orange)
+                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                                }
+                            }
                         }
                     }
                 }
@@ -373,6 +410,22 @@ struct GamePlayingView: View {
             .padding(.horizontal)
             .padding(.top, 10)
             .padding(.bottom, 8)
+        }
+        .alert("Restart Game", isPresented: $showRestartConfirmation) {
+            Button("Cancel", role: .cancel) {}
+            Button("Restart", role: .destructive) {
+                viewModel.restartGame()
+            }
+        } message: {
+            Text("Are you sure you want to restart the game? This will end the current game and start a new one.")
+        }
+        .alert("Back to Lobby", isPresented: $showReturnToLobbyConfirmation) {
+            Button("Cancel", role: .cancel) {}
+            Button("Back to Lobby", role: .destructive) {
+                viewModel.returnToLobbyForAll()
+            }
+        } message: {
+            Text("Are you sure you want to return to the lobby? This will end the current game and return to the lobby.")
         }
     }
 }

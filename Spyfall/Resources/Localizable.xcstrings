@@ -954,6 +954,12 @@
         }
       }
     },
+    "Are you sure you want to restart the game? This will end the current game and start a new one." : {
+
+    },
+    "Are you sure you want to return to the lobby? This will end the current game and return to the lobby." : {
+
+    },
     "Armored Car Driver" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -4427,6 +4433,9 @@
           }
         }
       }
+    },
+    "End Game & Return" : {
+
     },
     "End Round For All" : {
       "extractionState" : "stale",
@@ -9810,6 +9819,9 @@
           }
         }
       }
+    },
+    "Restart Game" : {
+
     },
     "Restaurant" : {
       "extractionState" : "manual",

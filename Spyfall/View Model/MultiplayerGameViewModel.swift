@@ -466,15 +466,23 @@ class MultiplayerGameViewModel: ObservableObject {
         guard let lobby = currentLobby,
               lobby.hostId == currentUser?.uid else { return }
         
+        // Select a new random location
+        let availableLocations = lobby.selectedLocationSet.locations
+        let randomIndex = Int.random(in: 0..<availableLocations.count)
+        let newLocation = availableLocations[randomIndex]
+        
         var updatedLobby = lobby
-        updatedLobby.status = .waiting
+        updatedLobby.status = .revealing
         updatedLobby.readyPlayers = nil
         
-        // Reset all player roles
+        // Reset all player roles and assign new ones
         for index in updatedLobby.players.indices {
             updatedLobby.players[index].role = nil
             updatedLobby.players[index].playerLocationRole = nil
         }
+        
+        // Assign new roles
+        updatedLobby.assignRoles()
         
         // Update local state immediately for better UX
         DispatchQueue.main.async {
@@ -483,7 +491,8 @@ class MultiplayerGameViewModel: ObservableObject {
         
         // Update Firebase for synchronization
         currentLobbyRef?.updateChildValues([
-            "status": "waiting",
+            "status": "revealing",
+            "location": newLocation.toDictionary(),
             "players": updatedLobby.players.map { $0.toDictionary() },
             "readyPlayers": NSNull(),
             "gameStartAt": NSNull(),
@@ -546,6 +555,41 @@ class MultiplayerGameViewModel: ObservableObject {
         currentPlayerName = ""
         currentLobbyRef?.removeAllObservers()
         currentLobbyRef = nil
+    }
+    
+    func returnToLobbyForAll() {
+        guard let lobby = currentLobby,
+              lobby.hostId == currentUser?.uid else { return }
+        
+        // Reset all game state and return to waiting lobby
+        var updatedLobby = lobby
+        updatedLobby.status = .waiting
+        updatedLobby.readyPlayers = nil
+        
+        // Reset all player roles and game data
+        for index in updatedLobby.players.indices {
+            updatedLobby.players[index].role = nil
+            updatedLobby.players[index].playerLocationRole = nil
+        }
+        
+        // Update local state immediately for better UX
+        DispatchQueue.main.async {
+            self.currentLobby = updatedLobby
+        }
+        
+        // Update Firebase for synchronization - return everyone to waiting lobby
+        currentLobbyRef?.updateChildValues([
+            "status": "waiting",
+            "players": updatedLobby.players.map { $0.toDictionary() },
+            "readyPlayers": NSNull(),
+            "gameStartAt": NSNull(),
+            "gameDurationSeconds": NSNull(),
+            "votingStartAt": NSNull(),
+            "votingDurationSeconds": NSNull(),
+            "votes": NSNull(),
+            "votingResult": NSNull(),
+            "spyGuess": NSNull()
+        ])
     }
     
     func endGameForAll() {
