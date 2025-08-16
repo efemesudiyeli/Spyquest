@@ -43,7 +43,7 @@ struct SettingsView: View {
                                 .tag(locationSet)
                         }
                         ForEach(LocationSets.premiumSets, id: \.self) { premiumSet in
-                            if viewModel.isAdsRemoved {
+                            if viewModel.isPremium {
                                 Text("\(premiumSet.rawValue) (\(premiumSet.locations.count))")
                                     .tag(premiumSet)
                             } else {

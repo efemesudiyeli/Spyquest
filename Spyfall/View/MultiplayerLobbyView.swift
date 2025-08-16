@@ -38,6 +38,8 @@ struct MultiplayerLobbyView: View {
                 if !viewModel.isAuthenticated && !viewModel.isLoading {
                     viewModel.signInAnonymously()
                 }
+                // Sync premium status with GameViewModel
+                viewModel.setGameViewModel(gameViewModel)
             }
         }
         .sheet(isPresented: $showingCreateLobby) {
@@ -226,7 +228,7 @@ struct MultiplayerLobbyView: View {
                                             .tag(locationSet)
                                     }
                                     ForEach(LocationSets.premiumSets, id: \.self) { premiumSet in
-                                        if gameViewModel.isAdsRemoved {
+                                        if gameViewModel.isPremium {
                                             Text("\(premiumSet.rawValue) (\(premiumSet.locations.count))")
                                                 .tag(premiumSet)
                                         } else {
@@ -245,7 +247,7 @@ struct MultiplayerLobbyView: View {
                                 .pickerStyle(.menu)
                             }
 
-                            if !gameViewModel.isAdsRemoved {
+                            if !gameViewModel.isPremium {
                                 HStack(spacing: 6) {
                                     Image(systemName: "crown.fill").foregroundColor(.yellow)
                                     Text("Premium sets require the Premium upgrade.")

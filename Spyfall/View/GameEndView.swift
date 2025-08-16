@@ -47,9 +47,9 @@ struct GameEndView: View {
                     // Winner announcement
                     if let votingResult = lobby.votingResult {
                         VStack(spacing: 16) {
-                            // Winner section
-                            let spyWins = votingResult.spyGuessCorrect == true
-                            let playersWin = votingResult.spyCaught || votingResult.spyGuessCorrect == false
+                            // Winner section - use the calculated result from ViewModel
+                            let spyWins = votingResult.spyWins
+                            let playersWin = !spyWins
                             
                             VStack(spacing: 12) {
                                 if spyWins {
@@ -61,7 +61,7 @@ struct GameEndView: View {
                                             .fontWeight(.bold)
                                             .foregroundColor(.red)
                                     }
-                                } else if playersWin {
+                                } else {
                                     HStack(spacing: 8) {
                                         Image(systemName: "person.3.fill")
                                             .foregroundColor(.green)
@@ -74,15 +74,83 @@ struct GameEndView: View {
                                 
                                 // Outcome description
                                 if votingResult.spyCaught {
-                                    Text("The spy was caught!")
-                                        .font(.subheadline)
-                                        .foregroundColor(.green)
-                                        .fontWeight(.medium)
-                                } else if !votingResult.spyCaught && votingResult.spyGuessCorrect != true {
-                                    Text("The spy got away!")
-                                        .font(.subheadline)
-                                        .foregroundColor(.red)
-                                        .fontWeight(.medium)
+                                    if votingResult.isTie {
+                                        if let spyGuessCorrect = votingResult.spyGuessCorrect {
+                                            if spyGuessCorrect {
+                                                Text("Vote ended in a tie, but the spy guessed correctly!")
+                                                    .font(.subheadline)
+                                                    .foregroundColor(.red)
+                                                    .fontWeight(.medium)
+                                            } else {
+                                                Text("Vote ended in a tie, and the spy guessed incorrectly!")
+                                                    .font(.subheadline)
+                                                    .foregroundColor(.green)
+                                                    .fontWeight(.medium)
+                                            }
+                                        } else {
+                                            Text("Vote ended in a tie, but the spy didn't make a guess!")
+                                                    .font(.subheadline)
+                                                    .foregroundColor(.green)
+                                                    .fontWeight(.medium)
+                                        }
+                                    } else {
+                                        if let spyGuessCorrect = votingResult.spyGuessCorrect {
+                                            if spyGuessCorrect {
+                                                Text("The spy was caught, but guessed correctly!")
+                                                    .font(.subheadline)
+                                                    .foregroundColor(.red)
+                                                    .fontWeight(.medium)
+                                            } else {
+                                                Text("The spy was caught and guessed incorrectly!")
+                                                    .font(.subheadline)
+                                                    .foregroundColor(.green)
+                                                    .fontWeight(.medium)
+                                            }
+                                        } else {
+                                            Text("The spy was caught and didn't make a guess!")
+                                                .font(.subheadline)
+                                                .foregroundColor(.green)
+                                                .fontWeight(.medium)
+                                        }
+                                    }
+                                } else if votingResult.isTie {
+                                    if let spyGuessCorrect = votingResult.spyGuessCorrect {
+                                        if spyGuessCorrect {
+                                            Text("Vote ended in a tie, and the spy guessed correctly!")
+                                                .font(.subheadline)
+                                                .foregroundColor(.red)
+                                                .fontWeight(.medium)
+                                        } else {
+                                            Text("Vote ended in a tie, and the spy guessed incorrectly!")
+                                                .font(.subheadline)
+                                                .foregroundColor(.green)
+                                                .fontWeight(.medium)
+                                        }
+                                    } else {
+                                        Text("Vote ended in a tie, and the spy didn't make a guess!")
+                                            .font(.subheadline)
+                                            .foregroundColor(.red)
+                                            .fontWeight(.medium)
+                                    }
+                                } else {
+                                    if let spyGuessCorrect = votingResult.spyGuessCorrect {
+                                        if spyGuessCorrect {
+                                            Text("The spy got away and guessed correctly!")
+                                                .font(.subheadline)
+                                                .foregroundColor(.red)
+                                                .fontWeight(.medium)
+                                        } else {
+                                            Text("The spy got away but guessed incorrectly!")
+                                                .font(.subheadline)
+                                                .foregroundColor(.green)
+                                                .fontWeight(.medium)
+                                        }
+                                    } else {
+                                        Text("The spy got away and didn't make a guess!")
+                                            .font(.subheadline)
+                                            .foregroundColor(.green)
+                                            .fontWeight(.medium)
+                                    }
                                 }
                             }
                             .padding()
@@ -105,6 +173,21 @@ struct GameEndView: View {
                                     Spacer()
                                     Text(votingResult.mostVotedPlayer)
                                         .fontWeight(.semibold)
+                                }
+                                
+                                if votingResult.isTie {
+                                    HStack {
+                                        Text("Vote result:")
+                                            .foregroundColor(.secondary)
+                                        Spacer()
+                                        HStack(spacing: 4) {
+                                            Image(systemName: "exclamationmark.triangle.fill")
+                                                .foregroundColor(.orange)
+                                            Text("TIE")
+                                                .fontWeight(.semibold)
+                                                .foregroundColor(.orange)
+                                        }
+                                    }
                                 }
                                 
                                 HStack {
@@ -222,7 +305,9 @@ struct GameEndView: View {
         spyName: "Player 2",
         spyCaught: false,
         voteCounts: ["Player 1": 2, "Player 3": 1],
-        spyGuessCorrect: true
+        spyGuessCorrect: true,
+        isTie: false,
+        spyWins: true
     )
     let lobby = GameLobby(
         id: "ABC123",
@@ -258,7 +343,9 @@ struct GameEndView: View {
         spyName: "Player 2",
         spyCaught: true,
         voteCounts: ["Player 2": 3],
-        spyGuessCorrect: false
+        spyGuessCorrect: false,
+        isTie: false,
+        spyWins: false
     )
     let lobby = GameLobby(
         id: "ABC123",

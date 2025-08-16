@@ -104,6 +104,9 @@
     "%lld" : {
 
     },
+    "%lld characters" : {
+
+    },
     "%lld roles" : {
 
     },
@@ -2819,6 +2822,9 @@
         }
       }
     },
+    "Clear" : {
+
+    },
     "Climate Change Activist" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3277,9 +3283,6 @@
           }
         }
       }
-    },
-    "Correct" : {
-
     },
     "Correctional Officer" : {
       "extractionState" : "manual",
@@ -4426,6 +4429,7 @@
       }
     },
     "End Round For All" : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -6869,6 +6873,9 @@
         }
       }
     },
+    "Keep it secret from the spy." : {
+
+    },
     "King" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -7189,6 +7196,9 @@
         }
       }
     },
+    "Local notes only" : {
+
+    },
     "Local Park" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -7205,6 +7215,12 @@
           }
         }
       }
+    },
+    "Location" : {
+
+    },
+    "Location & Role" : {
+
     },
     "Location Set" : {
       "localizations" : {
@@ -7753,6 +7769,9 @@
         }
       }
     },
+    "Minutes remaining" : {
+
+    },
     "Miss Scarlet" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -8164,6 +8183,9 @@
           }
         }
       }
+    },
+    "Notepad" : {
+
     },
     "Number of Players" : {
       "extractionState" : "stale",
@@ -9703,6 +9725,9 @@
         }
       }
     },
+    "Remaining Time" : {
+
+    },
     "Remove" : {
       "localizations" : {
         "fr" : {
@@ -10380,6 +10405,9 @@
           }
         }
       }
+    },
+    "Secret spy" : {
+
     },
     "Secret Villain" : {
       "extractionState" : "translated",
@@ -11372,6 +11400,9 @@
           }
         }
       }
+    },
+    "Start voting for all" : {
+
     },
     "Stationmaster" : {
       "extractionState" : "translated",
@@ -12392,10 +12423,22 @@
         }
       }
     },
-    "The spy got away!" : {
+    "The spy got away and didn't make a guess!" : {
 
     },
-    "The spy was caught!" : {
+    "The spy got away and guessed correctly!" : {
+
+    },
+    "The spy got away but guessed incorrectly!" : {
+
+    },
+    "The spy was caught and didn't make a guess!" : {
+
+    },
+    "The spy was caught and guessed incorrectly!" : {
+
+    },
+    "The spy was caught, but guessed correctly!" : {
 
     },
     "The spy was:" : {
@@ -12605,6 +12648,9 @@
         }
       }
     },
+    "TIE" : {
+
+    },
     "Tied Up Prisoner" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -12622,7 +12668,7 @@
         }
       }
     },
-    "Time Remaining: %@" : {
+    "Time is running out" : {
 
     },
     "Time's up!" : {
@@ -12640,6 +12686,9 @@
           }
         }
       }
+    },
+    "Timer finished - Voting will start automatically" : {
+
     },
     "Tip:" : {
 
@@ -13288,10 +13337,31 @@
         }
       }
     },
+    "Vote ended in a tie, and the spy didn't make a guess!" : {
+
+    },
+    "Vote ended in a tie, and the spy guessed correctly!" : {
+
+    },
+    "Vote ended in a tie, and the spy guessed incorrectly!" : {
+
+    },
+    "Vote ended in a tie, but the spy didn't make a guess!" : {
+
+    },
+    "Vote ended in a tie, but the spy guessed correctly!" : {
+
+    },
+    "Vote result:" : {
+
+    },
     "Voting Results" : {
 
     },
     "Voting Time!" : {
+
+    },
+    "Voting will start automatically..." : {
 
     },
     "Waiter" : {
@@ -13657,9 +13727,6 @@
         }
       }
     },
-    "Wrong" : {
-
-    },
     "Wrongly Accused Man" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -13677,7 +13744,7 @@
         }
       }
     },
-    "You are a %@" : {
+    "You are a" : {
 
     },
     "You are the spy!" : {
@@ -13697,6 +13764,7 @@
       }
     },
     "You are the SPY!" : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -13711,6 +13779,9 @@
           }
         }
       }
+    },
+    "YOU ARE THE SPY!" : {
+
     },
     "You voted for: %@" : {
 
@@ -13767,9 +13838,6 @@
           }
         }
       }
-    },
-    "Your Role" : {
-
     },
     "Your role is: %@" : {
       "localizations" : {

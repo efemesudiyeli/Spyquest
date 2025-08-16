@@ -38,7 +38,7 @@ struct CreateGameView: View {
                                     .tag(locationSet)
                             }
                             ForEach(LocationSets.premiumSets, id: \.self) { premiumSet in
-                                if viewModel.isAdsRemoved {
+                                if viewModel.isPremium {
                                     Text("\(premiumSet.rawValue) (\(premiumSet.locations.count))")
                                         .tag(premiumSet)
                                 } else {
@@ -143,14 +143,14 @@ struct CreateGameView: View {
             .navigationTitle("Create Game")
             .navigationBarTitleDisplayMode(displayModeTitle)
             .onAppear {
-                if !viewModel.isAdsRemoved {
+                if !viewModel.isPremium {
                     Task {
                         await viewModel.adCoordinator.loadAd()
                     }
                 }
             }
             .onDisappear {
-                if !viewModel.isAdsRemoved {
+                if !viewModel.isPremium {
                     viewModel.adCoordinator.presentAd()
                 }
             }

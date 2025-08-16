@@ -21,7 +21,12 @@ class GameViewModel: ObservableObject {
     @Published var isTimerFinished: Bool = false
     
     @Published var isGameStarted: Bool = false
-    @Published var isAdsRemoved: Bool = false
+    @Published var isPremium: Bool = false {
+        didSet {
+            // Notify any listeners when premium status changes
+            premiumStatusChanged?(isPremium)
+        }
+    }
     @Published var product: StoreProduct?
     @Published var isPurchasing: Bool = false
     @Published var adCoordinator = AdCoordinator()
@@ -29,6 +34,9 @@ class GameViewModel: ObservableObject {
     @Published var showingRestoreAlert: Bool = false
     @Published var alertMessage: String = ""
     @Published var isReviewAsked: Bool = false
+    
+    // Callback for premium status changes
+    var premiumStatusChanged: ((Bool) -> Void)?
     
     
     private var timeWhenPaused: TimeInterval = 0
@@ -83,7 +91,7 @@ class GameViewModel: ObservableObject {
         if !isGameStarted {
             prepareGame()
             
-            if !isAdsRemoved {
+            if !isPremium {
                 Task {
                     await adCoordinator.loadAd()
                 }
@@ -96,7 +104,7 @@ class GameViewModel: ObservableObject {
     
     func restartGame() -> Void {
         prepareGame()
-        if !isAdsRemoved {
+        if !isPremium {
             Task {
                 await adCoordinator.loadAd()
                 adCoordinator.presentAd()
@@ -189,7 +197,7 @@ class GameViewModel: ObservableObject {
                 print("User cancelled purchase.")
             } else if let purchaserInfo = purchaserInfo {
                 print("Purchase successful: \(purchaserInfo)")
-                self.isAdsRemoved = true
+                self.isPremium = true
                 self.checkPurchaseStatus()
             }
         }
@@ -201,10 +209,10 @@ class GameViewModel: ObservableObject {
                 print("Failed to fetch customer info: \(error.localizedDescription)")
             } else if let customerInfo = customerInfo {
                 if customerInfo.entitlements["Pro"]?.isActive == true {
-                    self.isAdsRemoved = true
+                    self.isPremium = true
                     print("Customer purchased already.")
                 } else {
-                    self.isAdsRemoved = false
+                    self.isPremium = false
                     print("Customer not purchased.")
                 }
             }
@@ -219,7 +227,7 @@ class GameViewModel: ObservableObject {
             } else if let customerInfo = customerInfo {
                 if customerInfo.entitlements["Pro"]?.isActive == true {
                     self.alertMessage = "Purchases restored successfully!"
-                    self.isAdsRemoved = true
+                    self.isPremium = true
                 } else {
                     self.alertMessage = "No purchases to restore."
                 }

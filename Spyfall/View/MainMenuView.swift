@@ -22,7 +22,7 @@ struct MainMenuView: View {
                 .frame(width: 200)
                 .colorMultiply(.primary)
             
-            if viewModel.isAdsRemoved {
+            if viewModel.isPremium {
                 VStack {
                     Text("Spyquest")
                         .font(.title)
@@ -40,9 +40,9 @@ struct MainMenuView: View {
             } else {
                 Text("Spyquest")
                     .font(.title)
-                    .fontWeight(.black)
-                    .padding(.top, -40)
-                    .fontDesign(.rounded)
+                        .fontWeight(.black)
+                        .padding(.top, -40)
+                        .fontDesign(.rounded)
             }
             
             VStack {
@@ -123,7 +123,7 @@ struct MainMenuView: View {
                             Spacer()
                             
                             VStack {
-                                if viewModel.isAdsRemoved {
+                                if viewModel.isPremium {
                                     Text("Change Your Plan")
                                         .foregroundStyle(Color.premiumReverse)
                                 } else {
