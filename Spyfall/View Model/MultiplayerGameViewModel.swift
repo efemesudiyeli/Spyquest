@@ -239,12 +239,21 @@ class MultiplayerGameViewModel: ObservableObject {
         guard allReady else { return }
         
         var updatedLobby = lobby
-        updatedLobby.status = .playing
+        updatedLobby.status = .revealing
         updatedLobby.assignRoles()
         
         currentLobbyRef?.updateChildValues([
+            "status": "revealing",
+            "players": updatedLobby.players.map { $0.toDictionary() }
+        ])
+    }
+    
+    func startGamePlaying() {
+        guard let lobby = currentLobby,
+              lobby.hostId == currentUser?.uid else { return }
+        
+        currentLobbyRef?.updateChildValues([
             "status": "playing",
-            "players": updatedLobby.players.map { $0.toDictionary() },
             "gameStartAt": ServerValue.timestamp(),
             "gameDurationSeconds": Int(8.5 * 60)
         ])

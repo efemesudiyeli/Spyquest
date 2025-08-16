@@ -72,3 +72,4 @@ struct PlayerCard: View {
     )
     .padding()
 }
+

@@ -283,3 +283,4 @@ struct GameEndView: View {
         GameEndView(lobby: lobby, viewModel: vm)
     }
 }
+
