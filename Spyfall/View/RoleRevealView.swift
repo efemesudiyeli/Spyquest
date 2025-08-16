@@ -10,8 +10,6 @@ import SwiftUI
 struct RoleRevealView: View {
     let lobby: GameLobby
     @ObservedObject var viewModel: MultiplayerGameViewModel
-    @State private var revealCountdown: Int = 3
-    @State private var revealTimer: Timer?
     
     private func isAllReady(lobby: GameLobby) -> Bool {
         guard let ready = lobby.readyPlayers else { return false }
@@ -20,53 +18,33 @@ struct RoleRevealView: View {
     }
     
     var body: some View {
+        
         VStack {
+            
             Text("Get Ready!")
                 .font(.largeTitle)
                 .fontWeight(.black)
                 .fontDesign(.rounded)
             
             Spacer()
-            
-            Text("\(max(revealCountdown, 1))")
+            Text("3")
                 .font(.system(size: 100, weight: .black))
                 .foregroundColor(.blue)
                 .fontDesign(.rounded)
                 .contentTransition(.numericText())
-                
+
             
             Spacer()
             
-            Text("**Tip:** If someone answers oddly, don't correct them. Keep your own answer flexible.")
+            Text("**Tip:** If someone answers oddly, don’t correct them. Keep your own answer flexible.")
                 .fontDesign(.monospaced)
                 .multilineTextAlignment(.center)
                 .font(.footnote)
                 .foregroundColor(.secondary)
+
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .onAppear {
             print("Role Reveal View Appeared")
-            startRevealCountdown()
-        }
-        .onDisappear {
-            revealTimer?.invalidate()
-            revealTimer = nil
-        }
-    }
-    
-    private func startRevealCountdown() {
-        revealTimer?.invalidate()
-        revealCountdown = 3
-        revealTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
-            if revealCountdown > 1 {
-                revealCountdown -= 1
-            } else {
-                timer.invalidate()
-                revealTimer = nil
-                revealCountdown = 0
-                // Transition to playing state
-                viewModel.startGamePlaying()
-            }
         }
     }
 }

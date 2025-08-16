@@ -17,12 +17,12 @@ struct Player: Hashable, Identifiable, Codable {
     var name: String
     var role: Role?
     var playerLocationRole: String?
-
+    var isPremium: Bool = false
 }
 
 extension Player {
     static let samplePlayers = [
-        Player(name: "Efe", role: .player, playerLocationRole: "Host"),
-        Player(name: "Elif", role: .player, playerLocationRole: "Pilot"),
-        Player(name: "Nisa", role: .spy)]
+        Player(name: "Efe", role: .player, playerLocationRole: "Host", isPremium: true),
+        Player(name: "Elif", role: .player, playerLocationRole: "Pilot", isPremium: false),
+        Player(name: "Nisa", role: .spy, isPremium: true)]
 }

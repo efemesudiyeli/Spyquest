@@ -170,10 +170,10 @@ struct WaitingLobbyView: View {
 #Preview {
     let vm = MultiplayerGameViewModel()
     let samplePlayers: [Player] = [
-        Player(name: "Host Player", role: .player),
-        Player(name: "Player 1", role: .player),
-        Player(name: "Player 2", role: .spy),
-        Player(name: "Player 3", role: .player)
+        Player(name: "Host Player", role: .player, isPremium: true),
+        Player(name: "Player 1", role: .player, isPremium: false),
+        Player(name: "Player 2", role: .spy, isPremium: true),
+        Player(name: "Player 3", role: .player, isPremium: false)
     ]
     let lobby = GameLobby(
         id: "ABC123",
