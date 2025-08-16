@@ -11,6 +11,9 @@ struct RoleRevealView: View {
     let lobby: GameLobby
     @ObservedObject var viewModel: MultiplayerGameViewModel
     
+    @State private var revealCountdown: Int = 3
+    @State private var revealTimer: Timer?
+    
     private func isAllReady(lobby: GameLobby) -> Bool {
         guard let ready = lobby.readyPlayers else { return false }
         let nonHostPlayers = lobby.players.filter { $0.name != lobby.hostName }.map { $0.name }
@@ -18,37 +21,56 @@ struct RoleRevealView: View {
     }
     
     var body: some View {
-        
         VStack {
-            
             Text("Get Ready!")
                 .font(.largeTitle)
                 .fontWeight(.black)
                 .fontDesign(.rounded)
             
             Spacer()
-            Text("3")
+            
+            Text("\(max(revealCountdown, 1))")
                 .font(.system(size: 100, weight: .black))
                 .foregroundColor(.blue)
                 .fontDesign(.rounded)
                 .contentTransition(.numericText())
-
+                .transition(.scale)
             
             Spacer()
             
-            Text("**Tip:** If someone answers oddly, don’t correct them. Keep your own answer flexible.")
+            Text("**Tip:** If someone answers oddly, don't correct them. Keep your own answer flexible.")
                 .fontDesign(.monospaced)
                 .multilineTextAlignment(.center)
                 .font(.footnote)
                 .foregroundColor(.secondary)
-
         }
         .onAppear {
             print("Role Reveal View Appeared")
+            startRevealCountdown()
+        }
+        .onDisappear {
+            revealTimer?.invalidate()
+        }
+    }
+    
+    // MARK: - Countdown Functions
+    
+    private func startRevealCountdown() {
+        revealCountdown = 3
+        
+        revealTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
+            withAnimation(.easeInOut(duration: 0.3)) {
+                if revealCountdown > 1 {
+                    revealCountdown -= 1
+                } else {
+                    // Countdown finished, start the game
+                    revealTimer?.invalidate()
+                    viewModel.startGamePlaying()
+                }
+            }
         }
     }
 }
-
 
 #Preview {
     let vm = MultiplayerGameViewModel()

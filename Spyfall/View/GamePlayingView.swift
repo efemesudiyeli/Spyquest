@@ -26,6 +26,42 @@ struct GamePlayingView: View {
         return String(format: "%02d:%02d", minutes, seconds)
     }
     
+    private func startGameTimer() {
+        // Calculate remaining time based on lobby data if available
+        if let gameStartAt = lobby.gameStartAt,
+           let gameDuration = lobby.gameDurationSeconds {
+            let elapsed = Date().timeIntervalSince1970 - gameStartAt
+            timeRemaining = max(0, Double(gameDuration) - elapsed)
+        } else {
+            // Fallback to default time
+            timeRemaining = 8.5 * 60
+        }
+        
+        // Reset timer if needed
+        if gameTimer == nil {
+            gameTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
+                if timeRemaining > 0 {
+                    timeRemaining -= 1
+                } else {
+                    // Timer finished - automatically start voting for all players
+                    isTimerFinished = true
+                    gameTimer?.invalidate()
+                    gameTimer = nil
+                    
+                    // Only the host can start voting, so check if current player is host
+                    if lobby.hostId == viewModel.currentUser?.uid {
+                        viewModel.startVoting()
+                    }
+                }
+            }
+        }
+    }
+    
+    private func stopGameTimer() {
+        gameTimer?.invalidate()
+        gameTimer = nil
+    }
+    
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
@@ -64,11 +100,18 @@ struct GamePlayingView: View {
                             .contentTransition(.numericText())
                         
                         if isTimerFinished {
-                            Text("Time's up!")
-                                .font(.subheadline)
-                                .fontWeight(.semibold)
-                                .foregroundColor(.red)
-                                .fontDesign(.rounded)
+                            VStack(spacing: 4) {
+                                Text("Time's up!")
+                                    .font(.subheadline)
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.red)
+                                    .fontDesign(.rounded)
+                                
+                                Text("Voting will start automatically...")
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                                    .fontDesign(.monospaced)
+                            }
                         } else {
                             Text("Minutes remaining")
                                 .font(.caption)
@@ -270,37 +313,60 @@ struct GamePlayingView: View {
             }
             .padding()
         }
+        .onAppear {
+            // Start the game timer when view appears
+            startGameTimer()
+        }
+        .onDisappear {
+            // Stop the timer when view disappears
+            stopGameTimer()
+        }
+        .onChange(of: lobby.status) { _, newStatus in
+            if newStatus == .playing {
+                // Game started, restart timer
+                stopGameTimer()
+                startGameTimer()
+            }
+        }
         .safeAreaInset(edge: .bottom) {
             VStack(spacing: 12) {
                 if isTimerFinished {
-                    Button(action: {
-                        viewModel.endGameForAll()
-                    }) {
-                        HStack {
-                            Image(systemName: "flag.checkered")
-                            Text("End Game")
-                                .fontWeight(.semibold)
+                    VStack(spacing: 8) {
+                        Text("Timer finished - Voting will start automatically")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                            .fontDesign(.monospaced)
+                            .multilineTextAlignment(.center)
+                        
+                        Button(action: {
+                            viewModel.endGameForAll()
+                        }) {
+                            HStack {
+                                Image(systemName: "flag.checkered")
+                                Text("End Game")
+                                    .fontWeight(.semibold)
+                            }
+                            .foregroundColor(.reverse)
+                            .frame(maxWidth: .infinity, minHeight: 48)
+                            .background(Color.red)
+                            .clipShape(RoundedRectangle(cornerRadius: 12))
                         }
-                        .foregroundColor(.reverse)
-                        .frame(maxWidth: .infinity, minHeight: 48)
-                        .background(Color.red)
-                        .clipShape(RoundedRectangle(cornerRadius: 12))
                     }
-                }
-                
-                if lobby.hostId == viewModel.currentUser?.uid {
-                    Button(action: {
-                        viewModel.startVoting()
-                    }) {
-                        HStack {
-                            Image(systemName: "hand.raised.fill")
-                            Text(NSLocalizedString("End Round For All", comment: ""))
-                                .fontWeight(.semibold)
+                } else {
+                    if lobby.hostId == viewModel.currentUser?.uid {
+                        Button(action: {
+                            viewModel.startVoting()
+                        }) {
+                            HStack {
+                                Image(systemName: "hand.raised.fill")
+                                Text(NSLocalizedString("Start voting for all", comment: ""))
+                                    .fontWeight(.semibold)
+                            }
+                            .foregroundColor(.reverse)
+                            .frame(maxWidth: .infinity, minHeight: 48)
+                            .background(Color.green)
+                            .clipShape(RoundedRectangle(cornerRadius: 12))
                         }
-                        .foregroundColor(.reverse)
-                        .frame(maxWidth: .infinity, minHeight: 48)
-                        .background(Color.green)
-                        .clipShape(RoundedRectangle(cornerRadius: 12))
                     }
                 }
             }

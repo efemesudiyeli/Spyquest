@@ -12,13 +12,67 @@ class MultiplayerGameViewModel: ObservableObject {
     @Published var currentPlayerName: String = ""
     @Published var serverTimeOffsetMs: Int64 = 0
     @Published var currentVote: String? = nil
+    @Published var isPremiumUser: Bool = false
     
     private var databaseRef = Database.database().reference()
     private var currentLobbyRef: DatabaseReference?
+    private var gameViewModel: GameViewModel? // Reference to GameViewModel
     
     init() {
         setupAuthStateListener()
         observeServerTimeOffset()
+        loadPremiumStatus()
+    }
+    
+    // MARK: - Premium Management
+    
+    func setGameViewModel(_ gameViewModel: GameViewModel) {
+        self.gameViewModel = gameViewModel
+        // Sync premium status immediately
+        syncPremiumStatus()
+        
+        // Listen for premium status changes
+        gameViewModel.premiumStatusChanged = { [weak self] isPremium in
+            DispatchQueue.main.async {
+                self?.isPremiumUser = isPremium
+                print("Premium status updated from GameViewModel: \(isPremium)")
+            }
+        }
+    }
+    
+    private func syncPremiumStatus() {
+        guard let gameViewModel = gameViewModel else { return }
+        isPremiumUser = gameViewModel.isPremium
+        print("Premium status synced: \(isPremiumUser)")
+    }
+    
+    private func loadPremiumStatus() {
+        // Try to get premium status from GameViewModel first
+        if let gameViewModel = gameViewModel {
+            isPremiumUser = gameViewModel.isPremium
+            print("Premium status loaded from GameViewModel: \(isPremiumUser)")
+        } else {
+            // Fallback to UserDefaults if GameViewModel not available
+            isPremiumUser = UserDefaults.standard.bool(forKey: "isPremiumUser")
+            print("Premium status loaded from UserDefaults: \(isPremiumUser)")
+        }
+    }
+    
+    func setPremiumStatus(_ isPremium: Bool) {
+        isPremiumUser = isPremium
+        print("Premium status set to: \(isPremium)")
+    }
+    
+    func createPlayerWithPremiumStatus(name: String, role: Role? = nil, playerLocationRole: String? = nil) -> Player {
+        // Always check current premium status before creating player
+        syncPremiumStatus()
+        
+        return Player(
+            name: name,
+            role: role,
+            playerLocationRole: playerLocationRole,
+            isPremium: isPremiumUser
+        )
     }
     
     private func setupAuthStateListener() {
@@ -80,7 +134,7 @@ class MultiplayerGameViewModel: ObservableObject {
             hostName: playerName,
             location: randomLocation,
             maxPlayers: playerCount,
-            players: [Player(name: playerName, role: .player)],
+            players: [createPlayerWithPremiumStatus(name: playerName, role: .player)],
             status: .waiting,
             createdAt: Date(),
             selectedLocationSet: selectedLocationSet
@@ -124,7 +178,7 @@ class MultiplayerGameViewModel: ObservableObject {
                 
                 if lobby.players.count < lobby.maxPlayers && lobby.status == .waiting {
                     var updatedLobby = lobby
-                    let newPlayer = Player(name: playerName, role: .player)
+                    let newPlayer = self.createPlayerWithPremiumStatus(name: playerName, role: .player)
                     updatedLobby.players.append(newPlayer)
                     var updatedReady = lobby.readyPlayers ?? [:]
                     updatedReady[playerName] = false
@@ -255,7 +309,7 @@ class MultiplayerGameViewModel: ObservableObject {
         currentLobbyRef?.updateChildValues([
             "status": "playing",
             "gameStartAt": ServerValue.timestamp(),
-            "gameDurationSeconds": Int(8.5 * 60)
+            "gameDurationSeconds": Int(1 * 60)
         ])
     }
     
@@ -323,14 +377,59 @@ class MultiplayerGameViewModel: ObservableObject {
                 
                 let mostVotedPlayer = voteCounts.max(by: { $0.value < $1.value })?.key ?? "No one"
                 let spyName = lobby.players.first(where: { $0.role == .spy })?.name ?? "Unknown"
-                let spyCaught = mostVotedPlayer == spyName
+                
+                // Check if there's a tie (multiple players with same highest vote count)
+                let maxVotes = voteCounts.values.max() ?? 0
+                let playersWithMaxVotes = voteCounts.filter { $0.value == maxVotes }.keys
+                let isTie = playersWithMaxVotes.count > 1
+                
+                // Check if spy was caught (spy is among the most voted players)
+                let spyCaught = playersWithMaxVotes.contains(spyName)
                 
                 // Check if spy made a correct guess
                 let spyGuessCorrect: Bool?
-                if let spyGuess = lobby.spyGuess {
+                if let spyGuess = lobby.spyGuess, !spyGuess.isEmpty {
                     spyGuessCorrect = spyGuess.lowercased() == lobby.location.nameKey.lowercased()
                 } else {
                     spyGuessCorrect = nil
+                }
+                
+                // Determine winner based on game rules
+                let spyWins: Bool
+                
+                if isTie {
+                    // Tie scenarios:
+                    if spyGuessCorrect == true {
+                        // Rule 2: Tie + Spy guesses correctly → Spy wins
+                        spyWins = true
+                    } else if spyGuessCorrect == false {
+                        // Rule 3: Tie + Spy guesses incorrectly → Players win
+                        spyWins = false
+                    } else {
+                        // Rule 1: Tie + No spy guess → Spy wins
+                        spyWins = true
+                    }
+                } else {
+                    // No tie scenarios:
+                    if spyCaught {
+                        if spyGuessCorrect == true {
+                            // Rule 4: Spy caught + correct guess → Spy wins
+                            spyWins = true
+                        } else {
+                            // Rule 5: Spy caught + incorrect guess → Players win
+                            // Rule 6: Spy caught + no guess → Players win
+                            spyWins = false
+                        }
+                    } else {
+                        // Spy not caught
+                        if spyGuessCorrect == true {
+                            // Spy not caught + correct guess → Spy wins
+                            spyWins = true
+                        } else {
+                            // Spy not caught + incorrect/no guess → Players win
+                            spyWins = false
+                        }
+                    }
                 }
                 
                 let votingResult = VotingResult(
@@ -338,7 +437,9 @@ class MultiplayerGameViewModel: ObservableObject {
                     spyName: spyName,
                     spyCaught: spyCaught,
                     voteCounts: voteCounts,
-                    spyGuessCorrect: spyGuessCorrect
+                    spyGuessCorrect: spyGuessCorrect,
+                    isTie: isTie,
+                    spyWins: spyWins
                 )
                 
                 self.currentLobbyRef?.updateChildValues([
@@ -696,6 +797,8 @@ struct VotingResult: Codable {
     let spyCaught: Bool
     let voteCounts: [String: Int]
     let spyGuessCorrect: Bool?
+    let isTie: Bool
+    let spyWins: Bool
     
     func toDictionary() -> [String: Any] {
         var dict: [String: Any] = [
@@ -707,6 +810,8 @@ struct VotingResult: Codable {
         if let spyGuessCorrect = spyGuessCorrect {
             dict["spyGuessCorrect"] = spyGuessCorrect
         }
+        dict["isTie"] = isTie
+        dict["spyWins"] = spyWins
         return dict
     }
     
@@ -719,13 +824,17 @@ struct VotingResult: Codable {
         }
         
         let spyGuessCorrect = dict["spyGuessCorrect"] as? Bool
+        let isTie = dict["isTie"] as? Bool ?? false
+        let spyWins = dict["spyWins"] as? Bool ?? false
         
         return VotingResult(
             mostVotedPlayer: mostVotedPlayer,
             spyName: spyName,
             spyCaught: spyCaught,
             voteCounts: voteCounts,
-            spyGuessCorrect: spyGuessCorrect
+            spyGuessCorrect: spyGuessCorrect,
+            isTie: isTie,
+            spyWins: spyWins
         )
     }
 }
@@ -751,7 +860,8 @@ extension Location {
 extension Player {
     func toDictionary() -> [String: Any] {
         var dict: [String: Any] = [
-            "name": name
+            "name": name,
+            "isPremium": isPremium
         ]
         
         if let role = role {
@@ -778,8 +888,9 @@ extension Player {
         }
         
         let playerLocationRole = dict["playerLocationRole"] as? String
+        let isPremium = dict["isPremium"] as? Bool ?? false
         
-        var player = Player(name: name, role: role)
+        var player = Player(name: name, role: role, isPremium: isPremium)
         player.playerLocationRole = playerLocationRole
         
         return player
