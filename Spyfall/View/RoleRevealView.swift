@@ -10,6 +10,8 @@ import SwiftUI
 struct RoleRevealView: View {
     let lobby: GameLobby
     @ObservedObject var viewModel: MultiplayerGameViewModel
+    @State private var revealCountdown: Int = 3
+    @State private var revealTimer: Timer?
     
     private func isAllReady(lobby: GameLobby) -> Bool {
         guard let ready = lobby.readyPlayers else { return false }
@@ -18,87 +20,57 @@ struct RoleRevealView: View {
     }
     
     var body: some View {
-        VStack(spacing: 30) {
-            VStack(spacing: 30) {
-                Text("Get Ready!")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                
-                Text("Your role will be revealed in:")
-                    .font(.title2)
-                    .foregroundColor(.secondary)
-                
-                Text("3")
-                    .font(.system(size: 80, weight: .bold))
-                    .foregroundColor(.blue)
-                
-                Text("Tap to continue when everyone is ready")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-                    .multilineTextAlignment(.center)
-            }
-            .padding()
-            .onTapGesture { }
+        VStack {
+            Text("Get Ready!")
+                .font(.largeTitle)
+                .fontWeight(.black)
+                .fontDesign(.rounded)
             
-            // Ready status and host control
-            VStack(spacing: 12) {
-                // Ready progress
-                if let ready = lobby.readyPlayers {
-                    let nonHostReady = ready.filter { $0.key != lobby.hostName }
-                    let readyCount = nonHostReady.values.filter { $0 }.count
-                    let total = lobby.players.count
-                    Text("\(readyCount + 1)/\(total) ready")
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                } else {
-                    let total = lobby.players.filter { $0.name != lobby.hostName }.count
-                    Text("0/\(total) ready")
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                }
+            Spacer()
+            
+            Text("\(max(revealCountdown, 1))")
+                .font(.system(size: 100, weight: .black))
+                .foregroundColor(.blue)
+                .fontDesign(.rounded)
+                .contentTransition(.numericText())
                 
-                // Ready button for non-hosts
-                if lobby.hostId != viewModel.currentUser?.uid {
-                    Button(action: {
-                        viewModel.markCurrentPlayerReady()
-                    }) {
-                        HStack {
-                            Image(systemName: "hand.thumbsup.fill")
-                            Text(NSLocalizedString("Ready", comment: ""))
-                        }
-                        .foregroundColor(.white)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color.blue)
-                        .cornerRadius(10)
-                    }
-                }
-                
-                // Host start button (host does not need to be ready)
-                if lobby.hostId == viewModel.currentUser?.uid {
-                    Button(action: {
-                        if isAllReady(lobby: lobby) {
-                            // Move status to playing; countdown will handle reveal and timer
-                            viewModel.tryStartIfAllReady()
-                        }
-                    }) {
-                        HStack {
-                            Image(systemName: "checkmark.circle.fill")
-                            Text(NSLocalizedString("Start", comment: ""))
-                        }
-                        .foregroundColor(.white)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(isAllReady(lobby: lobby) ? Color.green : Color.gray)
-                        .cornerRadius(10)
-                    }
-                    .disabled(!isAllReady(lobby: lobby))
-                }
+            
+            Spacer()
+            
+            Text("**Tip:** If someone answers oddly, don't correct them. Keep your own answer flexible.")
+                .fontDesign(.monospaced)
+                .multilineTextAlignment(.center)
+                .font(.footnote)
+                .foregroundColor(.secondary)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .onAppear {
+            print("Role Reveal View Appeared")
+            startRevealCountdown()
+        }
+        .onDisappear {
+            revealTimer?.invalidate()
+            revealTimer = nil
+        }
+    }
+    
+    private func startRevealCountdown() {
+        revealTimer?.invalidate()
+        revealCountdown = 3
+        revealTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+            if revealCountdown > 1 {
+                revealCountdown -= 1
+            } else {
+                timer.invalidate()
+                revealTimer = nil
+                revealCountdown = 0
+                // Transition to playing state
+                viewModel.startGamePlaying()
             }
-            .padding(.horizontal)
         }
     }
 }
+
 
 #Preview {
     let vm = MultiplayerGameViewModel()
@@ -127,3 +99,4 @@ struct RoleRevealView: View {
     
     return RoleRevealView(lobby: lobby, viewModel: vm)
 }
+

@@ -140,3 +140,4 @@ struct GamePlayingView: View {
     
     return GamePlayingView(lobby: lobby, viewModel: vm)
 }
+

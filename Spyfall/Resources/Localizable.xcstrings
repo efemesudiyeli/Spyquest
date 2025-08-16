@@ -69,6 +69,9 @@
         }
       }
     },
+    "**Tip:** If someone answers oddly, don't correct them. Keep your own answer flexible." : {
+
+    },
     "#" : {
 
     },
@@ -104,20 +107,7 @@
     "%lld roles" : {
 
     },
-    "%lld/%lld ready" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$lld/%2$lld ready"
-          }
-        }
-      }
-    },
     "%llds" : {
-
-    },
-    "0/%lld ready" : {
 
     },
     "1. Setup" : {
@@ -151,9 +141,6 @@
           }
         }
       }
-    },
-    "3" : {
-
     },
     "3. Gameplay" : {
       "localizations" : {
@@ -11367,9 +11354,6 @@
         }
       }
     },
-    "Start" : {
-
-    },
     "Start a new game and get a lobby code." : {
 
     },
@@ -11798,6 +11782,7 @@
       }
     },
     "Tap to continue when everyone is ready" : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -13803,6 +13788,7 @@
       }
     },
     "Your role will be revealed in:" : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {

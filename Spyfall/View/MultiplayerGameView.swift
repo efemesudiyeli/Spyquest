@@ -6,13 +6,10 @@ struct MultiplayerGameView: View {
     @ObservedObject var viewModel: MultiplayerGameViewModel
     @Environment(\.dismiss) private var dismiss
     @Environment(\.scenePhase) private var scenePhase
-    @State private var showingRole = false
     @State private var showingGameEnd = false
     @State private var timeRemaining: TimeInterval = 8.5 * 60
     @State private var isTimerFinished = false
     @State private var gameTimer: Timer?
-    @State private var revealCountdown: Int = 0
-    @State private var revealTimer: Timer?
     @State private var lobbyCodeCopied: Bool = false
     
     private var currentPlayer: Player? {
@@ -28,11 +25,7 @@ struct MultiplayerGameView: View {
                 case .revealing:
                     RoleRevealView(lobby: lobby, viewModel: viewModel)
                 case .playing:
-                    if showingRole {
-                        GamePlayingView(lobby: lobby, viewModel: viewModel)
-                    } else {
-                        CountdownView(countdown: revealCountdown)
-                    }
+                    GamePlayingView(lobby: lobby, viewModel: viewModel)
                 case .voting:
                     VotingView(lobby: lobby, viewModel: viewModel)
                 case .finished:
@@ -69,28 +62,21 @@ struct MultiplayerGameView: View {
         }
         .onChange(of: viewModel.currentLobby?.status) { _, newStatus in
             if newStatus == .playing {
-                // Begin 3-2-1 countdown, reveal roles afterwards, then start game timer
-                showingRole = false
-                startRevealCountdown()
+                // Start game timer
+                startGameTimer(reset: true)
             } else if newStatus == .waiting {
                 // Reset game states when restarting
-                showingRole = false
                 showingGameEnd = false
                 isTimerFinished = false
                 timeRemaining = 8.5 * 60
                 gameTimer?.invalidate()
                 gameTimer = nil
-                revealTimer?.invalidate()
-                revealTimer = nil
-                revealCountdown = 0
             } else if newStatus == .voting {
                 // Reset voting states
                 viewModel.currentVote = nil
-            } else if newStatus == .finished || newStatus == .cancelled || newStatus == .revealing {
+            } else if newStatus == .finished || newStatus == .cancelled {
                 gameTimer?.invalidate()
                 gameTimer = nil
-                revealTimer?.invalidate()
-                revealTimer = nil
             }
         }
         .onChange(of: viewModel.currentLobby?.gameStartAt) { _, _ in
@@ -102,7 +88,7 @@ struct MultiplayerGameView: View {
         .onChange(of: scenePhase) { _, newPhase in
             if newPhase == .active {
                 syncTimerWithServerIfNeeded()
-                if let lobby = viewModel.currentLobby, lobby.status == .playing, gameTimer == nil, showingRole {
+                if let lobby = viewModel.currentLobby, lobby.status == .playing, gameTimer == nil {
                     startGameTimer(reset: false)
                 }
             } else if newPhase == .background || newPhase == .inactive {
@@ -297,90 +283,6 @@ struct MultiplayerGameView: View {
 //            // Removed in-content Leave Lobby per design; use top-left toolbar button instead
 //        }
 //        .padding()
-//    }
-    
-//    private func roleRevealView(lobby: GameLobby) -> some View {
-//        VStack(spacing: 30) {
-//            VStack(spacing: 30) {
-//                Text("Get Ready!")
-//                    .font(.largeTitle)
-//                    .fontWeight(.bold)
-//                
-//                Text("Your role will be revealed in:")
-//                    .font(.title2)
-//                    .foregroundColor(.secondary)
-//                
-//                Text("3")
-//                    .font(.system(size: 80, weight: .bold))
-//                    .foregroundColor(.blue)
-//                
-//                Text("Tap to continue when everyone is ready")
-//                    .font(.subheadline)
-//                    .foregroundColor(.secondary)
-//                    .multilineTextAlignment(.center)
-//            }
-//            .padding()
-//            .onTapGesture { }
-//            
-//            // Ready status and host control
-//            VStack(spacing: 12) {
-//                // Ready progress
-//                if let ready = lobby.readyPlayers {
-//                    let nonHostReady = ready.filter { $0.key != lobby.hostName }
-//                    let readyCount = nonHostReady.values.filter { $0 }.count
-//                    let total = lobby.players.count
-//                    Text("\(readyCount + 1)/\(total) ready")
-//                        .font(.subheadline)
-//                        .foregroundColor(.secondary)
-//                } else {
-//                    let total = lobby.players.filter { $0.name != lobby.hostName }.count
-//                    Text("0/\(total) ready")
-//                        .font(.subheadline)
-//                        .foregroundColor(.secondary)
-//                }
-//                
-//                
-//                
-//                // Ready button for non-hosts
-//                if lobby.hostId != viewModel.currentUser?.uid {
-//                    Button(action: {
-//                        viewModel.markCurrentPlayerReady()
-//                    }) {
-//                        HStack {
-//                            Image(systemName: "hand.thumbsup.fill")
-//                            Text(NSLocalizedString("Ready", comment: ""))
-//                        }
-//                        .foregroundColor(.white)
-//                        .padding()
-//                        .frame(maxWidth: .infinity)
-//                        .background(Color.blue)
-//                        .cornerRadius(10)
-//                    }
-//                }
-//                
-//                // Host start button (host does not need to be ready)
-//                if lobby.hostId == viewModel.currentUser?.uid {
-//                    Button(action: {
-//                        if isAllReady(lobby: lobby) {
-//                            // Move status to playing; countdown will handle reveal and timer
-//                            viewModel.tryStartIfAllReady()
-//                        }
-//                    }) {
-//                        HStack {
-//                            Image(systemName: "checkmark.circle.fill")
-//                            Text(NSLocalizedString("Start", comment: ""))
-//                        }
-//                        .foregroundColor(.white)
-//                        .padding()
-//                        .frame(maxWidth: .infinity)
-//                        .background(isAllReady(lobby: lobby) ? Color.green : Color.gray)
-//                        .cornerRadius(10)
-//                    }
-//                    .disabled(!isAllReady(lobby: lobby))
-//                }
-//            }
-//            .padding(.horizontal)
-//        }
 //    }
     
     private func isAllReady(lobby: GameLobby) -> Bool {
@@ -699,37 +601,7 @@ struct MultiplayerGameView: View {
         }
     }
     
-    private func startRevealCountdown() {
-        revealTimer?.invalidate()
-        revealCountdown = 3
-        revealTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
-            if revealCountdown > 1 {
-                revealCountdown -= 1
-            } else {
-                timer.invalidate()
-                revealTimer = nil
-                revealCountdown = 0
-                // Show roles and start the main game timer
-                withAnimation(.easeInOut(duration: 0.25)) {
-                    showingRole = true
-                }
-                startGameTimer(reset: true)
-            }
-        }
-    }
-    
-    private func countdownView(lobby: GameLobby) -> some View {
-        VStack(spacing: 24) {
-            Text(NSLocalizedString("Get Ready!", comment: ""))
-                .font(.largeTitle)
-                .fontWeight(.bold)
-            Text("\(max(revealCountdown, 1))")
-                .font(.system(size: 96, weight: .bold))
-                .foregroundColor(.blue)
-                .transition(.scale)
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-    }
+
     
     private func formattedTime(_ time: TimeInterval) -> String {
         let minutes = Int(time) / 60

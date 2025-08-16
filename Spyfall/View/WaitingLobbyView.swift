@@ -199,3 +199,4 @@ struct WaitingLobbyView: View {
         WaitingLobbyView(lobby: lobby, viewModel: vm)
     }
 }
+
