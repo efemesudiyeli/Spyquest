@@ -47,6 +47,16 @@ struct RoleRevealView: View {
         .onAppear {
             print("Role Reveal View Appeared")
             startRevealCountdown()
+            
+            // Load and present ad for non-premium users
+            if !viewModel.isPremiumUser {
+                if let gameViewModel = viewModel.gameViewModel {
+                    Task {
+                        await gameViewModel.adCoordinator.loadAd()
+                        gameViewModel.adCoordinator.presentAd()
+                    }
+                }
+            }
         }
         .onDisappear {
             revealTimer?.invalidate()
