@@ -16,12 +16,16 @@ class MultiplayerGameViewModel: ObservableObject {
     
     private var databaseRef = Database.database().reference()
     private var currentLobbyRef: DatabaseReference?
+    private var connectionsRef: DatabaseReference?
+    private var myConnectionRef: DatabaseReference?
+    private var orphanSweepTimer: Timer?
     private var gameViewModel: GameViewModel? // Reference to GameViewModel
     
     init() {
         setupAuthStateListener()
         observeServerTimeOffset()
         loadPremiumStatus()
+        startOrphanSweepTimer()
     }
     
     // MARK: - Premium Management
@@ -153,6 +157,7 @@ class MultiplayerGameViewModel: ObservableObject {
                     self?.currentPlayerName = playerName
                     self?.currentLobby = newLobby
                     self?.currentLobbyRef = self?.databaseRef.child("lobbys").child(lobbyCode)
+                    self?.setupPresence(lobbyCode: lobbyCode)
                     self?.observeLobbyChanges(lobbyCode: lobbyCode)
                     completion(true)
                 }
@@ -197,6 +202,7 @@ class MultiplayerGameViewModel: ObservableObject {
                                 self.currentPlayerName = playerName
                                 self.currentLobby = updatedLobby
                                 self.observeLobbyChanges(lobbyCode: lobbyCode)
+                                self.setupPresence(lobbyCode: lobbyCode)
                                 completion(true)
                             }
                         }
@@ -231,6 +237,26 @@ class MultiplayerGameViewModel: ObservableObject {
                             self.autoCloseEmptyLobby()
                         } else if lobby.status == .playing && lobby.players.count < 2 {
                             self.cancelGameDueToInsufficientPlayers()
+                        } else if lobby.status == .playing || lobby.status == .revealing || lobby.status == .voting {
+                            // If no active connections, remove lobby to avoid orphaned games
+                            self.currentLobbyRef?.child("connections").observeSingleEvent(of: .value) { snapshot in
+                                if !snapshot.exists() {
+                                    self.currentLobbyRef?.removeValue()
+                                }
+                            }
+                        }
+                        
+                        // Host-side cleanup: delete finished/cancelled lobbies after grace period
+                        if lobby.hostId == self.currentUser?.uid,
+                           (lobby.status == .finished || lobby.status == .cancelled),
+                           let endedAt = lobby.statusEndedAt {
+                            let localNow = Date().timeIntervalSince1970
+                            let serverNow = localNow + TimeInterval(Double(self.serverTimeOffsetMs) / 1000.0)
+                            let elapsed = serverNow - endedAt
+                            let graceSeconds: TimeInterval = 5 * 60
+                            if elapsed >= graceSeconds {
+                                self.currentLobbyRef?.removeValue()
+                            }
                         }
                     }
                 } else {
@@ -261,6 +287,7 @@ class MultiplayerGameViewModel: ObservableObject {
         currentPlayerName = ""
         currentLobbyRef?.removeAllObservers()
         currentLobbyRef = nil
+        teardownPresence()
     }
     
     private func cancelGameDueToInsufficientPlayers() {
@@ -271,6 +298,7 @@ class MultiplayerGameViewModel: ObservableObject {
         
         currentLobbyRef?.updateChildValues([
             "status": "cancelled",
+            "statusEndedAt": ServerValue.timestamp(),
             "players": updatedLobby.players.map { player in
                 var updatedPlayer = player
                 updatedPlayer.role = nil
@@ -298,6 +326,7 @@ class MultiplayerGameViewModel: ObservableObject {
         
         currentLobbyRef?.updateChildValues([
             "status": "revealing",
+            "statusEndedAt": NSNull(),
             "players": updatedLobby.players.map { $0.toDictionary() }
         ])
     }
@@ -308,6 +337,7 @@ class MultiplayerGameViewModel: ObservableObject {
         
         currentLobbyRef?.updateChildValues([
             "status": "playing",
+            "statusEndedAt": NSNull(),
             "gameStartAt": ServerValue.timestamp(),
             "gameDurationSeconds": Int(1 * 60)
         ])
@@ -319,6 +349,7 @@ class MultiplayerGameViewModel: ObservableObject {
         
         currentLobbyRef?.updateChildValues([
             "status": "voting",
+            "statusEndedAt": NSNull(),
             "votingStartAt": ServerValue.timestamp(),
             "votingDurationSeconds": 60,
             "votes": [:],
@@ -445,6 +476,7 @@ class MultiplayerGameViewModel: ObservableObject {
                 
                 self.currentLobbyRef?.updateChildValues([
                     "status": "finished",
+                    "statusEndedAt": ServerValue.timestamp(),
                     "votingResult": votingResult.toDictionary()
                 ])
             }
@@ -502,7 +534,8 @@ class MultiplayerGameViewModel: ObservableObject {
             "votingDurationSeconds": NSNull(),
             "votes": NSNull(),
             "votingResult": NSNull(),
-            "spyGuess": NSNull()
+            "spyGuess": NSNull(),
+            "statusEndedAt": NSNull()
         ])
     }
     
@@ -556,6 +589,7 @@ class MultiplayerGameViewModel: ObservableObject {
         currentPlayerName = ""
         currentLobbyRef?.removeAllObservers()
         currentLobbyRef = nil
+        teardownPresence()
     }
     
     func returnToLobbyForAll() {
@@ -589,14 +623,16 @@ class MultiplayerGameViewModel: ObservableObject {
             "votingDurationSeconds": NSNull(),
             "votes": NSNull(),
             "votingResult": NSNull(),
-            "spyGuess": NSNull()
+            "spyGuess": NSNull(),
+            "statusEndedAt": NSNull()
         ])
     }
     
     func endGameForAll() {
         guard let lobby = currentLobby else { return }
         currentLobbyRef?.updateChildValues([
-            "status": "finished"
+            "status": "finished",
+            "statusEndedAt": ServerValue.timestamp()
         ])
     }
     
@@ -712,6 +748,87 @@ class MultiplayerGameViewModel: ObservableObject {
     }
 }
 
+// MARK: - Presence Tracking
+extension MultiplayerGameViewModel {
+    private func setupPresence(lobbyCode: String) {
+        guard !currentPlayerName.isEmpty else { return }
+        connectionsRef = databaseRef.child("lobbys").child(lobbyCode).child("connections")
+        myConnectionRef = connectionsRef?.child(currentPlayerName)
+        // Mark online
+        myConnectionRef?.setValue(true)
+        // Ensure removal when app disconnects unexpectedly
+        myConnectionRef?.onDisconnectRemoveValue()
+        // Optionally track lastSeen
+        let lastSeenRef = databaseRef.child("lobbys").child(lobbyCode).child("lastSeen").child(currentPlayerName)
+        lastSeenRef.setValue(ServerValue.timestamp())
+        lastSeenRef.onDisconnectSetValue(ServerValue.timestamp())
+    }
+    
+    private func teardownPresence() {
+        myConnectionRef?.removeValue()
+        myConnectionRef = nil
+        connectionsRef = nil
+    }
+}
+
+// MARK: - Orphan Lobby Sweeper (client-side, no Cloud Functions)
+extension MultiplayerGameViewModel {
+    private func startOrphanSweepTimer() {
+        stopOrphanSweepTimer()
+        orphanSweepTimer = Timer.scheduledTimer(withTimeInterval: 60.0, repeats: true) { [weak self] _ in
+            self?.performOrphanSweep()
+        }
+        if let orphanSweepTimer = orphanSweepTimer {
+            RunLoop.main.add(orphanSweepTimer, forMode: .common)
+        }
+    }
+    
+    private func stopOrphanSweepTimer() {
+        orphanSweepTimer?.invalidate()
+        orphanSweepTimer = nil
+    }
+    
+    private func performOrphanSweep() {
+        guard let userId = currentUser?.uid else { return }
+        let lobbysRef = databaseRef.child("lobbys")
+        lobbysRef.observeSingleEvent(of: .value) { [weak self] snapshot in
+            guard let self = self else { return }
+            let localNow = Date().timeIntervalSince1970
+            let serverNow = localNow + TimeInterval(Double(self.serverTimeOffsetMs) / 1000.0)
+            let graceSeconds: TimeInterval = 5 * 60
+            
+            var deletions: [DatabaseReference] = []
+            for child in snapshot.children {
+                guard let lobbySnap = child as? DataSnapshot,
+                      let dict = lobbySnap.value as? [String: Any],
+                      let lobby = GameLobby.fromDictionary(dict) else { continue }
+                
+                // Only sweep lobbies owned by this user (host-based sweep)
+                guard lobby.hostId == userId else { continue }
+                
+                // If active status and no connections → delete
+                if lobby.status == .revealing || lobby.status == .playing || lobby.status == .voting {
+                    let connectionsExists = lobbySnap.childSnapshot(forPath: "connections").exists()
+                    if connectionsExists == false {
+                        deletions.append(lobbySnap.ref)
+                        continue
+                    }
+                }
+                
+                // If finished/cancelled and grace exceeded → delete
+                if (lobby.status == .finished || lobby.status == .cancelled), let endedAt = lobby.statusEndedAt {
+                    if serverNow - endedAt >= graceSeconds {
+                        deletions.append(lobbySnap.ref)
+                        continue
+                    }
+                }
+            }
+            // Execute deletions
+            for ref in deletions { ref.removeValue() }
+        }
+    }
+}
+
 struct GameLobby: Identifiable, Codable {
     let id: String
     let hostId: String
@@ -729,6 +846,7 @@ struct GameLobby: Identifiable, Codable {
     var votes: [String: String]? = nil
     var votingResult: VotingResult? = nil
     var spyGuess: String? = nil
+    var statusEndedAt: TimeInterval? = nil
     var selectedLocationSet: LocationSets
     
     enum GameStatus: String, Codable, CaseIterable {
@@ -789,6 +907,9 @@ struct GameLobby: Identifiable, Codable {
         if let spyGuess = spyGuess {
             dict["spyGuess"] = spyGuess
         }
+        if let statusEndedAt = statusEndedAt {
+            dict["statusEndedAt"] = statusEndedAt
+        }
         return dict
     }
     
@@ -844,6 +965,9 @@ struct GameLobby: Identifiable, Codable {
         }
         if let spyGuess = dict["spyGuess"] as? String {
             lobby.spyGuess = spyGuess
+        }
+        if let statusEndedAt = dict["statusEndedAt"] as? TimeInterval {
+            lobby.statusEndedAt = statusEndedAt / ((statusEndedAt > 1000000000000) ? 1000.0 : 1.0)
         }
         return lobby
     }
