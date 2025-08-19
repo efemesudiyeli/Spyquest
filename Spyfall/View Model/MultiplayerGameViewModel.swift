@@ -19,7 +19,7 @@ class MultiplayerGameViewModel: ObservableObject {
     private var connectionsRef: DatabaseReference?
     private var myConnectionRef: DatabaseReference?
     private var orphanSweepTimer: Timer?
-    private var gameViewModel: GameViewModel? // Reference to GameViewModel
+    var gameViewModel: GameViewModel? // Reference to GameViewModel - made public for ad access
     
     init() {
         setupAuthStateListener()

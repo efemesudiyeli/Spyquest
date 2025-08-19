@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import RevenueCatUI
 
 struct GamePlayingView: View {
     let lobby: GameLobby
@@ -17,6 +18,7 @@ struct GamePlayingView: View {
     @State private var showRestartConfirmation: Bool = false
     @State private var showReturnToLobbyConfirmation: Bool = false
     @State private var showingNotepad: Bool = true
+    @State private var displayPaywall: Bool = false
     
     private var currentPlayer: Player? {
         lobby.players.first { $0.name == viewModel.currentPlayerName }
@@ -318,6 +320,11 @@ struct GamePlayingView: View {
         .onAppear {
             // Start the game timer when view appears
             startGameTimer()
+            
+            // Show paywall for non-premium users
+            if !viewModel.isPremiumUser {
+                displayPaywall = true
+            }
         }
         .onDisappear {
             // Stop the timer when view disappears
@@ -426,6 +433,14 @@ struct GamePlayingView: View {
             }
         } message: {
             Text("Are you sure you want to return to the lobby? This will end the current game and return to the lobby.")
+        }
+        .sheet(isPresented: $displayPaywall) {
+            PaywallView(displayCloseButton: true).tint(Color.red)
+        }
+        .onChange(of: displayPaywall) { _, isPresented in
+            if !isPresented {
+                viewModel.gameViewModel?.checkPurchaseStatus()
+            }
         }
     }
 }

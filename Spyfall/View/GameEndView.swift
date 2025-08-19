@@ -217,7 +217,7 @@ struct GameEndView: View {
                                             }
                                             Text(spyGuess)
                                                 .fontWeight(.semibold)
-                                                .foregroundColor(.orange)
+                                                .foregroundColor(.primary)
                                         }
                                     }
                                 }
@@ -274,7 +274,7 @@ struct GameEndView: View {
                             }
                             .foregroundColor(.reverse)
                             .frame(maxWidth: .infinity, minHeight: 44)
-                            .background(Color.blue)
+                            .background(Color.reverse2)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                         }
                         
@@ -288,8 +288,8 @@ struct GameEndView: View {
                                     .fontWeight(.semibold)
                             }
                             .foregroundColor(.reverse)
-                            .frame(maxWidth: .infinity, minHeight: 44)
-                            .background(Color.orange)
+                            .frame(maxWidth: .infinity, minHeight: 46)
+                            .background(Color.reverse2)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                         }
                     }
