@@ -107,9 +107,6 @@
     "%lld characters" : {
 
     },
-    "%lld roles" : {
-
-    },
     "%llds" : {
 
     },
@@ -10998,6 +10995,9 @@
         }
       }
     },
+    "Skip Guess" : {
+
+    },
     "Slave" : {
       "extractionState" : "translated",
       "localizations" : {
@@ -13095,9 +13095,6 @@
           }
         }
       }
-    },
-    "Try to guess the location before time runs out!" : {
-
     },
     "Tumbleweed Canyon" : {
       "extractionState" : "manual",
