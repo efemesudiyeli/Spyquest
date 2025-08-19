@@ -321,7 +321,8 @@ class MultiplayerGameViewModel: ObservableObject {
             "status": "voting",
             "votingStartAt": ServerValue.timestamp(),
             "votingDurationSeconds": 60,
-            "votes": [:]
+            "votes": [:],
+            "spyGuess": NSNull()
         ])
     }
     
@@ -353,8 +354,8 @@ class MultiplayerGameViewModel: ObservableObject {
                 let totalPlayers = lobby.players.count
                 let majorityThreshold = (totalPlayers / 2) + 1
                 
-                // If majority has voted, reduce voting time to 10 seconds
-                if voteCount >= majorityThreshold {
+                // If majority has voted AND spy submitted a choice (guess or opt-out), reduce voting time to 10 seconds
+                if voteCount >= majorityThreshold, (self.currentLobby?.spyGuess != nil) {
                     self.currentLobbyRef?.updateChildValues([
                         "votingDurationSeconds": 10
                     ])
@@ -614,6 +615,20 @@ class MultiplayerGameViewModel: ObservableObject {
         checkAutoEndVoting()
     }
     
+    // Spy explicitly chooses not to guess any location
+    func spyOptOutGuess() {
+        guard let lobby = currentLobby,
+              lobby.status == .voting,
+              let currentPlayer = lobby.players.first(where: { $0.name == currentPlayerName }),
+              currentPlayer.role == .spy else { return }
+        
+        currentLobbyRef?.updateChildValues([
+            "spyGuess": ""
+        ])
+        
+        checkAutoEndVoting()
+    }
+    
     private func checkAutoEndVoting() {
         guard let lobby = currentLobby,
               lobby.status == .voting else { return }
@@ -626,9 +641,9 @@ class MultiplayerGameViewModel: ObservableObject {
                 let voteCount = votesData.count
                 let totalPlayers = lobby.players.count
                 
-                // If everyone has voted (including spy), end voting automatically
-                if voteCount >= totalPlayers && lobby.hostId == self.currentUser?.uid {
-                    print("DEBUG: Auto-ending voting - everyone has voted and spy has guessed")
+                // If everyone has voted and spy has submitted a choice (guess or opt-out), end voting automatically
+                if voteCount >= totalPlayers && (self.currentLobby?.spyGuess != nil) && lobby.hostId == self.currentUser?.uid {
+                    print("DEBUG: Auto-ending voting - everyone has voted and spy submitted choice")
                     self.endVotingAndReveal()
                 }
             }
@@ -656,9 +671,8 @@ class MultiplayerGameViewModel: ObservableObject {
             }
         }
         
-        // Check if everyone has voted and spy has made a guess
-        if let spyGuess = lobby.spyGuess, !spyGuess.isEmpty {
-            // Get current votes count from Firebase
+        // Check if everyone has voted and spy submitted a choice (guess or opt-out)
+        if lobby.spyGuess != nil {
             currentLobbyRef?.child("votes").observeSingleEvent(of: .value) { [weak self] snapshot in
                 guard let self = self else { return }
                 
@@ -668,7 +682,7 @@ class MultiplayerGameViewModel: ObservableObject {
                     
                     // If everyone has voted (including spy), end voting
                     if voteCount >= totalPlayers && lobby.hostId == self.currentUser?.uid {
-                        print("DEBUG: Everyone has voted and spy has guessed, ending voting automatically")
+                        print("DEBUG: Everyone has voted and spy submitted choice, ending voting automatically")
                         self.endVotingAndReveal()
                     }
                 }
