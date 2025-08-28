@@ -427,6 +427,10 @@ class MultiplayerGameViewModel: ObservableObject {
                 }
                 
                 // Determine winner based on game rules
+                print("DEBUG: Voting Results - Spy: \(spyName), Most Voted: \(mostVotedPlayer)")
+                print("DEBUG: Spy Caught: \(spyCaught), Is Tie: \(isTie)")
+                print("DEBUG: Spy Guess: \(lobby.spyGuess ?? "nil"), Correct: \(spyGuessCorrect?.description ?? "nil")")
+                
                 let spyWins: Bool
                 
                 if isTie {
@@ -457,12 +461,17 @@ class MultiplayerGameViewModel: ObservableObject {
                         if spyGuessCorrect == true {
                             // Spy not caught + correct guess → Spy wins
                             spyWins = true
-                        } else {
-                            // Spy not caught + incorrect/no guess → Players win
+                        } else if spyGuessCorrect == false {
+                            // Spy not caught + incorrect guess → Players win
                             spyWins = false
+                        } else {
+                            // Spy not caught + no guess → Spy wins (spy successfully hid)
+                            spyWins = true
                         }
                     }
                 }
+                
+                print("DEBUG: Final Result - Spy Wins: \(spyWins)")
                 
                 let votingResult = VotingResult(
                     mostVotedPlayer: mostVotedPlayer,
