@@ -272,9 +272,9 @@ struct GameEndView: View {
                                 Text("Restart Game")
                                     .fontWeight(.semibold)
                             }
-                            .foregroundColor(.reverse)
+                            .foregroundColor(.primary)
                             .frame(maxWidth: .infinity, minHeight: 44)
-                            .background(Color.reverse2)
+                            .background(Color(.systemGray6))
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                         }
                         
@@ -287,9 +287,9 @@ struct GameEndView: View {
                                 Text("Back to Lobby")
                                     .fontWeight(.semibold)
                             }
-                            .foregroundColor(.reverse)
+                            .foregroundColor(.primary)
                             .frame(maxWidth: .infinity, minHeight: 46)
-                            .background(Color.reverse2)
+                            .background(Color(.systemGray6))
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                         }
                     }

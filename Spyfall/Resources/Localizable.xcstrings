@@ -2637,6 +2637,7 @@
       }
     },
     "Change Your Plan" : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -4536,6 +4537,9 @@
           }
         }
       }
+    },
+    "Error: Role not assigned" : {
+
     },
     "Event Organizer" : {
       "extractionState" : "manual",
@@ -7488,6 +7492,9 @@
           }
         }
       }
+    },
+    "Manage Subscription" : {
+
     },
     "Manager" : {
       "extractionState" : "manual",

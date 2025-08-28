@@ -19,11 +19,9 @@ struct CreateGameView: View {
     
     
     var body: some View {
-        
+        ScrollView {
             VStack {
                 Spacer()
-                
-                
                 
                 VStack(alignment: .leading, spacing: 12) {
                     
@@ -72,11 +70,14 @@ struct CreateGameView: View {
                         Text("You'll need at least 3 players. but the game is best played with 4-6 players.")
                             .fixedSize(horizontal: false, vertical: true)
                         
-                        ForEach(0..<viewModel.players.count, id: \.self) { index in
-                            TextField("Player \(index + 1) Name", text: $viewModel.players[index].name)
-                                .textFieldStyle(.roundedBorder)
-                                .padding(.vertical, 1)
+                        VStack(spacing: 8) {
+                            ForEach(0..<viewModel.players.count, id: \.self) { index in
+                                TextField("Player \(index + 1) Name", text: $viewModel.players[index].name)
+                                    .textFieldStyle(.roundedBorder)
+                                    .frame(maxWidth: 300)
+                            }
                         }
+                        .padding(.vertical, 8)
                         
                         HStack {
                             Spacer()
@@ -139,6 +140,7 @@ struct CreateGameView: View {
                 .ignoresSafeArea(.keyboard)
                 .foregroundStyle(.primary)
             }
+        }
             
             .navigationTitle("Create Game")
             .navigationBarTitleDisplayMode(displayModeTitle)
