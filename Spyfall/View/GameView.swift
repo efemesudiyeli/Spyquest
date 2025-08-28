@@ -12,47 +12,78 @@ struct GameView: View {
     @ObservedObject var viewModel: GameViewModel
     @State var isPresented: Bool = false
     @State var isRestartAlertPresented: Bool = false
+    @State private var showingLocations = false
+    @State private var waitingForSheetClose = false
     
     var body: some View {
-        VStack  {
-            Label("\(viewModel.formattedTimeInterval(viewModel.timeRemaining))", systemImage: "hourglass")
-                .font(.title)
-                .bold()
-                .foregroundStyle(.primary)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
-                .contentTransition(.numericText())
+        VStack(spacing: 0) {
+            // Timer Section
+            VStack(spacing: 8) {
+                Label("\(viewModel.formattedTimeInterval(viewModel.timeRemaining))", systemImage: "hourglass")
+                    .font(.title)
+                    .bold()
+                    .foregroundStyle(.primary)
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                    .contentTransition(.numericText())
+                
+                Text("Tap to see role.")
+                    .font(.title2)
+                    .foregroundColor(.secondary)
+            }
+            .padding(.top)
             
-            Spacer()
-            
-            Text("Tap to see role.")
-                .font(.title2)
-            
-            ForEach(viewModel.players, id: \.self) { player in
-                Button(action: {
-                    viewModel.showingPlayer = player
-                    if viewModel.showingPlayer != nil {
-                        isPresented = true
+            // Players Grid
+            ScrollView {
+                LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 12), count: 2), spacing: 12) {
+                    ForEach(viewModel.players, id: \.self) { player in
+                        Button(action: {
+                            viewModel.showingPlayer = player
+                            if viewModel.showingPlayer != nil {
+                                isPresented = true
+                            }
+                        }, label: {
+                            VStack(spacing: 8) {
+                                Circle()
+                                    .fill(Color.blue.opacity(0.1))
+                                    .frame(width: 60, height: 60)
+                                    .overlay(
+                                        Text(String(player.name.prefix(1)).uppercased())
+                                            .font(.title2)
+                                            .fontWeight(.bold)
+                                            .foregroundColor(.blue)
+                                    )
+                                
+                                Text(player.name)
+                                    .font(.headline)
+                                    .foregroundColor(.primary)
+                                    .multilineTextAlignment(.center)
+                                    .lineLimit(2)
+                            }
+                            .padding()
+                            .frame(maxWidth: .infinity, minHeight: 120)
+                            .background(Color(.systemGray6))
+                            .clipShape(RoundedRectangle(cornerRadius: 16))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 16)
+                                    .stroke(Color(.systemGray4), lineWidth: 1)
+                            )
+                        })
+                        .buttonStyle(PlainButtonStyle())
                     }
-                }, label: {
-                    Text("\(player.name)")
-                        .frame(minWidth: 160)
-                })
-                .padding(.vertical, 5)
-                .buttonStyle(BorderedProminentButtonStyle())
+                }
+                .padding(.horizontal)
+                .padding(.vertical, 20)
             }
             
-            Spacer()
-            
+            // Restart Button
             Button(action: {
                 isRestartAlertPresented.toggle()
             }, label: {
                 Image(systemName: "arrow.counterclockwise.circle.fill")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 80)
+                    .font(.system(size: 70))
+                    .foregroundColor(.primary)
             })
-            .padding(.bottom)
-            .foregroundStyle(.primary)
+            .padding(.bottom, 20)
         }
         
         .alert("Time's up!", isPresented: $viewModel.isTimerFinished) {
@@ -92,7 +123,12 @@ struct GameView: View {
                         .bold()
                     } else {
                         Text("Location: \(viewModel.selectedLocation.name)")
-                        Text("Your role is: \(showingPlayer.playerLocationRole!)")
+                        if let role = showingPlayer.playerLocationRole {
+                            Text("Your role is: \(role)")
+                        } else {
+                            Text("Error: Role not assigned")
+                                .foregroundColor(.red)
+                        }
                     }
                 } else {
                     Text("Player not found")
@@ -104,14 +140,31 @@ struct GameView: View {
         })
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
-                NavigationLink {
-                    LocationsView(viewModel: viewModel, locationSet: CurrentSelectedLocationSet)
-                } label: {
+                Button(action: {
+                    if isPresented {
+                        isPresented = false
+                        waitingForSheetClose = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                            if waitingForSheetClose {
+                                showingLocations = true
+                                waitingForSheetClose = false
+                            }
+                        }
+                    } else {
+                        showingLocations = true
+                    }
+                }) {
                     Text(NSLocalizedString("Locations", comment: ""))
                 }
             }
         }
         .padding()
+        .sheet(isPresented: $showingLocations) {
+            NavigationView {
+                LocationsView(viewModel: viewModel, locationSet: CurrentSelectedLocationSet)
+            }
+            .presentationDragIndicator(.visible)
+        }
         .onAppear {
             viewModel.startNewGame()
         }
@@ -124,4 +177,5 @@ struct GameView: View {
         GameView(viewModel: GameViewModel(isSampleData: true))
     }
 }
+
 

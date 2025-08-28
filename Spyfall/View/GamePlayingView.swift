@@ -373,9 +373,9 @@ struct GamePlayingView: View {
                                     Text(NSLocalizedString("Start voting for all", comment: ""))
                                         .fontWeight(.semibold)
                                 }
-                                .foregroundColor(.reverse)
+                                .foregroundColor(.primary)
                                 .frame(maxWidth: .infinity, minHeight: 48)
-                                .background(Color.green)
+                                .background(Color(.systemGray6))
                                 .clipShape(RoundedRectangle(cornerRadius: 12))
                             }
                             
@@ -389,9 +389,9 @@ struct GamePlayingView: View {
                                         Text("Restart Game")
                                             .fontWeight(.semibold)
                                     }
-                                    .foregroundColor(.reverse)
+                                    .foregroundColor(.primary)
                                     .frame(maxWidth: .infinity, minHeight: 44)
-                                    .background(Color.blue)
+                                    .background(Color(.systemGray6))
                                     .clipShape(RoundedRectangle(cornerRadius: 10))
                                 }
                                 
@@ -404,9 +404,9 @@ struct GamePlayingView: View {
                                         Text("End Game & Return")
                                             .fontWeight(.semibold)
                                     }
-                                    .foregroundColor(.reverse)
+                                    .foregroundColor(.primary)
                                     .frame(maxWidth: .infinity, minHeight: 44)
-                                    .background(Color.orange)
+                                    .background(Color(.systemGray6))
                                     .clipShape(RoundedRectangle(cornerRadius: 10))
                                 }
                             }

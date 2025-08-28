@@ -124,7 +124,7 @@ struct MainMenuView: View {
                             
                             VStack {
                                 if viewModel.isPremium {
-                                    Text("Change Your Plan")
+                                    Text("Manage Subscription")
                                         .foregroundStyle(Color.premiumReverse)
                                 } else {
                                     Text("Unlock All Features")
