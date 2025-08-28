@@ -10,6 +10,7 @@ import SwiftUI
 struct LocationsView<ViewModel: ObservableObject>: View {
     @ObservedObject var viewModel: ViewModel
     let locationSet: LocationSets
+    @Environment(\.dismiss) private var dismiss
     
     let columns = [
         GridItem(.flexible()),
@@ -38,6 +39,13 @@ struct LocationsView<ViewModel: ObservableObject>: View {
         }
         .navigationTitle(NSLocalizedString("Locations", comment: ""))
         .navigationBarTitleDisplayMode(.automatic)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(NSLocalizedString("Done", comment: "")) {
+                    dismiss()
+                }
+            }
+        }
     }
 }
 

@@ -11,6 +11,7 @@ struct MultiplayerGameView: View {
     @State private var isTimerFinished = false
     @State private var gameTimer: Timer?
     @State private var lobbyCodeCopied: Bool = false
+    @State private var showingLocations = false
     
     private var currentPlayer: Player? {
         viewModel.currentLobby?.players.first { $0.name == viewModel.currentPlayerName }
@@ -50,9 +51,9 @@ struct MultiplayerGameView: View {
                 .foregroundColor(.red)
             }
             ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink {
-                    LocationsView(viewModel: viewModel, locationSet: viewModel.currentLobby?.selectedLocationSet ?? .spyfallOne)
-                } label: {
+                Button(action: {
+                    showingLocations = true
+                }) {
                     Text(NSLocalizedString("Locations", comment: ""))
                 }
             }
@@ -74,9 +75,13 @@ struct MultiplayerGameView: View {
             } else if newStatus == .voting {
                 // Reset voting states
                 viewModel.currentVote = nil
+                // Close locations sheet when voting starts
+                showingLocations = false
             } else if newStatus == .finished || newStatus == .cancelled {
                 gameTimer?.invalidate()
                 gameTimer = nil
+                // Close locations sheet when game ends
+                showingLocations = false
             }
         }
         .onChange(of: viewModel.currentLobby?.gameStartAt) { _, _ in
@@ -103,6 +108,11 @@ struct MultiplayerGameView: View {
             }
         } message: {
             Text(viewModel.errorMessage)
+        }
+        .sheet(isPresented: $showingLocations) {
+            NavigationView {
+                LocationsView(viewModel: viewModel, locationSet: viewModel.currentLobby?.selectedLocationSet ?? .spyfallOne)
+            }
         }
     }
 
