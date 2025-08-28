@@ -504,7 +504,11 @@ class MultiplayerGameViewModel: ObservableObject {
         let randomIndex = Int.random(in: 0..<availableLocations.count)
         let newLocation = availableLocations[randomIndex]
         
+        print("DEBUG: RestartGame - Selected new location: \(newLocation.nameKey)")
+        print("DEBUG: RestartGame - New location roles: \(newLocation.roles)")
+        
         var updatedLobby = lobby
+        updatedLobby.location = newLocation  // Update the location in the lobby
         updatedLobby.status = .revealing
         updatedLobby.readyPlayers = nil
         
@@ -833,7 +837,7 @@ struct GameLobby: Identifiable, Codable {
     let id: String
     let hostId: String
     let hostName: String
-    let location: Location
+    var location: Location
     let maxPlayers: Int
     var players: [Player]
     var status: GameStatus
@@ -861,12 +865,19 @@ struct GameLobby: Identifiable, Codable {
     mutating func assignRoles() {
         let spyIndex = Int.random(in: 0..<players.count)
         
+        print("DEBUG: Assigning roles for location: \(location.nameKey)")
+        print("DEBUG: Available roles: \(location.roles)")
+        print("DEBUG: Localized roles: \(location.localizedRoles)")
+        
         for index in players.indices {
             if index == spyIndex {
                 players[index].role = .spy
+                print("DEBUG: Player \(players[index].name) assigned as SPY")
             } else {
                 players[index].role = .player
-                players[index].playerLocationRole = location.roles.randomElement()
+                let assignedRole = location.localizedRoles.randomElement()
+                players[index].playerLocationRole = assignedRole
+                print("DEBUG: Player \(players[index].name) assigned role: \(assignedRole ?? "nil")")
             }
         }
     }
