@@ -38,7 +38,7 @@ struct GameView: View {
                     ForEach(viewModel.players, id: \.self) { player in
                         Button(action: {
                             viewModel.showingPlayer = player
-                            if viewModel.showingPlayer != nil {
+                            if viewModel.showingPlayer != nil && isPresented == false {
                                 isPresented = true
                             }
                         }, label: {
