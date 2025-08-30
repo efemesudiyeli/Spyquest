@@ -45,7 +45,7 @@ struct RoleRevealView: View {
                 .foregroundColor(.secondary)
         }
         .onAppear {
-            print("Role Reveal View Appeared")
+
             startRevealCountdown()
         }
         .onDisappear {

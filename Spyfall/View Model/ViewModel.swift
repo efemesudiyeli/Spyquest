@@ -176,14 +176,14 @@ class GameViewModel: ObservableObject {
             if let product = products.first {
                 self.product = product
             } else {
-                print("Product not found")
+
             }
         }
     }
     
     func purchaseProduct() {
         guard let product = product else {
-            print("Product not available")
+
             return
         }
         
@@ -192,11 +192,7 @@ class GameViewModel: ObservableObject {
             self.isPurchasing = false
             
             if let error = error {
-                print("Error purchasing: \(error.localizedDescription)")
-            } else if userCancelled {
-                print("User cancelled purchase.")
-            } else if let purchaserInfo = purchaserInfo {
-                print("Purchase successful: \(purchaserInfo)")
+
                 self.isPremium = true
                 self.checkPurchaseStatus()
             }
@@ -206,14 +202,11 @@ class GameViewModel: ObservableObject {
     func checkPurchaseStatus() {
         Purchases.shared.getCustomerInfo { (customerInfo, error) in
             if let error = error {
-                print("Failed to fetch customer info: \(error.localizedDescription)")
             } else if let customerInfo = customerInfo {
                 if customerInfo.entitlements["Pro"]?.isActive == true {
                     self.isPremium = true
-                    print("Customer purchased already.")
                 } else {
                     self.isPremium = false
-                    print("Customer not purchased.")
                 }
             }
         }
@@ -271,14 +264,14 @@ class AdCoordinator: NSObject, GADFullScreenContentDelegate {
                 withAdUnitID: "ca-app-pub-7178351830795639/4872282217", request: GADRequest())
             self.ad?.fullScreenContentDelegate = self
         } catch {
-            print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+
         }
     }
     
     func presentAd() {
         
         guard let fullScreenAd = ad else {
-            return print("Ad wasn't ready")
+            return
         }
         
         // View controller is an optional parameter. Pass in nil.
@@ -291,29 +284,29 @@ class AdCoordinator: NSObject, GADFullScreenContentDelegate {
     // MARK: - GADFullScreenContentDelegate methods
     
     func adDidRecordImpression(_ ad: GADFullScreenPresentingAd) {
-        print("\(#function) called")
+
     }
     
     func adDidRecordClick(_ ad: GADFullScreenPresentingAd) {
-        print("\(#function) called")
+
     }
     
     func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
-        print("\(#function) called, \(error.localizedDescription)")
+
         
     }
     
     func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        print("\(#function) called")
+
         
     }
     
     func adWillDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        print("\(#function) called")
+
     }
     
     func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        print("\(#function) called")
+
         onAdDismissed?()
     }
     
