@@ -107,7 +107,7 @@ struct GameView: View {
             })
             
             Button(action: {
-                print("Restart Cancelled")
+
             }, label: {
                 Text("Cancel")
             })

@@ -28,7 +28,7 @@ struct SettingsView: View {
             if UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             } else {
-                print("Can't open mail app.")
+
             }
         }
     }

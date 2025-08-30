@@ -221,10 +221,7 @@ struct SpyGuessSheet: View {
             }
         }
         .onAppear {
-            print("DEBUG: SpyGuessSheet loaded")
-            print("DEBUG: Current game location: \(lobby.location.nameKey)")
-            print("DEBUG: Selected location set: \(lobby.selectedLocationSet.rawValue)")
-            print("DEBUG: Available locations count: \(lobby.selectedLocationSet.locations.count)")
+
             // Initialize selection from existing spy guess if any
             selectedGuess = lobby.spyGuess
         }

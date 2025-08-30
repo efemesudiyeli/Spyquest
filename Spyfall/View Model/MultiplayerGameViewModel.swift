@@ -39,7 +39,7 @@ class MultiplayerGameViewModel: ObservableObject {
         gameViewModel.premiumStatusChanged = { [weak self] isPremium in
             DispatchQueue.main.async {
                 self?.isPremiumUser = isPremium
-                print("Premium status updated from GameViewModel: \(isPremium)")
+        
             }
         }
     }
@@ -47,24 +47,24 @@ class MultiplayerGameViewModel: ObservableObject {
     private func syncPremiumStatus() {
         guard let gameViewModel = gameViewModel else { return }
         isPremiumUser = gameViewModel.isPremium
-        print("Premium status synced: \(isPremiumUser)")
+
     }
     
     private func loadPremiumStatus() {
         // Try to get premium status from GameViewModel first
         if let gameViewModel = gameViewModel {
             isPremiumUser = gameViewModel.isPremium
-            print("Premium status loaded from GameViewModel: \(isPremiumUser)")
+
         } else {
             // Fallback to UserDefaults if GameViewModel not available
             isPremiumUser = UserDefaults.standard.bool(forKey: "isPremiumUser")
-            print("Premium status loaded from UserDefaults: \(isPremiumUser)")
+
         }
     }
     
     func setPremiumStatus(_ isPremium: Bool) {
         isPremiumUser = isPremium
-        print("Premium status set to: \(isPremium)")
+
     }
     
     func createPlayerWithPremiumStatus(name: String, role: Role? = nil, playerLocationRole: String? = nil) -> Player {
@@ -123,13 +123,8 @@ class MultiplayerGameViewModel: ObservableObject {
         
         // Use the selected location set to get random location
         let availableLocations = selectedLocationSet.locations
-        print("DEBUG: Selected location set: \(selectedLocationSet.rawValue)")
-        print("DEBUG: Available locations count: \(availableLocations.count)")
-        
         let randomIndex = Int.random(in: 0..<availableLocations.count)
         let randomLocation = availableLocations[randomIndex]
-        
-        print("DEBUG: Selected random location: \(randomLocation.nameKey)")
         
         let lobbyCode = generateLobbyCode()
         var newLobby = GameLobby(
@@ -260,8 +255,7 @@ class MultiplayerGameViewModel: ObservableObject {
                         }
                     }
                 } else {
-                    // Log the parsing error for debugging
-                    print("Failed to parse lobby data: \(lobbyData)")
+
                     
                     // Only auto-close if the lobby is actually deleted
                     if snapshot.exists() == false {
@@ -427,9 +421,7 @@ class MultiplayerGameViewModel: ObservableObject {
                 }
                 
                 // Determine winner based on game rules
-                print("DEBUG: Voting Results - Spy: \(spyName), Most Voted: \(mostVotedPlayer)")
-                print("DEBUG: Spy Caught: \(spyCaught), Is Tie: \(isTie)")
-                print("DEBUG: Spy Guess: \(lobby.spyGuess ?? "nil"), Correct: \(spyGuessCorrect?.description ?? "nil")")
+
                 
                 let spyWins: Bool
                 
@@ -471,7 +463,7 @@ class MultiplayerGameViewModel: ObservableObject {
                     }
                 }
                 
-                print("DEBUG: Final Result - Spy Wins: \(spyWins)")
+
                 
                 let votingResult = VotingResult(
                     mostVotedPlayer: mostVotedPlayer,
@@ -513,8 +505,7 @@ class MultiplayerGameViewModel: ObservableObject {
         let randomIndex = Int.random(in: 0..<availableLocations.count)
         let newLocation = availableLocations[randomIndex]
         
-        print("DEBUG: RestartGame - Selected new location: \(newLocation.nameKey)")
-        print("DEBUG: RestartGame - New location roles: \(newLocation.roles)")
+
         
         var updatedLobby = lobby
         updatedLobby.location = newLocation  // Update the location in the lobby
@@ -694,7 +685,7 @@ class MultiplayerGameViewModel: ObservableObject {
                 
                 // If everyone has voted and spy has submitted a choice (guess or opt-out), end voting automatically
                 if voteCount >= totalPlayers && (self.currentLobby?.spyGuess != nil) && lobby.hostId == self.currentUser?.uid {
-                    print("DEBUG: Auto-ending voting - everyone has voted and spy submitted choice")
+
                     self.endVotingAndReveal()
                 }
             }
@@ -716,7 +707,7 @@ class MultiplayerGameViewModel: ObservableObject {
             let remaining = max(0, Double(votingDurationSeconds) - elapsed)
             
             if remaining <= 0 && lobby.hostId == currentUser?.uid {
-                print("DEBUG: Voting time is up, ending voting automatically")
+
                 endVotingAndReveal()
                 return
             }
@@ -733,7 +724,7 @@ class MultiplayerGameViewModel: ObservableObject {
                     
                     // If everyone has voted (including spy), end voting
                     if voteCount >= totalPlayers && lobby.hostId == self.currentUser?.uid {
-                        print("DEBUG: Everyone has voted and spy submitted choice, ending voting automatically")
+
                         self.endVotingAndReveal()
                     }
                 }
@@ -747,10 +738,10 @@ class MultiplayerGameViewModel: ObservableObject {
         var code = ""
         
         for _ in 0..<3 {
-            code += String(letters.randomElement()!)
+            code += String(letters.randomElement() ?? "A")
         }
         for _ in 0..<3 {
-            code += String(numbers.randomElement()!)
+            code += String(numbers.randomElement() ?? "0")
         }
         
         return code
@@ -876,19 +867,13 @@ struct GameLobby: Identifiable, Codable {
     mutating func assignRoles() {
         let spyIndex = Int.random(in: 0..<players.count)
         
-        print("DEBUG: Assigning roles for location: \(location.nameKey)")
-        print("DEBUG: Available roles: \(location.roles)")
-        print("DEBUG: Localized roles: \(location.localizedRoles)")
-        
         for index in players.indices {
             if index == spyIndex {
                 players[index].role = .spy
-                print("DEBUG: Player \(players[index].name) assigned as SPY")
             } else {
                 players[index].role = .player
                 let assignedRole = location.roles.randomElement()
                 players[index].playerLocationRole = assignedRole
-                print("DEBUG: Player \(players[index].name) assigned role: \(assignedRole ?? "nil")")
             }
         }
     }
