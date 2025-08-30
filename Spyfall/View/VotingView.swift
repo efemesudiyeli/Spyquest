@@ -160,7 +160,7 @@ struct VotingView: View {
         stopTimer()
         
         // Create a more reliable timer using DispatchQueue
-        let queue = DispatchQueue.global(qos: .userInteractive)
+        let _ = DispatchQueue.global(qos: .userInteractive)
         timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
             DispatchQueue.main.async {
                 // Update current time

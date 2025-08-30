@@ -161,7 +161,7 @@ class MultiplayerGameViewModel: ObservableObject {
     }
     
     func joinLobby(lobbyCode: String, playerName: String, completion: @escaping (Bool) -> Void) {
-        guard let user = currentUser else { 
+        guard currentUser != nil else { 
             completion(false)
             return 
         }
@@ -230,7 +230,7 @@ class MultiplayerGameViewModel: ObservableObject {
                         
                         if lobby.players.isEmpty {
                             self.autoCloseEmptyLobby()
-                        } else if lobby.status == .playing && lobby.players.count < 2 {
+                        } else if lobby.status == .playing && lobby.players.count < 3 {
                             self.cancelGameDueToInsufficientPlayers()
                         } else if lobby.status == .playing || lobby.status == .revealing || lobby.status == .voting {
                             // If no active connections, remove lobby to avoid orphaned games
@@ -302,7 +302,7 @@ class MultiplayerGameViewModel: ObservableObject {
         ])
         
         DispatchQueue.main.async {
-            self.errorMessage = "Game cancelled: Not enough players to continue. Minimum 2 players required."
+            self.errorMessage = "Game cancelled: Not enough players to continue. Minimum 3 players required."
         }
     }
     
@@ -574,7 +574,7 @@ class MultiplayerGameViewModel: ObservableObject {
     
     func leaveLobby() {
         guard let lobby = currentLobby,
-              let user = currentUser else { return }
+              let _ = currentUser else { return }
         
         var updatedPlayers = lobby.players
         updatedPlayers.removeAll { $0.name == currentPlayerName }
@@ -635,7 +635,7 @@ class MultiplayerGameViewModel: ObservableObject {
     }
     
     func endGameForAll() {
-        guard let lobby = currentLobby else { return }
+        guard currentLobby != nil else { return }
         currentLobbyRef?.updateChildValues([
             "status": "finished",
             "statusEndedAt": ServerValue.timestamp()

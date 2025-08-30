@@ -8470,6 +8470,7 @@
       }
     },
     "Not enough players to continue. Minimum 2 players required." : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -8484,6 +8485,9 @@
           }
         }
       }
+    },
+    "Not enough players to continue. Minimum 3 players required." : {
+
     },
     "Notary" : {
       "extractionState" : "manual",
