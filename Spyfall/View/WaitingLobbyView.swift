@@ -146,10 +146,10 @@ struct WaitingLobbyView: View {
                         }
                         .foregroundColor(.reverse)
                         .frame(maxWidth: .infinity, minHeight: 48)
-                        .background((viewModel.areAllPlayersReady(in: lobby) && lobby.players.count >= 2) ? Color.green : Color.gray)
+                        .background((viewModel.areAllPlayersReady(in: lobby) && lobby.players.count >= 3) ? Color.green : Color.gray)
                         .clipShape(RoundedRectangle(cornerRadius: 12))
                     }
-                    .disabled(!(viewModel.areAllPlayersReady(in: lobby) && lobby.players.count >= 2))
+                    .disabled(!(viewModel.areAllPlayersReady(in: lobby) && lobby.players.count >= 3))
                 } else {
                     Text("Waiting for host to start the game...")
                         .font(.caption)

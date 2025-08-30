@@ -19,7 +19,7 @@ struct GameCancelledView: View {
                 .fontWeight(.bold)
                 .foregroundColor(.orange)
             
-            Text(NSLocalizedString("Not enough players to continue. Minimum 2 players required.", comment: ""))
+            Text(NSLocalizedString("Not enough players to continue. Minimum 3 players required.", comment: ""))
                 .font(.title3)
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)

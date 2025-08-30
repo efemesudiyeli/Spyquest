@@ -50,11 +50,9 @@ struct MultiplayerLobbyView: View {
             joinLobbySheet
                 .presentationDetents([.medium])
         }
-        .background(
-            NavigationLink(destination: MultiplayerGameView(viewModel: viewModel), isActive: $navigateToGame) {
-                EmptyView()
-            }
-        )
+        .navigationDestination(isPresented: $navigateToGame) {
+            MultiplayerGameView(viewModel: viewModel)
+        }
         .alert("Lobby Update", isPresented: .constant(!viewModel.errorMessage.isEmpty && !showingJoinLobby)) {
             Button("OK") {
                 viewModel.errorMessage = ""
@@ -210,7 +208,7 @@ struct MultiplayerLobbyView: View {
                             Text("\(playerCount)")
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
-                            Stepper("", value: $playerCount, in: 2...8)
+                            Stepper("", value: $playerCount, in: 3...8)
                                 .labelsHidden()
                         }
                         .padding(.vertical, 12)

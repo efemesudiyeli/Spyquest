@@ -191,7 +191,7 @@ class GameViewModel: ObservableObject {
         Purchases.shared.purchase(product: product) { (transaction, purchaserInfo, error, userCancelled) in
             self.isPurchasing = false
             
-            if let error = error {
+            if error != nil {
 
                 self.isPremium = true
                 self.checkPurchaseStatus()
@@ -201,7 +201,7 @@ class GameViewModel: ObservableObject {
     
     func checkPurchaseStatus() {
         Purchases.shared.getCustomerInfo { (customerInfo, error) in
-            if let error = error {
+            if error != nil {
             } else if let customerInfo = customerInfo {
                 if customerInfo.entitlements["Pro"]?.isActive == true {
                     self.isPremium = true
