@@ -19,6 +19,7 @@ struct GamePlayingView: View {
     @State private var showReturnToLobbyConfirmation: Bool = false
     @State private var showingNotepad: Bool = true
     @State private var displayPaywall: Bool = false
+    @State private var hasShownAd: Bool = false
     
     private var currentPlayer: Player? {
         lobby.players.first { $0.name == viewModel.currentPlayerName }
@@ -208,12 +209,12 @@ struct GamePlayingView: View {
                                     
                                     // Location Section
                                     VStack(spacing: 8) {
-                                        Image(systemName: "mappin.fill")
+                                        Image(systemName: "mappin")
                                             .font(.system(size: 24))
                                             .foregroundColor(.green)
                                         
                                         Text("Location")
-                                            .font(.caption)
+                                            .font(.subheadline)
                                             .foregroundColor(.secondary)
                                             .fontDesign(.monospaced)
                                         
@@ -331,9 +332,31 @@ struct GamePlayingView: View {
             // Start the game timer when view appears
             startGameTimer()
             
-            // Show paywall for non-premium users
-            if !viewModel.isPremiumUser {
-                displayPaywall = true
+                        // Show ad for non-premium users if game is already playing (only once)
+            if !viewModel.isPremiumUser && !hasShownAd && lobby.status == .playing {
+                if let gameViewModel = viewModel.gameViewModel {
+                    Task {
+                        // Set callback for when ad is dismissed
+                        gameViewModel.adCoordinator.onAdDismissed = {
+                            DispatchQueue.main.async {
+                                self.displayPaywall = true
+                            }
+                        }
+                        
+                        // Load ad first
+                        await gameViewModel.adCoordinator.loadAd()
+                        
+                        // Present ad
+                        gameViewModel.adCoordinator.presentAd()
+                        
+                        // Mark ad as shown
+                        hasShownAd = true
+                    }
+                } else {
+                    // If no gameViewModel, show paywall immediately
+                    displayPaywall = true
+                    hasShownAd = true
+                }
             }
         }
         .onDisappear {
@@ -345,6 +368,33 @@ struct GamePlayingView: View {
                 // Game started, restart timer
                 stopGameTimer()
                 startGameTimer()
+                
+                // Show ad for non-premium users when game starts (only once)
+                if !viewModel.isPremiumUser && !hasShownAd {
+                    if let gameViewModel = viewModel.gameViewModel {
+                        Task {
+                            // Set callback for when ad is dismissed
+                            gameViewModel.adCoordinator.onAdDismissed = {
+                                DispatchQueue.main.async {
+                                    self.displayPaywall = true
+                                }
+                            }
+                            
+                            // Load ad first
+                            await gameViewModel.adCoordinator.loadAd()
+                            
+                            // Present ad
+                            gameViewModel.adCoordinator.presentAd()
+                            
+                            // Mark ad as shown
+                            hasShownAd = true
+                        }
+                    } else {
+                        // If no gameViewModel, show paywall immediately
+                        displayPaywall = true
+                        hasShownAd = true
+                    }
+                }
             }
         }
         .safeAreaInset(edge: .bottom) {
@@ -481,7 +531,7 @@ struct GamePlayingView: View {
 
 #Preview("Player Role") {
     let vm = MultiplayerGameViewModel()
-    vm.currentPlayerName = "Player 1" // Regular player
+    vm.currentPlayerName = "Player 3" // Regular player
     let samplePlayers: [Player] = [
         Player(name: "Host Player", role: .player, playerLocationRole: "Tourist"),
         Player(name: "Player 1", role: .player, playerLocationRole: "Lifeguard"),

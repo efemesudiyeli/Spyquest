@@ -263,6 +263,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 class AdCoordinator: NSObject, GADFullScreenContentDelegate {
     private var ad: GADInterstitialAd?
+    var onAdDismissed: (() -> Void)?
     
     func loadAd() async {
         do {
@@ -313,7 +314,7 @@ class AdCoordinator: NSObject, GADFullScreenContentDelegate {
     
     func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         print("\(#function) called")
-        
+        onAdDismissed?()
     }
     
 }
