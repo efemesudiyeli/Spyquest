@@ -3,27 +3,16 @@
   "strings" : {
     "" : {
       "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : " "
-          }
-        }
-      }
-    },
-    ":" : {
-      "extractionState" : "stale",
-      "localizations" : {
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : ":"
+            "value" : " "
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : ":"
+            "value" : " "
           }
         }
       }
@@ -78,6 +67,12 @@
     },
     "**Tip:** If someone answers oddly, don't correct them. Keep your own answer flexible." : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**Conseil :** Si quelqu'un répond de manière étrange, ne le corrigez pas. Restez flexible dans vos réponses."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -88,6 +83,12 @@
     },
     "#" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "#"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -120,6 +121,12 @@
             "value" : "%1$@ (%2$lld)"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ (%2$lld)"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -130,6 +137,12 @@
     },
     "%lld" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -140,6 +153,12 @@
     },
     "%lld characters" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld caractères"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -151,6 +170,12 @@
     "%llds" : {
       "comment" : "Saniye",
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%llds"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -593,23 +618,6 @@
         }
       }
     },
-    "Ads Removed" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Annonces supprimées"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reklamlar Kaldırıldı"
-          }
-        }
-      }
-    },
     "Air Hostess" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -691,23 +699,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hepsi Versiyon"
-          }
-        }
-      }
-    },
-    "All Edition (%lld)" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Toutes les éditions (%lld)"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hepsi Versiyon (%lld)"
           }
         }
       }
@@ -1002,6 +993,12 @@
     },
     "Are you sure you want to restart the game? This will end the current game and start a new one." : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Êtes-vous sûr de vouloir redémarrer le jeu ? Cela mettra fin à la partie en cours et en lancera une nouvelle."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1012,6 +1009,12 @@
     },
     "Are you sure you want to return to the lobby? This will end the current game and return to the lobby." : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Êtes-vous sûr de vouloir retourner dans le hall ? Cela mettra fin à la partie en cours et vous ramènera dans le hall."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2699,23 +2702,6 @@
         }
       }
     },
-    "Change Your Plan" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Modifier votre plan"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Planını Değiştir"
-          }
-        }
-      }
-    },
     "Chef" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2852,25 +2838,14 @@
         }
       }
     },
-    "Civilian" : {
-      "extractionState" : "stale",
+    "Classic Mode" : {
       "localizations" : {
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Civil"
+            "value" : "Mode Classique"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sivil"
-          }
-        }
-      }
-    },
-    "Classic Mode" : {
-      "localizations" : {
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2898,6 +2873,12 @@
     },
     "Clear" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Effacer"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3123,23 +3104,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Birleşik Versiyon"
-          }
-        }
-      }
-    },
-    "Combined Edition (%lld)" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Édition combinée (%lld)"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Birleşik Versiyon (%lld)"
           }
         }
       }
@@ -3519,6 +3483,12 @@
     },
     "Create Lobby" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Créer un Lobby"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3529,44 +3499,16 @@
     },
     "Create New Lobby" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Créer un Nouveau Lobby"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Yeni Lobi Oluştur"
-          }
-        }
-      }
-    },
-    "Create New Room" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Créer une nouvelle salle"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Yeni Oda Oluştur"
-          }
-        }
-      }
-    },
-    "Create Room" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Créer la salle"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Oda Oluştur"
           }
         }
       }
@@ -3709,6 +3651,12 @@
     },
     "Current Setting:" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paramètre Actuel :"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4278,6 +4226,12 @@
     },
     "Done" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terminé"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4540,34 +4494,6 @@
         }
       }
     },
-    "End Game & Return" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Oyunu Bitir & Dön"
-          }
-        }
-      }
-    },
-    "End Round For All" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Terminer le tour pour tous"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Herkes için raundu bitir"
-          }
-        }
-      }
-    },
     "Endless Isles" : {
       "extractionState" : "translated",
       "localizations" : {
@@ -4621,6 +4547,12 @@
     },
     "Enter a code to join your friend’s game" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entrez un code pour rejoindre la partie de votre ami."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4631,6 +4563,12 @@
     },
     "Enter your name" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entrez votre nom"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4641,6 +4579,12 @@
     },
     "Enter your name and lobby code" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entrez votre nom et votre code d'accès."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4651,6 +4595,12 @@
     },
     "Enter your name and lobby code to continue." : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entrez votre nom et votre code d'accès pour continuer."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4661,6 +4611,12 @@
     },
     "Enter your name to continue." : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entrez votre nom pour continuer."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4688,6 +4644,12 @@
     },
     "Error: Role not assigned" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erreur: rôle non attribué"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4811,23 +4773,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ekstra Versiyon"
-          }
-        }
-      }
-    },
-    "Extra Edition (%lld)" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Edition supplémentaire (%lld)"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ekstra Versiyon (%lld)"
           }
         }
       }
@@ -5099,23 +5044,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "İlk Versiyon"
-          }
-        }
-      }
-    },
-    "First Edition (%lld)" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Première édition (%lld)"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "İlk Versiyon (%lld)"
           }
         }
       }
@@ -5410,6 +5338,12 @@
     },
     "Game Details" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Détails du jeu"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5437,6 +5371,12 @@
     },
     "Game Results" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Résultats des matchs"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5447,6 +5387,12 @@
     },
     "Game Setting" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paramètres du jeu"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6051,6 +5997,12 @@
     },
     "Guess Submitted!" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Devinette soumise !"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6468,6 +6420,12 @@
     },
     "Host: %@" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hôte: %@"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6970,6 +6928,12 @@
     },
     "Join Existing Lobby" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rejoindre le lobby existant"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6980,6 +6944,12 @@
     },
     "Join Lobby" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rejoindre le lobby"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7058,6 +7028,12 @@
     },
     "Keep it secret from the spy." : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gardez cela secret vis-à-vis de l'espion."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7356,6 +7332,12 @@
     },
     "Loading..." : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chargement..."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7366,6 +7348,12 @@
     },
     "Lobby code" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Code du lobby d'entrée"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7376,6 +7364,12 @@
     },
     "Lobby Code" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Code du lobby"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7386,6 +7380,12 @@
     },
     "Lobby Details" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Détails du lobby"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7396,6 +7396,12 @@
     },
     "Lobby Update" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mise à jour du lobby"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7421,17 +7427,6 @@
         }
       }
     },
-    "Local notes only" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Yalnızca yerel notlar"
-          }
-        }
-      }
-    },
     "Local Park" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -7451,6 +7446,12 @@
     },
     "Location" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lieu"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7461,6 +7462,12 @@
     },
     "Location & Role" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lieu & Rôle"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7487,6 +7494,12 @@
     },
     "Location was:" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le lieu était:"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7699,6 +7712,12 @@
     },
     "Make Your Guess!" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Faites vos pronostics !"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7726,6 +7745,12 @@
     },
     "Manage Subscription" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gérer l'abonnement"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8025,6 +8050,12 @@
     },
     "Minutes remaining" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Minutes restantes"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8102,6 +8133,12 @@
     },
     "Most voted player:" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Joueur le plus voté :"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8367,6 +8404,12 @@
     },
     "New Mode!" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nouveau mode !"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8461,6 +8504,12 @@
     },
     "Notepad" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bloc-notes"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8674,6 +8723,12 @@
     },
     "Online Mode" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mode en ligne"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8683,7 +8738,20 @@
       }
     },
     "Only for your eyes" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "À vos yeux seulement"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sadece senin bakman için"
+          }
+        }
+      }
     },
     "Organizer" : {
       "extractionState" : "manual",
@@ -9370,6 +9438,12 @@
             "value" : "Players (%1$lld/%2$lld)"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Joueurs (%1$lld/%2$lld)"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9380,6 +9454,12 @@
     },
     "Players to vote for:" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Joueurs à voter :"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9390,6 +9470,12 @@
     },
     "PLAYERS WIN!" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LES JOUEURS GAGNENT !"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9400,6 +9486,12 @@
     },
     "Players:" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Joueurs :"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9545,6 +9637,12 @@
     },
     "Premium sets require the Premium upgrade." : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les ensembles Premium nécessitent la mise à niveau Premium."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9894,6 +9992,12 @@
     },
     "Ready" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prêt"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9904,6 +10008,12 @@
     },
     "Ready to play with friends?" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prêt à jouer avec tes amis ?"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10016,6 +10126,12 @@
     },
     "Remaining Time" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temps restant"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10092,6 +10208,12 @@
     },
     "Restart Game" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Redémarrer le jeu"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10153,6 +10275,12 @@
     },
     "Return to Lobby" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Retour au hall d'accueil"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10622,6 +10750,12 @@
     },
     "Secret spy" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Espion secret"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10751,6 +10885,12 @@
     },
     "See how the game ended" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Découvrez comment le match s'est terminé"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10761,6 +10901,12 @@
     },
     "Select Game Setting" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sélectionner les paramètres du jeu"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10838,6 +10984,12 @@
     },
     "Set your name, players, and locations" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Définissez votre nom, vos joueurs et vos emplacements"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10864,6 +11016,12 @@
     },
     "Share the code and get your friends ready" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Partagez le code et préparez vos amis"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10874,6 +11032,12 @@
     },
     "Share the lobby code with friends to start playing!" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Partagez le code du lobby avec vos amis pour commencer à jouer !"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11088,6 +11252,12 @@
     },
     "Signing you in..." : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Connexion en cours..."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11251,6 +11421,12 @@
     },
     "Skip Guess" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passer Guess"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11533,6 +11709,12 @@
     },
     "SPY WINS!" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SPY GAGNE !"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11543,6 +11725,12 @@
     },
     "Spy's guess:" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'hypothèse de l'espion :"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11671,6 +11859,12 @@
     },
     "Start a new game and get a lobby code." : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Commencez une nouvelle partie et obtenez un code de lobby."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11697,6 +11891,12 @@
     },
     "Start Voting Early" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Commencez à voter tôt"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12116,6 +12316,12 @@
     "Tap to expand and see all locations" : {
       "comment" : "Casus tahmin alanı texti. Çok uzun olmamalı",
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appuyez pour développer"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12717,6 +12923,12 @@
     },
     "The spy got away and didn't make a guess!" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'espion s'est enfui et n'a pas fait de supposition !"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12727,6 +12939,12 @@
     },
     "The spy got away and guessed correctly!" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'espion s'est enfui et a deviné juste !"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12737,6 +12955,12 @@
     },
     "The spy got away but guessed incorrectly!" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'espion s'est enfui, mais il s'est trompé dans ses suppositions !"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12747,6 +12971,12 @@
     },
     "The spy was caught and didn't make a guess!" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'espion a été arrêté et n'a pas fait de supposition !"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12757,6 +12987,12 @@
     },
     "The spy was caught and guessed incorrectly!" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'espion a été démasqué et a fait une mauvaise supposition !"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12767,6 +13003,12 @@
     },
     "The spy was caught, but guessed correctly!" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'espion a été démasqué, mais il avait vu juste !"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12777,6 +13019,12 @@
     },
     "The spy was:" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'espion était :"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12974,6 +13222,12 @@
     },
     "TIE" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ÉGALITÉ"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13001,6 +13255,12 @@
     },
     "Time is running out" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le temps presse."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13027,6 +13287,12 @@
     },
     "Timer finished - Voting will start automatically" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le temps est écoulé - Le vote va commencer automatiquement"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13037,6 +13303,12 @@
     },
     "Tip:" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conseil :"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13522,6 +13794,12 @@
     },
     "Unready" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non prêt"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13553,6 +13831,12 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
+            "value" : "v%1$@ b%2$@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
             "value" : "v%1$@ b%2$@"
           }
         },
@@ -13702,6 +13986,12 @@
     },
     "Vote ended in a tie, and the spy didn't make a guess!" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le vote s'est terminé par une égalité, et l'espion n'a pas fait de supposition !"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13712,6 +14002,12 @@
     },
     "Vote ended in a tie, and the spy guessed correctly!" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le vote s'est terminé par une égalité, et l'espion a deviné juste !"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13722,6 +14018,12 @@
     },
     "Vote ended in a tie, and the spy guessed incorrectly!" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le vote s'est terminé par une égalité, et l'espion s'est trompé dans ses suppositions !"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13732,6 +14034,12 @@
     },
     "Vote ended in a tie, but the spy didn't make a guess!" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le vote s'est terminé par une égalité, mais l'espion n'a pas fait de pronostic !"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13742,6 +14050,12 @@
     },
     "Vote ended in a tie, but the spy guessed correctly!" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le vote s'est terminé par une égalité, mais l'espion a deviné juste !"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13752,6 +14066,12 @@
     },
     "Vote result:" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Résultat du vote :"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13762,6 +14082,12 @@
     },
     "Voting Results" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Résultats du vote"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13772,6 +14098,12 @@
     },
     "Voting Time!" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "C'est l'heure du vote !"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13782,6 +14114,12 @@
     },
     "Voting will start automatically..." : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le vote commencera automatiquement..."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13809,6 +14147,12 @@
     },
     "Waiting for host to restart the game..." : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En attente du redémarrage du jeu par l'hôte..."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13835,6 +14179,12 @@
     },
     "Waiting Lobby" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salle d'attente"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13945,6 +14295,12 @@
     },
     "Who do you think is the spy?" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selon vous, qui est l'espion ?"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14142,6 +14498,12 @@
     },
     "You are a" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous êtes un"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14168,6 +14530,12 @@
     },
     "YOU ARE THE SPY!" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VOUS ÊTES L'ESPION !"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14178,6 +14546,12 @@
     },
     "You voted for: %@" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous avez voté pour : %@"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14204,6 +14578,12 @@
     },
     "Your location guess has been submitted. Good luck!" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Votre estimation de localisation a été envoyée. Bonne chance !"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",

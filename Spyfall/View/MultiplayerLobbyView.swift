@@ -7,7 +7,7 @@ struct MultiplayerLobbyView: View {
     @State private var showingCreateLobby = false
     @State private var showingJoinLobby = false
     @State private var lobbyCode = ""
-    @State private var playerCount = 2
+    @State private var playerCount = 3
     @State private var playerName = ""
     @State private var navigateToGame = false
     @State private var selectedLocationSet: LocationSets = .spyfallOne

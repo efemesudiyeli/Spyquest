@@ -339,7 +339,7 @@ class MultiplayerGameViewModel: ObservableObject {
             "status": "playing",
             "statusEndedAt": NSNull(),
             "gameStartAt": ServerValue.timestamp(),
-            "gameDurationSeconds": Int(1 * 60)
+            "gameDurationSeconds": Int(8.5 * 60)
         ])
     }
     
@@ -529,6 +529,8 @@ class MultiplayerGameViewModel: ObservableObject {
         
         // Assign new roles
         updatedLobby.assignRoles()
+        
+        
         
         // Update local state immediately for better UX
         DispatchQueue.main.async {
@@ -1098,3 +1100,5 @@ extension Player {
         return player
     }
 }
+
+
