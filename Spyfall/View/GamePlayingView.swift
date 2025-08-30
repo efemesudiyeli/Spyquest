@@ -66,9 +66,14 @@ struct GamePlayingView: View {
         gameTimer = nil
     }
     
+    private func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+    
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
+                
                 // Timer Card
                 VStack(spacing: 0) {
                     // Header
@@ -129,85 +134,7 @@ struct GamePlayingView: View {
                 .background(Color(.secondarySystemGroupedBackground))
                 .clipShape(RoundedRectangle(cornerRadius: 16))
                 
-                // Notepad Card
-                VStack(spacing: 0) {
-                    // Header
-                    HStack(spacing: 12) {
-                        ZStack {
-                            Circle()
-                                .fill(Color(.systemGray6))
-                                .frame(width: 48, height: 48)
-                            Image(systemName: "note.text")
-                                .font(.title2)
-                                .foregroundColor(.orange)
-                        }
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text("Notepad")
-                                .font(.headline)
-                                .fontDesign(.rounded)
-                            Text("Local notes only")
-                                .font(.caption)
-                                .foregroundColor(.secondary)
-                                .fontDesign(.monospaced)
-                        }
-                        Spacer()
-                        
-                        Button(action: {
-                            showingNotepad.toggle()
-                        }) {
-                            Image(systemName: showingNotepad ? "chevron.up" : "chevron.down")
-                                .foregroundColor(.orange)
-                                .font(.title3)
-                        }
-                    }
-                    .padding(.vertical, 12)
-                    
-                    if showingNotepad {
-                        Divider()
-                        
-                        VStack(spacing: 12) {
-                            TextEditor(text: $notes)
-                                .font(.system(.body, design: .monospaced))
-                                .frame(minHeight: 120)
-                                .padding(8)
-                                .background(Color(.systemGray6))
-                                .clipShape(RoundedRectangle(cornerRadius: 8))
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .stroke(Color(.systemGray4), lineWidth: 1)
-                                )
-                            
-                            HStack {
-                                Button(action: {
-                                    notes = ""
-                                }) {
-                                    HStack {
-                                        Image(systemName: "trash")
-                                        Text("Clear")
-                                            .fontWeight(.medium)
-                                    }
-                                    .foregroundColor(.red)
-                                    .padding(.horizontal, 12)
-                                    .padding(.vertical, 6)
-                                    .background(Color.red.opacity(0.1))
-                                    .clipShape(RoundedRectangle(cornerRadius: 6))
-                                }
-                                
-                                Spacer()
-                                
-                                Text("\(notes.count) characters")
-                                    .font(.caption)
-                                    .foregroundColor(.secondary)
-                                    .fontDesign(.monospaced)
-                            }
-                        }
-                        .padding(.vertical, 12)
-                    }
-                }
-                .padding(.horizontal, 16)
-                .background(Color(.secondarySystemGroupedBackground))
-                .clipShape(RoundedRectangle(cornerRadius: 16))
-                
+               
                 // Role & Location Card
                 if let player = currentPlayer {
                     VStack(spacing: 0) {
@@ -269,7 +196,7 @@ struct GamePlayingView: View {
                                             .foregroundColor(.secondary)
                                             .fontDesign(.monospaced)
                                         
-                                        Text(NSLocalizedString(player.playerLocationRole ?? "Civilian", comment: ""))
+                                        Text(player.playerLocationRole != nil ? NSLocalizedString(player.playerLocationRole!, comment: "") : "Civilian")
                                             .font(.title2)
                                             .fontWeight(.black)
                                             .foregroundColor(.blue)
@@ -313,7 +240,90 @@ struct GamePlayingView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 16))
                 }
                 
+                // Notepad Card
+                VStack(spacing: 0) {
+                    // Header
+                    HStack(spacing: 12) {
+                        ZStack {
+                            Circle()
+                                .fill(Color(.systemGray6))
+                                .frame(width: 48, height: 48)
+                            Image(systemName: "note.text")
+                                .font(.title2)
+                                .foregroundColor(.orange)
+                        }
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text("Notepad")
+                                .font(.headline)
+                                .fontDesign(.rounded)
+                            Text("Only for your eyes")
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                                .fontDesign(.monospaced)
+                        }
+                        Spacer()
+                        
+                        Button(action: {
+                            showingNotepad.toggle()
+                        }) {
+                            Image(systemName: showingNotepad ? "chevron.up" : "chevron.down")
+                                .foregroundColor(.orange)
+                                .font(.title3)
+                        }
+                    }
+                    .padding(.vertical, 12)
+                    
+                    if showingNotepad {
+                        Divider()
+                        
+                        VStack(spacing: 12) {
+                            HStack {
+                                TextEditor(text: $notes)
+                                    .font(.system(.body, design: .monospaced))
+                                    .frame(minHeight: 120)
+                                    .padding(8)
+                                    .background(Color(.systemGray6))
+                                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 8)
+                                            .stroke(Color(.systemGray4), lineWidth: 1)
+                                    )
+                            }
+                            
+                            HStack {
+                                Button(action: {
+                                    notes = ""
+                                }) {
+                                    HStack {
+                                        Image(systemName: "trash")
+                                        Text("Clear")
+                                            .fontWeight(.medium)
+                                    }
+                                    .foregroundColor(.red)
+                                    .padding(.horizontal, 12)
+                                    .padding(.vertical, 6)
+                                    .background(Color.red.opacity(0.1))
+                                    .clipShape(RoundedRectangle(cornerRadius: 6))
+                                }
+                                
+                                Spacer()
+                                
+                                Text("\(notes.count) characters")
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                                    .fontDesign(.monospaced)
+                            }
+                        }
+                        .padding(.vertical, 12)
+                    }
+                }
+                .padding(.horizontal, 16)
+                .background(Color(.secondarySystemGroupedBackground))
+                .clipShape(RoundedRectangle(cornerRadius: 16))
                 
+            }
+            .onTapGesture {
+                hideKeyboard()
             }
             .padding()
         }
@@ -370,7 +380,7 @@ struct GamePlayingView: View {
                             }) {
                                 HStack {
                                     Image(systemName: "hand.raised.fill")
-                                    Text(NSLocalizedString("Start voting for all", comment: ""))
+                                    Text(NSLocalizedString("Start Voting Early", comment: ""))
                                         .fontWeight(.semibold)
                                 }
                                 .foregroundColor(.primary)
@@ -401,7 +411,7 @@ struct GamePlayingView: View {
                                 }) {
                                     HStack {
                                         Image(systemName: "house.circle.fill")
-                                        Text("End Game & Return")
+                                        Text("Return to Lobby")
                                             .fontWeight(.semibold)
                                     }
                                     .foregroundColor(.primary)

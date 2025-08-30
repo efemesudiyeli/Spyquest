@@ -58,7 +58,7 @@ struct LocationCard: View {
             .fontWeight(.medium)
             .fontDesign(.monospaced)
             .multilineTextAlignment(.center)
-            .lineLimit(2)
+            .lineLimit(3)
             .frame(maxWidth: .infinity, minHeight: 60)
             .padding(.horizontal, 8)
             .padding(.vertical, 12)

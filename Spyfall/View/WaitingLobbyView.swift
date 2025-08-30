@@ -30,7 +30,7 @@ struct WaitingLobbyView: View {
                         VStack(alignment: .leading, spacing: 2) {
                             Text("Waiting Lobby")
                                 .font(.headline)
-                            Text("Share the code and get everyone ready")
+                            Text("Share the code and get your friends ready")
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                                 .fontDesign(.monospaced)
