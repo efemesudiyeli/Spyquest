@@ -884,7 +884,7 @@ struct GameLobby: Identifiable, Codable {
                 print("DEBUG: Player \(players[index].name) assigned as SPY")
             } else {
                 players[index].role = .player
-                let assignedRole = location.localizedRoles.randomElement()
+                let assignedRole = location.roles.randomElement()
                 players[index].playerLocationRole = assignedRole
                 print("DEBUG: Player \(players[index].name) assigned role: \(assignedRole ?? "nil")")
             }

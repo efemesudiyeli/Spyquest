@@ -2,7 +2,14 @@
   "sourceLanguage" : "en",
   "strings" : {
     "" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " "
+          }
+        }
+      }
     },
     ":" : {
       "extractionState" : "stale",
@@ -70,10 +77,24 @@
       }
     },
     "**Tip:** If someone answers oddly, don't correct them. Keep your own answer flexible." : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**İpucu:** Birisi tuhaf bir cevap verirse, onu düzeltmeyin. Kendi cevabınızı esnek tutun."
+          }
+        }
+      }
     },
     "#" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "#"
+          }
+        }
+      }
     },
     "%@" : {
       "localizations" : {
@@ -98,17 +119,45 @@
             "state" : "new",
             "value" : "%1$@ (%2$lld)"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ (%2$lld)"
+          }
         }
       }
     },
     "%lld" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
+        }
+      }
     },
     "%lld characters" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld karakter"
+          }
+        }
+      }
     },
     "%llds" : {
-
+      "comment" : "Saniye",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%llds"
+          }
+        }
+      }
     },
     "1. Setup" : {
       "localizations" : {
@@ -952,10 +1001,24 @@
       }
     },
     "Are you sure you want to restart the game? This will end the current game and start a new one." : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oyunu yeniden başlatmak istediğinizden emin misiniz? Bu, mevcut oyunu sonlandıracak ve yeni bir oyun başlatacaktır."
+          }
+        }
+      }
     },
     "Are you sure you want to return to the lobby? This will end the current game and return to the lobby." : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lobiye dönmek istediğinizden emin misiniz? Bu, mevcut oyunu sonlandırıp lobiye geri dönecektir."
+          }
+        }
+      }
     },
     "Armored Car Driver" : {
       "extractionState" : "manual",
@@ -2807,7 +2870,14 @@
       }
     },
     "Classic Mode" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Klasik Mod"
+          }
+        }
+      }
     },
     "Cleaner" : {
       "extractionState" : "manual",
@@ -2827,7 +2897,14 @@
       }
     },
     "Clear" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temizle"
+          }
+        }
+      }
     },
     "Climate Change Activist" : {
       "extractionState" : "manual",
@@ -3441,10 +3518,24 @@
       }
     },
     "Create Lobby" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lobi Oluştur"
+          }
+        }
+      }
     },
     "Create New Lobby" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yeni Lobi Oluştur"
+          }
+        }
+      }
     },
     "Create New Room" : {
       "extractionState" : "stale",
@@ -3617,7 +3708,14 @@
       }
     },
     "Current Setting:" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mevcut Kurulum:"
+          }
+        }
+      }
     },
     "Cursed" : {
       "extractionState" : "translated",
@@ -4179,7 +4277,14 @@
       }
     },
     "Done" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bitti"
+          }
+        }
+      }
     },
     "Doorman" : {
       "extractionState" : "manual",
@@ -4436,7 +4541,15 @@
       }
     },
     "End Game & Return" : {
-
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oyunu Bitir & Dön"
+          }
+        }
+      }
     },
     "End Round For All" : {
       "extractionState" : "stale",
@@ -4507,19 +4620,54 @@
       }
     },
     "Enter a code to join your friend’s game" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arkadaşınızın oyununa katılmak için bir kod girin"
+          }
+        }
+      }
     },
     "Enter your name" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adınızı girin"
+          }
+        }
+      }
     },
     "Enter your name and lobby code" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adınızı ve lobi kodunuzu girin"
+          }
+        }
+      }
     },
     "Enter your name and lobby code to continue." : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Devam etmek için adınızı ve lobi kodunuzu girin."
+          }
+        }
+      }
     },
     "Enter your name to continue." : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Devam etmek için adınızı girin."
+          }
+        }
+      }
     },
     "Entertainer" : {
       "extractionState" : "manual",
@@ -4539,7 +4687,14 @@
       }
     },
     "Error: Role not assigned" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hata: Rol atanmamış"
+          }
+        }
+      }
     },
     "Event Organizer" : {
       "extractionState" : "manual",
@@ -5254,7 +5409,14 @@
       }
     },
     "Game Details" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oyun Detayları"
+          }
+        }
+      }
     },
     "Game Operator" : {
       "extractionState" : "manual",
@@ -5273,28 +5435,25 @@
         }
       }
     },
-    "Game Over!" : {
-      "extractionState" : "stale",
+    "Game Results" : {
       "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Partie terminée!"
-          }
-        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Oyun Bitti!"
+            "value" : "Maç Sonuçları"
           }
         }
       }
     },
-    "Game Results" : {
-
-    },
     "Game Setting" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oyun Kurulumu"
+          }
+        }
+      }
     },
     "Gamer" : {
       "extractionState" : "manual",
@@ -5891,7 +6050,14 @@
       }
     },
     "Guess Submitted!" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tahmin gönderildi!"
+          }
+        }
+      }
     },
     "Guide" : {
       "extractionState" : "manual",
@@ -6301,7 +6467,14 @@
       }
     },
     "Host: %@" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kurucu: %@"
+          }
+        }
+      }
     },
     "Hostess" : {
       "extractionState" : "manual",
@@ -6796,27 +6969,24 @@
       }
     },
     "Join Existing Lobby" : {
-
-    },
-    "Join Existing Room" : {
-      "extractionState" : "stale",
       "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rejoindre une salle existante"
-          }
-        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mevcut Odaya Katıl"
+            "value" : "Mevcut Lobiye Katıl"
           }
         }
       }
     },
     "Join Lobby" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lobiye Katıl"
+          }
+        }
+      }
     },
     "Journalist" : {
       "extractionState" : "manual",
@@ -6887,7 +7057,14 @@
       }
     },
     "Keep it secret from the spy." : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Casustan gizli tut."
+          }
+        }
+      }
     },
     "King" : {
       "extractionState" : "manual",
@@ -7178,19 +7355,54 @@
       }
     },
     "Loading..." : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yükleniyor..."
+          }
+        }
+      }
     },
     "Lobby code" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lobi kodu"
+          }
+        }
+      }
     },
     "Lobby Code" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lobi Kodu"
+          }
+        }
+      }
     },
     "Lobby Details" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lobi Detayları"
+          }
+        }
+      }
     },
     "Lobby Update" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lobi Güncellemesi"
+          }
+        }
+      }
     },
     "Lobbyist" : {
       "extractionState" : "manual",
@@ -7210,7 +7422,15 @@
       }
     },
     "Local notes only" : {
-
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yalnızca yerel notlar"
+          }
+        }
+      }
     },
     "Local Park" : {
       "extractionState" : "manual",
@@ -7230,10 +7450,24 @@
       }
     },
     "Location" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lokasyon"
+          }
+        }
+      }
     },
     "Location & Role" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lokasyon & Rol"
+          }
+        }
+      }
     },
     "Location Set" : {
       "localizations" : {
@@ -7251,25 +7485,15 @@
         }
       }
     },
-    "Location Sets" : {
-      "extractionState" : "stale",
+    "Location was:" : {
       "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ensembles de lieux"
-          }
-        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lokasyon Setleri"
+            "value" : "Konum şöyleydi:"
           }
         }
       }
-    },
-    "Location was:" : {
-
     },
     "Location: %@" : {
       "localizations" : {
@@ -7474,7 +7698,14 @@
       }
     },
     "Make Your Guess!" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tahminini yap!"
+          }
+        }
+      }
     },
     "Makeup Artist" : {
       "extractionState" : "manual",
@@ -7494,7 +7725,14 @@
       }
     },
     "Manage Subscription" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aboneliği Yönet"
+          }
+        }
+      }
     },
     "Manager" : {
       "extractionState" : "manual",
@@ -7786,7 +8024,14 @@
       }
     },
     "Minutes remaining" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kalan dakika"
+          }
+        }
+      }
     },
     "Miss Scarlet" : {
       "extractionState" : "manual",
@@ -7856,7 +8101,14 @@
       }
     },
     "Most voted player:" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En çok oylanan oyuncu:"
+          }
+        }
+      }
     },
     "Mountain Pass" : {
       "extractionState" : "manual",
@@ -8114,7 +8366,14 @@
       }
     },
     "New Mode!" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yeni Oyun Modu!"
+          }
+        }
+      }
     },
     "News Reporter" : {
       "extractionState" : "manual",
@@ -8201,21 +8460,11 @@
       }
     },
     "Notepad" : {
-
-    },
-    "Number of Players" : {
-      "extractionState" : "stale",
       "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nombre de joueurs"
-          }
-        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Oyuncu Sayısı"
+            "value" : "Not Defteri"
           }
         }
       }
@@ -8424,6 +8673,16 @@
       }
     },
     "Online Mode" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çevrimiçi Mod"
+          }
+        }
+      }
+    },
+    "Only for your eyes" : {
 
     },
     "Organizer" : {
@@ -8851,23 +9110,6 @@
         }
       }
     },
-    "Pirate Edition (%lld)" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Édition Pirate (%lld)"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Korsan Versiyon (%lld)"
-          }
-        }
-      }
-    },
     "Pirate Fortress" : {
       "extractionState" : "translated",
       "localizations" : {
@@ -9127,17 +9369,44 @@
             "state" : "new",
             "value" : "Players (%1$lld/%2$lld)"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oyuncular (%1$lld/%2$lld)"
+          }
         }
       }
     },
     "Players to vote for:" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oy verilecek oyuncular:"
+          }
+        }
+      }
     },
     "PLAYERS WIN!" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OYUNCULAR KAZANDI!"
+          }
+        }
+      }
     },
     "Players:" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oyuncular:"
+          }
+        }
+      }
     },
     "Poet" : {
       "extractionState" : "manual",
@@ -9275,7 +9544,14 @@
       }
     },
     "Premium sets require the Premium upgrade." : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Premium setler için Premium yükseltmesi gerekir."
+          }
+        }
+      }
     },
     "Priest" : {
       "extractionState" : "translated",
@@ -9464,23 +9740,6 @@
         }
       }
     },
-    "Purchases" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Achats"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Satın Alım"
-          }
-        }
-      }
-    },
     "Quality Control" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -9634,10 +9893,24 @@
       }
     },
     "Ready" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hazır"
+          }
+        }
+      }
     },
     "Ready to play with friends?" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arkadaşlarınla oynamaya hazır mısın?"
+          }
+        }
+      }
     },
     "Rebel" : {
       "extractionState" : "translated",
@@ -9742,7 +10015,14 @@
       }
     },
     "Remaining Time" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kalan Süre"
+          }
+        }
+      }
     },
     "Remove" : {
       "localizations" : {
@@ -9756,23 +10036,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kaldır"
-          }
-        }
-      }
-    },
-    "Remove Ads" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Supprimer les publicités"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reklamları Kaldır"
           }
         }
       }
@@ -9828,7 +10091,14 @@
       }
     },
     "Restart Game" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oyunu Yeniden Başlat"
+          }
+        }
+      }
     },
     "Restaurant" : {
       "extractionState" : "manual",
@@ -9864,23 +10134,6 @@
         }
       }
     },
-    "Restore Purchases" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Restaurer les achats"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Satın Alımı Geri Yükle"
-          }
-        }
-      }
-    },
     "Retirement Home" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -9894,6 +10147,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Huzurevi"
+          }
+        }
+      }
+    },
+    "Return to Lobby" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lobiye Dön"
           }
         }
       }
@@ -10030,57 +10293,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rodeo"
-          }
-        }
-      }
-    },
-    "roles" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "rôles"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "roller"
-          }
-        }
-      }
-    },
-    "Room Code" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Code de la salle"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Oda Kodu"
-          }
-        }
-      }
-    },
-    "Room Update" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mise à jour de la salle"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Oda Güncellemesi"
           }
         }
       }
@@ -10357,23 +10569,6 @@
         }
       }
     },
-    "Second Edition (%lld)" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Deuxième édition (%lld)"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "İkinci Versiyon (%lld)"
-          }
-        }
-      }
-    },
     "Secret Enemy" : {
       "extractionState" : "translated",
       "localizations" : {
@@ -10426,7 +10621,14 @@
       }
     },
     "Secret spy" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Casus"
+          }
+        }
+      }
     },
     "Secret Villain" : {
       "extractionState" : "translated",
@@ -10548,10 +10750,24 @@
       }
     },
     "See how the game ended" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oyunun nasıl bittiğine bakın"
+          }
+        }
+      }
     },
     "Select Game Setting" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oyun Kurulumu Seç"
+          }
+        }
+      }
     },
     "Send Feedback" : {
       "localizations" : {
@@ -10621,7 +10837,14 @@
       }
     },
     "Set your name, players, and locations" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adınızı, oyuncularınızı ve konumlarınızı ayarlayın"
+          }
+        }
+      }
     },
     "Settings" : {
       "localizations" : {
@@ -10639,11 +10862,25 @@
         }
       }
     },
-    "Share the code and get everyone ready" : {
-
+    "Share the code and get your friends ready" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kodu paylaşın ve arkadaşlarınızı çağırın."
+          }
+        }
+      }
     },
     "Share the lobby code with friends to start playing!" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oynamaya başlamak için lobi kodunu arkadaşlarınızla paylaşın!"
+          }
+        }
+      }
     },
     "Shelf Stocker" : {
       "extractionState" : "manual",
@@ -10850,7 +11087,14 @@
       }
     },
     "Signing you in..." : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Giriş yapılıyor..."
+          }
+        }
+      }
     },
     "Simon the Apostle" : {
       "extractionState" : "manual",
@@ -11006,7 +11250,14 @@
       }
     },
     "Skip Guess" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tahmin Yapma"
+          }
+        }
+      }
     },
     "Slave" : {
       "extractionState" : "translated",
@@ -11281,10 +11532,24 @@
       }
     },
     "SPY WINS!" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CASUS KAZANDI!"
+          }
+        }
+      }
     },
     "Spy's guess:" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Casusun tahmini:"
+          }
+        }
+      }
     },
     "Spyquest" : {
       "localizations" : {
@@ -11405,7 +11670,14 @@
       }
     },
     "Start a new game and get a lobby code." : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yeni bir oyun başlatın ve lobi kodunu alın."
+          }
+        }
+      }
     },
     "Start Game" : {
       "localizations" : {
@@ -11423,8 +11695,15 @@
         }
       }
     },
-    "Start voting for all" : {
-
+    "Start Voting Early" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oylamayı Erkenden Başlat"
+          }
+        }
+      }
     },
     "Stationmaster" : {
       "extractionState" : "translated",
@@ -11834,25 +12113,16 @@
         }
       }
     },
-    "Tap to continue when everyone is ready" : {
-      "extractionState" : "stale",
+    "Tap to expand and see all locations" : {
+      "comment" : "Casus tahmin alanı texti. Çok uzun olmamalı",
       "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Touchez pour continuer quand tout le monde est prêt"
-          }
-        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Herkes hazır olduğunda devam etmek için tıkla"
+            "value" : "Tahmin için dokun."
           }
         }
       }
-    },
-    "Tap to expand and see all locations" : {
-
     },
     "Tap to see role." : {
       "localizations" : {
@@ -12446,39 +12716,71 @@
       }
     },
     "The spy got away and didn't make a guess!" : {
-
-    },
-    "The spy got away and guessed correctly!" : {
-
-    },
-    "The spy got away but guessed incorrectly!" : {
-
-    },
-    "The spy was caught and didn't make a guess!" : {
-
-    },
-    "The spy was caught and guessed incorrectly!" : {
-
-    },
-    "The spy was caught, but guessed correctly!" : {
-
-    },
-    "The spy was:" : {
-
-    },
-    "The spy was: %@" : {
-      "extractionState" : "stale",
       "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "L'espion était: %@"
-          }
-        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Casus şuydu: %@"
+            "value" : "Casus kaçtı ve tahminde bulunmadı!"
+          }
+        }
+      }
+    },
+    "The spy got away and guessed correctly!" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Casus kaçtı ve doğru tahmin etti!"
+          }
+        }
+      }
+    },
+    "The spy got away but guessed incorrectly!" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Casus kaçmıştı ama yanlış tahminde bulundu!"
+          }
+        }
+      }
+    },
+    "The spy was caught and didn't make a guess!" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Casus yakalandı ve tahminde bulunamadı!"
+          }
+        }
+      }
+    },
+    "The spy was caught and guessed incorrectly!" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Casus yakalandı ve yanlış tahminde bulundu!"
+          }
+        }
+      }
+    },
+    "The spy was caught, but guessed correctly!" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Casus yakalandı, ama doğru tahmin etti!"
+          }
+        }
+      }
+    },
+    "The spy was:" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Casus şuydu:"
           }
         }
       }
@@ -12671,7 +12973,14 @@
       }
     },
     "TIE" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "EŞİT"
+          }
+        }
+      }
     },
     "Tied Up Prisoner" : {
       "extractionState" : "manual",
@@ -12691,7 +13000,14 @@
       }
     },
     "Time is running out" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zaman azalıyor"
+          }
+        }
+      }
     },
     "Time's up!" : {
       "localizations" : {
@@ -12710,10 +13026,24 @@
       }
     },
     "Timer finished - Voting will start automatically" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zamanlayıcı bitti - Oylama otomatik olarak başlayacak"
+          }
+        }
+      }
     },
     "Tip:" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İpucu:"
+          }
+        }
+      }
     },
     "Tire Specialist" : {
       "extractionState" : "manual",
@@ -13191,7 +13521,14 @@
       }
     },
     "Unready" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hazır Değil"
+          }
+        }
+      }
     },
     "Unwanted Guest" : {
       "extractionState" : "manual",
@@ -13211,10 +13548,17 @@
       }
     },
     "v%@ b%@" : {
+      "comment" : "Versiyon ve Build Numarası",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
+            "value" : "v%1$@ b%2$@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
             "value" : "v%1$@ b%2$@"
           }
         }
@@ -13357,31 +13701,94 @@
       }
     },
     "Vote ended in a tie, and the spy didn't make a guess!" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oylama berabere sonuçlandı ve casus tahminde bulunmadı!"
+          }
+        }
+      }
     },
     "Vote ended in a tie, and the spy guessed correctly!" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oylama berabere sonuçlandı ve casus doğru tahminde bulundu!"
+          }
+        }
+      }
     },
     "Vote ended in a tie, and the spy guessed incorrectly!" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oylama berabere sonuçlandı ve casus yanlış tahminde bulundu!"
+          }
+        }
+      }
     },
     "Vote ended in a tie, but the spy didn't make a guess!" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oylama berabere sonuçlandı, ancak casus tahminde bulunmadı!"
+          }
+        }
+      }
     },
     "Vote ended in a tie, but the spy guessed correctly!" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oylama berabere sonuçlandı, ama casus doğru tahmin etti!"
+          }
+        }
+      }
     },
     "Vote result:" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oylama sonucu:"
+          }
+        }
+      }
     },
     "Voting Results" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oylama Sonuçları"
+          }
+        }
+      }
     },
     "Voting Time!" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oylama zamanı!"
+          }
+        }
+      }
     },
     "Voting will start automatically..." : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oylama otomatik olarak başlayacaktır..."
+          }
+        }
+      }
     },
     "Waiter" : {
       "extractionState" : "manual",
@@ -13401,7 +13808,14 @@
       }
     },
     "Waiting for host to restart the game..." : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kurucunun oyunu yeniden başlatması bekleniyor…"
+          }
+        }
+      }
     },
     "Waiting for host to start the game..." : {
       "localizations" : {
@@ -13420,38 +13834,11 @@
       }
     },
     "Waiting Lobby" : {
-
-    },
-    "Waiting Room" : {
-      "extractionState" : "stale",
       "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Salle d'attente"
-          }
-        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bekleme Odası"
-          }
-        }
-      }
-    },
-    "Waiting..." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "En attente..."
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bekleniyor..."
+            "value" : "Bekleme Lobisi"
           }
         }
       }
@@ -13557,7 +13944,14 @@
       }
     },
     "Who do you think is the spy?" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sence casus kim?"
+          }
+        }
+      }
     },
     "Wild Ocean Depths" : {
       "extractionState" : "translated",
@@ -13589,23 +13983,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vahşi Batı Versiyon"
-          }
-        }
-      }
-    },
-    "Wild West Edition (%lld)" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Édition Wild West (%lld)"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vahşi Batı Versiyon (%lld)"
           }
         }
       }
@@ -13764,7 +14141,14 @@
       }
     },
     "You are a" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rolün:"
+          }
+        }
+      }
     },
     "You are the spy!" : {
       "localizations" : {
@@ -13782,42 +14166,22 @@
         }
       }
     },
-    "You are the SPY!" : {
-      "extractionState" : "stale",
+    "YOU ARE THE SPY!" : {
       "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vous êtes l'ESPION!"
-          }
-        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CASUS sensin!"
+            "value" : "SEN CASUSSUN!"
           }
         }
       }
     },
-    "YOU ARE THE SPY!" : {
-
-    },
     "You voted for: %@" : {
-
-    },
-    "You were removed from the room. The host may have left or removed you." : {
-      "extractionState" : "stale",
       "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vous avez été retiré de la salle. L'hôte a peut-être quitté ou vous a retiré."
-          }
-        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Odadan çıkarıldınız. Sunucu ayrılmış veya sizi çıkarmış olabilir."
+            "value" : "Oy verdiğin: %@"
           }
         }
       }
@@ -13839,21 +14203,11 @@
       }
     },
     "Your location guess has been submitted. Good luck!" : {
-
-    },
-    "Your Name" : {
-      "extractionState" : "stale",
       "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Votre nom"
-          }
-        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Adınız"
+            "value" : "Konum tahmininiz gönderildi. İyi şanslar!"
           }
         }
       }
@@ -13870,23 +14224,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rolün: %@"
-          }
-        }
-      }
-    },
-    "Your role will be revealed in:" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Votre rôle sera révélé dans:"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rolün şu sürede açıklanacak:"
           }
         }
       }

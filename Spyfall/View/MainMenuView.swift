@@ -83,7 +83,8 @@ struct MainMenuView: View {
                             .foregroundStyle(.reverse2)
                             .font(.caption)
                             .fontWeight(.semibold)
-                            .frame(width: 80, height: 20)
+                            .padding(.horizontal, 10)
+                            .frame(height: 20)
                             .background(
                                 Color.premiumReverse,
                                 in: Capsule()
